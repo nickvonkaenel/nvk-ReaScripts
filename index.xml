@@ -14,10 +14,10 @@
 }
 ]]></description>
         <link rel="website" href="https://gum.co/nvk_AUTODOPPLER">Store Page</link>
-        <link rel="screenshot">https://reapleton.com/doc/images/autodoppler/nvk_autodoppler.gif</link>
+        <link rel="screenshot">https://reapleton.com/images/nvk_autodoppler.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="0.9.4" author="Nick von Kaenel" time="2021-01-25T00:21:09Z">
+      <version name="1.0" author="Nick von Kaenel" time="2021-02-03T04:31:12Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source file="Data/functions.dat">https://reapleton.com/AUTODOPPLER/Data/functions.dat</source>
         <source file="Data/grm.dat">https://reapleton.com/AUTODOPPLER/Data/grm.dat</source>
@@ -54,10 +54,10 @@
 }
 ]]></description>
         <link rel="website" href="https://gum.co/nvk_WORKFLOW">Store Page</link>
-        <link rel="screenshot">https://reapleton.com/doc/images/nvk_WORKFLOW/nvk_WORKFLOW.gif</link>
+        <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="0.9.6" author="Nick von Kaenel" time="2021-01-28T04:27:55Z">
+      <version name="1.0" author="Nick von Kaenel" time="2021-02-03T04:31:12Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source file="Data/functions.dat">https://reapleton.com/FOLDER_ITEMS/Data/functions.dat</source>
         <source file="Data/licenseverify.dat">https://reapleton.com/FOLDER_ITEMS/Data/licenseverify.dat</source>
@@ -142,11 +142,11 @@
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with items for game audio and sound design.\par}
 }
 ]]></description>
-        <link rel="website" href="https://gum.co/nvk_BASICS">Store Page</link>
-        <link rel="screenshot">https://reapleton.com/doc/images/nvk_BASICS/nvk_BASICS.gif</link>
+        <link rel="website" href="https://gumroad.com/nickvonkaenel">Store Page</link>
+        <link rel="screenshot">https://reapleton.com/images/nvk_basics.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="0.9.4" author="Nick von Kaenel" time="2021-01-25T18:54:58Z">
+      <version name="1.0" author="Nick von Kaenel" time="2021-02-03T04:31:12Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source file="Data/functions.dat">https://reapleton.com/ITEMS/Data/functions.dat</source>
         <source main="main" file="nvk_ITEMS - Align SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Align%20SMART.lua</source>
@@ -168,6 +168,7 @@
         <source main="main" file="nvk_ITEMS - Stretch selected items to previous and next markers.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Stretch%20selected%20items%20to%20previous%20and%20next%20markers.lua</source>
         <source main="main" file="nvk_ITEMS - Switch item source to next in folder.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Switch%20item%20source%20to%20next%20in%20folder.lua</source>
         <source main="main" file="nvk_ITEMS - Switch item source to previous in folder.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Switch%20item%20source%20to%20previous%20in%20folder.lua</source>
+        <source main="main" file="nvk_ITEMS - Toggle zoom to selected items - add time selection with offset.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Toggle%20zoom%20to%20selected%20items%20-%20add%20time%20selection%20with%20offset.lua</source>
         <source main="main">https://reapleton.com/ITEMS/nvk_ITEMS.lua</source>
       </version>
     </reapack>
@@ -185,10 +186,10 @@
 }
 ]]></description>
         <link rel="website" href="https://gum.co/nvk_LOOPMAKER">Store Page</link>
-        <link rel="screenshot">https://static-2.gumroad.com/res/gumroad/603502059123/asset_previews/5db9a0f2b6a67310dfcb3f83ea7a9559/original/loopmaker.gif</link>
+        <link rel="screenshot">https://reapleton.com/images/nvk_loopmaker.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="0.9.4" author="Nick von Kaenel" time="2021-01-25T00:21:09Z">
+      <version name="1.0" author="Nick von Kaenel" time="2021-02-03T04:31:12Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source main="main">https://reapleton.com/LOOPMAKER/nvk_LOOPMAKER.lua</source>
         <source file="Data/functions.dat">https://reapleton.com/LOOPMAKER/Data/functions.dat</source>
@@ -211,11 +212,11 @@
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_MULTI is a collection of scripts that perform multiple actions depending on the context. To use these, make sure you have already downloaded the rest of the nvk-ReaScripts repo since they reference other scripts. Multitap scripts perform different actions depending on how many times you call the script in rapid succession (most likely will need to assign the script to a hotkey for this to work)\par}
 }
 ]]></description>
-        <link rel="website" href="https://gum.co/nvk_BASICS">Store Page</link>
-        <link rel="screenshot">https://reapleton.com/doc/images/nvk_BASICS/nvk_BASICS.gif</link>
+        <link rel="website" href="https://gumroad.com/nickvonkaenel">Store Page</link>
+        <link rel="screenshot">https://reapleton.com/images/nvk_basics.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="0.9.4" author="Nick von Kaenel" time="2021-01-25T18:54:58Z">
+      <version name="1.0" author="Nick von Kaenel" time="2021-02-03T04:31:12Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source main="main" file="nvk_MULTI - Move tracks-items-envelope points down depending on focus SMART.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20down%20depending%20on%20focus%20SMART.lua</source>
         <source main="main" file="nvk_MULTI - Move tracks-items-envelope points up depending on focus SMART.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20up%20depending%20on%20focus%20SMART.lua</source>
@@ -227,7 +228,21 @@
   </category>
   <category name="PROPAGATE">
     <reapack name="nvk_PROPAGATE.lua" type="script" desc="nvk_PROPAGATE">
-      <version name="1.0" author="Nick von Kaenel" time="2021-01-25T07:51:20Z">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_PROPAGATE\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 If items are selected, will proprogate parameters from the first selected item on each track to the rest of the selected items. If no items are selected, will open up dialog to change settings.\par}
+}
+]]></description>
+        <link rel="website" href="https://gumroad.com/nickvonkaenel">Store Page</link>
+        <link rel="screenshot">https://reapleton.com/images/nvk_basics.gif</link>
+        <link rel="donation">http://paypal.me/nickvonkaenel</link>
+      </metadata>
+      <version name="1.0" author="Nick von Kaenel" time="2021-02-03T04:31:12Z">
+        <changelog><![CDATA[Initial release]]></changelog>
         <source main="main">https://reapleton.com/PROPAGATE/nvk_PROPAGATE.lua</source>
       </version>
     </reapack>
@@ -240,14 +255,14 @@
 \widowctrl\hyphauto
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_SUBPROJECT\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 nvk_SUBPROJECT: Select either items, tracks, or folder items and run the script. Type in the name you want and the script will automatically create a new subproject, set the markers, and split/name your items. A huge timesaver when it comes to adding subprojects to your workflow. If you make any changes, select your subproject items in the main project and run the script again to re-split and rename the items. If you use folder items in the subproject, it will even copy those names over for you. If you don't have any items selected, the script will simply fix your subproject markers to the unmuted items in the project.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 nvk_SUBPROJECT: Select either items, tracks, or folder items and run the script. Type in the name you want and the script will automatically create a new subproject, set the markers, and split/name your items. A huge timesaver when it comes to adding subprojects to your workflow. If you make any changes, select your subproject items in the main project and run the script again to re-split and rename the items. If you use folder items in the subproject, it will even copy those names over for you. If you don't have any items selected, the script will simply fix your subproject markers to the unmuted items in the project. Available for purchase at https://gum.co/nvk_WORKFLOW\par}
 }
 ]]></description>
         <link rel="website" href="https://gum.co/nvk_WORKFLOW">Store Page</link>
-        <link rel="screenshot">https://reapleton.com/doc/images/nvk_WORKFLOW/nvk_WORKFLOW.gif</link>
+        <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="0.9.4" author="Nick von Kaenel" time="2021-01-25T00:21:09Z">
+      <version name="1.0" author="Nick von Kaenel" time="2021-02-03T04:31:12Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source main="main">https://reapleton.com/SUBPROJECT/nvk_SUBPROJECT.lua</source>
         <source file="Data/functions.dat">https://reapleton.com/SUBPROJECT/Data/functions.dat</source>
@@ -270,10 +285,10 @@
 }
 ]]></description>
         <link rel="website" href="https://gum.co/nvk_WORKFLOW">Store Page</link>
-        <link rel="screenshot">https://reapleton.com/doc/images/nvk_WORKFLOW/nvk_WORKFLOW.gif</link>
+        <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="0.9.5" author="Nick von Kaenel" time="2021-01-28T04:27:55Z">
+      <version name="1.0" author="Nick von Kaenel" time="2021-02-03T04:31:12Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source file="Data/functions.dat">https://reapleton.com/TAKES/Data/functions.dat</source>
         <source platform="windows" file="Data/curl/curl-ca-bundle.crt">https://reapleton.com/TAKES/Data/curl/curl-ca-bundle.crt</source>
@@ -309,11 +324,11 @@
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with tracks for game audio and sound design.\par}
 }
 ]]></description>
-        <link rel="website" href="https://gum.co/nvk_BASICS">Store Page</link>
-        <link rel="screenshot">https://reapleton.com/doc/images/nvk_BASICS/nvk_BASICS.gif</link>
+        <link rel="website" href="https://gumroad.com/nickvonkaenel">Store Page</link>
+        <link rel="screenshot">https://reapleton.com/images/nvk_basics.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="0.9.4" author="Nick von Kaenel" time="2021-01-25T18:54:58Z">
+      <version name="1.0" author="Nick von Kaenel" time="2021-02-03T04:31:12Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source file="Data/functions.dat">https://reapleton.com/TRACK/Data/functions.dat</source>
         <source main="main" file="nvk_TRACK - Color folder and named tracks with SWS custom colors.lua">https://reapleton.com/TRACK/nvk_TRACK%20-%20Color%20folder%20and%20named%20tracks%20with%20SWS%20custom%20colors.lua</source>
