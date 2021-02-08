@@ -40,6 +40,31 @@
         <source main="main" file="nvk_AUTODOPPLER - Quick Render.lua">https://reapleton.com/AUTODOPPLER/nvk_AUTODOPPLER%20-%20Quick%20Render.lua</source>
         <source main="main">https://reapleton.com/AUTODOPPLER/nvk_AUTODOPPLER.lua</source>
       </version>
+      <version name="1.1" author="Nick von Kaenel" time="2021-02-08T16:08:12Z">
+        <changelog><![CDATA[Adding new script nvk_AUTODOPPLER - Custom which allows you to write automation to any fx parameter]]></changelog>
+        <source file="Data/custom.dat">https://reapleton.com/AUTODOPPLER/Data/custom.dat</source>
+        <source file="Data/functions.dat">https://reapleton.com/AUTODOPPLER/Data/functions.dat</source>
+        <source file="Data/grm.dat">https://reapleton.com/AUTODOPPLER/Data/grm.dat</source>
+        <source file="Data/gui.dat">https://reapleton.com/AUTODOPPLER/Data/gui.dat</source>
+        <source file="Data/licenseverify.dat">https://reapleton.com/AUTODOPPLER/Data/licenseverify.dat</source>
+        <source file="Data/nvk.dat">https://reapleton.com/AUTODOPPLER/Data/nvk.dat</source>
+        <source file="Data/soundparticles.dat">https://reapleton.com/AUTODOPPLER/Data/soundparticles.dat</source>
+        <source file="Data/traveler.dat">https://reapleton.com/AUTODOPPLER/Data/traveler.dat</source>
+        <source file="Data/waves.dat">https://reapleton.com/AUTODOPPLER/Data/waves.dat</source>
+        <source type="effect" file="nvk_DOPPLER.jsfx">https://reapleton.com/AUTODOPPLER/nvk_DOPPLER.jsfx</source>
+        <source main="main" file="nvk_AUTODOPPLER - Create snap offsets at rms peak.eel">https://reapleton.com/AUTODOPPLER/nvk_AUTODOPPLER%20-%20Create%20snap%20offsets%20at%20rms%20peak.eel</source>
+        <source file="Presets/TRAVELER.RPL">https://reapleton.com/AUTODOPPLER/Presets/TRAVELER.RPL</source>
+        <source file="Presets/TRAVELER_VST3.RPL">https://reapleton.com/AUTODOPPLER/Presets/TRAVELER_VST3.RPL</source>
+        <source file="Presets/vst-Traveler.ini">https://reapleton.com/AUTODOPPLER/Presets/vst-Traveler.ini</source>
+        <source file="Presets/vst3-Traveler.ini">https://reapleton.com/AUTODOPPLER/Presets/vst3-Traveler.ini</source>
+        <source platform="windows" file="Data/curl/curl-ca-bundle.crt">https://reapleton.com/AUTODOPPLER/Data/curl/curl-ca-bundle.crt</source>
+        <source platform="windows" file="Data/curl/curl.exe">https://reapleton.com/AUTODOPPLER/Data/curl/curl.exe</source>
+        <source platform="windows" file="Data/curl/libcurl.dll">https://reapleton.com/AUTODOPPLER/Data/curl/libcurl.dll</source>
+        <source main="main" file="nvk_AUTODOPPLER - Custom.lua">https://reapleton.com/AUTODOPPLER/nvk_AUTODOPPLER%20-%20Custom.lua</source>
+        <source main="main" file="nvk_AUTODOPPLER - Quick Render - Randomize.lua">https://reapleton.com/AUTODOPPLER/nvk_AUTODOPPLER%20-%20Quick%20Render%20-%20Randomize.lua</source>
+        <source main="main" file="nvk_AUTODOPPLER - Quick Render.lua">https://reapleton.com/AUTODOPPLER/nvk_AUTODOPPLER%20-%20Quick%20Render.lua</source>
+        <source main="main">https://reapleton.com/AUTODOPPLER/nvk_AUTODOPPLER.lua</source>
+      </version>
     </reapack>
   </category>
   <category name="FOLDER_ITEMS">
@@ -243,6 +268,14 @@
       </metadata>
       <version name="1.0" author="Nick von Kaenel" time="2021-02-03T04:31:12Z">
         <changelog><![CDATA[Initial release]]></changelog>
+        <source main="main" file="nvk_MULTI - Move tracks-items-envelope points down depending on focus SMART.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20down%20depending%20on%20focus%20SMART.lua</source>
+        <source main="main" file="nvk_MULTI - Move tracks-items-envelope points up depending on focus SMART.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20up%20depending%20on%20focus%20SMART.lua</source>
+        <source main="main" file="nvk_MULTI - Move tracks-items-envelope points up or down depending on focus SMART (mousewheel).lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20up%20or%20down%20depending%20on%20focus%20SMART%20(mousewheel).lua</source>
+        <source main="main" file="nvk_MULTI - Project organize - cleanup - color (multitap).lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Project%20organize%20-%20cleanup%20-%20color%20(multitap).lua</source>
+        <source main="main">https://reapleton.com/MULTI/nvk_MULTI.lua</source>
+      </version>
+      <version name="1.0.1" author="Nick von Kaenel" time="2021-02-07T18:57:05Z">
+        <changelog><![CDATA[Fixing bug with nvk_MULTI - Move tracks-items-envelope points up or down depending on focus SMART (mousewheel) where it only went in one direction]]></changelog>
         <source main="main" file="nvk_MULTI - Move tracks-items-envelope points down depending on focus SMART.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20down%20depending%20on%20focus%20SMART.lua</source>
         <source main="main" file="nvk_MULTI - Move tracks-items-envelope points up depending on focus SMART.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20up%20depending%20on%20focus%20SMART.lua</source>
         <source main="main" file="nvk_MULTI - Move tracks-items-envelope points up or down depending on focus SMART (mousewheel).lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20up%20or%20down%20depending%20on%20focus%20SMART%20(mousewheel).lua</source>
