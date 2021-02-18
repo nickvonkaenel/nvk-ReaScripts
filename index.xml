@@ -254,6 +254,81 @@
         <source main="main" file="nvk_FOLDER_ITEMS - Trim right edge.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Trim%20right%20edge.lua</source>
         <source main="main">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS.lua</source>
       </version>
+      <version name="1.1.0" author="Nick von Kaenel" time="2021-02-18T04:18:26Z">
+        <changelog><![CDATA[1.1.0 Select folder items after creating new folder, Rename script takes into account 'name in notes' setting, allow for non-numbered folder item names, better handling of non-named folder items
+1.0.1 Fixing bug which caused snap offsets to be removed by some scripts, adding reverse direction mousewheel scripts]]></changelog>
+        <source file="Data/functions.dat">https://reapleton.com/FOLDER_ITEMS/Data/functions.dat</source>
+        <source file="Data/licenseverify.dat">https://reapleton.com/FOLDER_ITEMS/Data/licenseverify.dat</source>
+        <source file="Data/scythe.lua">https://reapleton.com/FOLDER_ITEMS/Data/scythe.lua</source>
+        <source file="Data/gui/config.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/config.lua</source>
+        <source file="Data/gui/core.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/core.lua</source>
+        <source file="Data/gui/element.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/element.lua</source>
+        <source file="Data/gui/layer.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/layer.lua</source>
+        <source file="Data/gui/theme.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/theme.lua</source>
+        <source file="Data/gui/window.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/window.lua</source>
+        <source file="Data/gui/elements/Button.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Button.lua</source>
+        <source file="Data/gui/elements/Checklist.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Checklist.lua</source>
+        <source file="Data/gui/elements/ColorPicker.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/ColorPicker.lua</source>
+        <source file="Data/gui/elements/Frame.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Frame.lua</source>
+        <source file="Data/gui/elements/Knob.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Knob.lua</source>
+        <source file="Data/gui/elements/Label.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Label.lua</source>
+        <source file="Data/gui/elements/Listbox.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Listbox.lua</source>
+        <source file="Data/gui/elements/Menubar.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Menubar.lua</source>
+        <source file="Data/gui/elements/Menubox.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Menubox.lua</source>
+        <source file="Data/gui/elements/Radio.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Radio.lua</source>
+        <source file="Data/gui/elements/Slider.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Slider.lua</source>
+        <source file="Data/gui/elements/Tabs.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Tabs.lua</source>
+        <source file="Data/gui/elements/TextEditor.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/TextEditor.lua</source>
+        <source file="Data/gui/elements/Textbox.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Textbox.lua</source>
+        <source file="Data/gui/elements/shared/option.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/shared/option.lua</source>
+        <source file="Data/gui/elements/shared/text.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/shared/text.lua</source>
+        <source file="Data/public/buffer.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/buffer.lua</source>
+        <source file="Data/public/color.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/color.lua</source>
+        <source file="Data/public/const.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/const.lua</source>
+        <source file="Data/public/error.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/error.lua</source>
+        <source file="Data/public/file.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/file.lua</source>
+        <source file="Data/public/font.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/font.lua</source>
+        <source file="Data/public/gfx.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/gfx.lua</source>
+        <source file="Data/public/image.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/image.lua</source>
+        <source file="Data/public/math.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/math.lua</source>
+        <source file="Data/public/menu.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/menu.lua</source>
+        <source file="Data/public/message.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/message.lua</source>
+        <source file="Data/public/sprite.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/sprite.lua</source>
+        <source file="Data/public/string.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/string.lua</source>
+        <source file="Data/public/table.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/table.lua</source>
+        <source file="Data/public/text.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/text.lua</source>
+        <source platform="windows" file="Data/curl/curl-ca-bundle.crt">https://reapleton.com/FOLDER_ITEMS/Data/curl/curl-ca-bundle.crt</source>
+        <source platform="windows" file="Data/curl/curl.exe">https://reapleton.com/FOLDER_ITEMS/Data/curl/curl.exe</source>
+        <source platform="windows" file="Data/curl/libcurl.dll">https://reapleton.com/FOLDER_ITEMS/Data/curl/libcurl.dll</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Add new items to existing folder.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Add%20new%20items%20to%20existing%20folder.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Align.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Align.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Create new folder from selected items or tracks.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Create%20new%20folder%20from%20selected%20items%20or%20tracks.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Deselect folder items.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Deselect%20folder%20items.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Deselect items on collapsed tracks.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Deselect%20items%20on%20collapsed%20tracks.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Deselect non-folder items.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Deselect%20non-folder%20items.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Deselect non-render items SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Deselect%20non-render%20items%20SMART.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Fade in.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Fade%20in.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Fade out.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Fade%20out.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - MM - Media Item - Double Click.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20MM%20-%20Media%20Item%20-%20Double%20Click.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - MM - TCP - Double Click.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20MM%20-%20TCP%20-%20Double%20Click.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Octave (Reversed).lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Octave%20(Reversed).lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Octave.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Octave.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Semitone (Reversed).lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Semitone%20(Reversed).lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Semitone.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Semitone.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Remove.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Remove.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Rename.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Rename.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Render SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render%20SMART.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Render.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition groups SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20groups%20SMART.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition groups.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20groups.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition items SMART - PROPAGATE.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20items%20SMART%20-%20PROPAGATE.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition items SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20items%20SMART.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Settings.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Settings.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Split.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Split.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Trim left edge.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Trim%20left%20edge.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Trim right edge.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Trim%20right%20edge.lua</source>
+        <source main="main">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS.lua</source>
+      </version>
     </reapack>
   </category>
   <category name="ITEMS">
@@ -313,6 +388,33 @@
         <source main="main" file="nvk_ITEMS - Reposition selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Reposition%20selected%20items.lua</source>
         <source main="main" file="nvk_ITEMS - Reset snap offsets of selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Reset%20snap%20offsets%20of%20selected%20items.lua</source>
         <source main="main" file="nvk_ITEMS - Select all items after selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Select%20all%20items%20after%20selected%20items.lua</source>
+        <source main="main" file="nvk_ITEMS - Shift take offset by length of item.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Shift%20take%20offset%20by%20length%20of%20item.lua</source>
+        <source main="main" file="nvk_ITEMS - Split selected items x length x space.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Split%20selected%20items%20x%20length%20x%20space.lua</source>
+        <source main="main" file="nvk_ITEMS - Stretch selected items to previous and next markers.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Stretch%20selected%20items%20to%20previous%20and%20next%20markers.lua</source>
+        <source main="main" file="nvk_ITEMS - Switch item source to next in folder.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Switch%20item%20source%20to%20next%20in%20folder.lua</source>
+        <source main="main" file="nvk_ITEMS - Switch item source to previous in folder.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Switch%20item%20source%20to%20previous%20in%20folder.lua</source>
+        <source main="main" file="nvk_ITEMS - Toggle zoom to selected items - add time selection with offset.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Toggle%20zoom%20to%20selected%20items%20-%20add%20time%20selection%20with%20offset.lua</source>
+        <source main="main">https://reapleton.com/ITEMS/nvk_ITEMS.lua</source>
+      </version>
+      <version name="1.0.2" author="Nick von Kaenel" time="2021-02-18T04:18:26Z">
+        <changelog><![CDATA[1.0.2 New script: Select all items before selected items
+1.0.1 Fixing bug in 'nvk_ITEMS - Move cursor to next/previous transient', adding option to skip item ends]]></changelog>
+        <source file="Data/functions.dat">https://reapleton.com/ITEMS/Data/functions.dat</source>
+        <source main="main" file="nvk_ITEMS - Align SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Align%20SMART.lua</source>
+        <source main="main" file="nvk_ITEMS - Copy item positions.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Copy%20item%20positions.lua</source>
+        <source main="main" file="nvk_ITEMS - Fades to volume automation.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fades%20to%20volume%20automation.lua</source>
+        <source main="main" file="nvk_ITEMS - Move cursor to next transient.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20cursor%20to%20next%20transient.lua</source>
+        <source main="main" file="nvk_ITEMS - Move cursor to previous transient.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20cursor%20to%20previous%20transient.lua</source>
+        <source main="main" file="nvk_ITEMS - Move selected items down one track SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20selected%20items%20down%20one%20track%20SMART.lua</source>
+        <source main="main" file="nvk_ITEMS - Move selected items up one track SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20selected%20items%20up%20one%20track%20SMART.lua</source>
+        <source main="main" file="nvk_ITEMS - Move to new tracks with track fx.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20to%20new%20tracks%20with%20track%20fx.lua</source>
+        <source main="main" file="nvk_ITEMS - Paste item positions.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Paste%20item%20positions.lua</source>
+        <source main="main" file="nvk_ITEMS - Remove selected items with no color.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Remove%20selected%20items%20with%20no%20color.lua</source>
+        <source main="main" file="nvk_ITEMS - Reposition selected items across tracks.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Reposition%20selected%20items%20across%20tracks.lua</source>
+        <source main="main" file="nvk_ITEMS - Reposition selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Reposition%20selected%20items.lua</source>
+        <source main="main" file="nvk_ITEMS - Reset snap offsets of selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Reset%20snap%20offsets%20of%20selected%20items.lua</source>
+        <source main="main" file="nvk_ITEMS - Select all items after selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Select%20all%20items%20after%20selected%20items.lua</source>
+        <source main="main" file="nvk_ITEMS - Select all items before selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Select%20all%20items%20before%20selected%20items.lua</source>
         <source main="main" file="nvk_ITEMS - Shift take offset by length of item.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Shift%20take%20offset%20by%20length%20of%20item.lua</source>
         <source main="main" file="nvk_ITEMS - Split selected items x length x space.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Split%20selected%20items%20x%20length%20x%20space.lua</source>
         <source main="main" file="nvk_ITEMS - Stretch selected items to previous and next markers.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Stretch%20selected%20items%20to%20previous%20and%20next%20markers.lua</source>
@@ -499,6 +601,30 @@
         <source main="main" file="nvk_TAKES - Select previous take.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20previous%20take.lua</source>
         <source main="main" file="nvk_TAKES - Select takes containing text in project.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20takes%20containing%20text%20in%20project.lua</source>
         <source main="main" file="nvk_TAKES - Toggle width fx (open script to change) or toggle track width envelop.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Toggle%20width%20fx%20(open%20script%20to%20change)%20or%20toggle%20track%20width%20envelop.lua</source>
+        <source main="main">https://reapleton.com/TAKES/nvk_TAKES.lua</source>
+        <source main="main" file="nvk_TAKES - Consolidate takes with take markers SMART.eel">https://reapleton.com/TAKES/nvk_TAKES%20-%20Consolidate%20takes%20with%20take%20markers%20SMART.eel</source>
+      </version>
+      <version name="1.0.2" author="Nick von Kaenel" time="2021-02-18T04:18:26Z">
+        <changelog><![CDATA[1.0.2 Fixing spelling of toggle width fx; now it clears track width envelope instead of toggling
+1.0.1 Fix for empty items when selecting takes]]></changelog>
+        <source file="Data/functions.dat">https://reapleton.com/TAKES/Data/functions.dat</source>
+        <source platform="windows" file="Data/curl/curl-ca-bundle.crt">https://reapleton.com/TAKES/Data/curl/curl-ca-bundle.crt</source>
+        <source platform="windows" file="Data/curl/curl.exe">https://reapleton.com/TAKES/Data/curl/curl.exe</source>
+        <source platform="windows" file="Data/curl/libcurl.dll">https://reapleton.com/TAKES/Data/curl/libcurl.dll</source>
+        <source main="main" file="nvk_TAKES - Consolidate item splits as take markers in first item.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Consolidate%20item%20splits%20as%20take%20markers%20in%20first%20item.lua</source>
+        <source main="main" file="nvk_TAKES - Convert 5.1 to Quad.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Convert%205.1%20to%20Quad.lua</source>
+        <source main="main" file="nvk_TAKES - Copy take name.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Copy%20take%20name.lua</source>
+        <source main="main" file="nvk_TAKES - Duplicate items and select next take SMART.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Duplicate%20items%20and%20select%20next%20take%20SMART.lua</source>
+        <source main="main" file="nvk_TAKES - Quick add numbered take marker at mouse position.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Quick%20add%20numbered%20take%20marker%20at%20mouse%20position.lua</source>
+        <source main="main" file="nvk_TAKES - Remove channels.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Remove%20channels.lua</source>
+        <source main="main" file="nvk_TAKES - Render to new take with fx.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Render%20to%20new%20take%20with%20fx.lua</source>
+        <source main="main" file="nvk_TAKES - Reverse.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Reverse.lua</source>
+        <source main="main" file="nvk_TAKES - Select next take SMART.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20next%20take%20SMART.lua</source>
+        <source main="main" file="nvk_TAKES - Select next take.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20next%20take.lua</source>
+        <source main="main" file="nvk_TAKES - Select previous take SMART.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20previous%20take%20SMART.lua</source>
+        <source main="main" file="nvk_TAKES - Select previous take.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20previous%20take.lua</source>
+        <source main="main" file="nvk_TAKES - Select takes containing text in project.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20takes%20containing%20text%20in%20project.lua</source>
+        <source main="main" file="nvk_TAKES - Toggle width fx (open script to change) or toggle track width envelope.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Toggle%20width%20fx%20(open%20script%20to%20change)%20or%20toggle%20track%20width%20envelope.lua</source>
         <source main="main">https://reapleton.com/TAKES/nvk_TAKES.lua</source>
         <source main="main" file="nvk_TAKES - Consolidate takes with take markers SMART.eel">https://reapleton.com/TAKES/nvk_TAKES%20-%20Consolidate%20takes%20with%20take%20markers%20SMART.eel</source>
       </version>
