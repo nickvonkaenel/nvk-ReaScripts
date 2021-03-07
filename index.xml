@@ -890,6 +890,16 @@
         <source platform="windows" file="Data/curl/curl.exe">https://reapleton.com/LOOPMAKER/Data/curl/curl.exe</source>
         <source platform="windows" file="Data/curl/libcurl.dll">https://reapleton.com/LOOPMAKER/Data/curl/libcurl.dll</source>
       </version>
+      <version name="1.1" author="Nick von Kaenel" time="2021-03-07T04:29:20Z">
+        <changelog><![CDATA[1.1 New feature: if you make a time selection and only have one item per track selected (and are only making one loop per item), nvk_LOOPMAKER will automatically fit your loops to the time selection, extending and duplicating if necessary.]]></changelog>
+        <source main="main">https://reapleton.com/LOOPMAKER/nvk_LOOPMAKER.lua</source>
+        <source file="Data/functions.dat">https://reapleton.com/LOOPMAKER/Data/functions.dat</source>
+        <source file="Data/licenseverify.dat">https://reapleton.com/LOOPMAKER/Data/licenseverify.dat</source>
+        <source file="Data/loopmaker.dat">https://reapleton.com/LOOPMAKER/Data/loopmaker.dat</source>
+        <source platform="windows" file="Data/curl/curl-ca-bundle.crt">https://reapleton.com/LOOPMAKER/Data/curl/curl-ca-bundle.crt</source>
+        <source platform="windows" file="Data/curl/curl.exe">https://reapleton.com/LOOPMAKER/Data/curl/curl.exe</source>
+        <source platform="windows" file="Data/curl/libcurl.dll">https://reapleton.com/LOOPMAKER/Data/curl/libcurl.dll</source>
+      </version>
     </reapack>
   </category>
   <category name="MULTI">
