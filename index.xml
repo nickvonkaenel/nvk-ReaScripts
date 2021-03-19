@@ -1081,6 +1081,102 @@
         <source main="main" file="nvk_FOLDER_ITEMS - Trim right edge.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Trim%20right%20edge.lua</source>
         <source main="main">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS.lua</source>
       </version>
+      <version name="1.4.5" author="Nick von Kaenel" time="2021-03-19T21:45:25Z">
+        <changelog><![CDATA[1.4.5 Double click on pooled midi items now opens midi editor
+1.4.4 Licensing improvements
+1.4.3 Better handling of automatic folder item creation naming with different name schemes. Minor fixes to rename script.
+1.4.2 Fix cursor issue in folder items textboxes. Fixing occasional bug with fade in/out scripts and auto-crossfaded items
+1.4.1 Minor fixes, Delete key now works in rename items
+1.4.0 New setting to add markers for variations, better error handling, fixing issue for user that have updated without opening the settings script, appended number setting not working properly when rendering sausage items, fixing markers and regions updating every loop (performance improved)
+1.3.1 Adding back OG Add new items to existing folder - Rename script. Minor fixies
+1.3.0 New Render SMART UI and options, moving render settings that were previously in settings script to tab in render script.
+      Fixing bug when adding or deleting folder items with markers enabled
+      Toggling track visibility works better with muted groups or collapsed tracks
+1.2.0 Rename script now works with text (empty) items
+      Fixing issue with grouping nested collapsed folders with doubleclick mouse modifiers
+      New setting 'Folder Items - Disable': if you don't want to automatically create and fix folder items but still want to automatically select them (also disables markers)
+      New setting 'Markers - Regions': Automatically create regions for sets of folder items instead of markers
+      New setting 'Markers - Subproject markers: Create markers for subprojects'
+      Validate input with reposition groups
+      Render SMART now allows you to render into your project folder and still copy the media source to the Renders folder
+      All render settings saved with items now, no longer written in item notes, setting name changed
+      Fixing crash when opening subprojects with regions
+1.1.0 Select folder items after creating new folder, Rename script takes into account 'name in notes' setting, allow for non-numbered folder item names, better handling of non-named folder items
+1.0.1 Fixing bug which caused snap offsets to be removed by some scripts, adding reverse direction mousewheel scripts]]></changelog>
+        <source file="Data/functions.dat">https://reapleton.com/FOLDER_ITEMS/Data/functions.dat</source>
+        <source file="Data/licenseverify.dat">https://reapleton.com/FOLDER_ITEMS/Data/licenseverify.dat</source>
+        <source file="Data/scythe.lua">https://reapleton.com/FOLDER_ITEMS/Data/scythe.lua</source>
+        <source file="Data/gui/config.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/config.lua</source>
+        <source file="Data/gui/core.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/core.lua</source>
+        <source file="Data/gui/element.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/element.lua</source>
+        <source file="Data/gui/layer.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/layer.lua</source>
+        <source file="Data/gui/theme.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/theme.lua</source>
+        <source file="Data/gui/window.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/window.lua</source>
+        <source file="Data/gui/elements/Button.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Button.lua</source>
+        <source file="Data/gui/elements/Checklist.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Checklist.lua</source>
+        <source file="Data/gui/elements/ColorPicker.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/ColorPicker.lua</source>
+        <source file="Data/gui/elements/Frame.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Frame.lua</source>
+        <source file="Data/gui/elements/Knob.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Knob.lua</source>
+        <source file="Data/gui/elements/Label.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Label.lua</source>
+        <source file="Data/gui/elements/Listbox.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Listbox.lua</source>
+        <source file="Data/gui/elements/Menubar.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Menubar.lua</source>
+        <source file="Data/gui/elements/Menubox.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Menubox.lua</source>
+        <source file="Data/gui/elements/Radio.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Radio.lua</source>
+        <source file="Data/gui/elements/Slider.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Slider.lua</source>
+        <source file="Data/gui/elements/Tabs.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Tabs.lua</source>
+        <source file="Data/gui/elements/TextEditor.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/TextEditor.lua</source>
+        <source file="Data/gui/elements/Textbox.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/Textbox.lua</source>
+        <source file="Data/gui/elements/shared/option.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/shared/option.lua</source>
+        <source file="Data/gui/elements/shared/text.lua">https://reapleton.com/FOLDER_ITEMS/Data/gui/elements/shared/text.lua</source>
+        <source file="Data/public/buffer.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/buffer.lua</source>
+        <source file="Data/public/color.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/color.lua</source>
+        <source file="Data/public/const.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/const.lua</source>
+        <source file="Data/public/error.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/error.lua</source>
+        <source file="Data/public/file.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/file.lua</source>
+        <source file="Data/public/font.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/font.lua</source>
+        <source file="Data/public/gfx.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/gfx.lua</source>
+        <source file="Data/public/image.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/image.lua</source>
+        <source file="Data/public/math.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/math.lua</source>
+        <source file="Data/public/menu.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/menu.lua</source>
+        <source file="Data/public/message.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/message.lua</source>
+        <source file="Data/public/sprite.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/sprite.lua</source>
+        <source file="Data/public/string.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/string.lua</source>
+        <source file="Data/public/table.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/table.lua</source>
+        <source file="Data/public/text.lua">https://reapleton.com/FOLDER_ITEMS/Data/public/text.lua</source>
+        <source platform="windows" file="Data/curl/curl-ca-bundle.crt">https://reapleton.com/FOLDER_ITEMS/Data/curl/curl-ca-bundle.crt</source>
+        <source platform="windows" file="Data/curl/curl.exe">https://reapleton.com/FOLDER_ITEMS/Data/curl/curl.exe</source>
+        <source platform="windows" file="Data/curl/libcurl.dll">https://reapleton.com/FOLDER_ITEMS/Data/curl/libcurl.dll</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Add new items to existing folder - Rename.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Add%20new%20items%20to%20existing%20folder%20-%20Rename.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Add new items to existing folder.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Add%20new%20items%20to%20existing%20folder.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Align.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Align.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Create new folder from selected items or tracks.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Create%20new%20folder%20from%20selected%20items%20or%20tracks.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Deselect folder items.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Deselect%20folder%20items.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Deselect items on collapsed tracks.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Deselect%20items%20on%20collapsed%20tracks.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Deselect non-folder items.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Deselect%20non-folder%20items.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Deselect non-render items SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Deselect%20non-render%20items%20SMART.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Fade in.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Fade%20in.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Fade out.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Fade%20out.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - MM - Media Item - Double Click.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20MM%20-%20Media%20Item%20-%20Double%20Click.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - MM - TCP - Double Click.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20MM%20-%20TCP%20-%20Double%20Click.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Octave (Reversed).lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Octave%20(Reversed).lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Octave.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Octave.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Semitone (Reversed).lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Semitone%20(Reversed).lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Semitone.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Semitone.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Remove.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Remove.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Rename.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Rename.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Render SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render%20SMART.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Render.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition groups SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20groups%20SMART.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition groups.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20groups.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition items SMART - PROPAGATE.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20items%20SMART%20-%20PROPAGATE.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition items SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20items%20SMART.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Full Reset.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Settings%20-%20Full%20Reset.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Settings.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Settings.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Split.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Split.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Trim left edge.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Trim%20left%20edge.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Trim right edge.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Trim%20right%20edge.lua</source>
+        <source main="main">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS.lua</source>
+      </version>
     </reapack>
   </category>
   <category name="ITEMS">
