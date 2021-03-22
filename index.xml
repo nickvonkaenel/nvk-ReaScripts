@@ -1840,6 +1840,36 @@
         <source main="main">https://reapleton.com/TAKES/nvk_TAKES.lua</source>
         <source main="main" file="nvk_TAKES - Consolidate takes with take markers SMART.eel">https://reapleton.com/TAKES/nvk_TAKES%20-%20Consolidate%20takes%20with%20take%20markers%20SMART.eel</source>
       </version>
+      <version name="1.0.6" author="Nick von Kaenel" time="2021-03-22T01:25:29Z">
+        <changelog><![CDATA[1.0.6 Better handling of empty takes
+1.0.5 Licensing improvements
+1.0.4 Minor fixes
+1.0.3 Renaming toggle width fx, adding script to automatically save last touched parameter as fx to use width width fx script so you don't have to set it manually and your settings won't be overriden with updates.
+1.0.2 Fixing spelling of toggle width fx; now it clears track width envelope instead of toggling
+1.0.1 Fix for empty items when selecting takes]]></changelog>
+        <source file="Data/functions.dat">https://reapleton.com/TAKES/Data/functions.dat</source>
+        <source platform="windows" file="Data/curl/curl-ca-bundle.crt">https://reapleton.com/TAKES/Data/curl/curl-ca-bundle.crt</source>
+        <source platform="windows" file="Data/curl/curl.exe">https://reapleton.com/TAKES/Data/curl/curl.exe</source>
+        <source platform="windows" file="Data/curl/libcurl.dll">https://reapleton.com/TAKES/Data/curl/libcurl.dll</source>
+        <source main="main" file="nvk_TAKES - Consolidate item splits as take markers in first item.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Consolidate%20item%20splits%20as%20take%20markers%20in%20first%20item.lua</source>
+        <source main="main" file="nvk_TAKES - Convert 5.1 to Quad.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Convert%205.1%20to%20Quad.lua</source>
+        <source main="main" file="nvk_TAKES - Copy take name.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Copy%20take%20name.lua</source>
+        <source main="main" file="nvk_TAKES - Duplicate items and select next take SMART.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Duplicate%20items%20and%20select%20next%20take%20SMART.lua</source>
+        <source main="main" file="nvk_TAKES - Quick add numbered take marker at mouse position.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Quick%20add%20numbered%20take%20marker%20at%20mouse%20position.lua</source>
+        <source main="main" file="nvk_TAKES - Remove channels.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Remove%20channels.lua</source>
+        <source main="main" file="nvk_TAKES - Render to new take with fx.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Render%20to%20new%20take%20with%20fx.lua</source>
+        <source main="main" file="nvk_TAKES - Reverse.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Reverse.lua</source>
+        <source main="main" file="nvk_TAKES - Select next take SMART.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20next%20take%20SMART.lua</source>
+        <source main="main" file="nvk_TAKES - Select next take.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20next%20take.lua</source>
+        <source main="main" file="nvk_TAKES - Select previous take SMART.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20previous%20take%20SMART.lua</source>
+        <source main="main" file="nvk_TAKES - Select previous take.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20previous%20take.lua</source>
+        <source main="main" file="nvk_TAKES - Select takes containing text in project.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Select%20takes%20containing%20text%20in%20project.lua</source>
+        <source main="main" file="nvk_TAKES - Toggle width fx (open script to change) or toggle track width envelope.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Toggle%20width%20fx%20(open%20script%20to%20change)%20or%20toggle%20track%20width%20envelope.lua</source>
+        <source main="main" file="nvk_TAKES - Toggle width fx - save last touched parameter as script setting.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Toggle%20width%20fx%20-%20save%20last%20touched%20parameter%20as%20script%20setting.lua</source>
+        <source main="main" file="nvk_TAKES - Toggle width fx or toggle track width envelope.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Toggle%20width%20fx%20or%20toggle%20track%20width%20envelope.lua</source>
+        <source main="main">https://reapleton.com/TAKES/nvk_TAKES.lua</source>
+        <source main="main" file="nvk_TAKES - Consolidate takes with take markers SMART.eel">https://reapleton.com/TAKES/nvk_TAKES%20-%20Consolidate%20takes%20with%20take%20markers%20SMART.eel</source>
+      </version>
     </reapack>
   </category>
   <category name="TRACK">
