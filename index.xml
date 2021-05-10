@@ -1538,6 +1538,47 @@
         <source main="main" file="nvk_ITEMS - Toggle zoom to selected items - add time selection with offset.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Toggle%20zoom%20to%20selected%20items%20-%20add%20time%20selection%20with%20offset.lua</source>
         <source main="main">https://reapleton.com/ITEMS/nvk_ITEMS.lua</source>
       </version>
+      <version name="1.1.2" author="Nick von Kaenel" time="2021-05-10T19:19:21Z">
+        <changelog><![CDATA[1.1.2 Fixing issue with toggle mute smart script
+1.1.1 New fade curve script
+1.1.0 New fade curve scripts
+1.0.4 New mute script
+1.0.3 Fixing bug with reposition items if non-number values are entered
+1.0.2 New script: Select all items before selected items
+1.0.1 Fixing bug in 'nvk_ITEMS - Move cursor to next/previous transient', adding option to skip item ends]]></changelog>
+        <source file="Data/functions.dat">https://reapleton.com/ITEMS/Data/functions.dat</source>
+        <source main="main" file="nvk_ITEMS - Align SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Align%20SMART.lua</source>
+        <source main="main" file="nvk_ITEMS - Apply FX to items and move to directory.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Apply%20FX%20to%20items%20and%20move%20to%20directory.lua</source>
+        <source main="main" file="nvk_ITEMS - Copy item positions.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Copy%20item%20positions.lua</source>
+        <source main="main" file="nvk_ITEMS - Fade curve SMART (mousewheel reversed).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20curve%20SMART%20(mousewheel%20reversed).lua</source>
+        <source main="main" file="nvk_ITEMS - Fade curve SMART (mousewheel).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20curve%20SMART%20(mousewheel).lua</source>
+        <source main="main" file="nvk_ITEMS - Fade in curve (mousewheel reversed) .lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20in%20curve%20(mousewheel%20reversed)%20.lua</source>
+        <source main="main" file="nvk_ITEMS - Fade in curve (mousewheel).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20in%20curve%20(mousewheel).lua</source>
+        <source main="main" file="nvk_ITEMS - Fade out curve (mousewheel reversed).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20out%20curve%20(mousewheel%20reversed).lua</source>
+        <source main="main" file="nvk_ITEMS - Fade out curve (mousewheel).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20out%20curve%20(mousewheel).lua</source>
+        <source main="main" file="nvk_ITEMS - Fades to volume automation.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fades%20to%20volume%20automation.lua</source>
+        <source main="main" file="nvk_ITEMS - Move cursor to next transient.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20cursor%20to%20next%20transient.lua</source>
+        <source main="main" file="nvk_ITEMS - Move cursor to previous transient.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20cursor%20to%20previous%20transient.lua</source>
+        <source main="main" file="nvk_ITEMS - Move selected items down one track SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20selected%20items%20down%20one%20track%20SMART.lua</source>
+        <source main="main" file="nvk_ITEMS - Move selected items up one track SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20selected%20items%20up%20one%20track%20SMART.lua</source>
+        <source main="main" file="nvk_ITEMS - Move to new tracks with track fx.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20to%20new%20tracks%20with%20track%20fx.lua</source>
+        <source main="main" file="nvk_ITEMS - Paste item positions.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Paste%20item%20positions.lua</source>
+        <source main="main" file="nvk_ITEMS - Remove selected items greater or less than length.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Remove%20selected%20items%20greater%20or%20less%20than%20length.lua</source>
+        <source main="main" file="nvk_ITEMS - Remove selected items with no color.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Remove%20selected%20items%20with%20no%20color.lua</source>
+        <source main="main" file="nvk_ITEMS - Reposition selected items across tracks.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Reposition%20selected%20items%20across%20tracks.lua</source>
+        <source main="main" file="nvk_ITEMS - Reposition selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Reposition%20selected%20items.lua</source>
+        <source main="main" file="nvk_ITEMS - Reset snap offsets of selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Reset%20snap%20offsets%20of%20selected%20items.lua</source>
+        <source main="main" file="nvk_ITEMS - Select all items after selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Select%20all%20items%20after%20selected%20items.lua</source>
+        <source main="main" file="nvk_ITEMS - Select all items before selected items.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Select%20all%20items%20before%20selected%20items.lua</source>
+        <source main="main" file="nvk_ITEMS - Shift take offset by length of item.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Shift%20take%20offset%20by%20length%20of%20item.lua</source>
+        <source main="main" file="nvk_ITEMS - Split selected items x length x space.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Split%20selected%20items%20x%20length%20x%20space.lua</source>
+        <source main="main" file="nvk_ITEMS - Stretch selected items to previous and next markers.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Stretch%20selected%20items%20to%20previous%20and%20next%20markers.lua</source>
+        <source main="main" file="nvk_ITEMS - Switch item source to next in folder.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Switch%20item%20source%20to%20next%20in%20folder.lua</source>
+        <source main="main" file="nvk_ITEMS - Switch item source to previous in folder.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Switch%20item%20source%20to%20previous%20in%20folder.lua</source>
+        <source main="main" file="nvk_ITEMS - Toggle mute SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Toggle%20mute%20SMART.lua</source>
+        <source main="main" file="nvk_ITEMS - Toggle zoom to selected items - add time selection with offset.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Toggle%20zoom%20to%20selected%20items%20-%20add%20time%20selection%20with%20offset.lua</source>
+        <source main="main">https://reapleton.com/ITEMS/nvk_ITEMS.lua</source>
+      </version>
     </reapack>
   </category>
   <category name="LOOPMAKER">
