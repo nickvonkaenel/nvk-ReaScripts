@@ -2057,6 +2057,14 @@
         <source main="main" file="nvk_SEARCH - Replace.lua">https://reapleton.com/SEARCH/nvk_SEARCH%20-%20Replace.lua</source>
         <source main="main">https://reapleton.com/SEARCH/nvk_SEARCH.lua</source>
       </version>
+      <version name="0.98b" author="Nick von Kaenel, Neutronic" time="2021-09-03T23:23:51Z">
+        <changelog><![CDATA[0.98b Beta]]></changelog>
+        <source file="Data/main.dat">https://reapleton.com/SEARCH/Data/main.dat</source>
+        <source file="Data/replace.dat">https://reapleton.com/SEARCH/Data/replace.dat</source>
+        <source file="Data/inv.cur">https://reapleton.com/SEARCH/Data/inv.cur</source>
+        <source main="main" file="nvk_SEARCH - Replace.lua">https://reapleton.com/SEARCH/nvk_SEARCH%20-%20Replace.lua</source>
+        <source main="main">https://reapleton.com/SEARCH/nvk_SEARCH.lua</source>
+      </version>
     </reapack>
   </category>
   <category name="SUBPROJECT">
