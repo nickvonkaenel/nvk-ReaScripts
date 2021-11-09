@@ -65,8 +65,9 @@
         <link rel="website" href="https://forum.cockos.com/member.php?u=66313">Neutronic's REAPER forum profile</link>
         <link rel="website" href="https://github.com/Neutronic/ReaScripts">Neutronic's GitHub ReaScripts repository</link>
       </metadata>
-      <version name="1.0" author="Nick von Kaenel, Neutronic" time="2021-11-08T16:25:32Z">
-        <changelog><![CDATA[1.0 Initial Release]]></changelog>
+      <version name="1.0.1" author="Nick von Kaenel, Neutronic" time="2021-11-09T17:21:51Z">
+        <changelog><![CDATA[1.0.1 Bug fixes, licensing improvements 
+1.0 Initial Release]]></changelog>
         <source file="Data/main.dat">https://reapleton.com/CREATE/Data/main.dat</source>
         <source file="Data/replace.dat">https://reapleton.com/CREATE/Data/replace.dat</source>
         <source file="Data/inv.cur">https://reapleton.com/CREATE/Data/inv.cur</source>
