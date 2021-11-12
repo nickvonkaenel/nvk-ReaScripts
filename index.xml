@@ -65,8 +65,9 @@
         <link rel="website" href="https://forum.cockos.com/member.php?u=66313">Neutronic's REAPER forum profile</link>
         <link rel="website" href="https://github.com/Neutronic/ReaScripts">Neutronic's GitHub ReaScripts repository</link>
       </metadata>
-      <version name="1.0.2" author="Nick von Kaenel, Neutronic" time="2021-11-11T04:07:25Z">
-        <changelog><![CDATA[1.0.2 File names with quotes no longer break things
+      <version name="1.0.3" author="Nick von Kaenel, Neutronic" time="2021-11-12T16:42:32Z">
+        <changelog><![CDATA[1.0.3 File names with quotes no longer break things 2: Electric Boogaloo
+1.0.2 File names with quotes no longer break things
 1.0.1 Bug fixes, licensing improvements 
 1.0 Initial Release]]></changelog>
         <source file="Data/main.dat">https://reapleton.com/CREATE/Data/main.dat</source>
@@ -92,8 +93,9 @@
         <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="1.6.0" author="Nick von Kaenel" time="2021-11-08T16:25:32Z">
-        <changelog><![CDATA[1.6.0 Folder Items optimization pass. Settings load instantly, item numbering persists throughout track. Everything is more responsive and uses less cpu. No cpu use during playback or record.
+      <version name="1.6.1" author="Nick von Kaenel" time="2021-11-12T16:42:32Z">
+        <changelog><![CDATA[1.6.1 Licensing improvements
+1.6.0 Folder Items optimization pass. Settings load instantly, item numbering persists throughout track. Everything is more responsive and uses less cpu. No cpu use during playback or record.
       Fix for rename items text getting cut off on high resolution displays
       Pitch shift scripts no longer create undo points if nothing has changed
 1.5.1 Fixing error if folder created on last track of project
@@ -357,8 +359,9 @@
         <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="1.0.7" author="Nick von Kaenel" time="2021-07-10T19:54:30Z">
-        <changelog><![CDATA[1.0.7 More licensing improvements
+      <version name="1.0.8" author="Nick von Kaenel" time="2021-11-12T16:42:32Z">
+        <changelog><![CDATA[1.0.8 Even more licensing improvements!
+1.0.7 More licensing improvements
 1.0.6 Licensing improvements
 1.0.5 Minor fixes
 1.0.4 Fixing issue with loading markers setting
@@ -386,8 +389,9 @@
         <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
         <link rel="donation">http://paypal.me/nickvonkaenel</link>
       </metadata>
-      <version name="1.2.0" author="Nick von Kaenel" time="2021-11-08T16:25:32Z">
-        <changelog><![CDATA[1.2.0 Compatibility with nvk_CREATE
+      <version name="1.2.1" author="Nick von Kaenel" time="2021-11-12T16:42:32Z">
+        <changelog><![CDATA[1.2.1 Licensing improvements
+1.2.0 Compatibility with nvk_CREATE
 1.1.1 Duplicate items and select next take now adds more space
 1.1.0 Improvements to take marker next/previous scripts with snap offsets
 1.0.8 New named take marker script
