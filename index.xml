@@ -65,8 +65,9 @@
         <link rel="website" href="https://forum.cockos.com/member.php?u=66313">Neutronic's REAPER forum profile</link>
         <link rel="website" href="https://github.com/Neutronic/ReaScripts">Neutronic's GitHub ReaScripts repository</link>
       </metadata>
-      <version name="1.0.3" author="Nick von Kaenel, Neutronic" time="2021-11-12T16:42:32Z">
-        <changelog><![CDATA[1.0.3 File names with quotes no longer break things 2: Electric Boogaloo
+      <version name="1.0.4" author="Nick von Kaenel, Neutronic" time="2021-11-18T01:28:59Z">
+        <changelog><![CDATA[1.0.4 Fix for databases not being found due to incorrect REAPER.ini, crash when pressing F3 with no databases selected, default to not combining variations for new users, multi-layer now shows count of generated multi-layer variations in tooltips, can no longer favorite databases (it didn't work anyway), error when selecting empty item while script is docked
+1.0.3 File names with quotes no longer break things 2: Electric Boogaloo
 1.0.2 File names with quotes no longer break things
 1.0.1 Bug fixes, licensing improvements 
 1.0 Initial Release]]></changelog>
