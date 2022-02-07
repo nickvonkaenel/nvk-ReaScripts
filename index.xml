@@ -65,8 +65,11 @@
         <link rel="website" href="https://forum.cockos.com/member.php?u=66313">Neutronic's REAPER forum profile</link>
         <link rel="website" href="https://github.com/Neutronic/ReaScripts">Neutronic's GitHub ReaScripts repository</link>
       </metadata>
-      <version name="1.5" author="Nick von Kaenel, Neutronic" time="2022-02-07T03:20:46Z">
-        <changelog><![CDATA[1.5
+      <version name="1.5.1" author="Nick von Kaenel, Neutronic" time="2022-02-07T15:06:46Z">
+        <changelog><![CDATA[1.5.1
+  -Fix issue with nvk_RECORD tutorial restarting
+  -Turn on 'resolve Soundminer file paths' by default
+1.5
   -nvk_RECORD (Retrospective Recording): Click on the playback preview mode to enable nvk_RECORD. When you don't have any items selected, you will be able to right-click-drag to make a selection and then click-drag to bring it into your project. You can also preview by clicking and holding down the mousebutton.
   -Soundminer Integration: nvk_CREATE now allows you to select Soundminer as a database. Simply install the latest version of Soundminer and the Soundminer REAPER integration and then open the script. With Soundminer open, you will be able to search the current Soundminer database. You can also filter results with Soundminer and then bring them up in nvk_CREATE by doing a blank search. Great for making a custom filter for multi-layer mode.
   -Colors: choose from a number of custom themes for your waveform or highlight colors or create your own by selecting 'custom'. You can also now change themes/colors with F11/F12 and modifier keys.
