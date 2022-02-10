@@ -65,8 +65,10 @@
         <link rel="website" href="https://forum.cockos.com/member.php?u=66313">Neutronic's REAPER forum profile</link>
         <link rel="website" href="https://github.com/Neutronic/ReaScripts">Neutronic's GitHub ReaScripts repository</link>
       </metadata>
-      <version name="1.5.1" author="Nick von Kaenel, Neutronic" time="2022-02-07T15:06:46Z">
-        <changelog><![CDATA[1.5.1
+      <version name="1.5.2" author="Nick von Kaenel, Neutronic" time="2022-02-10T22:37:37Z">
+        <changelog><![CDATA[1.5.2
+  -Licensing Improvements
+1.5.1
   -Fix issue with nvk_RECORD tutorial restarting
   -Turn on 'resolve Soundminer file paths' by default
 1.5
