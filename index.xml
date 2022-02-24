@@ -65,9 +65,16 @@
         <link rel="website" href="https://forum.cockos.com/member.php?u=66313">Neutronic's REAPER forum profile</link>
         <link rel="website" href="https://github.com/Neutronic/ReaScripts">Neutronic's GitHub ReaScripts repository</link>
       </metadata>
-      <version name="1.5.2" author="Nick von Kaenel, Neutronic" time="2022-02-10T22:37:37Z">
-        <changelog><![CDATA[1.5.2
-  -Licensing Improvements
+      <version name="1.6" author="Nick von Kaenel, Neutronic" time="2022-02-24T18:20:17Z">
+        <changelog><![CDATA[1.6
+  - Undocked split-view (new option): features of docked mode while not docked.
+  - Docked split-view option removed, added option for split: disabled instead.
+  - Hold shift when dragging or inserting item to override trim setting. If auto-trim is enabled, it will be disabled and vice-versa.
+  - New keyboard shortcuts for docking/undocking, enable undocked split mode, and focus arrange window
+  - Demo time would expire if attempted to input license key.
+  - Improved licensing UX
+  - Fix issue when dragging retrospective recording into project with 0 results found
+1.5.2 Licensing Improvements
 1.5.1
   -Fix issue with nvk_RECORD tutorial restarting
   -Turn on 'resolve Soundminer file paths' by default
