@@ -146,11 +146,16 @@
         <link rel="website" href="https://gum.co/nvk_WORKFLOW">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
       </metadata>
-      <version name="1.8.0" author="nvk" time="2022-03-24T18:46:43Z">
-        <changelog><![CDATA[1.8.0 New option to copy rendered files to additional folders after rendering with Render SMART
-      Can select different render folder or file name pattern from Render SMART 
+      <version name="1.8.1" author="nvk" time="2022-03-25T04:56:27Z">
+        <changelog><![CDATA[1.8.1 Fix for error after leaving render smart script open for a while
+1.8.0 Render Smart improvements:
+       -New option to copy rendered files to additional folders after rendering
+       -Can select different render folder or file name pattern
+       -Advanced options to rename copied files with lua string patterns
+       -Render as Source - renders into user set source folder and can copy above track for immediate use
+       -Fix for items without takes (thanks Luca!)
       Fix for incompatibility with MB_Superglue regions and nvk_FOLDER_ITEMS
-      Fix for render smart and items without takes (thanks Luca!)
+
 1.7.1 Quick fix for issue with folder items and duplicating folder items with drag action
 1.7.0 New Mousewheel volume script, licensing improvents, trial
 1.6.2 Improving responsiveness of folder items, fixing bug with fade automation due to different envelope volume scaling settings
