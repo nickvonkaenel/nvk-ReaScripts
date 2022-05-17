@@ -66,8 +66,10 @@
         <link rel="website" href="https://forum.cockos.com/member.php?u=66313">Neutronic's REAPER forum profile</link>
         <link rel="website" href="https://github.com/Neutronic/ReaScripts">Neutronic's GitHub ReaScripts repository</link>
       </metadata>
-      <version name="1.6.2" author="nvk, Neutronic" time="2022-03-24T18:49:00Z">
-        <changelog><![CDATA[1.6.2 Adding option in config file to set fade in time and changing default fade in time from 0.01 to 0.001 for better transients
+      <version name="1.6.4" author="nvk, Neutronic" time="2022-05-17T05:53:35Z">
+        <changelog><![CDATA[1.6.4 Option to allow for empty searches with replace script, lock button to keep focus on playback peaks for retrospective recording, option to disable take markers/snap offsets
+1.6.3 Option to focus arrange after mouse drag-drop
+1.6.2 Adding option in config file to set fade in time and changing default fade in time from 0.01 to 0.001 for better transients
 1.6.1 Minor bug fixes
 1.6
   - Undocked split-view (new option): features of docked mode while not docked.
