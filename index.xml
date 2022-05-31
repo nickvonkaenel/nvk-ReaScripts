@@ -66,8 +66,19 @@
         <link rel="website" href="https://forum.cockos.com/member.php?u=66313">Neutronic's REAPER forum profile</link>
         <link rel="website" href="https://github.com/Neutronic/ReaScripts">Neutronic's GitHub ReaScripts repository</link>
       </metadata>
-      <version name="1.6.5" author="nvk, Neutronic" time="2022-05-20T14:25:38Z">
-        <changelog><![CDATA[1.6.5 Fixed bug introduced in 1.6.4 if SWS not installed
+      <version name="1.7" author="nvk, Neutronic" time="2022-05-31T08:26:24Z">
+        <changelog><![CDATA[1.7
+  - Zoom and preview selected item peaks. Mousewheel scroll now zooms in and out of item peaks preview and clicking outside the selection will preview. Shift-click will preview inside selection. While zoomed in, dragging the selection to the corner will automatically scroll the window. Shift-scroll will move the view left or right when zoomed in
+  - Alt double-click in item peaks window will move sound to the new region without changing the length or position of the item (keeping snap offset the same)
+  - Old mousewheel behavior in item peaks can still be used by holding control (for now, might get rid of this since it's not that useful)
+  - Improved performance with Soundminer and multi-layer mode as well as replace script
+  - Fixed bug where take markers would still be created with replace script
+  - Fixed bug where sometimes take markers wouldn't be removed from replaced items
+  - Playback preview line now compensates for pdc when previewing through track
+  - Ctrl/cmd when dragging retrospective record selection will now apply track fx
+  - Behavior change when holding shift and dragging a sound into the project. If dragging a result, shift will override the auto-trim setting. If dragging a selection from the waveform view and holding control, shift will only process that specific area. Shift by itself shouldn't have any effect when dragging from waveform view for now.
+  - Disable auto-naming of multi-layer tracks by Reaper
+1.6.5 Fixed bug introduced in 1.6.4 if SWS not installed
 1.6.4 Option to allow for empty searches with replace script, lock button to keep focus on playback peaks for retrospective recording, option to disable take markers/snap offsets
 1.6.3 Option to focus arrange after mouse drag-drop
 1.6.2 Adding option in config file to set fade in time and changing default fade in time from 0.01 to 0.001 for better transients
