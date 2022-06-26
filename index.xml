@@ -66,8 +66,10 @@
         <link rel="website" href="https://forum.cockos.com/member.php?u=66313">Neutronic's REAPER forum profile</link>
         <link rel="website" href="https://github.com/Neutronic/ReaScripts">Neutronic's GitHub ReaScripts repository</link>
       </metadata>
-      <version name="1.7" author="nvk, Neutronic" time="2022-06-05T14:15:12Z">
-        <changelog><![CDATA[1.7.1 Fixed crash when cancelling apply track fx, improvements to search speed, fixed bug where zoom wasn't working when using spectral peaks, now you can zoom in and out in all waveform views
+      <version name="1.7" author="nvk, Neutronic" time="2022-06-26T23:05:53Z">
+        <changelog><![CDATA[1.7.3 Respect project setting for preserve pitch enabled on items, playback preview pdc now accounts for bypassed fx
+1.7.2 Alt-drag from waveform view now only adds the selected variation
+1.7.1 Fixed crash when cancelling apply track fx, improvements to search speed, fixed bug where zoom wasn't working when using spectral peaks, now you can zoom in and out in all waveform views, selection playback now loops if setting enabled
 1.7
   - Zoom and preview selected item peaks. Mousewheel scroll now zooms in and out of item peaks preview and clicking outside the selection will preview. Shift-click will preview inside selection. While zoomed in, dragging the selection to the corner will automatically scroll the window. Shift-scroll will move the view left or right when zoomed in
   - Alt double-click in item peaks window will move sound to the new region without changing the length or position of the item (keeping snap offset the same)
@@ -162,8 +164,10 @@
         <link rel="website" href="https://gum.co/nvk_WORKFLOW">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
       </metadata>
-      <version name="1.8.2" author="nvk" time="2022-04-01T08:05:09Z">
-        <changelog><![CDATA[1.8.2 Better fix for buffer error, new scripts: Shuffle pitch shift selected items SMART, Random pitch shift selected items +- 2 semitones
+      <version name="1.8.4" author="nvk" time="2022-06-26T23:05:53Z">
+        <changelog><![CDATA[1.8.4 All Caps setting for rename, minor improvements, new experimental render script for testing
+1.8.3 Minor fixes, rename settings now stored with project, item colors enabled for markers now properly display for variations
+1.8.2 Better fix for buffer error, new scripts: Shuffle pitch shift selected items SMART, Random pitch shift selected items +- 2 semitones
 1.8.1 Fix for error after leaving render smart script open for a while
 1.8.0 Render Smart improvements:
        -New option to copy rendered files to additional folders after rendering
@@ -171,8 +175,7 @@
        -Advanced options to rename copied files with lua string patterns
        -Render as Source - renders into user set source folder and can copy above track for immediate use
        -Fix for items without takes (thanks Luca!)
-      Fix for incompatibility with MB_Superglue regions and nvk_FOLDER_ITEMS
-
+       -Fix for incompatibility with MB_Superglue regions and nvk_FOLDER_ITEMS
 1.7.1 Quick fix for issue with folder items and duplicating folder items with drag action
 1.7.0 New Mousewheel volume script, licensing improvents, trial
 1.6.2 Improving responsiveness of folder items, fixing bug with fade automation due to different envelope volume scaling settings
@@ -275,6 +278,7 @@
         <source main="main" file="nvk_FOLDER_ITEMS - Remove.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Remove.lua</source>
         <source main="main" file="nvk_FOLDER_ITEMS - Rename.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Rename.lua</source>
         <source main="main" file="nvk_FOLDER_ITEMS - Render QUICK.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render%20QUICK.lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Render SMART (Experimental).lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render%20SMART%20(Experimental).lua</source>
         <source main="main" file="nvk_FOLDER_ITEMS - Render SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render%20SMART.lua</source>
         <source main="main" file="nvk_FOLDER_ITEMS - Render.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render.lua</source>
         <source main="main" file="nvk_FOLDER_ITEMS - Reposition groups SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20groups%20SMART.lua</source>
@@ -305,8 +309,9 @@
         <link rel="website" href="https://gumroad.com/nvktools">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_basics.gif</link>
       </metadata>
-      <version name="1.2" author="nvk" time="2022-03-24T18:53:13Z">
-        <changelog><![CDATA[1.2 Adding some new scripts
+      <version name="1.3" author="nvk" time="2022-06-26T23:05:53Z">
+        <changelog><![CDATA[1.3 Various new scripts
+1.2 Adding some new scripts
 1.1.2 Fixing issue with toggle mute smart script
 1.1.1 New fade curve script
 1.1.0 New fade curve scripts
@@ -317,7 +322,12 @@
         <source file="Data/functions.dat">https://reapleton.com/ITEMS/Data/functions.dat</source>
         <source main="main" file="nvk_ITEMS - Align SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Align%20SMART.lua</source>
         <source main="main" file="nvk_ITEMS - Apply FX to items and move to directory.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Apply%20FX%20to%20items%20and%20move%20to%20directory.lua</source>
+        <source main="main" file="nvk_ITEMS - Convert ALL non-video items in project to empty wav files with same name as active take.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Convert%20ALL%20non-video%20items%20in%20project%20to%20empty%20wav%20files%20with%20same%20name%20as%20active%20take.lua</source>
+        <source main="main" file="nvk_ITEMS - Convert ALL non-video items in project to single empty wav file.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Convert%20ALL%20non-video%20items%20in%20project%20to%20single%20empty%20wav%20file.lua</source>
+        <source main="main" file="nvk_ITEMS - Convert selected items to empty wav files with same name as active take.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Convert%20selected%20items%20to%20empty%20wav%20files%20with%20same%20name%20as%20active%20take.lua</source>
+        <source main="main" file="nvk_ITEMS - Convert selected midi items to empty wav files with same name as active take.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Convert%20selected%20midi%20items%20to%20empty%20wav%20files%20with%20same%20name%20as%20active%20take.lua</source>
         <source main="main" file="nvk_ITEMS - Copy item positions.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Copy%20item%20positions.lua</source>
+        <source main="main" file="nvk_ITEMS - Copy item volumes.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Copy%20item%20volumes.lua</source>
         <source main="main" file="nvk_ITEMS - Fade curve SMART (mousewheel reversed).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20curve%20SMART%20(mousewheel%20reversed).lua</source>
         <source main="main" file="nvk_ITEMS - Fade curve SMART (mousewheel).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20curve%20SMART%20(mousewheel).lua</source>
         <source main="main" file="nvk_ITEMS - Fade in curve (mousewheel reversed) .lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20in%20curve%20(mousewheel%20reversed)%20.lua</source>
@@ -325,12 +335,17 @@
         <source main="main" file="nvk_ITEMS - Fade out curve (mousewheel reversed).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20out%20curve%20(mousewheel%20reversed).lua</source>
         <source main="main" file="nvk_ITEMS - Fade out curve (mousewheel).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fade%20out%20curve%20(mousewheel).lua</source>
         <source main="main" file="nvk_ITEMS - Fades to volume automation.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Fades%20to%20volume%20automation.lua</source>
+        <source main="main" file="nvk_ITEMS - Glue all selected items independently and set source name to active take name (add numbers if file already exists).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Glue%20all%20selected%20items%20independently%20and%20set%20source%20name%20to%20active%20take%20name%20(add%20numbers%20if%20file%20already%20exists).lua</source>
+        <source main="main" file="nvk_ITEMS - Glue all selected items independently and set source name to active take name.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Glue%20all%20selected%20items%20independently%20and%20set%20source%20name%20to%20active%20take%20name.lua</source>
+        <source main="main" file="nvk_ITEMS - Halve item volume changes.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Halve%20item%20volume%20changes.lua</source>
         <source main="main" file="nvk_ITEMS - Move cursor to next transient.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20cursor%20to%20next%20transient.lua</source>
         <source main="main" file="nvk_ITEMS - Move cursor to previous transient.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20cursor%20to%20previous%20transient.lua</source>
         <source main="main" file="nvk_ITEMS - Move selected items down one track SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20selected%20items%20down%20one%20track%20SMART.lua</source>
         <source main="main" file="nvk_ITEMS - Move selected items up one track SMART.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20selected%20items%20up%20one%20track%20SMART.lua</source>
         <source main="main" file="nvk_ITEMS - Move to new tracks with track fx.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Move%20to%20new%20tracks%20with%20track%20fx.lua</source>
         <source main="main" file="nvk_ITEMS - Paste item positions.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Paste%20item%20positions.lua</source>
+        <source main="main" file="nvk_ITEMS - Paste item volumes (reverse gain).lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Paste%20item%20volumes%20(reverse%20gain).lua</source>
+        <source main="main" file="nvk_ITEMS - Paste item volumes.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Paste%20item%20volumes.lua</source>
         <source main="main" file="nvk_ITEMS - Remove muted items from selection.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Remove%20muted%20items%20from%20selection.lua</source>
         <source main="main" file="nvk_ITEMS - Remove selected items greater or less than length.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Remove%20selected%20items%20greater%20or%20less%20than%20length.lua</source>
         <source main="main" file="nvk_ITEMS - Remove selected items with no color.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Remove%20selected%20items%20with%20no%20color.lua</source>
@@ -344,6 +359,9 @@
         <source main="main" file="nvk_ITEMS - Select and move edit cursor to next item and preserve play state.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Select%20and%20move%20edit%20cursor%20to%20next%20item%20and%20preserve%20play%20state.lua</source>
         <source main="main" file="nvk_ITEMS - Select and move edit cursor to previous item and preserve play state.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Select%20and%20move%20edit%20cursor%20to%20previous%20item%20and%20preserve%20play%20state.lua</source>
         <source main="main" file="nvk_ITEMS - Shift take offset by length of item.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Shift%20take%20offset%20by%20length%20of%20item.lua</source>
+        <source main="main" file="nvk_ITEMS - Sort groups of variations of selected items to new tracks based on name and name tracks with folder structure.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Sort%20groups%20of%20variations%20of%20selected%20items%20to%20new%20tracks%20based%20on%20name%20and%20name%20tracks%20with%20folder%20structure.lua</source>
+        <source main="main" file="nvk_ITEMS - Sort groups of variations of selected items to new tracks based on name and name tracks.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Sort%20groups%20of%20variations%20of%20selected%20items%20to%20new%20tracks%20based%20on%20name%20and%20name%20tracks.lua</source>
+        <source main="main" file="nvk_ITEMS - Sort groups of variations of selected items to new tracks based on name.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Sort%20groups%20of%20variations%20of%20selected%20items%20to%20new%20tracks%20based%20on%20name.lua</source>
         <source main="main" file="nvk_ITEMS - Split selected items x length x space.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Split%20selected%20items%20x%20length%20x%20space.lua</source>
         <source main="main" file="nvk_ITEMS - Split selected items x number of times.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Split%20selected%20items%20x%20number%20of%20times.lua</source>
         <source main="main" file="nvk_ITEMS - Stretch selected items to previous and next markers.lua">https://reapleton.com/ITEMS/nvk_ITEMS%20-%20Stretch%20selected%20items%20to%20previous%20and%20next%20markers.lua</source>
@@ -370,8 +388,9 @@
         <link rel="website" href="https://gum.co/nvk_LOOPMAKER">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_loopmaker.gif</link>
       </metadata>
-      <version name="1.2" author="nvk" time="2022-03-24T19:04:41Z">
-        <changelog><![CDATA[1.2 New experimental feature: Shepard Tone
+      <version name="1.2.1" author="nvk" time="2022-06-26T23:05:53Z">
+        <changelog><![CDATA[1.2.1 Compatibility with new Render Smart script
+1.2 New experimental feature: Shepard Tone
    -If shepard tone is set to value other than 0, a special loop will be created which sounds as though the loop is constantly pitching up or down depending on the setting. All other settings are ignored while using this option, and only one loop is created per selected item.
    -Fix issues if ripple editing is enabled
    -Licensing improvements - trial
@@ -404,10 +423,12 @@
         <link rel="website" href="https://gumroad.com/nvktools">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_basics.gif</link>
       </metadata>
-      <version name="1.1" author="nvk" time="2022-03-14T17:43:17Z">
-        <changelog><![CDATA[1.1 Adding some new scripts
+      <version name="1.2" author="nvk" time="2022-06-26T23:05:53Z">
+        <changelog><![CDATA[1.2 Adding some new scripts
+1.1 Adding some new scripts
 1.0.2 Adding Reverse Mousewheel script
 1.0.1 Fixing bug with nvk_MULTI - Move tracks-items-envelope points up or down depending on focus SMART (mousewheel) where it only went in one direction]]></changelog>
+        <source main="main" file="nvk_MULTI - Copy item positions and item volumes and take name.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Copy%20item%20positions%20and%20item%20volumes%20and%20take%20name.lua</source>
         <source main="main" file="nvk_MULTI - Copy item positions and take name.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Copy%20item%20positions%20and%20take%20name.lua</source>
         <source main="main" file="nvk_MULTI - Insert or edit marker at current position.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Insert%20or%20edit%20marker%20at%20current%20position.lua</source>
         <source main="main" file="nvk_MULTI - Move tracks-items-envelope points down depending on focus SMART.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20down%20depending%20on%20focus%20SMART.lua</source>
@@ -415,6 +436,8 @@
         <source main="main" file="nvk_MULTI - Move tracks-items-envelope points up or down depending on focus SMART (mousewheel reversed).lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20up%20or%20down%20depending%20on%20focus%20SMART%20(mousewheel%20reversed).lua</source>
         <source main="main" file="nvk_MULTI - Move tracks-items-envelope points up or down depending on focus SMART (mousewheel).lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Move%20tracks-items-envelope%20points%20up%20or%20down%20depending%20on%20focus%20SMART%20(mousewheel).lua</source>
         <source main="main" file="nvk_MULTI - Project organize - cleanup - color (multitap).lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Project%20organize%20-%20cleanup%20-%20color%20(multitap).lua</source>
+        <source main="main" file="nvk_MULTI - Project organize - cleanup - color special (multitap).lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Project%20organize%20-%20cleanup%20-%20color%20special%20(multitap).lua</source>
+        <source main="main" file="nvk_MULTI - Remove bypassed and offline FX from selected tracks or muted items from selection depending on focus.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Remove%20bypassed%20and%20offline%20FX%20from%20selected%20tracks%20or%20muted%20items%20from%20selection%20depending%20on%20focus.lua</source>
         <source main="main" file="nvk_MULTI - Remove time selection and loop points and deselect all items.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Remove%20time%20selection%20and%20loop%20points%20and%20deselect%20all%20items.lua</source>
         <source main="main" file="nvk_MULTI - Toggle fx bypass depending on focus.lua">https://reapleton.com/MULTI/nvk_MULTI%20-%20Toggle%20fx%20bypass%20depending%20on%20focus.lua</source>
         <source main="main">https://reapleton.com/MULTI/nvk_MULTI.lua</source>
@@ -435,7 +458,7 @@
         <link rel="website" href="https://gumroad.com/nvktools">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_basics.gif</link>
       </metadata>
-      <version name="1.0" author="nvk" time="2022-03-14T17:43:17Z">
+      <version name="1.0" author="nvk" time="2022-06-26T23:05:53Z">
         <changelog><![CDATA[Initial release]]></changelog>
         <source main="main">https://reapleton.com/PROPAGATE/nvk_PROPAGATE.lua</source>
       </version>
@@ -486,8 +509,9 @@
         <link rel="website" href="https://gum.co/nvk_WORKFLOW">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
       </metadata>
-      <version name="1.2.3" author="nvk" time="2022-03-29T04:49:29Z">
-        <changelog><![CDATA[1.2.3 Add take markers to all variations in selected items takes
+      <version name="1.2.4" author="nvk" time="2022-06-26T23:05:53Z">
+        <changelog><![CDATA[1.2.4 Minor fixes and script variations
+1.2.3 Add take markers to all variations in selected items takes
 1.2.2 Select random take SMART, licensing improvements
 1.2.1 Licensing improvements
 1.2.0 Compatibility with nvk_CREATE
@@ -503,6 +527,9 @@
 1.0.1 Fix for empty items when selecting takes]]></changelog>
         <source file="Data/functions.dat">https://reapleton.com/TAKES/Data/functions.dat</source>
         <source main="main" file="nvk_TAKES - Add named take marker to start of selected items (first track only).lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Add%20named%20take%20marker%20to%20start%20of%20selected%20items%20(first%20track%20only).lua</source>
+        <source main="main" file="nvk_TAKES - Add named take marker to start of selected items.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Add%20named%20take%20marker%20to%20start%20of%20selected%20items.lua</source>
+        <source main="main" file="nvk_TAKES - Add stretch markers at start and end of selected items takes and set slope.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Add%20stretch%20markers%20at%20start%20and%20end%20of%20selected%20items%20takes%20and%20set%20slope.lua</source>
+        <source main="main" file="nvk_TAKES - Add stretch markers at start and end of selected items takes.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Add%20stretch%20markers%20at%20start%20and%20end%20of%20selected%20items%20takes.lua</source>
         <source main="main" file="nvk_TAKES - Add take markers to all variations in selected items takes.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Add%20take%20markers%20to%20all%20variations%20in%20selected%20items%20takes.lua</source>
         <source main="main" file="nvk_TAKES - Consolidate item splits as take markers in first item.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Consolidate%20item%20splits%20as%20take%20markers%20in%20first%20item.lua</source>
         <source main="main" file="nvk_TAKES - Convert 5.1 to Quad.lua">https://reapleton.com/TAKES/nvk_TAKES%20-%20Convert%205.1%20to%20Quad.lua</source>
