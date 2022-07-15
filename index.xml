@@ -164,8 +164,9 @@
         <link rel="website" href="https://gum.co/nvk_WORKFLOW">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
       </metadata>
-      <version name="1.8.4" author="nvk" time="2022-06-26T23:05:53Z">
-        <changelog><![CDATA[1.8.4 All Caps setting for rename, minor improvements, new experimental render script for testing
+      <version name="1.8.5" author="nvk" time="2022-07-15T16:14:46Z">
+        <changelog><![CDATA[1.8.5 Beta of Render SMART v2 (make sure you have ReaImgui and Reaper 6.64 to test), removing experimental render script
+1.8.4 All Caps setting for rename, minor improvements, new experimental render script for testing
 1.8.3 Minor fixes, rename settings now stored with project, item colors enabled for markers now properly display for variations
 1.8.2 Better fix for buffer error, new scripts: Shuffle pitch shift selected items SMART, Random pitch shift selected items +- 2 semitones
 1.8.1 Fix for error after leaving render smart script open for a while
@@ -278,7 +279,7 @@
         <source main="main" file="nvk_FOLDER_ITEMS - Remove.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Remove.lua</source>
         <source main="main" file="nvk_FOLDER_ITEMS - Rename.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Rename.lua</source>
         <source main="main" file="nvk_FOLDER_ITEMS - Render QUICK.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render%20QUICK.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Render SMART (Experimental).lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render%20SMART%20(Experimental).lua</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Render SMART (v2 beta).lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render%20SMART%20(v2%20beta).lua</source>
         <source main="main" file="nvk_FOLDER_ITEMS - Render SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render%20SMART.lua</source>
         <source main="main" file="nvk_FOLDER_ITEMS - Render.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render.lua</source>
         <source main="main" file="nvk_FOLDER_ITEMS - Reposition groups SMART.lua">https://reapleton.com/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20groups%20SMART.lua</source>
