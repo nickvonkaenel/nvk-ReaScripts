@@ -597,6 +597,26 @@
       </version>
     </reapack>
   </category>
+  <category name="VARIATIONS">
+    <reapack name="nvk_VARIATIONS.lua" type="script" desc="nvk_VARIATIONS">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_VARIATIONS\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Currently in beta. Script will not be able to be authorized but can run in demo mode for 7 days.\par}
+}
+]]></description>
+        <link rel="website" href="https://gum.co/nvk_VARIATIONS">Store Page</link>
+      </metadata>
+      <version name="0.8b" author="nvk" time="2022-09-28T09:24:41Z">
+        <changelog><![CDATA[0.8b Beta. Script will not be able to be authorized but can run in demo mode for 7 days.]]></changelog>
+        <source file="Data/functions.dat">https://reapleton.com/VARIATIONS/Data/functions.dat</source>
+        <source main="main">https://reapleton.com/VARIATIONS/nvk_VARIATIONS.lua</source>
+      </version>
+    </reapack>
+  </category>
   <metadata>
     <link rel="website">https://nvk.tools</link>
   </metadata>
