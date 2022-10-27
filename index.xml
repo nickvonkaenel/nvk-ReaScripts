@@ -164,8 +164,9 @@
         <link rel="website" href="https://gum.co/nvk_WORKFLOW">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
       </metadata>
-      <version name="1.9.0" author="nvk" time="2022-09-19T16:54:51Z">
-        <changelog><![CDATA[1.9.0 New version of Render SMART (v2 beta), new rename advanced and reposition scripts (also in beta)
+      <version name="1.9.1" author="nvk" time="2022-10-27T04:38:56Z">
+        <changelog><![CDATA[1.9.1 Fix for new ReaImgui update causing crash with certain scripts
+1.9.0 New version of Render SMART (v2 beta), new rename advanced and reposition scripts (also in beta)
 1.8.6 New version of Render SMART beta
 1.8.5 Beta of Render SMART v2 (make sure you have ReaImgui and Reaper 6.64 to test), removing experimental render script
 1.8.4 All Caps setting for rename, minor improvements, new experimental render script for testing
@@ -610,9 +611,17 @@
 ]]></description>
         <link rel="website" href="https://gum.co/nvk_VARIATIONS">Store Page</link>
       </metadata>
-      <version name="0.8b" author="nvk" time="2022-09-28T09:24:41Z">
-        <changelog><![CDATA[0.8b Beta. Script will not be able to be authorized but can run in demo mode for 7 days.]]></changelog>
+      <version name="0.9b" author="nvk" time="2022-10-26T19:57:04Z">
+        <changelog><![CDATA[0.9b Beta: Presets + a bunch of other stuff. Known issues: anything involving playrate pitch envelope and stretch markers.
+0.85b Beta: some new features and changes to behavior.
+0.8b Beta: script will not be able to be authorized but can run in demo mode for 7 days.]]></changelog>
         <source file="Data/functions.dat">https://reapleton.com/VARIATIONS/Data/functions.dat</source>
+        <source file="Data/fonts/-ADD FONTS TO THIS FOLDER-">https://reapleton.com/VARIATIONS/Data/fonts/-ADD%20FONTS%20TO%20THIS%20FOLDER-</source>
+        <source main="main" file="nvk_VARIATIONS - Make Variation - Preset 0 (default).lua">https://reapleton.com/VARIATIONS/nvk_VARIATIONS%20-%20Make%20Variation%20-%20Preset%200%20(default).lua</source>
+        <source main="main" file="nvk_VARIATIONS - Make Variation - Preset 1.lua">https://reapleton.com/VARIATIONS/nvk_VARIATIONS%20-%20Make%20Variation%20-%20Preset%201.lua</source>
+        <source main="main" file="nvk_VARIATIONS - Make Variation - Preset 2.lua">https://reapleton.com/VARIATIONS/nvk_VARIATIONS%20-%20Make%20Variation%20-%20Preset%202.lua</source>
+        <source main="main" file="nvk_VARIATIONS - Make Variation - Preset 3.lua">https://reapleton.com/VARIATIONS/nvk_VARIATIONS%20-%20Make%20Variation%20-%20Preset%203.lua</source>
+        <source main="main" file="nvk_VARIATIONS - Make Variation - Preset 4.lua">https://reapleton.com/VARIATIONS/nvk_VARIATIONS%20-%20Make%20Variation%20-%20Preset%204.lua</source>
         <source main="main">https://reapleton.com/VARIATIONS/nvk_VARIATIONS.lua</source>
       </version>
     </reapack>
