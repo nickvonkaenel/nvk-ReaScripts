@@ -164,8 +164,9 @@
         <link rel="website" href="https://gum.co/nvk_WORKFLOW">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_workflow.gif</link>
       </metadata>
-      <version name="1.9.1" author="nvk" time="2022-10-27T04:38:56Z">
-        <changelog><![CDATA[1.9.1 Fix for new ReaImgui update causing crash with certain scripts
+      <version name="1.9.2" author="nvk" time="2022-11-28T18:14:14Z">
+        <changelog><![CDATA[1.9.2 Another fix for ReaImgui update causing crash
+1.9.1 Fix for new ReaImgui update causing crash with certain scripts
 1.9.0 New version of Render SMART (v2 beta), new rename advanced and reposition scripts (also in beta)
 1.8.6 New version of Render SMART beta
 1.8.5 Beta of Render SMART v2 (make sure you have ReaImgui and Reaper 6.64 to test), removing experimental render script
@@ -611,9 +612,10 @@
 ]]></description>
         <link rel="website" href="https://gum.co/nvk_VARIATIONS">Store Page</link>
       </metadata>
-      <version name="0.9b" author="nvk" time="2022-10-26T19:57:04Z">
-        <changelog><![CDATA[0.9b Beta: Presets + a bunch of other stuff. Known issues: anything involving playrate pitch envelope and stretch markers.
-0.85b Beta: some new features and changes to behavior.
+      <version name="0.9.5b" author="nvk" time="2022-11-07T02:55:33Z">
+        <changelog><![CDATA[0.9.5b Beta: Fixed issue with stretch markers, added ripple offset setting
+0.9b Beta: Presets + a bunch of other stuff. Known issues: anything involving playrate pitch envelope and stretch markers.
+0.8.5b Beta: some new features and changes to behavior.
 0.8b Beta: script will not be able to be authorized but can run in demo mode for 7 days.]]></changelog>
         <source file="Data/functions.dat">https://reapleton.com/VARIATIONS/Data/functions.dat</source>
         <source file="Data/fonts/-ADD FONTS TO THIS FOLDER-">https://reapleton.com/VARIATIONS/Data/fonts/-ADD%20FONTS%20TO%20THIS%20FOLDER-</source>
