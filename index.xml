@@ -612,8 +612,9 @@
 ]]></description>
         <link rel="website" href="https://gum.co/nvk_VARIATIONS">Store Page</link>
       </metadata>
-      <version name="0.9.5b" author="nvk" time="2022-11-07T02:55:33Z">
-        <changelog><![CDATA[0.9.5b Beta: Fixed issue with stretch markers, added ripple offset setting
+      <version name="0.9.6b" author="nvk" time="2023-02-05T05:01:58Z">
+        <changelog><![CDATA[0.9.6b Beta: Fix for issue with ReaImGui update
+0.9.5b Beta: Fixed issue with stretch markers, added ripple offset setting
 0.9b Beta: Presets + a bunch of other stuff. Known issues: anything involving playrate pitch envelope and stretch markers.
 0.8.5b Beta: some new features and changes to behavior.
 0.8b Beta: script will not be able to be authorized but can run in demo mode for 7 days.]]></changelog>
