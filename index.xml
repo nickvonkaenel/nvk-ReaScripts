@@ -3,11 +3,11 @@
   <category name="AUTODOPPLER">
     <reapack name="nvk_AUTODOPPLER.lua" type="script" desc="nvk_AUTODOPPLER">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_AUTODOPPLER\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_AUTODOPPLER\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_AUTODOPPLER writes path position automation for various doppler plug-ins (nvk_DOPPLER, Tonsturm TRAVELER, Waves Doppler, GRM Doppler, and Sound Particle Doppler). It generates snap offsets at the peak RMS time in the various track items and draws doppler path automation to cross the listener at the mean snap offset time.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Select the track you want use. nvk_AUTODOPPLER will automatically add the doppler plug-in of your choice and create automation based on the items on the track. If you would like to only add automation for part of the track, make a time selection.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Click the "Website" button for more info\par}
@@ -52,11 +52,11 @@
   <category name="CREATE">
     <reapack name="nvk_CREATE.lua" type="script" desc="nvk_CREATE">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_CREATE\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_CREATE\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_CREATE gives you a whole new way to find and import audio files from your Media Explorer databases. -Search multiple databases simultaneously with instant results as you type. -Automatically trim and add take markers to items. -Multi-layer mode allows you to intelligently create layered assets based on your search string with settings for length, pitch randomization, reverse, and insertion mode. -Swap out assets in your project based on the search string used for that item or the name of the track with the replace script. -And more!\par}
 }
 ]]></description>
@@ -66,8 +66,17 @@
         <link rel="website" href="https://forum.cockos.com/member.php?u=66313">Neutronic's REAPER forum profile</link>
         <link rel="website" href="https://github.com/Neutronic/ReaScripts">Neutronic's GitHub ReaScripts repository</link>
       </metadata>
-      <version name="1.7" author="nvk, Neutronic" time="2022-06-26T23:05:53Z">
-        <changelog><![CDATA[1.7.3 Respect project setting for preserve pitch enabled on items, playback preview pdc now accounts for bypassed fx
+      <version name="1.8.2" author="nvk, Neutronic" time="2023-07-15T16:04:14Z">
+        <changelog><![CDATA[1.8
+  - Importing items now respects user setting for copying imported media items to project
+  - Fix for not being able to change take offset in item peaks view if the take contained stretch markers
+  - 1440p zoom option
+  - Support for beta sws extension with more robust playback
+  - Possible fix for item fades being affected by replace script
+  - Replace no longer works on locked items
+  - Greatly improved search speeds after first completed search
+  - Fixed bug where adding a new item over an existing item would delete the existing item
+1.7.3 Respect project setting for preserve pitch enabled on items, playback preview pdc now accounts for bypassed fx
 1.7.2 Alt-drag from waveform view now only adds the selected variation
 1.7.1 Fixed crash when cancelling apply track fx, improvements to search speed, fixed bug where zoom wasn't working when using spectral peaks, now you can zoom in and out in all waveform views, selection playback now loops if setting enabled
 1.7
@@ -153,11 +162,11 @@
   <category name="FOLDER_ITEMS">
     <reapack name="nvk_FOLDER_ITEMS.lua" type="script" desc="nvk_FOLDER_ITEMS">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_FOLDER_ITEMS\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_FOLDER_ITEMS\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_FOLDER_ITEMS is a collection of scripts which are used for a quick and flexible workflow for managing and rendering assets using blank items created on folder tracks that act as regions for items.\par}
 }
 ]]></description>
@@ -306,11 +315,11 @@
   <category name="ITEMS">
     <reapack name="nvk_ITEMS.lua" type="script" desc="nvk_ITEMS">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_ITEMS\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_ITEMS\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with items for game audio and sound design.\par}
 }
 ]]></description>
@@ -384,11 +393,11 @@
   <category name="LOOPMAKER">
     <reapack name="nvk_LOOPMAKER.lua" type="script" desc="nvk_LOOPMAKER">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_LOOPMAKER\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_LOOPMAKER\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_LOOPMAKER Creates perfect loops out of selected items using zero-crossing. If Loop Count is set to a number higher than 1, it will create multiple loops out of a single item that can be played back to back with sample accurate transitions.\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Click the "Website" button for more info\par}
 }
@@ -396,8 +405,9 @@
         <link rel="website" href="https://gum.co/nvk_LOOPMAKER">Store Page</link>
         <link rel="screenshot">https://reapleton.com/images/nvk_loopmaker.gif</link>
       </metadata>
-      <version name="1.2.1" author="nvk" time="2022-06-26T23:05:53Z">
-        <changelog><![CDATA[1.2.1 Compatibility with new Render Smart script
+      <version name="1.2.2" author="nvk" time="2023-05-11T07:39:41Z">
+        <changelog><![CDATA[1.2.2 Fix issue where length floor setting wouldn't work if rendering multiple loops per item
+1.2.1 Compatibility with new Render Smart script
 1.2 New experimental feature: Shepard Tone
    -If shepard tone is set to value other than 0, a special loop will be created which sounds as though the loop is constantly pitching up or down depending on the setting. All other settings are ignored while using this option, and only one loop is created per selected item.
    -Fix issues if ripple editing is enabled
@@ -420,11 +430,11 @@
   <category name="MULTI">
     <reapack name="nvk_MULTI.lua" type="script" desc="nvk_MULTI">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_MULTI\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_MULTI\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_MULTI is a collection of scripts that perform multiple actions depending on the context. To use these, make sure you have already downloaded the rest of the nvk-ReaScripts repo since they reference other scripts. Multitap scripts perform different actions depending on how many times you call the script in rapid succession (most likely will need to assign the script to a hotkey for this to work)\par}
 }
 ]]></description>
@@ -455,11 +465,11 @@
   <category name="PROPAGATE">
     <reapack name="nvk_PROPAGATE.lua" type="script" desc="nvk_PROPAGATE">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_PROPAGATE\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_PROPAGATE\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 If items are selected, will proprogate parameters from the first selected item on each track to the rest of the selected items. If no items are selected, will open up dialog to change settings.\par}
 }
 ]]></description>
@@ -475,11 +485,11 @@
   <category name="SUBPROJECT">
     <reapack name="nvk_SUBPROJECT.lua" type="script" desc="nvk_SUBPROJECT">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_SUBPROJECT\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_SUBPROJECT\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_SUBPROJECT: Select either items, tracks, or folder items and run the script. Type in the name you want and the script will automatically create a new subproject, set the markers, and split/name your items. A huge timesaver when it comes to adding subprojects to your workflow. If you make any changes, select your subproject items in the main project and run the script again to re-split and rename the items. If you use folder items in the subproject, it will even copy those names over for you. If you don't have any items selected, the script will simply fix your subproject markers to the unmuted items in the project. Available for purchase at https://gum.co/nvk_WORKFLOW\par}
 }
 ]]></description>
@@ -506,11 +516,11 @@
   <category name="TAKES">
     <reapack name="nvk_TAKES.lua" type="script" desc="nvk_TAKES">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_TAKES\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_TAKES\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_TAKES is a collection of scripts designed to improve Reaper workflows using takes, especially when making variations for game audio and sound design. Automatically embed take markers which can be used to easily shuffle through variations in files that contain more than one variation with a single keystroke. Available for purchase at https://gum.co/nvk_WORKFLOW\par}
 }
 ]]></description>
@@ -565,11 +575,11 @@
   <category name="TRACK">
     <reapack name="nvk_TRACK.lua" type="script" desc="nvk_TRACK">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_TRACK\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_TRACK\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 nvk_TRACK is a collection of scripts designed to improve Reaper workflows with tracks for game audio and sound design.\par}
 }
 ]]></description>
@@ -602,11 +612,11 @@
   <category name="VARIATIONS">
     <reapack name="nvk_VARIATIONS.lua" type="script" desc="nvk_VARIATIONS">
       <metadata>
-        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 nvk_VARIATIONS\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 nvk_VARIATIONS\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Currently in beta. Script will not be able to be authorized but can run in demo mode for 7 days.\par}
 }
 ]]></description>
