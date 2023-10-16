@@ -1,30 +1,35 @@
 -- @noindex
 -- USER CONFIG --
 -- SETUP --
-function GetPath(a,b)if not b then b=".dat"end;local c=scrPath.."Data"..sep..a..b;return c end;OS=reaper.GetOS()sep=OS:match"Win"and"\\"or"/"scrPath,scrName=({reaper.get_action_context()})[2]:match"(.-)([^/\\]+).lua$"loadfile(GetPath"functions")()if not functionsLoaded then return end
+local r = reaper
+sep = package.config:sub(1, 1)
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
+if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
-    retval, retvals_csv = reaper.GetUserInputs("Select Takes Containing Text", 1, "Text", "")
+    retval, retvals_csv = r.GetUserInputs("Select Takes Containing Text", 1, "Text", "")
     if retval then
-        reaper.Main_OnCommand(40289, 0) -- unselect all items
-        for i = 0, reaper.CountMediaItems(0) - 1 do
-            item = reaper.GetMediaItem(0, i)
-            take = reaper.GetActiveTake(item)
+        r.Main_OnCommand(40289, 0) -- unselect all items
+        for i = 0, r.CountMediaItems(0) - 1 do
+            item = r.GetMediaItem(0, i)
+            take = r.GetActiveTake(item)
             if take then
-                name = reaper.GetTakeName(take)
+                name = r.GetTakeName(take)
                 name = string.upper(name)
                 retvals_csv = string.upper(retvals_csv)
                 if string.find(name, retvals_csv) then
-                    reaper.SetMediaItemSelected(item, 1)
+                    r.SetMediaItemSelected(item, 1)
                 end
             end
         end
     end
 end
 
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
+r.Undo_BeginBlock()
+r.PreventUIRefresh(1)
 Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scrName, -1)
+r.UpdateArrange()
+r.PreventUIRefresh(-1)
+r.Undo_EndBlock(scr.name, -1)

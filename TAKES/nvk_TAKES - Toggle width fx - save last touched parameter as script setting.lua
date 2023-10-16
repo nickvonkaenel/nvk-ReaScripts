@@ -2,29 +2,34 @@
 -- This saves the last touched fx parameter as the fx and parameter to use for 'nvk_TAKES - Toggle width fx or toggle track width envelope'. Click the fx parameter then run this script to save it.
 -- USER CONFIG --
 -- SETUP --
-function GetPath(a,b)if not b then b=".dat"end;local c=scrPath.."Data"..sep..a..b;return c end;OS=reaper.GetOS()sep=OS:match"Win"and"\\"or"/"scrPath,scrName=({reaper.get_action_context()})[2]:match"(.-)([^/\\]+).lua$"loadfile(GetPath"functions")()if not functionsLoaded then return end
+local r = reaper
+sep = package.config:sub(1, 1)
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
+if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
-    reaper.DeleteExtState("nvk_TAKES - WidthFX", "fxName", true)
-    reaper.DeleteExtState("nvk_TAKES - WidthFX", "param", true)
-    retval, i, fxidx, param = reaper.GetLastTouchedFX()
+    r.DeleteExtState("nvk_TAKES - WidthFX", "fxName", true)
+    r.DeleteExtState("nvk_TAKES - WidthFX", "param", true)
+    local retval, i, fxidx, param = r.GetLastTouchedFX()
     if retval then
-        track = reaper.GetTrack(0, i-1)
-        retval, fxName = reaper.TrackFX_GetFXName(track, fxidx, "")
+        local track = r.GetTrack(0, i-1)
+        local retval, fxName = r.TrackFX_GetFXName(track, fxidx, "")
         fxName = string.gsub(fxName, ".*: ", "")
-        reaper.SetExtState("nvk_TAKES - WidthFX", "fxName", fxName, true)
-        reaper.SetExtState("nvk_TAKES - WidthFX", "param", param, true)
+        r.SetExtState("nvk_TAKES - WidthFX", "fxName", fxName, true)
+        r.SetExtState("nvk_TAKES - WidthFX", "param", tostring(param), true)
     else
-        reaper.ShowMessageBox(
+        r.ShowMessageBox(
             "Click the fx parameter you want to use for automation, then run the script again.\n\nThe fx and parameter you select will be saved and loaded the next time you run \'nvk_TAKES - Toggle width fx or toggle track width envelope\'",
-            scrName .. " - Custom", 0)
+            scr.name .. " - Custom", 0)
     end
 end
 
-scrPath, scrName = ({reaper.get_action_context()})[2]:match "(.-)([^/\\]+).lua$"
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
+scr.path, scr.name = ({r.get_action_context()})[2]:match "(.-)([^/\\]+).lua$"
+r.Undo_BeginBlock()
+r.PreventUIRefresh(1)
 Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scrName, -1)
+r.UpdateArrange()
+r.PreventUIRefresh(-1)
+r.Undo_EndBlock(scr.name, -1)

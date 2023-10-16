@@ -6,7 +6,11 @@ clampCurveValues = true --if set to true, then curve values won't go past max, b
 defaultFadeOut = true --if true, will use fade out when mouse isn't hovering over any items, otherwise will choose fade in or out based on mouse position
 -- SETUP --
 is_new,name,sec,cmd,rel,res,val = reaper.get_action_context()
-function GetPath(a,b)if not b then b=".dat"end;local c=scrPath.."Data"..sep..a..b;return c end;OS=reaper.GetOS()sep=OS:match"Win"and"\\"or"/"scrPath,scrName=({reaper.get_action_context()})[2]:match"(.-)([^/\\]+).lua$"loadfile(GetPath"functions")()if not functionsLoaded then return end
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+r = reaper
+sep = package.config:sub(1, 1)
+dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
     local item, mousePos = reaper.BR_ItemAtMouseCursor()
@@ -39,7 +43,7 @@ function Main()
 end
 
 if not reaper.APIExists("BR_ItemAtMouseCursor") then
-    reaper.ShowMessageBox("Please install the latest version of SWS Extension from:\nhttps://sws-extension.org/", scrName, 0)
+    reaper.ShowMessageBox("Please install the latest version of SWS Extension from:\nhttps://sws-extension.org/", scr.name, 0)
     return
 end
 
@@ -47,5 +51,5 @@ reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
 Main()
 reaper.UpdateArrange()
-reaper.Undo_EndBlock(scrName, -1)
+reaper.Undo_EndBlock(scr.name, -1)
 reaper.PreventUIRefresh(-1)

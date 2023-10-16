@@ -1,6 +1,6 @@
 -- @description nvk_ITEMS
 -- @author nvk
--- @version 1.3
+-- @version 1.4
 -- @changelog
 --   1.3 Various new scripts
 --   1.2 Adding some new scripts
@@ -19,7 +19,7 @@
 --
 --   nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with items for game audio and sound design.
 -- @provides
---  Data/*.dat
+--  **/*.dat
 --  [main] *.lua
 
 reaper.ShowMessageBox("nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with items for game audio and sound design.", "nvk_ITEMS", 0)

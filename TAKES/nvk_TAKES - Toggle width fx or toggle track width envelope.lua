@@ -4,73 +4,71 @@
 fxName = "Ozone Imager"
 param = "Width"
 -- SETUP --
-function GetPath(a,b)if not b then b=".dat"end;local c=scrPath.."Data"..sep..a..b;return c end;OS=reaper.GetOS()sep=OS:match"Win"and"\\"or"/"scrPath,scrName=({reaper.get_action_context()})[2]:match"(.-)([^/\\]+).lua$"loadfile(GetPath"functions")()if not functionsLoaded then return end
+local r = reaper
+sep = package.config:sub(1, 1)
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
+if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
-    s = "nvk_TAKES - WidthFX"
-    if reaper.HasExtState(s, "fxName") and reaper.HasExtState(s, "param") then
-        paramNum = tonumber(reaper.GetExtState(s, "param"))
+    local setting_str = "nvk_TAKES - WidthFX"
+    if r.HasExtState(setting_str, "fxName") and r.HasExtState(setting_str, "param") then
+        paramNum = tonumber(r.GetExtState(setting_str, "param"))
         if paramNum then
-            fxName = reaper.GetExtState(s, "fxName")
+            fxName = r.GetExtState(setting_str, "fxName")
         end
     end
-    itemCount = reaper.CountSelectedMediaItems(0)
-    tracks = SaveSelectedTracks()
+    local itemCount = r.CountSelectedMediaItems(0)
+    local tracks = SaveSelectedTracks()
     if itemCount > 0 then
         for i = 0, itemCount - 1 do
-            local item = reaper.GetSelectedMediaItem(0, i)
-            local take = reaper.GetActiveTake(item)
-                if take then
+            local item = r.GetSelectedMediaItem(0, i)
+            local take = r.GetActiveTake(item)
+            if take then
                 local fxadded, fx = AddTakeFxByName(take, fxName)
                 if not fx then return end
                 if fxadded then
                     if paramNum then
-                        widthEnv = reaper.TakeFX_GetEnvelope(take, fx, paramNum, true)
+                        widthEnv = r.TakeFX_GetEnvelope(take, fx, paramNum, true)
                     else
                         widthEnv = GetTakeFXParamByName(take, fx, param, true)
                     end
                 else
-                    reaper.TakeFX_Delete(take, fx)
+                    r.TakeFX_Delete(take, fx)
                 end
             end
         end
     else
         for i, track in ipairs(tracks) do
-            reaper.Main_OnCommand(40297, 0) --unselect all tracks
-            reaper.SetOnlyTrackSelected(track)
-            br_env = reaper.GetTrackEnvelopeByName(track, "Width")
+            r.Main_OnCommand(40297, 0) --unselect all tracks
+            r.SetOnlyTrackSelected(track)
+            local br_env = r.GetTrackEnvelopeByName(track, "Width")
             if br_env ~= nil then
-                local width_env = reaper.BR_EnvAlloc(br_env, false)
+                local width_env = r.BR_EnvAlloc(br_env, false)
                 local active, visible, armed, inLane, laneHeight, defaultShape, minValue, maxValue, centerValue, type,
-                    faderScaling = reaper.BR_EnvGetProperties(width_env, true, true, true, true, 0, 0, 0, 0, 0, 0, true)
+                faderScaling = r.BR_EnvGetProperties(width_env, true, true, true, true, 0, 0, 0, 0, 0, 0, true)
                 if visible == true then
-                    reaper.Main_OnCommand(41870, 0) --select width envelope
-                    reaper.UpdateArrange()
-                    reaper.PreventUIRefresh(-1)
-                    reaper.Main_OnCommand(40065, 0) --clear envelope
-                    reaper.PreventUIRefresh(1)
-                    -- visible = false
+                    r.Main_OnCommand(41870, 0) --select width envelope
+                    r.UpdateArrange()
+                    r.PreventUIRefresh(-1)
+                    r.Main_OnCommand(40065, 0) --clear envelope
+                    r.PreventUIRefresh(1)
                 else
-                    reaper.Main_OnCommand(41870, 0) --select width envelope
-                    -- if visible == false then
-                    --     visible = true
-                    -- end
+                    r.Main_OnCommand(41870, 0) --select width envelope
                 end
-                -- reaper.BR_EnvSetProperties(width_env, active, visible, armed, inLane, laneHeight, defaultShape,
-                --     faderScaling)
-                -- reaper.BR_EnvFree(width_env, 1)
             else
-                reaper.Main_OnCommand(41870, 0) --select width envelope
+                r.Main_OnCommand(41870, 0) --select width envelope
             end
         end
     end
     RestoreSelectedTracks(tracks)
 end
 
-scrPath, scrName = ({reaper.get_action_context()})[2]:match "(.-)([^/\\]+).lua$"
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
+scr.path, scr.name = ({ r.get_action_context() })[2]:match "(.-)([^/\\]+).lua$"
+r.Undo_BeginBlock()
+r.PreventUIRefresh(1)
 Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scrName, -1)
+r.UpdateArrange()
+r.PreventUIRefresh(-1)
+r.Undo_EndBlock(scr.name, -1)

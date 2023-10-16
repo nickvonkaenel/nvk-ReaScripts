@@ -1,7 +1,11 @@
 -- @noindex
 -- USER CONFIG --
--- SETUP --
-function GetPath(a,b)if not b then b=".dat"end;local c=scrPath.."Data"..sep..a..b;return c end;OS=reaper.GetOS()sep=OS:match"Win"and"\\"or"/"scrPath,scrName=({reaper.get_action_context()})[2]:match"(.-)([^/\\]+).lua$"loadfile(GetPath"functions")()if not functionsLoaded then return end
+-- SETUP--
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+r = reaper
+sep = package.config:sub(1, 1)
+dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
 	for i = 0, reaper.CountSelectedMediaItems(0) - 1 do
@@ -16,4 +20,4 @@ reaper.PreventUIRefresh(1)
 Main()
 reaper.UpdateArrange()
 reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scrName, -1)
+reaper.Undo_EndBlock(scr.name, -1)

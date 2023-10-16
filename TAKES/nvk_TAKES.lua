@@ -1,35 +1,57 @@
 -- @description nvk_TAKES
 -- @author nvk
--- @version 1.2.4
--- @changelog
---   1.2.4 Minor fixes and script variations
---   1.2.3 Add take markers to all variations in selected items takes
---   1.2.2 Select random take SMART, licensing improvements
---   1.2.1 Licensing improvements
---   1.2.0 Compatibility with nvk_CREATE
---   1.1.1 Duplicate items and select next take now adds more space
---   1.1.0 Improvements to take marker next/previous scripts with snap offsets
---   1.0.8 New named take marker script
---   1.0.7 More licensing improvements
---   1.0.6 Better handling of empty takes
---   1.0.5 Licensing improvements
---   1.0.4 Minor fixes
---   1.0.3 Renaming toggle width fx, adding script to automatically save last touched parameter as fx to use width width fx script so you don't have to set it manually and your settings won't be overriden with updates.
---   1.0.2 Fixing spelling of toggle width fx; now it clears track width envelope instead of toggling
---   1.0.1 Fix for empty items when selecting takes
+-- @version 2.0.5
 -- @link
 --   Store Page https://gum.co/nvk_WORKFLOW
--- @screenshot https://reapleton.com/images/nvk_workflow.gif
+--   User Guide https://nvk.tools/doc/nvk_workflow
 -- @about
 --   # nvk_TAKES
 --
 --   nvk_TAKES is a collection of scripts designed to improve Reaper workflows using takes, especially when making variations for game audio and sound design. Automatically embed take markers which can be used to easily shuffle through variations in files that contain more than one variation with a single keystroke. Available for purchase at https://gum.co/nvk_WORKFLOW
 -- @provides
---  Data/*.dat
+--  **/*.dat
 --  [main] *.lua
 --  [main] *.eel
 -- SETUP --
-isDefer = true
-function GetPath(a,b)if not b then b=".dat"end;local c=scrPath.."Data"..sep..a..b;return c end;OS=reaper.GetOS()sep=OS:match"Win"and"\\"or"/"scrPath,scrName=({reaper.get_action_context()})[2]:match"(.-)([^/\\]+).lua$"loadfile(GetPath"functions")()if not functionsLoaded then return end
+local is_new_value, filename, sectionID, cmdID, mode, resolution, val = reaper.get_action_context()
+local r = reaper
+sep = package.config:sub(1, 1)
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
+if not functionsLoaded then return end
 -- SCRIPT --
 
+
+if not r.HasExtState('nvk_TAKES', 'firstrun') then
+    r.SetExtState('nvk_TAKES', 'firstrun', 'true', true)
+    r.MB(
+        'This script automatically embeds take markers in the active take of the first selected item.\n\nThese markers can be used to easily shuffle through variations in files that contain more than one variation with a single keystroke using the "nvk_TAKES - Select previous/next take SMART" scripts.\n\nIt\'s recommended to add this script to a custom action and set that as a global startup action with SWS. You can also add this to a toolbar button or assign a keyboard shortcut to it if you rather enable/disable it manually.\n\nMake sure to select terminate instance when a popup appears the first time you toggle the script.',
+        'nvk_TAKES', 0)
+end
+
+
+local last_take
+function loop()
+    local item = reaper.GetSelectedMediaItem(0, 0)
+    if item then
+        local take = r.GetActiveTake(item)
+        if take and take ~= last_take then
+            last_take = take
+            local src = r.GetMediaItemTake_Source(take)
+            local srcLen = r.GetMediaSourceLength(src)
+            local _, _, _, rev = r.PCM_Source_GetSectionInfo(src)
+            GetTakeDbCache(take, src, srcLen, rev)
+        end
+    end
+    r.defer(loop)
+end
+
+function exit()
+    r.SetToggleCommandState(sectionID, cmdID, 0)
+end
+
+r.SetToggleCommandState(sectionID, cmdID, 1)
+r.RefreshToolbar2(sectionID, cmdID)
+r.defer(loop)
+r.atexit(exit)

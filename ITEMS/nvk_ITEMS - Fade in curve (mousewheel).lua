@@ -4,7 +4,11 @@ amount = 0.25 --higher values will change the curve faster (curves go from -1 to
 clampCurveValues = true --if set to true, then curve values won't go past max, but you will lose relative curve values of multiple items if some of them are maxed
 -- SETUP --
 is_new,name,sec,cmd,rel,res,val = reaper.get_action_context()
-function GetPath(a,b)if not b then b=".dat"end;local c=scrPath.."Data"..sep..a..b;return c end;OS=reaper.GetOS()sep=OS:match"Win"and"\\"or"/"scrPath,scrName=({reaper.get_action_context()})[2]:match"(.-)([^/\\]+).lua$"loadfile(GetPath"functions")()if not functionsLoaded then return end
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+r = reaper
+sep = package.config:sub(1, 1)
+dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
 	if val < 0 then
@@ -19,4 +23,4 @@ reaper.PreventUIRefresh(1)
 Main()
 reaper.UpdateArrange()
 reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scrName, -1)
+reaper.Undo_EndBlock(scr.name, -1)

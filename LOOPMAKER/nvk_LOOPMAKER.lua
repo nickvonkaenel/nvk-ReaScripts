@@ -1,7 +1,8 @@
 -- @description nvk_LOOPMAKER
 -- @author nvk
--- @version 1.2.2
+-- @version 1.2.5
 -- @changelog
+--   1.2.3 Minor bug fixes
 --   1.2.2 Fix issue where length floor setting wouldn't work if rendering multiple loops per item
 --   1.2.1 Compatibility with new Render Smart script
 --   1.2 New experimental feature: Shepard Tone
@@ -26,7 +27,7 @@
 --
 --   Click the "Website" button for more info
 -- @provides
---   Data/*.dat
+--   **/*.dat
 
 -- USER CONFIG -- (some of these are overridden by your last used settings when you use the script)
 doPrompt = true --set to false if don't want settings prompt and just want script to run with defaults
@@ -45,5 +46,9 @@ disableMouseClickRemoveLoop = false --if set to true, will temporarily change yo
 shepSlope = 0 -- shepard tone slope
 keepName = false -- don't change name at all (overrides other settings)
 -- SCRIPT --
-local info = debug.getinfo(1,'S')
-dofile(info.source:match[[^@?(.*[\\/])[^\\/]-$]].."Data/loopmaker.dat")
+local r = reaper
+sep = package.config:sub(1, 1)
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'loopmaker.dat')
+if not functionsLoaded then return end

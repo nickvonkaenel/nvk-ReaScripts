@@ -1,9 +1,12 @@
 --@noindex
 QuickRender = true
 
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
 function GetPath(file, ext)
-	if not ext then ext = ".dat" end
-	local path = scrPath.."Data"..sep..file..ext
+	if not ext then
+		ext = ".dat"
+	end
+	local path = scrPath .. DATA .. sep .. file .. ext
 	return path
 end
 
@@ -41,8 +44,8 @@ selectorNames = {"nvk_DOPPLER","TRAVELER","Waves","GRM","Sound Particles"}
 Files = {"nvk", "traveler", "waves", "grm", "soundparticles"}
 audioCmdId = reaper.NamedCommandLookup("_RScee1d114d47d9f1b05cd5790f2dfd7f874c7bfe7") -- nvk_AUTODOPPLER - Create snap offsets at rms peak.eel
 
-loadfile(GetPath("gui"))()
-loadfile(GetPath("functions"))()
+dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "gui.dat")
+dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
 
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)

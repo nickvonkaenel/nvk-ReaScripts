@@ -1,10 +1,14 @@
 -- @noindex
 -- USER CONFIG --
--- SETUP --
-function GetPath(a,b)if not b then b=".dat"end;local c=scrPath.."Data"..sep..a..b;return c end;OS=reaper.GetOS()sep=OS:match"Win"and"\\"or"/"scrPath,scrName=({reaper.get_action_context()})[2]:match"(.-)([^/\\]+).lua$"loadfile(GetPath"functions")()if not functionsLoaded then return end
+-- SETUP--
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+r = reaper
+sep = package.config:sub(1, 1)
+dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
-  local directoryPath = reaper.GetExtState(scrName, "path")
+  local directoryPath = reaper.GetExtState(scr.name, "path")
   local items = SaveSelectedItems()
   if directoryPath and directoryPath~= "" and #items > 0 then
     for i, item in ipairs(items) do
@@ -36,7 +40,7 @@ function Main()
       end
     end
     if retval then
-      reaper.SetExtState(scrName, "path", folder, true)
+      reaper.SetExtState(scr.name, "path", folder, true)
     end
   end
 end
@@ -46,4 +50,4 @@ reaper.PreventUIRefresh(1)
 Main()
 reaper.UpdateArrange()
 reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scrName, -1)
+reaper.Undo_EndBlock(scr.name, -1)
