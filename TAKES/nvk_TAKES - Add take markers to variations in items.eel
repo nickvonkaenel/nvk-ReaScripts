@@ -1,0 +1,233 @@
+// @noindex
+window = 0.01; //window size. 
+speed = 10; //reduces accuracy for speed, limited perfomance increase after 20. 1 is slowest but most accurate.
+
+function AddTakeMarkers(item, take, isActiveTake)
+local(accessor, src, rate, size, buffer, read_pos, sum_com, n_blocks, read_pos, i, j, length, playrate, speedRatio, idx, low, mid, high, thresh, cnt, numCnt, cntAvg, sil, numSil, silAvg, peak, peakTime, ptPeak, pMod, initOffs)
+(
+    src = GetMediaItemTake_Source(take);
+
+    src ? (
+        playrate  = GetMediaItemTakeInfo_Value(take, "D_PLAYRATE"); // get orig playrate
+        SetMediaItemTakeInfo_Value(take, "D_PLAYRATE", 1);          // set playrate = 1
+        length = GetMediaSourceLength(src, 0);
+        isActiveTake ? srcLength = length;
+        SetMediaItemLength(item, length, 0);
+        initOffs = GetMediaItemTakeInfo_Value(take, "D_STARTOFFS");
+        SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", 0);
+        accessor = CreateTakeAudioAccessor(take);
+        rate = GetMediaSourceSampleRate(src);
+        size = ceil(window*rate);
+        n_blocks = ceil(length/window);
+        read_pos = 0;
+        bc = 5000;
+        buffer = 100000;
+        speedRatio = ceil(speed * rate/48000);
+        j = 0;
+        high = 0;
+        low = 999999999;
+        
+        loop(n_blocks,
+            GetAudioAccessorSamples(
+                accessor, //AudioAccessor
+                rate, //samplerate
+                1, //numchannels
+                read_pos, //starttime_sec
+                size, //numsamplesperchannel
+                buffer); //samplebuffer
+
+            sum_com = 0;
+            i = 0;
+            loop(floor(size/speedRatio),
+                sum_com += abs(buffer[i]);
+                i+=speedRatio;
+            );
+            bc[j] = sum_com;
+            j+=1;
+
+            //ShowConsoleMsg(sprintf(#str, "%f", sum_com));
+            //ShowConsoleMsg("\n");
+            read_pos += window;
+        );
+        i=1;
+        bs = 50000;
+        bs[0] = bc[0];
+        bs[j-1] = bc[j-1];
+        loop(j-2, //smooth with medians
+            bc[i-1] < bc[i] && bc[i] < bc[i+1] ? (
+                bs[i] = bc[i];
+            ) : (
+                bc[i] < bc[i-1] && bc[i-1] < bc[i+1] ? (
+                    bs[i] = bc[i-1];
+                ) : (
+                    bs[i] = bc[i+1];
+                );
+            );
+            i+=1;
+        );
+        i=0;
+        mid=0;
+        loop(j,
+            bs[i] > high ? high = bs[i];
+            //bs[i] < low ? low = bs[i];
+            mid+=bs[i];
+            i+=1;
+        );
+        mid/=j;
+        i=0;
+        thresh = mid/3; //if mid > 3 then sound is likely one take
+        cnt=0;
+        numCnt=0;
+        cntAvg=0;
+        sil=0;
+        numSil=0;
+        silAvg=0;
+        loop(j,
+            bs[i] > thresh ? (
+                cnt+=1;
+                sil > 1 ? (
+                    numSil+=1;
+                    silAvg+=sil;
+                );
+                sil=0;
+            ) : (
+                cnt > 0 ? (
+                    numCnt+=1;
+                    cntAvg+=cnt;
+                );
+                cnt=0;
+                sil+=1;
+            );
+            i+=1;
+        );
+        cntAvg/=numCnt;
+        silAvg/=numSil;
+        //ShowConsoleMsg(sprintf(#str, "%f", high));
+        //ShowConsoleMsg("\n");
+        idx=0;
+        i=0;
+        peak=0;
+        peakTime = 0;
+        cnt=0;
+        sil=0;
+        ptPeak = 0;
+        pMod = 0;
+        loop(j,
+            bs[i] > thresh ? (
+                sCnt == 2 ? idx[1000]=i; //store start position
+                sCnt+=1;
+                cnt+=1;
+                sil=0;
+                bc[i] > peak ? (
+                    //ShowConsoleMsg(sprintf(#str, "%f", peak));
+                    //ShowConsoleMsg("\n");
+                    peak = bc[i];
+                    peak > ptPeak+pMod ? (
+                        pMod+=1;
+                        ptPeak = peak;
+                        peakTime = i * window + window/2;
+                    );
+                );
+            ) : (
+                bs[i] == 0 ? sil+=1;
+                sil+=1;
+                cnt*10 >= cntAvg && sil*1.5 > silAvg && peak*6 > high ? (
+                    sprintf(#idx,"%i", idx+1);
+                    SetTakeMarker(take, idx, #idx, peakTime, colorIn);
+                    idx[2000]=i; //store end position
+                    idx[3000]=peakTime;//store peak time
+                    idx+=1;
+                    peak = 0;
+                    ptPeak = 0;
+                    sil = 0;
+                    cnt = 0;
+                    sCnt = 0;
+                    pMod = 0;
+                );
+                //sCnt = 0;
+            );
+            i+=1;
+        );
+        cnt*10 >= cntAvg && peak*6 > high ? (
+            sprintf(#idx,"%i", idx+1);
+            SetTakeMarker(take, idx, #idx, peakTime, colorIn);
+            idx[2000]=i; //store end position
+            idx[3000]=peakTime;//store peak time
+            idx+=1;
+        );
+        isActiveTake ? (
+            idx > 1 ? (
+                random ? idxT = rand(idx-1) : idxT = 0;
+                newStart = max(0, idxT[1000] * window - 0.05);
+                newEnd = min(length, idxT[2000] * window + 0.1);
+                idxT < idx - 1 && newEnd > idxT[3001] - 0.05 ? (
+                    newEnd = idxT[3001] - 0.05;
+                );
+                snapOffset = idxT[3000];
+            ) : (
+                idx == 1 ? (
+                    idxT = 0;
+                    snapOffset = idxT[3000];
+                );
+            );
+        );
+
+        DestroyAudioAccessor(accessor);
+        SetMediaItemTakeInfo_Value(take, "D_PLAYRATE", playrate); // restore orig playrate
+        SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", initOffs);
+    );
+);
+
+
+
+
+//ClearConsole();
+//Main_OnCommand(42387, 0); //delete take markers
+
+function Main()
+(
+    z=0;
+    loop(CountSelectedMediaItems(0),
+        item = GetSelectedMediaItem(0,z);
+        takeCount = CountTakes(item);
+        activeTake = GetActiveTake(item);
+        t = 0;
+        newStart = 0;
+        newEnd = 0;
+        snapOffset = 0;
+        srcLength = 0;
+        initLength = GetMediaItemInfo_Value(item, "D_LENGTH");
+        loop(takeCount,
+            take = GetTake(item, t);
+            //SetActiveTake(take); //don't need to do this perhaps
+            i=1;
+            numTakeMarkers = GetNumTakeMarkers(take);
+            loop(numTakeMarkers,
+              DeleteTakeMarker(take, numTakeMarkers - i);
+              i+=1;
+            );
+            //ShowConsoleMsg(sprintf(#str, "%f", take));
+            //ShowConsoleMsg("\n");
+            AddTakeMarkers(item, take, take == activeTake);
+            
+            
+            t+=1;
+        );
+        //SetActiveTake(activeTake);
+        SetMediaItemLength(item, initLength, 0);
+        z+=1;
+    );
+    UpdateTimeline();
+);
+
+PreventUIRefresh(1);
+Undo_BeginBlock();
+//time_precise(t1);
+Main();
+//time_precise(t2);
+//tt = t2 - t1;
+//sprintf(#str, "%f", tt);
+//ShowConsoleMsg(#str);
+//ShowConsoleMsg("\n");
+Undo_EndBlock("nvk_Search - Consolidate Takes", -1);
+PreventUIRefresh(-1);

@@ -1,0 +1,337 @@
+desc:nvk_RECORD
+noindex:true
+tags:utility
+version:1.0
+author:Nick von Kaenel
+about:Adds retrospective record functionality to nvk_CREATE. Add to your Monitoring FX and open nvk_CREATE.
+
+in_pin:left input
+in_pin:right input
+out_pin:left output
+out_pin:right output
+
+options:gmem=nvk_RECORD, gfx_idle, maxmem=32000000, no_meter, gfx_hz=60
+
+@init
+ext_noinit = 1; //don't flush memory
+
+peakSec  = 200;     // peaks per second
+s        = 0;       // sample counter
+p        = 0;       // peak counter
+pS       = 0;       // peak slot counter
+l        = 0;       // left channel
+r        = 15360000;// right channel (40 * 192k * 2)
+gS       = 0;// gui peak slot counter
+gSlast   = 0;// gui peak slot counter saved
+gLMax    = 31000000;// gui peak slot left channel
+gLMin    = 31050000;// gui peak slot left channel
+gRMax    = 31100000;// gui peak slot right channel
+gRMin    = 31150000;// gui peak slot right channel
+pLMax    = 1000000; // peak slot left channel
+pLMin    = 1050000; // peak slot left channel
+pRMax    = 1100000; // peak slot right channel
+pRMin    = 1150000; // peak slot right channel
+zLMax    = 2000000; // full zoom peak slot left channel
+zLMin    = 2050000; // full zoom peak slot left channel
+zRMax    = 2100000; // full zoom peak slot right channel
+zRMin    = 2150000; // full zoom peak slot right channel
+xLMax    = 3000000; // half zoom peak slot left channel
+xLMin    = 3050000; // half zoom peak slot left channel
+xRMax    = 3100000; // half zoom peak slot right channel
+xRMin    = 3150000; // half zoom peak slot right channel
+cRate    = 00; // sample rate config slot
+cLen     = 01; // seconds to record config slot
+cPeak    = 02; // current peak
+cPeakSec = 03; // peaks per second
+cPeakPct = 04; // peak percent
+cWidth   = 05; // width
+wWrite   = 10; // do write
+wTrack   = 11; // write track
+wPos     = 12; // write pos
+wStart   = 13; // write sample start
+wSamps   = 14; // write number of samples
+pbStart  = 20; // playback start/stop (1/2)
+pbPos    = 21; // playback pos
+check    = 30; // check that jsfx enabled and working
+zPeakSec = 500; // zoom peaks per second
+xPeakSec = 250; // zoom peaks per second
+zP       = 0; // zoom peak counter
+zPs      = 0; // zoom peak slot counter
+xP       = 0; // zoom peak counter
+xPs      = 0; // zoom peak slot counter
+z0       = 9999999999;       // zero counter
+fadeTime = srate/100;// fade time
+
+gmem[cRate]  = srate; //sample rate to config
+gmem[cLen]   = min(40, floor(7680000/srate)); //160 seconds at 48, 80 at 96, 40 at 192, 20 at 384
+gmem[cWidth] = 400; //need a default here?
+
+@gfx
+
+gmem[wWrite] ? (
+  gmem[wWrite] = 0;
+  start = gmem[wStart];
+  samps = gmem[wSamps];
+  export_buffer_to_project(l+start, samps, 2, srate, gmem[wTrack], 0, tempo, r-l);
+);
+
+gfx_ext_flags != 2 ? ( //check that UI is visible
+  gfx_clear = 20+20*256+20*65536;
+  gfx_set(0.7);
+  i=0;
+  j=max(0, gSlast - gfx_w);
+  xMod = 1;//gfx_w/(gSlast-j);
+  nch = gfx_h > 150 ? 2 : 1;
+  // r = abs(sin(time_precise()/10));
+  // g = abs(sin(time_precise()/9));
+  // b = abs(sin(time_precise()/8));
+  // colorSum = 0.2126*r+0.7152*g+0.0722*b; //try to keep the brightness around the same level
+  // colorSum*= 1.7;
+  // r/=colorSum;
+  // g/=colorSum;
+  // b/=colorSum;
+  // gfx_set(r, g, b);
+  // incredibly lazy code below!!
+  nch == 1 ? (
+    hh = gfx_h/2; //half height
+    while(j<gSlast)(
+      x = i*xMod;
+      y1 = (gLMax[j] + gRMax[j])/2;
+      y2 = (gLMin[j] + gRMin[j])/2;
+      y1 >= 0 ? y1 = sqrt(y1) : y1 = -sqrt(abs(y1));
+      y2 >= 0 ? y2 = sqrt(y2) : y2 = -sqrt(abs(y2));
+      gfx_line(x, hh+hh*y1, x, hh+hh*y2);
+      j+=1;
+      i+=1;
+    );
+    i=0;
+    j=max(0, gSlast - gfx_w);
+    gfx_x=0;
+    gfx_y=hh;
+    while(j<gSlast)(
+      x = i*xMod;
+      y1 = (gLMax[j] + gRMax[j])/2;
+      y1 >= 0 ? y1 = sqrt(y1) : y1 = -sqrt(abs(y1));
+      gfx_lineto(x, hh+hh*y1);
+      i+=1;
+      j+=1;
+    );
+    i=0;
+    j=max(0, gSlast - gfx_w);
+    gfx_x=0;
+    gfx_y=hh;
+    while(j<gSlast)(
+      x = i*xMod;
+      y2 = (gLMin[j] + gRMin[j])/2;
+      y2 >= 0 ? y2 = sqrt(y2) : y2 = -sqrt(abs(y2));
+      gfx_lineto(x, hh+hh*y2);
+      i+=1;
+      j+=1;
+    );
+  ) : (
+    qh = gfx_h/4;
+    rh = gfx_h - qh;
+    while(j<gSlast)(
+      x = i*xMod;
+      y1 = gLMax[j] >= 0 ? sqrt(gLMax[j]) : -sqrt(abs(gLMax[j]));
+      y2 = gLMin[j] >= 0 ? sqrt(gLMin[j]) : -sqrt(abs(gLMin[j]));
+      gfx_line(x, qh+qh*y1, x, qh+qh*y2);
+      y1 = gRMax[j] >= 0 ? sqrt(gRMax[j]) : -sqrt(abs(gRMax[j]));
+      y2 = gRMin[j] >= 0 ? sqrt(gRMin[j]) : -sqrt(abs(gRMin[j]));
+      gfx_line(x, rh+qh*y1, x, rh+qh*y2);
+      i+=1;
+      j+=1;
+    );
+    i=0;
+    j=max(0, gSlast - gfx_w);
+    gfx_x=0;
+    gfx_y=qh;
+    while(j<gSlast)(
+      x = i*xMod;
+      y1 = gLMax[j] >= 0 ? sqrt(gLMax[j]) : -sqrt(abs(gLMax[j]));
+      gfx_lineto(x, qh+qh*y1);
+      i+=1;
+      j+=1;
+    );
+    i=0;
+    j=max(0, gSlast - gfx_w);
+    gfx_x=0;
+    gfx_y=qh;
+    while(j<gSlast)(
+      x = i*xMod;
+      y2 = gLMin[j] >= 0 ? sqrt(gLMin[j]) : -sqrt(abs(gLMin[j]));
+      gfx_lineto(x, qh+qh*y2);
+      i+=1;
+      j+=1;
+    );
+    i=0;
+    j=max(0, gSlast - gfx_w);
+    gfx_x=0;
+    gfx_y=rh;
+    while(j<gSlast)(
+      x = i*xMod;
+      y1 = gRMax[j] >= 0 ? sqrt(gRMax[j]) : -sqrt(abs(gRMax[j]));
+      gfx_lineto(x, rh+qh*y1);
+      i+=1;
+      j+=1;
+    );
+    i=0;
+    j=max(0, gSlast - gfx_w);
+    gfx_x=0;
+    gfx_y=rh;
+    while(j<gSlast)(
+      x = i*xMod;
+      y2 = gRMin[j] >= 0 ? sqrt(gRMin[j]) : -sqrt(abs(gRMin[j]));
+      gfx_lineto(x, rh+qh*y2);
+      i+=1;
+      j+=1;
+    );
+  );
+);
+  
+
+gmem[cRate] = srate; //sample rate to config
+
+floor(width) != floor(gmem[cWidth]) || floor(length) != floor(gmem[cLen]) || gmem[cPeakSec] != peakSec ? (
+  length = gmem[cLen]; //get record length
+  width = gmem[cWidth]; //get display width in pixels
+  peakSec = width/length; //set peaks per second to display width pixels/record length in seconds
+  gmem[cPeakSec] = peakSec;
+  pS = ceil(peakSec*s/srate);
+  peakSize = srate/peakSec; //number of samples per peak
+  i=j=k=0;
+  s0Maxt=s0Mint=s1Maxt=s1Mint=0; //reset max and min peaks
+  while(i < width) (
+    j = 0;
+    while(j < peakSize) (
+      k = floor(i * peakSize + j);
+      l[k] > s0Maxt ? s0Maxt = l[k];
+      l[k] < s0Mint ? s0Mint = l[k];
+      r[k] > s1Maxt ? s1Maxt = r[k];
+      r[k] < s1Mint ? s1Mint = r[k];
+      j+=1;
+    );
+    gmem[pLMax+i] = s0Maxt; //store peak values in gmem
+    gmem[pLMin+i] = s0Mint;
+    gmem[pRMax+i] = s1Maxt;
+    gmem[pRMin+i] = s1Mint;
+    s0Maxt = 0; //reset max and min peaks
+    s0Mint = 0;
+    s1Maxt = 0;
+    s1Mint = 0;
+    i+=1;
+  );
+);
+size = srate * length; //number of samples
+zPeakSize = srate/zPeakSec; //number of samples per zoom peak
+xPeakSize = srate/xPeakSec; //number of samples per zoom peak
+gmem[cPeak] = pS; //set current peak
+
+@sample
+gmem[check] = 1;
+
+spl0 == 0 && spl1 == 0 ? z0+=1 : z0 = 0;
+
+z0 < srate/4 ? ( //stop recording if nothing for a bit
+
+  l[s] = spl0;
+  l[s+size] = spl0;
+  r[s] = spl1;
+  r[s+size] = spl1;
+
+  s+=1; //advance sample counter forward
+
+  spl0 > s0Max ? s0Max = spl0;
+  spl0 < s0Min ? s0Min = spl0;
+  spl1 > s1Max ? s1Max = spl1;
+  spl1 < s1Min ? s1Min = spl1;
+  p+=1;
+  p >= peakSize ? (
+    gmem[pLMax+pS] = s0Max; //store peak values in gmem
+    gmem[pLMin+pS] = s0Min;
+    gmem[pRMax+pS] = s1Max;
+    gmem[pRMin+pS] = s1Min;
+    
+    s0Min=s1Min=1; //reset max and min peaks
+    s0Max=s1Max=-1;
+    pS+=1; //advance peak slot counter
+    
+    p=p-peakSize; //reset peak counter
+  );
+
+  spl0 > z0Max ? z0Max = spl0;
+  spl0 < z0Min ? z0Min = spl0;
+  spl1 > z1Max ? z1Max = spl1;
+  spl1 < z1Min ? z1Min = spl1;
+  zP+=1;
+  zP >= zPeakSize ? (
+    gmem[zLMax+zPs] = z0Max; //store peak values in gmem
+    gmem[zLMin+zPs] = z0Min;
+    gmem[zRMax+zPs] = z1Max;
+    gmem[zRMin+zPs] = z1Min;
+    z0Min=z1Min=1; //reset max and min peaks
+    z0Max=z1Max=-1;
+    zPs+=1; //advance peak slot counter
+    zP=zP-zPeakSize; //reset peak counter
+    gmem[cPeakPct] = s/size;
+  );
+
+  spl0 > x0Max ? x0Max = spl0;
+  spl0 < x0Min ? x0Min = spl0;
+  spl1 > x1Max ? x1Max = spl1;
+  spl1 < x1Min ? x1Min = spl1;
+
+  xP+=1;
+  xP >= xPeakSize ? (
+    gmem[xLMax+xPs] = x0Max; //store peak values in gmem
+    gmem[xLMin+xPs] = x0Min;
+    gmem[xRMax+xPs] = x1Max;
+    gmem[xRMin+xPs] = x1Min;
+    gLMax[gS] = x0Max; //store peak values in table
+    gLMin[gS] = x0Min;
+    gRMax[gS] = x1Max;
+    gRMin[gS] = x1Min;
+    gS < 50000 ? gS+=1 : gS = 0;
+    gSlast = gS;
+    x0Min=x1Min=1; //reset max and min peaks
+    x0Max=x1Max=-1;
+    xPs+=1; //advance peak slot counter
+    xP=xP-xPeakSize; //reset peak counter
+  );
+
+  s >= size ? (
+    s = 0; //reset sample counter
+    pS = 0; //reset peak slot counter
+    zPs = 0; //reset zoom peak slot counter
+    xPs = 0;
+  );
+) : (
+  gS=0;
+);
+
+gmem[pbStart] == 1 ? (
+  gmem[pbStart] = 0;
+  playbackPos = gmem[pbPos];
+  fadeIn = fadeTime; // 0.1 second fade in
+  fadeOut = fadeTime;
+  startFadeOut = 0;
+);
+gmem[pbStart] == 2 ? (
+  startFadeOut = 1;
+  gmem[pbStart] = 0;
+);
+
+playbackPos >= 0 ? (
+  playbackPos >= size ? playbackPos = 0;
+  startFadeOut > 0 ? fadeOut -= 1;
+  spl0 += l[playbackPos] * ((fadeOut - fadeIn)/fadeTime);
+  spl1 += r[playbackPos] * ((fadeOut - fadeIn)/fadeTime);
+  fadeIn > 0 ? fadeIn -= 1;
+  gmem[pbPos] = playbackPos;
+  fadeOut > 0 ? (
+    playbackPos+=1;
+  ):(
+    playbackPos = -1;
+    startFadeOut = 0;
+  );
+);

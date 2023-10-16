@@ -1,0 +1,230 @@
+//@noindex
+function SetSnapOffset(item, take, window)
+local(itemLen, fadeIn, fadeOut, peak, peakTime, accessor, src, numch, rate, size, buffer, buffer_com, read_pos, sum_com, n_blocks, read_pos, i)
+(
+    itemLen = GetMediaItemInfo_Value(item, "D_LENGTH");
+    fadeIn = GetMediaItemInfo_Value(item, "D_FADEINLEN");
+    fadeOut = GetMediaItemInfo_Value(item, "D_FADEOUTLEN");
+    peak = 0;
+    peakTime = 0;
+    accessor = CreateTakeAudioAccessor(take);
+    src = GetMediaItemTake_Source(take);
+    numch = min(GetMediaSourceNumChannels(src), 2); //multichannel not supported for now
+    rate = GetMediaSourceSampleRate(src);
+    size = ceil(window*rate);
+    n_blocks = ceil((itemLen-fadeOut-fadeIn)/window);
+    read_pos = fadeIn;
+    buffer = 1000000;
+    buffer_com = 3000000;
+
+
+    loop(n_blocks,
+        //buffer = new_array(size*2);
+        //buffer_com = new_array(size*2);
+        GetAudioAccessorSamples(
+            accessor, //AudioAccessor
+            rate, //samplerate
+            numch, //numchannels
+            read_pos, //starttime_sec
+            size, //numsamplesperchannel
+            buffer); //samplebuffer
+
+        //merge buffers by duplicating sum/2
+        i = 1;
+        loop(size,
+            buffer_com[i] = (buffer[i] + buffer[i+1])/numch;
+            buffer_com[i+1] = 0;
+            i+=numch;
+        );
+
+        sum_com = 0;
+        i = 1;
+        loop(size*numch,
+            sum_com += abs(buffer_com[i]);
+            i+=numch;
+        );
+        sum_com > peak ? (
+            peak = sum_com;
+            peakTime = read_pos;
+        );
+        read_pos += window;
+    );
+
+    DestroyAudioAccessor(accessor);
+    SetMediaItemInfo_Value(item, "D_SNAPOFFSET", peakTime + (window/2));
+);
+
+function RemoveSilence(item, take, window)
+local(itemLen, itemPos, splitStart, splitEnd, splits, n_splits, splitItem, silence, track, peak, peakTime, accessor, src, numch, rate, size, buffer, buffer_com, read_pos, sum_com, n_blocks, read_pos, i)
+(
+    itemLen = GetMediaItemInfo_Value(item, "D_LENGTH");
+    itemPos = GetMediaItemInfo_Value(item, "D_POSITION");
+    peak = 0;
+    peakTime = 0;
+    accessor = CreateTakeAudioAccessor(take);
+    src = GetMediaItemTake_Source(take);
+    numch = min(GetMediaSourceNumChannels(src), 2); //multichannel not supported for now
+    rate = GetMediaSourceSampleRate(src);
+    size = ceil(window*rate);
+    n_blocks = ceil((itemLen)/window);
+    read_pos = fadeIn;
+    buffer = 1000000;
+    buffer_com = 3000000;
+    splitStart = 0;
+    splitEnd = 0;
+    splits = 2000;
+    n_splits = 0;
+    silence = 1;
+
+
+    loop(n_blocks,
+        //buffer = new_array(size*2);
+        //buffer_com = new_array(size*2);
+        GetAudioAccessorSamples(
+            accessor, //AudioAccessor
+            rate, //samplerate
+            numch, //numchannels
+            read_pos, //starttime_sec
+            size, //numsamplesperchannel
+            buffer); //samplebuffer
+
+        //merge buffers by duplicating sum/2
+        i = 1;
+        loop(size,
+            buffer_com[i] = (buffer[i] + buffer[i+1])/numch;
+            buffer_com[i+1] = 0;
+            i+=numch;
+        );
+
+        sum_com = 0;
+        i = 1;
+        loop(size*numch,
+            sum_com += abs(buffer_com[i]);
+            i+=numch;
+        );
+        
+        sum_com < 0.02 ? ( //silence threshold here
+            !silence ? (
+                splitEnd = read_pos;
+                splits[n_splits] = itemPos+splitStart;
+                splits[n_splits+1] = itemPos+splitEnd;
+                n_splits += 2;
+                silence = 1;
+            );
+        ) : (
+            silence ? (
+                splitStart = read_pos;
+                silence = 0;
+            );
+        );
+        read_pos += window;
+    );
+    !silence ? (
+        splits[n_splits] = itemPos+splitStart;
+        splits[n_splits+1] = itemPos+itemLen;
+        n_splits += 2;
+    );
+    DestroyAudioAccessor(accessor);
+    i=0;
+    track = GetMediaItem_Track(item);
+    prevItem = 0;
+    loop(n_splits/2,
+        //sprintf(str, "%f",splits[i+1]);
+        //ShowConsoleMsg(str);
+        //ShowConsoleMsg("\n");
+        prevItem ? (
+            prevItemStart + 0.00000001 < splits[i] ? (
+                item = SplitMediaItem(prevItem, splits[i]);
+                DeleteTrackMediaItem(track, prevItem);
+            ) : (
+                item = prevItem;
+            );
+        );
+        i == 0 && splits[i] > itemPos ? (
+            splitItem = SplitMediaItem(item, splits[i]);
+            DeleteTrackMediaItem(track, item);
+            item = splitItem;
+        );
+        i < n_splits - 2 ? (
+            prevItem = SplitMediaItem(item, splits[i+1]);
+            prevItemStart = splits[i+1];
+        ) : (
+            SetMediaItemInfo_Value(item, "D_LENGTH", splits[i+1]-splits[i]);
+        );
+        i+=2;
+    );
+);
+
+
+function IsFolderItem(item)
+local(x, found)
+(
+    GetItemStateChunk(item, x, 0);
+    match("*SOURCE EMPTY*", x) == 1 ? (
+        found = 1
+    ) : (
+        found = 0
+    );
+    found;
+);
+
+function Main()
+(
+    itemCount = CountSelectedMediaItems(0);
+    i = 0;
+    loop(itemCount,
+        item = GetSelectedMediaItem(0, i);
+        i+=1;
+        take = GetActiveTake(item);
+        !IsFolderItem(item) ? (
+            !TakeIsMIDI(take) ? (
+                RemoveSilence(item, take, 0.05);
+            );
+        );
+    );
+);
+
+
+GetExtState(#retval, "nvk_AUTODOPPLER", "resetSnapOffsets");
+!strcmp(#retval, "1") ? (resetSnapOffsets = 1;) : (resetSnapOffsets = 0;);
+
+GetExtState(#retval, "nvk_AUTODOPPLER", "audioSplit");
+!strcmp(#retval, "1") ? (audioSplit = 1;) : (audioSplit = 0;);
+
+
+function IsFolderItem(item)
+local(x, found)
+(
+    GetItemStateChunk(item, x, 0);
+    match("*SOURCE EMPTY*", x) == 1 ? (
+        found = 1
+    ) : (
+        found = 0
+    );
+    found;
+);
+
+function Main()
+(
+    itemCount = CountSelectedMediaItems(0);
+    i = 0;
+    loop(itemCount,
+        item = GetSelectedMediaItem(0, i);
+        i+=1;
+        take = GetActiveTake(item);
+        !IsFolderItem(item) && !TakeIsMIDI(take) ? (
+            audioSplit ? (
+                RemoveSilence(item, take, 0.2);
+            ) : (
+                (GetMediaItemInfo_Value(item, "D_SNAPOFFSET") == 0 || resetSnapOffsets) ? (SetSnapOffset(item, take, 0.05););
+            );
+        );
+    );
+);
+
+PreventUIRefresh(1);
+Undo_BeginBlock();
+Main();
+UpdateArrange();
+Undo_EndBlock("Add snap offsets at rms peak of selected items", -1);
+PreventUIRefresh(-1);

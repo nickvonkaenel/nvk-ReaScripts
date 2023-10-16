@@ -1,0 +1,25 @@
+-- @description nvk_ITEMS
+-- @author nvk
+-- @version 1.3
+-- @changelog
+--   1.3 Various new scripts
+--   1.2 Adding some new scripts
+--   1.1.2 Fixing issue with toggle mute smart script
+--   1.1.1 New fade curve script
+--   1.1.0 New fade curve scripts
+--   1.0.4 New mute script
+--   1.0.3 Fixing bug with reposition items if non-number values are entered
+--   1.0.2 New script: Select all items before selected items
+--   1.0.1 Fixing bug in 'nvk_ITEMS - Move cursor to next/previous transient', adding option to skip item ends
+-- @link
+--   Store Page https://gumroad.com/nvktools
+-- @screenshot https://reapleton.com/images/nvk_basics.gif
+-- @about
+--   # nvk_ITEMS
+--
+--   nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with items for game audio and sound design.
+-- @provides
+--  Data/*.dat
+--  [main] *.lua
+
+reaper.ShowMessageBox("nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with items for game audio and sound design.", "nvk_ITEMS", 0)

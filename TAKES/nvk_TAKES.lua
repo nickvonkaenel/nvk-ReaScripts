@@ -1,0 +1,35 @@
+-- @description nvk_TAKES
+-- @author nvk
+-- @version 1.2.4
+-- @changelog
+--   1.2.4 Minor fixes and script variations
+--   1.2.3 Add take markers to all variations in selected items takes
+--   1.2.2 Select random take SMART, licensing improvements
+--   1.2.1 Licensing improvements
+--   1.2.0 Compatibility with nvk_CREATE
+--   1.1.1 Duplicate items and select next take now adds more space
+--   1.1.0 Improvements to take marker next/previous scripts with snap offsets
+--   1.0.8 New named take marker script
+--   1.0.7 More licensing improvements
+--   1.0.6 Better handling of empty takes
+--   1.0.5 Licensing improvements
+--   1.0.4 Minor fixes
+--   1.0.3 Renaming toggle width fx, adding script to automatically save last touched parameter as fx to use width width fx script so you don't have to set it manually and your settings won't be overriden with updates.
+--   1.0.2 Fixing spelling of toggle width fx; now it clears track width envelope instead of toggling
+--   1.0.1 Fix for empty items when selecting takes
+-- @link
+--   Store Page https://gum.co/nvk_WORKFLOW
+-- @screenshot https://reapleton.com/images/nvk_workflow.gif
+-- @about
+--   # nvk_TAKES
+--
+--   nvk_TAKES is a collection of scripts designed to improve Reaper workflows using takes, especially when making variations for game audio and sound design. Automatically embed take markers which can be used to easily shuffle through variations in files that contain more than one variation with a single keystroke. Available for purchase at https://gum.co/nvk_WORKFLOW
+-- @provides
+--  Data/*.dat
+--  [main] *.lua
+--  [main] *.eel
+-- SETUP --
+isDefer = true
+function GetPath(a,b)if not b then b=".dat"end;local c=scrPath.."Data"..sep..a..b;return c end;OS=reaper.GetOS()sep=OS:match"Win"and"\\"or"/"scrPath,scrName=({reaper.get_action_context()})[2]:match"(.-)([^/\\]+).lua$"loadfile(GetPath"functions")()if not functionsLoaded then return end
+-- SCRIPT --
+

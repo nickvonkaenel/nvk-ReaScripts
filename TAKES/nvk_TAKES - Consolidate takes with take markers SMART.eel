@@ -1,0 +1,221 @@
+// @noindex
+// -- Settings ---------------
+Retrig_sec = 0.5;
+AboveSilenceTime_sec = 0.01;
+BelowSilenceTime_sec = 0.18;
+SilenceThreshold_dB = -40;
+SoundThreshold_dB = -25;
+FadeIn_sec = 0.01;
+FadeOut_sec = 0.3;
+LeadingPad_sec = 0.01;
+TrailingPad_sec = 0.1;
+MaxLength = 1000;
+
+// -- Script -------------------------------------------------------------------------------------------------------------
+function ConsolidateToTakeMarkers(item, take, Retrig_sec, AboveSilenceTime_sec, BelowSilenceTime_sec, SilenceThreshold_dB, SoundThreshold_dB, FadeIn_sec, FadeOut_sec, LeadingPad_sec, TrailingPad_sec, MaxLength, isActiveTake)
+local(SilenceThreshold, AboveSilenceTime, BelowSilenceTime, peakSensitivity, Retrig,
+    take, item_len, item_len_smpls,
+    AA, starttime_sec, samplebuffer, n_blocks, input, smpl, mrk_pos, retrig_cnt, start_pos, end_pos, aboveSilenceCount, belowSilenceCount, setPeak, idx, maxPeak, str, source, sourceLen, srate, initItemLen, lastBlock, samples, blockCount)
+(      
+    //-- item, take data ------------------------------
+    playrate  = GetMediaItemTakeInfo_Value(take, "D_PLAYRATE"); // get orig playrate
+    SetMediaItemTakeInfo_Value(take, "D_PLAYRATE", 1);          // set playrate = 1
+    source = GetMediaItemTake_Source(take);
+    sourceLen = GetMediaSourceLength(source, 0);
+    srate = GetMediaSourceSampleRate(source);
+    initItemLen = GetMediaItemInfo_Value(item, "D_LENGTH");
+    SetMediaItemLength(item, sourceLen, 0);
+    SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", 0);
+    item_len = sourceLen;
+    item_len_smpls = floor(item_len*srate);
+    //-------------------------------------------------
+    SilenceThreshold = 10^(SilenceThreshold_dB/20);
+    SoundThreshold = 10^(SoundThreshold_dB/20);
+    AboveSilenceTime = floor(AboveSilenceTime_sec*srate);
+    BelowSilenceTime = floor(BelowSilenceTime_sec*srate);
+
+    
+    AA = CreateTakeAudioAccessor(take);
+    starttime_sec = 0;
+    samplebuffer = 0;
+    n_blocks = ceil(item_len_smpls/65536);
+    lastBlock = item_len_smpls % 65536;
+
+    idx = 0;
+    maxPeak = 0;
+    aboveSilenceCount = 0;
+    belowSilenceCount = 0;
+    setPeak = 0;
+    peakSensitivity = 0;
+    start_pos = 0;
+    end_pos = item_len;
+    Retrig = 0;
+    blockCount = 0;
+    
+    // -- Detect Transients --------------------------------
+    loop(n_blocks,
+        blockCount+=1;
+        blockCount < n_blocks ? (
+            samples = 65536;
+        ) : (
+            samples = lastBlock;
+        );
+        GetAudioAccessorSamples(AA, srate, 1, starttime_sec, samples, samplebuffer);
+        smpl=0;
+        loop(samples,
+            input = abs(samplebuffer[smpl]); // abs sample value(abs envelope)
+
+            input > maxPeak + PeakSensitivity ? (
+                maxPeak = input;
+                mrk_pos = starttime_sec + smpl/srate;
+                peakSensitivity = input*2;
+            );
+
+            input > SoundThreshold ? (
+                start_pos == 0 ? (
+                    start_pos = starttime_sec + smpl/srate;
+                );
+                SoundThreshold/input > 4 ? aboveSilenceCount+=1;
+                aboveSilenceCount+=1;
+                aboveSilenceCount > AboveSilenceTime ? (
+                    setPeak = 1;
+                    aboveSilenceCount = 0;
+                    belowSilenceCount = 0;
+                    
+                );
+                ) : (
+                input < SilenceThreshold ? (
+                    belowSilenceCount+=1;
+                    belowSilenceCount > BelowSilenceTime ? (
+                        setPeak == 1 && retrig_cnt > Retrig ? (
+                            sprintf(str,"%i", idx+1);
+                            SetTakeMarker(take, idx, str, mrk_pos, colorIn);
+                            idx == 0 ? (
+                                Retrig = floor(Retrig_sec*srate);
+                                snapOffset = mrk_pos;
+                            );
+                            idx+=1;
+                            setPeak = 0;
+                            retrig_cnt = -1;
+                            maxPeak = 0;
+                            peakSensitivity = 0;
+                            end_pos == item_len ? (
+                                end_pos = starttime_sec + smpl/srate;
+                            );
+                        );
+                        aboveSilenceCount = 0;
+                        belowSilenceCount = 0;
+                    );
+                );
+            );
+            retrig_cnt+=1;
+            smpl+=1; 
+        );
+        starttime_sec+=samples/srate; // To next block
+    );
+
+    //sprintf(str, "%f",maxPeak);
+    //ShowConsoleMsg(str);
+    DestroyAudioAccessor(AA);
+    idx == 0 ? (
+        sprintf(str,"%i", idx+1);
+        SetTakeMarker(take, idx, str, mrk_pos, colorIn);
+        snapOffset = mrk_pos;
+    );
+    startoffs = max(0, start_pos - LeadingPad_sec);
+    SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", startoffs);
+    SetMediaItemTakeInfo_Value(take, "D_PLAYRATE", playrate); // restore orig playrate
+
+    isActiveTake == 1 ? (
+        newLen = (end_pos + TrailingPad_sec - startoffs);
+        newLen > (item_len - startoffs) ? (
+            SetMediaItemInfo_Value(item, "D_FADEOUTLEN", 0);
+            SetMediaItemLength(item, min((item_len - startoffs)/playrate, MaxLength), 0);
+            ) : (
+            SetMediaItemInfo_Value(item, "D_FADEOUTLEN", FadeOut_sec);
+            SetMediaItemLength(item, min(newLen/playrate, MaxLength), 0);
+            );
+        startoffs > 0 ? (
+            SetMediaItemInfo_Value(item, "D_FADEINLEN", FadeIn_sec);
+        ) : (
+            SetMediaItemInfo_Value(item, "D_FADEINLEN", 0);
+        );
+        SetMediaItemInfo_Value(item, "D_SNAPOFFSET", (snapOffset - startoffs)/playrate);
+    ) : (
+        SetMediaItemLength(item, initItemLen, 0)
+    );
+    
+    UpdateTimeline();
+    );
+
+
+function IsFolderItem(item)
+local(x, found)
+(
+    GetItemStateChunk(item, x, 0);
+    match("*SOURCE EMPTY*", x) == 1 ? (
+        found = 1
+    ) : (
+        found = 0
+    );
+    found;
+);
+
+
+function SaveSelectedItems()
+(
+    i = 0;
+    itemTable = 7000000; //you must set table to buffer in memory
+    itemCount = CountSelectedMediaItems(0);
+    loop(itemCount,
+        selectedItem = GetSelectedMediaItem(0, i);
+        itemTable[i] = selectedItem;
+        i += 1;
+    );
+    itemTable;
+);
+
+function Main()
+(
+    itemCount = CountSelectedMediaItems(0);
+    items = SaveSelectedItems();
+    i = 0;
+    loop(itemCount,
+        item = items[i];
+        IsFolderItem(item) == 0 ? (
+            Main_OnCommand(40289, 0); //unselect all items
+            SetMediaItemSelected(item, 1);
+            takeCount = CountTakes(item);
+            activeTake = GetActiveTake(item);
+            j = 0;
+            loop(takeCount,
+                take = GetTake(item, j);
+                SetActiveTake(take);
+                Main_OnCommand(42387, 0); //delete take markers
+                take == activeTake ? (isActiveTake = 1;) : (isActiveTake = 0;);
+                ConsolidateToTakeMarkers(item, take, Retrig_sec, AboveSilenceTime_sec, BelowSilenceTime_sec, SilenceThreshold_dB, SoundThreshold_dB, FadeIn_sec, FadeOut_sec, LeadingPad_sec, TrailingPad_sec, MaxLength, isActiveTake); 
+                j+=1;
+            );
+            SetActiveTake(activeTake);
+        );
+        i+=1;
+    );
+    i = 0;
+    loop(itemCount,
+        SetMediaItemSelected(items[i], 1);
+        i += 1;
+    );
+    Main_OnCommand(40543, 0); //Take: Implode items on same track into takes
+);
+
+PreventUIRefresh(1);
+Undo_BeginBlock();
+Main();
+UpdateArrange();
+Undo_EndBlock("Consolidate Takes", -1);
+PreventUIRefresh(-1);
+
+
+
+
+
