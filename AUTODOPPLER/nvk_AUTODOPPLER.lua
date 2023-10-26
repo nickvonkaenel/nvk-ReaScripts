@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.0.11
+Version: 2.1.0
 About:
   # nvk_AUTODOPPLER
 

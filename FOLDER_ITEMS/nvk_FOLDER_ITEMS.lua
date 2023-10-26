@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.0.24
+Version: 2.0.25
 About:
   # nvk_FOLDER_ITEMS
 
@@ -9,6 +9,13 @@ Author: nvk
 Links:
   Store Page https://gum.co/nvk_WORKFLOW
   User Guide https://nvk.tools/doc/nvk_workflow
+Changelog:
+  2.0.25
+    - Fixed: item colors not changing region colors properly in certain situations
+    - Fixed: crash when adding new items to a folder track with certain region color settings
+    - Fixed: grouping items not working properly with the the new "hidden" track setting in reaper 7
+    - Fixed: unable to select regions in region render matrix with certain region color settings
+    - Added: Add new items to existing folder (was hoping to remove this script but it's still useful for some users apparently)
 Provides:
   **/*.dat
   **/*.otf
