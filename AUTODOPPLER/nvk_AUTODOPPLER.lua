@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.1.0
+Version: 2.1.1
 About:
   # nvk_AUTODOPPLER
 
@@ -14,6 +14,12 @@ Links:
   Store Page https://gum.co/nvk_AUTODOPPLER
   User Guide https://reapleton.com/doc/nvk_autodoppler
   Screenshot https://reapleton.com/images/nvk_autodoppler.gif
+Changelog:
+  2.1.1
+    - Fixed: Backwards compatibility with older versions of GRM Doppler
+  2.1.0
+    + Update to UI - rounder, cleaner, more icons
+    - Fixed: Crash when adding FX that aren't found
 Provides:
   **/*.dat
   **/*.otf
