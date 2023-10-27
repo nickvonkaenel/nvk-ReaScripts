@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.1.1
+Version: 2.1.2
 About:
   # nvk_AUTODOPPLER
 
@@ -15,6 +15,8 @@ Links:
   User Guide https://reapleton.com/doc/nvk_autodoppler
   Screenshot https://reapleton.com/images/nvk_autodoppler.gif
 Changelog:
+  2.1.2
+    + UI tweaks
   2.1.1
     - Fixed: Backwards compatibility with older versions of GRM Doppler
   2.1.0
