@@ -8,39 +8,46 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 --------------SCRIPT-----------------
+
+local function cleanup(items, tracks, initCursorPos)
+    r.SetEditCurPos(initCursorPos, false, false)
+    RestoreSelectedItems(items)
+    RestoreSelectedTracks(tracks)
+end
+
 function Main()
-    initCursorPos = reaper.GetCursorPosition()
-    tracks = SaveSelectedTracks()
-    items = SaveSelectedItems()
-    reaper.Main_OnCommand(40513, 0) -- move edit cursor to mouse cursor
-    reaper.Main_OnCommand(41110, 0) -- select track under mouse
-    reaper.Main_OnCommand(40289, 0) -- unselect all items
-    cursorPos = reaper.GetCursorPosition()
-    local item = GetItemUnderMouseCursor()
-    if item then
-        reaper.SetMediaItemSelected(item, true)
+    local initCursorPos = r.GetCursorPosition()
+    local tracks = SaveSelectedTracks()
+    local items = SaveSelectedItems()
+    r.Main_OnCommand(40513, 0) -- move edit cursor to mouse cursor
+    r.Main_OnCommand(41110, 0) -- select track under mouse
+    r.Main_OnCommand(40289, 0) -- unselect all items
+    local cursorPos = r.GetCursorPosition()
+    local initItem = GetItemUnderMouseCursor()
+    if initItem then
+        r.SetMediaItemSelected(initItem, true)
     else
-        startTime, endTime = reaper.BR_GetArrangeView(0)
+        local startTime, endTime = r.BR_GetArrangeView(0)
         MoveEditCursorToPreviousItemEdgeAndSelect()
-        newStartTime, newEndTime = reaper.BR_GetArrangeView(0)
-        if newStartTime ~= startTime or reaper.CountSelectedMediaItems(0) == 0 then
-            reaper.BR_SetArrangeView(0, startTime, endTime)
-            goto RESTORE
+        local newStartTime, newEndTime = r.BR_GetArrangeView(0)
+        if startTime and (newStartTime ~= startTime or r.CountSelectedMediaItems(0) == 0) then
+            r.BR_SetArrangeView(0, startTime, endTime)
+            return cleanup(items, tracks, initCursorPos)
         else
-            item = reaper.GetSelectedMediaItem(0, 0)
+            initItem = r.GetSelectedMediaItem(0, 0)
         end
     end
-    groupSelect(item, cursorPos)
+    groupSelect(initItem, cursorPos)
     items = SaveSelectedItems()
-    initEnd = 0
-    initPos = math.huge
+    local initEnd = 0
+    local initPos = math.huge
     for i, item in ipairs(items) do
         if i > 1 then
-            muted = reaper.GetMediaItemInfo_Value(item, "B_MUTE")
+            local muted = r.GetMediaItemInfo_Value(item, "B_MUTE")
             if muted == 0 then
-                itemPos = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
-                itemLength = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
-                itemEnd = itemPos + itemLength
+                local itemPos = r.GetMediaItemInfo_Value(item, "D_POSITION")
+                local itemLength = r.GetMediaItemInfo_Value(item, "D_LENGTH")
+                local itemEnd = itemPos + itemLength
                 if itemEnd > initEnd then
                     initEnd = itemEnd
                 end
@@ -51,100 +58,73 @@ function Main()
         end
     end
     if initPos == math.huge then
-        initPos = reaper.GetMediaItemInfo_Value(items[1], "D_POSITION")
-        initEnd = initPos + reaper.GetMediaItemInfo_Value(items[1], "D_LENGTH")
+        initPos = r.GetMediaItemInfo_Value(items[1], "D_POSITION")
+        initEnd = initPos + r.GetMediaItemInfo_Value(items[1], "D_LENGTH")
     end
     if initPos >= cursorPos then
-        goto RESTORE
+        return cleanup(items, tracks, initCursorPos)
     end
-    initDiff = initEnd - cursorPos
-    reaper.SetEditCurPos(cursorPos, 0, 0)
+    local initDiff = initEnd - cursorPos
+    r.SetEditCurPos(cursorPos, false, false)
     for i, item in ipairs(items) do
-        reaper.SelectAllMediaItems(0, false)
-        reaper.SetMediaItemSelected(item, true)
-        itemPos = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
-        itemLength = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
-        itemEnd = itemPos + itemLength
-        itemFadeIn = reaper.GetMediaItemInfo_Value(item, "D_FADEINLEN")
-        itemFadeOut = reaper.GetMediaItemInfo_Value(item, "D_FADEOUTLEN")
-        diff = itemEnd - cursorPos
-        newFadeOut = itemFadeOut - diff
+        r.SelectAllMediaItems(0, false)
+        r.SetMediaItemSelected(item, true)
+        local itemPos = r.GetMediaItemInfo_Value(item, "D_POSITION")
+        local itemLength = r.GetMediaItemInfo_Value(item, "D_LENGTH")
+        local itemEnd = itemPos + itemLength
+        local itemFadeIn = r.GetMediaItemInfo_Value(item, "D_FADEINLEN")
+        local itemFadeOut = r.GetMediaItemInfo_Value(item, "D_FADEOUTLEN")
+        local diff = itemEnd - cursorPos
+        local newFadeOut = itemFadeOut - diff
         if newFadeOut < 0 then
             newFadeOut = defaultFadeLen
         end
 
-        note = reaper.ULT_GetMediaItemNote(item)
+        local note = r.ULT_GetMediaItemNote(item)
 
-        --[[		
- 		ratio = tonumber(note)
-
- 		if ratio then
- 			if ratio > 0 then
- 				itemVol = reaper.GetMediaItemInfo_Value(item, "D_VOL")
- 				reaper.SetMediaItemInfo_Value(item, "D_VOL", itemVol*ratio)
- 				reaper.ULT_SetMediaItemNote(item, "")
- 			end
- 		end
-    ]]
         if i > 1 and itemPos >= cursorPos then
-            reaper.SetMediaItemInfo_Value(item, "B_MUTE", 1)
-            reaper.ULT_SetMediaItemNote(item, "automuted")
+            r.SetMediaItemInfo_Value(item, "B_MUTE", 1)
+            r.ULT_SetMediaItemNote(item, "automuted")
         else
             if i > 1 and note == "automuted" and itemPos < cursorPos then
-                reaper.SetMediaItemInfo_Value(item, "B_MUTE", 0)
-                reaper.ULT_SetMediaItemNote(item, "")
+                r.SetMediaItemInfo_Value(item, "B_MUTE", 0)
+                r.ULT_SetMediaItemNote(item, "")
             end
 
             if diff >= initDiff - 0.0001 or diff > 0 or (#items > 1 and i == 1) then
-                reaper.Main_OnCommand(41311, 0) -- trim/untrim right edge
+                -- r.Main_OnCommand(41311, 0) -- trim/untrim right edge -- doesn't work now with hidden tracks
+                r.SetMediaItemLength(item, itemLength - diff, false)
                 TrimVolumeAutomationItem(item)
                 if keepFadeOutTimeWhenExtending and diff < 0 or keepFadeOutTimeAlways then
                     if relativeFadeTime then
-                        newItemLength = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
+                        local newItemLength = r.GetMediaItemInfo_Value(item, "D_LENGTH")
                         if itemFadeIn > defaultFadeLen then
-                            reaper.SetMediaItemInfo_Value(item, "D_FADEINLEN", itemFadeIn * (newItemLength / itemLength))
+                            r.SetMediaItemInfo_Value(item, "D_FADEINLEN", itemFadeIn * (newItemLength / itemLength))
                         end
                         if itemFadeOut > defaultFadeLen then
-                            reaper.SetMediaItemInfo_Value(item, "D_FADEOUTLEN",
+                            r.SetMediaItemInfo_Value(item, "D_FADEOUTLEN",
                                 itemFadeOut * (newItemLength / itemLength))
                         end
                     end
                 else
                     if itemFadeOut > defaultFadeLen then
-                        reaper.SetMediaItemInfo_Value(item, "D_FADEOUTLEN", newFadeOut)
+                        r.SetMediaItemInfo_Value(item, "D_FADEOUTLEN", newFadeOut)
                     end
                 end
-                itemFadeOut = reaper.GetMediaItemInfo_Value(item, "D_FADEOUTLEN")
-                itemLength = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
-                --[[
- 				if i > 1 and itemFadeOut > itemLength and itemPos > initPos then
- 					ratio = itemFadeOut/itemLength
- 					--volumeOffset = -6 * math.log(ratio)/math.log(2) --i did math before finding out it's completely unnecessary yay
- 					itemVol = reaper.GetMediaItemInfo_Value(item, "D_VOL")
- 					reaper.SetMediaItemInfo_Value(item, "D_VOL", itemVol/ratio)
- 					reaper.ULT_SetMediaItemNote(item, tostring(ratio))
- 				else
- 					reaper.ULT_SetMediaItemNote(item, "")
- 				end
-        ]]
+                itemFadeOut = r.GetMediaItemInfo_Value(item, "D_FADEOUTLEN")
+                itemLength = r.GetMediaItemInfo_Value(item, "D_LENGTH")
             end
         end
         if (#items > 1 and i > 1) or (#items == 1 and not IsFolderItem(item)) then
             ConvertOverlappingFadesToVolumeAutomation()
         end
     end
-    ::RESTORE::
-    if groupingToggle then
-        reaper.Main_OnCommand(1156, 0)
-    end -- grouping override
-    reaper.SetEditCurPos(initCursorPos, 0, 0)
-    RestoreSelectedItems(items)
-    RestoreSelectedTracks(tracks)
+    return cleanup(items, tracks, initCursorPos)
 end
 
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
+r.Undo_BeginBlock()
+r.PreventUIRefresh(1)
 Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+r.UpdateArrange()
+r.PreventUIRefresh(-1)
+r.Undo_EndBlock(scr.name, -1)
