@@ -1,6 +1,6 @@
 -- @description nvk_SUBPROJECT
 -- @author nvk
--- @version 2.0.4
+-- @version 2.0.5
 -- @link
 --   Store Page https://gum.co/nvk_WORKFLOW
 --   User Guide https://reapleton.com/doc/nvk_workflow
@@ -98,7 +98,7 @@ function Main()
     reaper.Main_OnCommand(40182, 0) -- select all items
     reaper.Main_OnCommand(40033, 0) -- remove items from group
     local track = reaper.GetSelectedTrack(0, 0)
-    FixFolderItems()
+    FolderItems.Fix()
     local folderItems = GetFolderItemsFullName(track)
     if #folderItems > 0 then
         RemoveSubprojectMarkers()

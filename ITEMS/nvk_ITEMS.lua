@@ -1,7 +1,8 @@
 -- @description nvk_ITEMS
 -- @author nvk
--- @version 1.4
+-- @version 1.5
 -- @changelog
+--   1.5 Project marker to item notes script
 --   1.3 Various new scripts
 --   1.2 Adding some new scripts
 --   1.1.2 Fixing issue with toggle mute smart script

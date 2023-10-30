@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.1.3
+Version: 2.1.4
 About:
   # nvk_AUTODOPPLER
 
@@ -15,6 +15,9 @@ Links:
   User Guide https://reapleton.com/doc/nvk_autodoppler
   Screenshot https://reapleton.com/images/nvk_autodoppler.gif
 Changelog:
+  2.1.4
+    - Fixed: Crash when resetting settings on default tab
+    - Possible fix: crash when offset value is nil
   2.1.2
     + UI tweaks
   2.1.1

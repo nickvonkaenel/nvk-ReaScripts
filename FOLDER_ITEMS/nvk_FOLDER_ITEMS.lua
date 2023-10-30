@@ -1,28 +1,32 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.0.26
+Version: 2.0.27
 About:
-  # nvk_FOLDER_ITEMS
+    # nvk_FOLDER_ITEMS
 
-  nvk_FOLDER_ITEMS is a collection of scripts which are used for a quick and flexible workflow for managing and rendering assets using blank items created on folder tracks that act as regions for items.
+    nvk_FOLDER_ITEMS is a collection of scripts which are used for a quick and flexible workflow for managing and rendering assets using blank items created on folder tracks that act as regions for items.
 Author: nvk
 Links:
-  Store Page https://gum.co/nvk_WORKFLOW
-  User Guide https://nvk.tools/doc/nvk_workflow
+    Store Page https://gum.co/nvk_WORKFLOW
+    User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
-  2.0.26
-    - Fixed: Trim scripts not working properly with hidden tracks in Reaper 7
-  2.0.25
-    - Fixed: item colors not changing region colors properly in certain situations
-    - Fixed: crash when adding new items to a folder track with certain region color settings
-    - Fixed: grouping items not working properly with the the new "hidden" track setting in Reaper 7
-    - Fixed: unable to select regions in region render matrix with certain region color settings
-    - Added: Add new items to existing folder legacy script(was hoping to remove this script but it's still useful for some users)
+    2.0.27
+        + Improved: better handling of multiple numbers in item names
+        + Add new items to existing folder script now compatible with v2 user settings
+        - Fixed: Mouse modifier to toggle track visibility not grouping items properly with new "hidden" track setting
+    2.0.26
+        - Fixed: Trim scripts not working properly with hidden tracks in Reaper 7
+    2.0.25
+        - Fixed: item colors not changing region colors properly in certain situations
+        - Fixed: crash when adding new items to a folder track with certain region color settings
+        - Fixed: grouping items not working properly with the the new "hidden" track setting in Reaper 7
+        - Fixed: unable to select regions in region render matrix with certain region color settings
+        + Added: Add new items to existing folder no longer removed
 Provides:
-  **/*.dat
-  **/*.otf
-  [windows] Data/curl/*.*
-  [main] *.lua
+    **/*.dat
+    **/*.otf
+    [windows] Data/curl/*.*
+    [main] *.lua
 --]]
 -- SETUP --
 local is_new_value, filename, sectionID, cmdID, mode, resolution, val = reaper.get_action_context()
@@ -65,7 +69,7 @@ local function Main()
     local itemCount = r.CountSelectedMediaItems(0)
     if itemCount == 1 and context == 1 and autoSelect then -- if mouse down
         GroupSelectCheck(r.GetSelectedMediaItem(0, 0))
-    elseif projUpdate and mouseState == 0 then -- if mouse is not down
+    elseif projUpdate and mouseState == 0 then             -- if mouse is not down
         if autoSelect and context >= 0 then
             for i = 0, itemCount - 1 do
                 GroupSelectCheck(r.GetSelectedMediaItem(0, i))
@@ -99,6 +103,7 @@ else
         end
     end
     if not r.APIExists('CF_GetClipboard') then
-        r.ShowMessageBox('Please install the latest version of SWS Extension from:\nhttps://sws-extension.org/', scr.name, 0)
+        r.ShowMessageBox('Please install the latest version of SWS Extension from:\nhttps://sws-extension.org/', scr
+            .name, 0)
     end
 end

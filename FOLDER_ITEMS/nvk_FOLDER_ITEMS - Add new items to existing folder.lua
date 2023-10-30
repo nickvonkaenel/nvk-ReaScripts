@@ -110,7 +110,7 @@ function GetFolderItems(track) --overrides default function to do time selection
         ls = 0
         le = math.huge
         if itemsSelected then
-            ls = items[1][2] -- start of items
+            ls = items[1][2]      -- start of items
             -- start of items
             le = items[#items][3] -- end of items
             -- end of items
@@ -127,7 +127,7 @@ function GetFolderItems(track) --overrides default function to do time selection
                 local take = reaper.GetActiveTake(item)
                 local name = reaper.GetTakeName(take)
                 local name, doNum = FastNameFix(name)
-                table.insert(folderItems, {item, itemPos, itemEnd, name, doNum})
+                table.insert(folderItems, { item, itemPos, itemEnd, name, doNum })
             end
         end
     end
@@ -173,36 +173,47 @@ function Main()
     end
 end
 
--- function Main()
---     local items = Items()
---     local track
---     if #items > 0 then
---         local columns = Columns(items)
---         track = items[1].track.parent
---         -- track.sel = true
---     end
---     if track then
---         local columns = Track.GetChildrenColumns(track)
---         local track_folder_items = Track.GetFolderItems(track)
---         local name, name_id
---         for _, col in ipairs(columns) do
---             local folder_item = FolderItems.ColumnOverlap(track_folder_items, col)
---             if folder_item then
---                 name, name_id = FolderItem.NameFormat(folder_item.name, names)
---                 FolderItem.Create(track, col, disableAutoName and folder_item.name or name, folder_item)
---             else
---                 name, name_id = FolderItem.NameFormat(disableAutoName and ' ' or name, names)
---                 folder_item = FolderItem.Create(track, col, name)
---             end
---             markers_add(markers, name_id, name, col.s, col.e, folder_item.displaycolor)
---         end
---         for _, folder_item in ipairs(track_folder_items) do
---             r.DeleteTrackMediaItem(track.track, folder_item.item)
---         end
---         -- do stuff
---     end
--- end
-
+function Main()
+    r.Main_OnCommand(41110, 0) -- select track under mouse
+    local names = {}
+    local items = Items()
+    local track, columns
+    if #items > 0 then
+        columns = Columns(items)
+        if items[1].track.isparent then
+            track = items[1].track
+        elseif items[1].track.parent then
+            track = items[1].track.parent
+        else
+            return
+        end
+    else
+        track = Track(r.GetSelectedTrack(0, 0))
+        if not track or not track.isparent then return end
+        local ls, le = r.GetSet_LoopTimeRange(false, false, 0, 0, false)
+        if ls ~= le then
+            columns = Track.GetChildrenColumns(track, { s = ls, e = le })
+        else
+            columns = Track.GetChildrenColumns(track)
+        end
+    end
+    local track_folder_items = Track.GetFolderItems(track, columns)
+    local name, name_id -- name id not used since we aren't worry about markers
+    for _, col in ipairs(columns) do
+        local folder_item = FolderItems.ColumnOverlap(track_folder_items, col)
+        if folder_item then
+            name, name_id = FolderItem.NameFormat(folder_item.name, names)
+            FolderItem.Create(track, col, disableAutoName and folder_item.name or name, folder_item)
+        else
+            name, name_id = FolderItem.NameFormat(disableAutoName and ' ' or name, names)
+            folder_item = FolderItem.Create(track, col, name)
+        end
+    end
+    for _, folder_item in ipairs(track_folder_items) do
+        r.DeleteTrackMediaItem(track.track, folder_item.item)
+    end
+    -- need to group items if collapsed track
+end
 
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
@@ -210,4 +221,3 @@ Main()
 reaper.UpdateArrange()
 reaper.PreventUIRefresh(-1)
 reaper.Undo_EndBlock(scr.name, -1)
-
