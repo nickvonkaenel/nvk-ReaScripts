@@ -9,4 +9,4 @@ Developed by [nvk.tools](https://nvk.tools)
 Install [ReaPack](https://reapack.com)
 
 Copy and paste the following URL in Extensions > ReaPack > Import repositories...
-> nvk.tools/index.xml
+> https://nvk.tools/index.xml
