@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.0.27
+Version: 2.0.28
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.0.28
+        - Fixed: Trim scripts not working properly on takes with playrate changes
     2.0.27
         + Improved: better handling of multiple numbers in item names
         + Add new items to existing folder script now compatible with v2 user settings
