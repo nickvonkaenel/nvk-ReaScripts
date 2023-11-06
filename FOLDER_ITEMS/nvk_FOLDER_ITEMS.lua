@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.0.28
+Version: 2.1.0
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.1.0
+        + Reposition presets: create repositioning presets with the Reposition script and assign them to hotkeys with the preset scripts!
+    2.0.29
+        - Fixed: Incorrect display of leading zeros when switching tabs in folder items settings
     2.0.28
         - Fixed: Trim scripts not working properly on takes with playrate changes
     2.0.27
