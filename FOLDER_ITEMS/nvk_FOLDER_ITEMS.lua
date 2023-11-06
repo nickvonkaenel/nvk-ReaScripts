@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.1.1
+Version: 2.1.2
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.1.2
+        - Fixed: Renaming reposition presets bug
+    2.1.1
+        - Fixed: Crash when opening repositioning script the first time with items selected
     2.1.0
         + Reposition presets: create repositioning presets with the Reposition script and assign them to hotkeys with the preset scripts!
     2.0.29
