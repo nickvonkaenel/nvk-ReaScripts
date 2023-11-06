@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.1.0
+Version: 2.1.1
 About:
     # nvk_FOLDER_ITEMS
 
