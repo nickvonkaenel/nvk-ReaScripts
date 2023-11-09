@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.1.2
+Version: 2.2.0
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,12 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.2.0
+        + Numpad Enter now works as enter key for scripts with UI
+        - Fixed: Remove script not working with hidden tracks
+        + Can specify paths relative to the project location in copy directories
+        - Fixed: Deselect non-folder items not working properly with nvk_FOLDER_ITEMS.lua when used with a hotkey
+        + Replacing top-level folder items only settings with drop down (add setting to only create bottom-level folder items)
     2.1.2
         - Fixed: Renaming reposition presets bug
     2.1.1
@@ -61,8 +67,12 @@ local function Main()
     local mouseState = r.JS_Mouse_GetState(0x00000001)
     local projState = r.GetProjectStateChangeCount(0)
     if projState ~= prevProjState then
+        if r.HasExtState('nvk_FOLDER_ITEMS', 'projUpdateFreeze') then
+            r.DeleteExtState('nvk_FOLDER_ITEMS', 'projUpdateFreeze', true)
+        else
+            projUpdate = true
+        end
         prevProjState = projState
-        projUpdate = true
     end
     local curProj = r.EnumProjects(-1)
     local settingsChanged = r.HasExtState('nvk_FOLDER_ITEMS', 'settingsChanged')
@@ -92,7 +102,7 @@ local function Main()
                 ClearMarkers()
             end
         else
-            FolderItems.Fix()
+            FolderItems.Fix(true)
         end
         projUpdate = false
     end

@@ -10,6 +10,7 @@ if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
     SelectItemsToRender()
+    r.SetExtState('nvk_FOLDER_ITEMS', 'projUpdateFreeze', 'true', false)
 end
 
 reaper.Undo_BeginBlock()

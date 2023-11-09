@@ -27,14 +27,17 @@ end
 
 function Main()
 	local itemCount = r.CountSelectedMediaItems(0)
-	if itemCount == 0 then r.defer(function()end) return end
+	if itemCount == 0 then
+		r.defer(function() end)
+		return
+	end
 	r.Undo_BeginBlock()
 	r.PreventUIRefresh(1)
-	if r.GetToggleCommandState(1156) == 1 then--grouping override
+	if r.GetToggleCommandState(1156) == 1 then --grouping override
 		r.Main_OnCommand(1156, 0)
 		groupingToggle = true
-    end
-    GetItemsSnapOffsetsAndRemove()
+	end
+	GetItemsSnapOffsetsAndRemove()
 	local startPos, endPos = GetStartEndOfItems()
 	local newCursorPos = startPos + math.ceil(endPos - startPos) + 1
 	local item = r.GetSelectedMediaItem(0, 0)
@@ -50,7 +53,7 @@ function Main()
 					if IsFolderItem(item) then
 						local take = r.GetActiveTake(item)
 						local name = r.GetTakeName(take)
-						
+
 						local nextItem = r.GetTrackMediaItem(track, i)
 						if nextItem and IsFolderItem(nextItem) then
 							local take = r.GetActiveTake(nextItem)
@@ -68,11 +71,18 @@ function Main()
 			end
 		end
 	end
-	SetLastTouchedTrack( r.GetMediaItem_Track( item ) )
+	local track = Track(r.GetMediaItem_Track(item))
+	SetLastTouchedTrack(track.track)
+	local compact_tracks, child_tracks = Track.UncompactChildren(track) -- store tracks to compact after, a v7 compatibility thing with hidden tracks
+	if track.foldercompact == 2 then
+		track.foldercompact = 0
+		compact_tracks[#compact_tracks + 1] = track
+	end
 	r.Main_OnCommand(40698, 0) --copy items
 	r.SetEditCurPos(newCursorPos, false, false)
-    r.Main_OnCommand(42398, 0) --paste items
-    RestoreItemsSnapOffsetsAndApplyToNewItems()
+	r.Main_OnCommand(42398, 0) --paste items
+	for i, track in ipairs(compact_tracks) do track.foldercompact = 2 end
+	RestoreItemsSnapOffsetsAndApplyToNewItems()
 	for i = 0, r.CountSelectedMediaItems(0) - 1 do
 		local item = r.GetSelectedMediaItem(0, i)
 		if not IsVideoItem(item) then
@@ -81,9 +91,8 @@ function Main()
 	end
 	if groupingToggle then r.Main_OnCommand(1156, 0) end
 	r.UpdateArrange()
-	r.PreventUIRefresh(-1)     
+	r.PreventUIRefresh(-1)
 	r.Undo_EndBlock(scr.name, -1)
 end
 
 Main()
-

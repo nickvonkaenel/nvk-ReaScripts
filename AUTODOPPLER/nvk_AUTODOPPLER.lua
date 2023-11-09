@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.1.4
+Version: 2.2.0
 About:
   # nvk_AUTODOPPLER
 
@@ -15,6 +15,9 @@ Links:
   User Guide https://reapleton.com/doc/nvk_autodoppler
   Screenshot https://reapleton.com/images/nvk_autodoppler.gif
 Changelog:
+  2.2.0
+    - Fixed: Switching tabs not updating fx settings
+    + nvk_DOPPLER v2: Updated UI, Added Depth knob to allow for more subtle tremolo fx
   2.1.4
     - Fixed: Crash when resetting settings on default tab
     - Possible fix: crash when offset value is nil

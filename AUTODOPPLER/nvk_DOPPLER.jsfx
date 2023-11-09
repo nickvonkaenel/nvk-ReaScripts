@@ -2,7 +2,7 @@ desc: nvk_DOPPLER
 //noindex: true
 //tags: doppler tremelo pan
 //author: Nick von Kaenel
-//version: 1.0
+//version: 2.0
 
 slider1:0<-1,1,0.001>-Position
 slider3:0.5<0,1,0.01>-Volume
@@ -11,6 +11,7 @@ slider5:0.5<0,1,0.01>-Air
 slider6:0<0,1,0.01>-Tremolo
 slider7:0<0,1,0.01>-Compression
 slider8:0<0,1,1{Off,On}>-Limiter
+slider9:0.5<0,1,0.01>-Depth
 
 
 in_pin:left input
@@ -1473,11 +1474,12 @@ function control_start(defaultPage, theme, imageBuffer) local(reset, i, x, y, os
 
 	theme == "black" ? (
 		uix_control_theme = 1/*uix_THEME:BLACK_AND_WHITE*/;
-		gfx_clear = $x404040; //nick edit
+		gfx_clear = $x202020; //nick edit
 		ui_color(192, 192, 192); //nick edit
-		osCheck = strcmp(sprintf(#, "%.0f", 0.5), "1");
-		osCheck == 0 ? ui_fontface("Calibri") : ui_fontface("Helvetica Neue");//nick edit os checker (-1 = mac, 0 - windows)
-		ui_fontsize(20);
+		//osCheck = strcmp(sprintf(#, "%.0f", 0.5), "1");
+		//osCheck == 0 ? ui_fontface("Calibri") : ui_fontface("Helvetica Neue");//nick edit os checker (-1 = mac, 0 - windows)
+		ui_fontface("Verdana");
+		ui_fontsize(14);
 		ui_padding(10, 10);
 	) : theme == "tron" ? (
 		uix_control_theme = 2/*uix_THEME:TRON*/;
@@ -1866,7 +1868,7 @@ function control_finish_disabled(state) (
 
 function control_background_inset(state) (
 	uix_control_theme == 1/*uix_THEME:BLACK_AND_WHITE*/ ? (
-		ui_color(48, 48, 48); //nick edit
+		ui_color(32, 32, 32); //nick edit
 		ui_fill();
 		ui_color(255, 255, 255);
 	) : uix_control_theme == 2/*uix_THEME:TRON*/ ? (
@@ -1887,7 +1889,7 @@ function control_finish_inset() local(strength, height, topalpha, bottomalpha) (
 	strength = 1;
 	ui_push();
 		uix_control_theme == 1/*uix_THEME:BLACK_AND_WHITE*/ ? (
-			ui_color(128, 128, 128); //nick edit
+			ui_color(84, 84, 84); //nick edit
 			ui_border();
 		) : uix_control_theme == 2/*uix_THEME:TRON*/ ? (
 			uix_gloss(-0.2);
@@ -1992,11 +1994,12 @@ function control_group(text) local(texth, textw, textl, textr, textv) (
 	) : (
 		ui_push();
 			uix_control_theme == 1/*uix_THEME:BLACK_AND_WHITE*/ ? (
-				ui_fontsize(min(min(18, ui_height()*0.2), ui_padding_y()*2));
+				ui_fontsize(min(min(17, ui_height()*0.2), ui_padding_y()*2));
 			) : (
 				ui_fontsize(min(min(16, ui_height()*0.22), ui_padding_y()*3));
 			);
-
+			//ui_fontbold(1);
+			
 			texth = textw = 0;
 			uix_setgfxfont();
 			textw = texth = 0;
@@ -2007,14 +2010,14 @@ function control_group(text) local(texth, textw, textl, textr, textv) (
 
 			// Border color
 			uix_control_theme == 1/*uix_THEME:BLACK_AND_WHITE*/ ? (
-				ui_color(128, 128, 128);//nick edit
+				ui_color(84, 84, 84);//nick edit
 			) : uix_control_theme == 3/*uix_THEME:BITMAP_SIMPLE*/ ? (
 				uix_control_color_from_theme(151, 30, 0.5);
 			) : (
 				ui_color(102, 102, 102, 0.5);
 			);
-
-			ui_pad(ui_padding_x()/2, 0);
+			
+			ui_pad(ui_padding_x()/2, 1);
 			ui_split_top(texth);
 				ui_padleft();
 				ui_padright();
@@ -2031,7 +2034,7 @@ function control_group(text) local(texth, textw, textl, textr, textv) (
 					textw > 0 ? (
 						ui_align(0.5, 0.5);
 						uix_control_theme == 1/*uix_THEME:BLACK_AND_WHITE*/ ? (
-						ui_color(212, 212, 212);//nick edit
+						ui_color(128, 128, 128);//nick edit
 						); //nick edit
 						ui_text(text);
 					);
@@ -3146,6 +3149,7 @@ air = slider5;
 tremRate = slider6;
 compression = slider7;
 limiter = slider8;
+depth = slider9;
 
 //compressor
 compThreshDB = compression*-30;
@@ -3287,7 +3291,7 @@ limiter ? (
 //tremolo
 tremMod = tremRate*pathMod*20;
 adv=$pi*2*tremMod/srate;
-amount=2^((tremMod-20)/30);
+amount=2*depth * 2^((tremMod-20)/(30));
 sc=0.5*amount; amount=1-amount;
 tremWet=min(tremMod, 3)/3;
 tremDry=1-tremWet;
@@ -3345,7 +3349,7 @@ oscSamp != 0 ? oscPath = path;
 
 
 
-@gfx 528 264
+@gfx 580 290
 
 function gfx_ui_automate_slider(slidervar*, new_value) (
 	slidervar !== new_value ? (
@@ -3418,17 +3422,20 @@ ui_screen() === "main" ? (
 				ui_pop();
 			ui_pop();
 		ui_split_next();
-			ui_split_leftratio(3/3);
+			ui_split_leftratio(4/4);
 				// row 2, group 1
 				control_group("FX");
-				ui_split_leftratio(1/3);
+				ui_split_leftratio(1/4);
 					gfx_ui_automate_slider(slider6, gfx_ui_layout_textnumber("Tremolo", slider6, "%.2f"));
 					gfx_ui_dial_rounded(slider6, 0, 1, 0, 0, 0.01);
 				ui_split_next();
-					gfx_ui_automate_slider(slider7, gfx_ui_layout_textnumber("Compression", slider7, "%.2f"));
+					gfx_ui_automate_slider(slider9, gfx_ui_layout_textnumber("Depth", slider9, "%.2f"));
+					gfx_ui_dial_rounded(slider9, 0, 1, 0, 0.5, 0.01);
+				ui_split_next();
+					gfx_ui_automate_slider(slider7, gfx_ui_layout_textnumber("Compress", slider7, "%.2f"));
 					gfx_ui_dial_rounded(slider7, 0, 1, 0, 0, 0.01);
 				ui_split_next();
-					gfx_ui_layout_text("Limiter", slider8 ? "On" : "Off");
+					gfx_ui_layout_text("Limit", slider8 ? "On" : "Off");
 					ui_pad(-1, 12);
 					gfx_ui_automate_slider(slider8, control_switch(slider8));
 				ui_pop();
@@ -3443,5 +3450,3 @@ ui_screen() === "main" ? (
 		ui_graph(oscT, dOsc, -dOscSamp, dOscSamp);
 	ui_pop();
 ) : control_system();
-
-
