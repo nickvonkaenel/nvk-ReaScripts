@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.2.0
+Version: 2.2.1
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,12 +10,17 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.2.1
+        - Fixed: Deselect non-folder items still not working properly with nvk_FOLDER_ITEMS.lua when used with a hotkey and a single foder item selected
     2.2.0
         + Numpad Enter now works as enter key for scripts with UI
         - Fixed: Remove script not working with hidden tracks
         + Can specify paths relative to the project location in copy directories
         - Fixed: Deselect non-folder items not working properly with nvk_FOLDER_ITEMS.lua when used with a hotkey
         + Replacing top-level folder items only settings with drop down (add setting to only create bottom-level folder items)
+        + New hotkeys for repositioning script: can use number keys to instantly change seconds of reposition time, [T] to change time unit, and [F] to change repositioning from start/end of item.
+        - Fixed: the first time you tab in the reposition script it correctly focuses the time input
+        - Fixed: bugs with repositioning script when using hotkeys while changing preset name
     2.1.2
         - Fixed: Renaming reposition presets bug
     2.1.1
@@ -87,7 +92,7 @@ local function Main()
         SETTINGS_LOADED = false
     end
     local itemCount = r.CountSelectedMediaItems(0)
-    if itemCount == 1 and context == 1 and autoSelect then -- if mouse down
+    if itemCount == 1 and context == 1 and autoSelect and mouseState == 1 then -- if mouse down
         GroupSelectCheck(r.GetSelectedMediaItem(0, 0))
     elseif projUpdate and mouseState == 0 then             -- if mouse is not down
         if autoSelect and context >= 0 then
