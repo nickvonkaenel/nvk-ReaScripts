@@ -15,6 +15,12 @@ Links:
   User Guide https://reapleton.com/doc/nvk_autodoppler
   Screenshot https://reapleton.com/images/nvk_autodoppler.gif
 Changelog:
+  2.3.0
+    + Unlink feature added to nvk_DOPPLER settings
+    - Fixed: Right-click to reset sliders not updating automation
+    + Right-click to reset randomization
+    + Hotkey to randomize all sliders [R] and reset all randomization [Shift+R]
+    + Lock button to lock in last touched FX parameter for custom fx
   2.2.0
     - Fixed: Switching tabs not updating fx settings
     + nvk_DOPPLER v2: Updated UI, Added Depth knob to allow for more subtle tremolo fx

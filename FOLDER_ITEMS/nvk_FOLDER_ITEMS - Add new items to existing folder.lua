@@ -176,7 +176,7 @@ end
 function Main()
     r.Main_OnCommand(41110, 0) -- select track under mouse
     local names = {}
-    local items = Items()
+    local items = Items.Unmuted()
     local track, columns
     if #items > 0 then
         columns = Columns(items)

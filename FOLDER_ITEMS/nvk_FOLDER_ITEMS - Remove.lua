@@ -34,7 +34,7 @@ function Main()
             end
         end
         local track = Track(r.GetMediaItem_Track(item))
-        local compact_tracks = Track.UncompactChildren(track) -- store tracks to compact after, a v7 compatibility thing with hidden tracks
+        local compact_tracks = track:UncompactChildren() -- store tracks to compact after, a v7 compatibility thing with hidden tracks
         if track.foldercompact == 2 then
             track.foldercompact = 0
             compact_tracks[#compact_tracks + 1] = track

@@ -118,7 +118,7 @@ function Main()
     r.Main_OnCommand(40914, 0)                -- Track: Set first selected track as last touched track
     if videoTrack then
         r.Main_OnCommand(40058, 0)
-    end                             -- paste track
+    end                        -- paste track
     r.Main_OnCommand(40769, 0) -- unselect all
     r.UpdateArrange()
     r.Main_OnCommand(42332, 0) -- save and render project

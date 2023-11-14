@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.2.1
+Version: 2.2.2
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,13 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.2.2
+        + Improvement: Mousewheel pitch shift now only creates single undo point
+        + Rename: manually adding underscore/hyphen at the end of the name will now not get replaced (allowing for names like "My Sound_01")
+        + Rename: separator option added to specify what character to use for separating name and number
+        + Reposition: change time with mousewheel over input box
+        + Settings: new options for overshoot volume envelopes on fades. Previous "Write volume automation" setting changed to Fade->Folder items: Track. Hover tooltips for more info.
+        - Fixed: crash when using clean up renders option with track in renders folder selected
     2.2.1
         - Fixed: Deselect non-folder items still not working properly with nvk_FOLDER_ITEMS.lua when used with a hotkey and a single foder item selected
     2.2.0
@@ -94,7 +101,7 @@ local function Main()
     local itemCount = r.CountSelectedMediaItems(0)
     if itemCount == 1 and context == 1 and autoSelect and mouseState == 1 then -- if mouse down
         GroupSelectCheck(r.GetSelectedMediaItem(0, 0))
-    elseif projUpdate and mouseState == 0 then             -- if mouse is not down
+    elseif projUpdate and mouseState == 0 then                                 -- if mouse is not down
         if autoSelect and context >= 0 then
             for i = 0, itemCount - 1 do
                 GroupSelectCheck(r.GetSelectedMediaItem(0, i))

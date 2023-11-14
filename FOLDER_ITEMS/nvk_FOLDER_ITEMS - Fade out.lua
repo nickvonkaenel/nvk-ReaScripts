@@ -13,7 +13,7 @@ function Main()
     if not item then
         return
     end
-    if not doFadeAutomation then
+    if not FADE_AUTOMATION_ITEMS then
         groupSelect(item)
     end
     items = SaveSelectedItems()
@@ -58,12 +58,12 @@ function Main()
             reaper.SetMediaItemInfo_Value(item, "D_FADEOULEN_AUTO", -1)
             reaper.SetMediaItemInfo_Value(item, "D_FADEOUTLEN", newFadeOut)
             reaper.UpdateItemInProject(item)
-            if #items > 1 and i > 1 or #items == 1 then
+            if (#items > 1 and i > 1 and FADE_CHILD_OVERSHOOT) or (#items == 1 and FADE_OVERSHOOT) then
                 ConvertOverlappingFadesToVolumeAutomation()
             end
         end
     end
-    if doFadeAutomation then
+    if FADE_AUTOMATION_ITEMS then
         reaper.SetMediaItemSelected(item, true)
         groupSelect(item)
     else
