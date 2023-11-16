@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.2.2
+Version: 2.2.3
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,12 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.2.3
+        - Fixed: pitch scripts not as responsive as they should be
+        - Fixed: numbering issues with certain name formats
+        - Fixed: renaming after creation of folder items selecting all items
+        - Fixed: add new items to existing folder script broken due to function name change
+        - Fixed: selecting UCS category with arrow keys returned incorrect category in rename script
     2.2.2
         + Improvement: Mousewheel pitch shift now only creates single undo point
         + Rename: manually adding underscore/hyphen at the end of the name will now not get replaced (allowing for names like "My Sound_01")

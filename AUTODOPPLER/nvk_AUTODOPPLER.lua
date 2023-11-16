@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.2.0
+Version: 2.3.1
 About:
   # nvk_AUTODOPPLER
 
@@ -15,6 +15,8 @@ Links:
   User Guide https://reapleton.com/doc/nvk_autodoppler
   Screenshot https://reapleton.com/images/nvk_autodoppler.gif
 Changelog:
+  2.3.1
+    - Refactoring
   2.3.0
     + Unlink feature added to nvk_DOPPLER settings
     - Fixed: Right-click to reset sliders not updating automation

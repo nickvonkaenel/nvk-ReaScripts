@@ -40,6 +40,7 @@ function Main(first_run)
         else
             Columns(items):PlayratePitch(playrate_mod, CLEAR_PRESERVEPITCH)
         end
+        r.UpdateArrange()
     end
     if r.time_precise() < time + 0.5 then
         r.defer(Main)

@@ -27,6 +27,8 @@ if not functionsLoaded then return end
 --     end
 -- end
 
+-- Non-functional code, just for reference
+
 function CreateFolderItems(columns, track)
     local name = nil
     local prevName = nil
@@ -192,12 +194,12 @@ function Main()
         if not track or not track.isparent then return end
         local ls, le = r.GetSet_LoopTimeRange(false, false, 0, 0, false)
         if ls ~= le then
-            columns = Track.GetChildrenColumns(track, { s = ls, e = le })
+            columns = track:ChildrenColumns({ s = ls, e = le })
         else
-            columns = Track.GetChildrenColumns(track)
+            columns = track:ChildrenColumns()
         end
     end
-    local track_folder_items = Track.GetFolderItems(track, columns)
+    local track_folder_items = track:FolderItems(columns)
     local name, name_id -- name id not used since we aren't worry about markers
     for _, col in ipairs(columns) do
         local folder_item = FolderItems.ColumnOverlap(track_folder_items, col)

@@ -1,7 +1,8 @@
 -- @description nvk_LOOPMAKER
 -- @author nvk
--- @version 1.2.6
+-- @version 1.2.7
 -- @changelog
+--   1.2.7 Refactoring
 --   1.2.6 Fixed: auto-crossfade on split setting caused loops to have fades when they shouldn't
 --   1.2.3 Minor bug fixes
 --   1.2.2 Fix issue where length floor setting wouldn't work if rendering multiple loops per item
