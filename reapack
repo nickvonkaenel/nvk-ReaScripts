@@ -1,0 +1,96 @@
+#!/bin/sh
+
+# Improved Error Handling Function
+exit_with_error() {
+    echo "Error: $1"
+    exit 1
+}
+
+# Set working directory to the location of the script
+cd "$(dirname "$0")" || exit_with_error "Failed to change directory to script location."
+
+# Define global variables
+main_dir_path="$PWD"
+parent_dir_path=$(dirname "$PWD")
+
+# Function to check if a directory is a Git repository
+is_git_repo() {
+    git -C "$1" rev-parse 2>/dev/null
+}
+
+# Function to check if a git repo is clean
+is_repo_clean() {
+    test -z "$(git status --porcelain)"
+}
+
+# Function to prompt for user confirmation
+prompt_user() {
+    read -n 1 -p "$1 (y/N): " response
+    echo ""
+    [[ "$response" == [yY] ]]
+}
+
+# Function to get current git branch
+get_current_branch() {
+    git rev-parse --abbrev-ref HEAD
+}
+
+# Function to handle git operations
+handle_git_operations() {
+    cd "$1" || exit_with_error "Failed to change directory to $1."
+
+    if ! is_git_repo "$1"; then
+        exit_with_error "$1 is not a git repository."
+    fi
+
+    local current_branch=$(get_current_branch)
+    local current_dir_name=$(basename "$(pwd)")
+
+    if ! is_repo_clean; then
+        if prompt_user "$current_dir_name repository has uncommitted changes. Do you want to commit them?"; then
+            git add .
+            git commit -m "Committing changes from script" || exit_with_error "Failed to commit changes in $current_dir_name."
+        else
+            echo "Changes in $current_dir_name are not committed. Exiting."
+            exit 1
+        fi
+    fi
+
+    if prompt_user "Do you want to push the changes in $current_dir_name on branch $current_branch?"; then
+        git push origin "$current_branch" || exit_with_error "Failed to push changes in $current_dir_name."
+        echo "Changes pushed successfully."
+    else
+        echo "Changes not pushed. Exiting."
+        exit 1
+    fi
+}
+
+# Commit and push changes if needed
+handle_git_operations "$PWD"
+
+# Run reapack-index and check if it succeeds
+reapack-index "$(pwd)" || exit_with_error "reapack-index command failed."
+
+# Debug check: Ask the user if they want to continue
+if ! prompt_user "Do you want to submit the index to nvk.tools and reapleton.com?"; then
+    echo "Exiting as per user's request."
+    exit 1
+fi
+
+# Handle git operations for nvk.tools and Reapleton
+for repo in nvk.tools Reapleton; do
+    repo_path="$parent_dir_path/$repo"
+    if ! handle_git_operations "$repo_path"; then
+        break
+    fi
+
+    # Copy and commit index.xml
+    if cp "$main_dir_path/index.xml" "$repo_path/index.xml"; then
+        cd "$repo_path" || exit_with_error "Failed to change directory to $repo_path."
+        git add index.xml
+        git commit -m "Update index.xml" || exit_with_error "Failed to commit index.xml in $repo."
+        git push origin "$(get_current_branch)" || exit_with_error "Failed to push changes in $repo."
+    else
+        exit_with_error "Error copying to $repo."
+    fi
+done
