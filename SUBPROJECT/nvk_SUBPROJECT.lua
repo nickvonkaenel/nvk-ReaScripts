@@ -7,7 +7,7 @@ About:
     nvk_SUBPROJECT: Select either items, tracks, or folder items and run the script. Type in the name you want and the script will automatically create a new subproject, set the markers, and split/name your items. A huge timesaver when it comes to adding subprojects to your workflow. If you make any changes, select your subproject items in the main project and run the script again to re-split and rename the items. If you use folder items in the subproject, it will even copy those names over for you. If you don't have any items selected, the script will simply fix your subproject markers to the unmuted items in the project. Available for purchase at https://gum.co/nvk_WORKFLOW
 Links:
     Store Page https://gum.co/nvk_WORKFLOW
-    User Guide https://reapleton.com/doc/nvk_workflow
+    User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
     2.1.0
         - Fixed: crash when rendering project with folder items from the main project

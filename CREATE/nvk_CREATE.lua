@@ -1,6 +1,6 @@
 --[[
 Description: nvk_CREATE
-Version: 1.8.8
+Version: 1.8.9
 About:
   # nvk_CREATE
 
@@ -13,7 +13,7 @@ About:
 Author: nvk, Neutronic
 Links:
   Store Page https://gum.co/nvk_CREATE
-  User Guide https://reapleton.com/doc/nvk_CREATE
+  User Guide https://nvk.tools/doc/nvk_CREATE
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   Neutronic's REAPER forum profile https://forum.cockos.com/member.php?u=66313
   Neutronic's GitHub ReaScripts repository https://github.com/Neutronic/ReaScripts

@@ -14,7 +14,6 @@
 --   1.0.1 Fixing bug in 'nvk_ITEMS - Move cursor to next/previous transient', adding option to skip item ends
 -- @link
 --   Store Page https://gumroad.com/nvktools
--- @screenshot https://reapleton.com/images/nvk_basics.gif
 -- @about
 --   # nvk_ITEMS
 --

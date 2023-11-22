@@ -21,7 +21,6 @@
 --   1.1 New feature: if you make a time selection and only have one item per track selected (and are only making one loop per item), nvk_LOOPMAKER will automatically fit your loops to the time selection, extending and duplicating if necessary.
 -- @link
 --   Store Page https://gum.co/nvk_LOOPMAKER
--- @screenshot https://reapleton.com/images/nvk_loopmaker.gif
 -- @about
 --   # nvk_LOOPMAKER
 --

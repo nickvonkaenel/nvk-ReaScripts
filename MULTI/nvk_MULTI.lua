@@ -8,7 +8,6 @@
 --   1.0.1 Fixing bug with nvk_MULTI - Move tracks-items-envelope points up or down depending on focus SMART (mousewheel) where it only went in one direction
 -- @link
 --   Store Page https://gumroad.com/nvktools
--- @screenshot https://reapleton.com/images/nvk_basics.gif
 -- @about
 --   # nvk_MULTI
 --

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.3.1
+Version: 2.3.3
 About:
   # nvk_AUTODOPPLER
 
@@ -12,9 +12,11 @@ About:
 Author: nvk
 Links:
   Store Page https://gum.co/nvk_AUTODOPPLER
-  User Guide https://reapleton.com/doc/nvk_autodoppler
-  Screenshot https://reapleton.com/images/nvk_autodoppler.gif
+  User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+  2.3.3 Logo update
+  2.3.2
+    - Only select custom fx track when adjusting automation
   2.3.1
     - Refactoring
   2.3.0

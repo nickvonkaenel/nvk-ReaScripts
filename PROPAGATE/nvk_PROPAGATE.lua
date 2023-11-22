@@ -5,7 +5,6 @@
 --   Initial release
 -- @link
 --   Store Page https://gumroad.com/nvktools
--- @screenshot https://reapleton.com/images/nvk_basics.gif
 -- @about
 --   # nvk_PROPAGATE
 --

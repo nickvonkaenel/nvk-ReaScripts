@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.2.3
+Version: 2.3.1
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,7 +10,21 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
-    2.2.3
+    2.3.1
+        - Fixed: script blocked from rendering when items selected without a file name
+        - Fixed: copy directories could use incorrect project path when using relative paths and multiple project tabs
+        - Fixed: copy directories crash when using relative paths with unsaved project
+    2.3.0
+        + Settings: New and improved options for editing scripts
+            + Config options in mousewheel pitch shift now editable in settings
+            + Overshoot fade envelopes now disabled by default and can be enabled in settings
+            + Renamed option for creating volume envelopes on folder items with fades to 'Volume envelope'
+            + Option for how folder item fades affect children (child latch)
+                + Default: fade length is only changed if child item is overlapping with fade position or shares edge with folder item
+                + Smart: fade length is only changed if increasing fade time, item shares edge, or current fade position is matching folder item fade position
+                + All: fade length is always changed to match folder item fade length for all items
+            + Minimum fade length setting can now be set to smaller amounts (and also properly affects fade lengths now)
+    2.2.3       
         - Fixed: pitch scripts not as responsive as they should be
         - Fixed: numbering issues with certain name formats
         - Fixed: renaming after creation of folder items selecting all items

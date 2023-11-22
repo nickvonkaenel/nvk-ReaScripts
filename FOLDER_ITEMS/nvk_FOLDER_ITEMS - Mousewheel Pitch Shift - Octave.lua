@@ -9,8 +9,6 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- USER CONFIG --
 PITCH_AMOUNT = 12              -- semitones to pitch up or down
-CLEAR_PRESERVEPITCH = true     -- clear preserve pitch on items
-SELECT_ITEM_UNDER_MOUSE = true -- select item under mouse
 -- SCRIPT --
 
 local time
@@ -21,7 +19,7 @@ function Main(first_run)
     end
     if is_new or first_run then
         time = r.time_precise()
-        if SELECT_ITEM_UNDER_MOUSE then
+        if MOUSEWHEEL_PITCH_SHIFT_SELECT_ITEM_UNDER_MOUSE then
             local x, y = r.GetMousePosition()
             local item = Item(r.GetItemFromPoint(x, y, false))
             if item then
@@ -36,9 +34,9 @@ function Main(first_run)
         if #items == 0 then return end
         local playrate_mod = 2 ^ (PITCH_AMOUNT * (val > 0 and 1 or -1) / 12)
         if #items == 1 then
-            items:PlayratePitch(playrate_mod, CLEAR_PRESERVEPITCH)
+            items:PlayratePitch(playrate_mod, MOUSEWHEEL_PITCH_SHIFT_CLEAR_PRESERVEPITCH)
         else
-            Columns(items):PlayratePitch(playrate_mod, CLEAR_PRESERVEPITCH)
+            Columns(items):PlayratePitch(playrate_mod, MOUSEWHEEL_PITCH_SHIFT_CLEAR_PRESERVEPITCH)
         end
         r.UpdateArrange()
     end
