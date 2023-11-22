@@ -71,6 +71,9 @@ handle_git_operations "$PWD"
 # Run reapack-index and check if it succeeds
 reapack-index "$(pwd)" || exit_with_error "reapack-index command failed."
 
+# Push index.xml
+handle_git_operations "$PWD"
+
 # Debug check: Ask the user if they want to continue
 if ! prompt_user "Do you want to submit the index to nvk.tools and reapleton.com?"; then
     echo "Exiting as per user's request."
