@@ -56,6 +56,9 @@ handle_git_operations() {
         fi
     fi
 
+    if $2; then # second argument to true to commit only
+        return
+    fi
     if prompt_user "Do you want to push the changes in $current_dir_name on branch $current_branch?"; then
         git push origin "$current_branch" || exit_with_error "Failed to push changes in $current_dir_name."
         echo "Changes pushed successfully."
@@ -66,7 +69,7 @@ handle_git_operations() {
 }
 
 # Commit and push changes if needed
-handle_git_operations "$PWD"
+handle_git_operations "$PWD" true
 
 # Run reapack-index and check if it succeeds
 reapack-index "$(pwd)" || exit_with_error "reapack-index command failed."
