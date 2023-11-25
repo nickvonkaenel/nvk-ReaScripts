@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.1.0
+Version: 2.2.0
 About:
     # nvk_TAKES
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.2.0
+        - Fixed: only add take markers to audio items
     2.1.0
         - Fixed: Duplicate items and select next take crash with hidden tracks
 Provides:
@@ -38,9 +40,10 @@ end
 
 local last_take
 
-local function check()
+function loop()
     local item = reaper.GetSelectedMediaItem(0, 0)
-    if item and not IsVideoItem(item) and not IsFolderItem(item) then
+    if item then take = reaper.GetActiveTake(item) end
+    if IsAudioItem(item) then
         local take = r.GetActiveTake(item)
         if take and take ~= last_take then
             last_take = take
@@ -64,9 +67,6 @@ local function check()
             end
         end
     end
-end
-function loop()
-    check()
     r.defer(loop)
 end
 

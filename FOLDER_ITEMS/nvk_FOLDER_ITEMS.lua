@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.3.1
+Version: 2.3.2
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,11 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.3.2
+        - Fixed: number restart 'Always' setting not working properly
+        + Changing name of 'Render directory' to 'Project renders folder name' for clarity
+        + Adding setting to copy items above or below the video track (any track named video)
+        - Fixed: crash when invalid name for 'Project renders folder name' setting
     2.3.1
         - Fixed: script blocked from rendering when items selected without a file name
         - Fixed: copy directories could use incorrect project path when using relative paths and multiple project tabs

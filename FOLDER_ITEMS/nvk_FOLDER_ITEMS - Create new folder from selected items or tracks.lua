@@ -29,7 +29,7 @@ local function create_folder(tracks)
     if COLLAPSE_FOLDER_TRACK_AFTER_CREATION then
         ToggleVisibility(track.parent)
     end
-    r.Main_OnCommand(40914, 0) -- Track: Set first selected track as last touched track
+    track.parent:SetLastTouched()
 end
 
 function Main()

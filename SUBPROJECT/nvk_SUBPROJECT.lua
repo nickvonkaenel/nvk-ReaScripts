@@ -115,7 +115,6 @@ function Main()
         r.TrackFX_Show(masterTrack, index, 0) -- hide fx
         r.TrackFX_Show(masterTrack, index, 2) -- hide fx
     end
-    r.Main_OnCommand(40914, 0)                -- Track: Set first selected track as last touched track
     if videoTrack then
         r.Main_OnCommand(40058, 0)
     end                        -- paste track
