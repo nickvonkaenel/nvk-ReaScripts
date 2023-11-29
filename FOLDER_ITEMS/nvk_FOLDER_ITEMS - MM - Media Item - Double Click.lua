@@ -10,42 +10,34 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT--
 function Main()
-    if r.CountSelectedMediaItems(0) > 0 then
-        local item = r.GetSelectedMediaItem(0, 0)
-        local track = r.GetMediaItem_Track(item)
-        local take = r.GetActiveTake(item)
-        if take then
-            local src = r.GetMediaItemTake_Source(take)
-            local typebuf = r.GetMediaSourceType(src)
-            if typebuf == 'MIDI' or typebuf == 'MIDIPOOL' then
-                r.Main_OnCommand(40153, 0) -- open in midi editor
-            elseif typebuf == 'RPP_PROJECT' then
-                local offset = r.GetMediaItemTakeInfo_Value(take, 'D_STARTOFFS')
-                r.Main_OnCommand(41816, 0) -- open project in new tab
-                local startPos, endPos = GetSubprojectStartAndEnd()
-                if startPos and endPos then
-                    local loopStart = startPos + offset
-                    local curPos = r.GetCursorPosition()
-                    r.MoveEditCursor(loopStart - curPos, false) -- have to add this since edit cursor is bugged
-                end
-            elseif typebuf == 'EMPTY' then
-                if r.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH') == 1 then
-                    ToggleVisibility(track)
-                    UnselectAllItems()
-                    r.SetMediaItemSelected(item, true)
-                    groupSelect(item)
-                    r.Main_OnCommand(40034, 0) -- select all items in group
-                else
-                    r.Main_OnCommand(40850, 0) -- show notes for items
-                end
-            elseif doubleClickCreateRegions and typebuf == 'WAVE' then
-                SelectTakeRegion(take, src)
-            else
-                r.Main_OnCommand(40009, 0) -- show media item/take properties
+    if r.CountSelectedMediaItems(0) == 0 then return end
+    local item = Item[1]
+    local take = item.take
+    if take then
+        if item.midi then
+            r.Main_OnCommand(40153, 0) -- open in midi editor
+        elseif item.subproject then
+            r.Main_OnCommand(41816, 0) -- open project in new tab
+            local startPos, endPos = GetSubprojectStartAndEnd()
+            if startPos and endPos then
+                local loopStart = startPos + take.offset
+                r.MoveEditCursor(loopStart - r.GetCursorPosition(), false) -- have to add this since set edit cursor is bugged
             end
+        elseif item.folder then
+            local track = item.track
+            if track.isparent then
+                track:ToggleVisibility()
+                item:GroupSelect(true, true)
+            else
+                r.Main_OnCommand(40850, 0) -- show notes for items
+            end
+        elseif DOUBLE_CLICK_ITEM_REGION and item.audio then
+            SelectTakeRegion(take.take, item.source)
         else
-            r.Main_OnCommand(40850, 0) -- show notes for items
+            r.Main_OnCommand(40009, 0) -- show media item/take properties
         end
+    else
+        r.Main_OnCommand(40850, 0) -- show notes for items
     end
 end
 

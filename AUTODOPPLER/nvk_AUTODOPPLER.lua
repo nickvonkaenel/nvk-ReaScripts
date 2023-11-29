@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.3.3
+Version: 2.3.5
 About:
   # nvk_AUTODOPPLER
 
@@ -14,6 +14,10 @@ Links:
   Store Page https://gum.co/nvk_AUTODOPPLER
   User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+  2.3.5
+    - Fixed: if jsfx were set to show filename and not show description, nvk_DOPPLER would get added repeatedly
+  2.3.4
+    + Presets combo box added for DopperPRO (if presets are found)
   2.3.3 Logo update
   2.3.2
     - Only select custom fx track when adjusting automation

@@ -27,7 +27,7 @@ local function create_folder(tracks)
         col.items.sel = true
     end
     if COLLAPSE_FOLDER_TRACK_AFTER_CREATION then
-        ToggleVisibility(track.parent)
+        track.parent:ToggleVisibility()
     end
     track.parent:SetLastTouched()
 end
@@ -55,9 +55,9 @@ function Main()
         end
         create_folder(item_tracks)
     end
-    if renameFolderItems and r.CountSelectedMediaItems(0) > 0 then
+    if RENAME_ITEMS_AFTER_FOLDER_CREATION and r.CountSelectedMediaItems(0) > 0 then
         r.Main_OnCommand(r.NamedCommandLookup("_RSe8733f58b84754de32c3dd2cdd466a1ac6231322"), 0) -- rename items
-    elseif renameTrack then
+    elseif RENAME_TRACK_AFTER_NEW_FOLDER_CREATION then
         r.Main_OnCommand(40696, 0)                                                               -- rename last touched track
     end
 end

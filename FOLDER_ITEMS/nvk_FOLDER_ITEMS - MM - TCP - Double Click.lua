@@ -10,13 +10,15 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT--
 function Main()
-    if reaper.CountSelectedTracks(0) > 0 then
-        track = reaper.GetSelectedTrack(0, 0)
-        if reaper.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH') == 1 then
-            ToggleVisibility(track)
-        else
-            reaper.Main_OnCommand(40421, 0) -- select all items on track
-        end
+    local track = Tracks()[1]
+    if not track then return end
+    if track.isparent then
+        Items().sel = false
+        track.items.sel = true
+        track:ToggleVisibility()
+    else
+        Items().sel = false
+        track.items.sel = true
     end
 end
 

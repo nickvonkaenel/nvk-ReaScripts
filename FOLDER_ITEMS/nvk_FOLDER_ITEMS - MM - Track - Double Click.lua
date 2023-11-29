@@ -10,13 +10,10 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT--
 function Main()
-    local track = reaper.GetSelectedTrack(0, 0)
+    local track = Tracks()[1]
     if not track then return end
-    for i = 0, reaper.CountTrackMediaItems(track) - 1 do
-        local item = reaper.GetTrackMediaItem(track, i)
-        reaper.SetMediaItemSelected(item, true)
-        if reaper.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH') == 1 and IsFolderItem(item) then groupSelect(item) end
-    end
+    track.items.sel = true
+    track.folderitems:GroupSelect()
 end
 
 reaper.Undo_BeginBlock()

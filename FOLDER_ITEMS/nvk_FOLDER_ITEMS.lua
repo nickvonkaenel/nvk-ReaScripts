@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.3.2
+Version: 2.4.1
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,12 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.4.1
+        + Reposition: added option to reposition using frames
+    2.4.0
+        + Settings: Track selection follows item selection -- added as an option since 3rd-party scripts that create unnecessary undo points can cause issues
+        + Experimental: automatic grouping of items to allow default Reaper actions to be used for collapsing folder tracks. Note: this will disable the ability to manually group/ungroup items.
+        + Settings: improving naming of settings
     2.3.2
         - Fixed: number restart 'Always' setting not working properly
         + Changing name of 'Render directory' to 'Project renders folder name' for clarity
@@ -29,7 +35,7 @@ Changelog:
                 + Smart: fade length is only changed if increasing fade time, item shares edge, or current fade position is matching folder item fade position
                 + All: fade length is always changed to match folder item fade length for all items
             + Minimum fade length setting can now be set to smaller amounts (and also properly affects fade lengths now)
-    2.2.3       
+    2.2.3
         - Fixed: pitch scripts not as responsive as they should be
         - Fixed: numbering issues with certain name formats
         - Fixed: renaming after creation of folder items selecting all items
@@ -99,7 +105,28 @@ end
 local prevProjState, projUpdate, prevProj
 local r = reaper
 
+
+local items
+local function trackSelectionFollowsItemSelection()
+    if items == Items() then return end
+    items = Items()
+    local itemsTracks = items.tracks
+    if #itemsTracks == 0 then return end
+    r.PreventUIRefresh(1)
+    local selectedTracks = Tracks()
+    if itemsTracks ~= selectedTracks then
+        itemsTracks[1]:SetLastTouched()
+        if ONLY_SELECT_TOP_LEVEL_TRACKS then
+            itemsTracks.mindepthonly.sel = true
+        else
+            itemsTracks.sel = true
+        end
+    end
+    r.PreventUIRefresh(-1)
+end
+
 local function Main()
+    r.PreventUIRefresh(1)
     local context = r.GetCursorContext()
     local mouseState = r.JS_Mouse_GetState(0x00000001)
     local projState = r.GetProjectStateChangeCount(0)
@@ -144,6 +171,10 @@ local function Main()
         projUpdate = false
     end
     scr.init = nil
+    if context >= 0 and TRACK_SELECTION_FOLLOWS_ITEM_SELECTION then
+        trackSelectionFollowsItemSelection()
+    end
+    r.PreventUIRefresh(-1)
     r.defer(Main)
 end
 
