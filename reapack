@@ -75,7 +75,7 @@ handle_git_operations "$PWD" true
 reapack-index "$(pwd)" || exit_with_error "reapack-index command failed."
 
 # Push index.xml
-handle_git_operations "$PWD"
+handle_git_operations "$PWD" false
 
 # Debug check: Ask the user if they want to continue
 if ! prompt_user "Do you want to submit the index to nvk.tools and reapleton.com?"; then
@@ -86,7 +86,7 @@ fi
 # Handle git operations for nvk.tools and Reapleton
 for repo in nvk.tools Reapleton; do
     repo_path="$parent_dir_path/$repo"
-    if ! handle_git_operations "$repo_path"; then
+    if ! handle_git_operations "$repo_path" false; then
         break
     fi
 
