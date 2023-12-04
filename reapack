@@ -51,8 +51,12 @@ handle_git_operations() {
             git add .
             git commit -m "Committing changes from script" || exit_with_error "Failed to commit changes in $current_dir_name."
         else
-            echo "Changes in $current_dir_name are not committed. Exiting."
-            exit 1
+            if prompt_user "Do you want to continue without committing the changes in $current_dir_name?"; then
+                echo "Continuing without committing changes."
+            else
+                echo "Exiting."
+                exit 1
+            fi
         fi
     fi
 
