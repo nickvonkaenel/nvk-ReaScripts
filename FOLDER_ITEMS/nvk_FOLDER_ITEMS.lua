@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.4.1
+Version: 2.4.2
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.4.2
+        + Improvement: numbering no longer increments on numbers followed by non-separator characters i.e "Loop_120bpm" will not increment but "Loop_01" or "Loop_01_Start" will
     2.4.1
         + Reposition: added option to reposition using frames
     2.4.0

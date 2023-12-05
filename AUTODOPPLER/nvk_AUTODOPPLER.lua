@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.3.5
+Version: 2.3.6
 About:
   # nvk_AUTODOPPLER
 
@@ -14,6 +14,9 @@ Links:
   Store Page https://gum.co/nvk_AUTODOPPLER
   User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+  2.3.6
+    - Fixed: certain custom fx parameters could cause sliders to jump around when adjusting them
+    - Removed: FX parameters option from automation section in Custom FX (since it doesn't do anything)
   2.3.5
     - Fixed: if jsfx were set to show filename and not show description, nvk_DOPPLER would get added repeatedly
   2.3.4

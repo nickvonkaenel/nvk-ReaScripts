@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.2.0
+Version: 2.3.0
 About:
     # nvk_TAKES
 
@@ -10,6 +10,12 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.3.0
+        + Improved behavior with duplicate items and select next take script
+            + Duplicating single item inside of a folder track  will now place the item in the next folder item with matching name if it exists or place it in the next column space
+            + Duplicating multiple items will make room if needed on the track
+    2.2.1
+        - Fixed: issue with next take where new position could be calculated incorrectly
     2.2.0
         - Fixed: only add take markers to audio items
     2.1.0
