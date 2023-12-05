@@ -1,7 +1,9 @@
 --@noindex
 QuickRender = true
 
+sep = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 function GetPath(file, ext)
 	if not ext then
 		ext = ".dat"
@@ -32,7 +34,6 @@ function Run()
 end
 
 OS = reaper.GetOS()
-sep = OS:match("Win") and "\\" or "/"
 
 scrPath, scrName = ({reaper.get_action_context()})[2]:match("(.-)([^/\\]+).lua$")
 mainCmdId = ({reaper.get_action_context()})[4]
