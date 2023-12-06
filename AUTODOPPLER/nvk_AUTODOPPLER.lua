@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.3.7
+Version: 2.3.8
 About:
   # nvk_AUTODOPPLER
 
@@ -14,6 +14,9 @@ Links:
   Store Page https://gum.co/nvk_AUTODOPPLER
   User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+  2.3.8
+    - Fixed: crash when running script for the first time with items on the track
+    - Fixed: crash when running older versions of GRM Doppler
   2.3.7
     - Fixed: crash when using Quick Render, currently Quick render only works with AUTODOPPLER v1
   2.3.6
