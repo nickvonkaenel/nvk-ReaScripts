@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.3.0
+Version: 2.4.0
 About:
     # nvk_TAKES
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.4.0
+        + nvk_TAKES - Settings
+            + Added option to enable rippling items in the "Duplicate items and select next take SMART" script
+            + Added option to enable playback restart for the "Select previous/next take SMART" script
     2.3.0
         + Improved behavior with duplicate items and select next take script
             + Duplicating single item inside of a folder track  will now place the item in the next folder item with matching name if it exists or place it in the next column space
@@ -22,12 +26,13 @@ Changelog:
         - Fixed: Duplicate items and select next take crash with hidden tracks
 Provides:
     **/*.dat
+    **/*.otf
     [main] *.lua
     [main] *.eel
 --]]
 -- SETUP --
-local is_new_value, filename, sectionID, cmdID, mode, resolution, val = reaper.get_action_context()
 local r = reaper
+local is_new_value, filename, sectionID, cmdID, mode, resolution, val = r.get_action_context()
 sep = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
 DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
@@ -47,8 +52,8 @@ end
 local last_take
 
 function loop()
-    local item = reaper.GetSelectedMediaItem(0, 0)
-    if item then take = reaper.GetActiveTake(item) end
+    local item = r.GetSelectedMediaItem(0, 0)
+    if item then take = r.GetActiveTake(item) end
     if IsAudioItem(item) then
         local take = r.GetActiveTake(item)
         if take and take ~= last_take then

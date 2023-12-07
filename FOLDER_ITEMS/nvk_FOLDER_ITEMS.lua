@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.4.2
+Version: 2.4.3
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.4.3
+        + Support for takes settings
+        + Increasing font size on reposition script
+        + Fixing crash with certain folder item names
     2.4.2
         + Improvement: numbering no longer increments on numbers followed by non-separator characters i.e "Loop_120bpm" will not increment but "Loop_01" or "Loop_01_Start" will
     2.4.1

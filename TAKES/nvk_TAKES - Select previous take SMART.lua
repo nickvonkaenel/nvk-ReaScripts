@@ -1,6 +1,4 @@
 -- @noindex
--- USER CONFIG --
-restartPlayback = true
 -- SETUP --
 local r = reaper
 sep = package.config:sub(1, 1)
@@ -17,7 +15,7 @@ function Main()
 		end
 	end
 	local s, e = r.GetSet_LoopTimeRange(false, false, 0, 0, false)
-	if restartPlayback and r.GetPlayState() == 1 and s == e then
+	if RESTART_PLAYBACK and r.GetPlayState() == 1 and s == e then
 		r.Main_OnCommand(41173, 0) --cursor to start of items
 		r.Main_OnCommand(1007, 0) --play?
 	end

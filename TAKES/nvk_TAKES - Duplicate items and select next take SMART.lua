@@ -72,7 +72,7 @@ function Main()
 		end
 	end
 	local minpos, maxpos = newitems.minpos, newitems.maxpos
-	if (#items > 1 or (nextItemPos and nextItemPos < maxpos)) and nextColumnPos and nextColumnPos < maxpos then
+	if DUPLICATE_RIPPLE and (#items > 1 or (nextItemPos and nextItemPos < maxpos)) and nextColumnPos and nextColumnPos < maxpos then
 		local newdiff = math.ceil(maxpos - minpos) + 1
 		if newdiff > diff then diff = newdiff end
 		tracks:InsertEmptySpace(items.maxpos, math.ceil(minpos - nextColumnPos + diff))
