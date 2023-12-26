@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.0.0
+Version: 1.0.1
 About:
   # nvk_SEARCH
 
@@ -8,6 +8,13 @@ About:
 Author: nvk
 Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
+  User Guide: https://nvk.tools/doc/nvk_SEARCH
+Changelog:
+  + 1.0.1
+    - Fixed: Duplicate tooltip on hover esc always closes script option
+    - Fixed: AU plugins not adding properly
+  + 1.0.0
+    + Initial release
 Provides:
   **/*.dat
   **/*.otf
