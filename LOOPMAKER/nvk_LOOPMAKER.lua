@@ -1,6 +1,6 @@
 --[[
 Description: nvk_LOOPMAKER
-Version: 2.0.0
+Version: 2.0.1
 About:
     # nvk_LOOPMAKER
     nvk_LOOPMAKER Creates perfect zero-crossing loops out of selected items. If Loop Count is set to a number higher than 1, it will create multiple loops out of a single item that can be played back to back with sample accurate transitions.
@@ -8,6 +8,8 @@ Links:
     Store Page https://gum.co/nvk_LOOPMAKER
     User Guide https://nvk.tools/doc/nvk_loopmaker
 Changelog:
+    2.0.1
+        - Fixed: possible crash on load with certain machines
     2.0.0
 Provides:
     **/*.dat

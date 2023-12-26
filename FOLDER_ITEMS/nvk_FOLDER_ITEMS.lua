@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.5.0
+Version: 2.5.1
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.1
+        - Fixed: possible crash on load with certain machines
     2.5.0
         + User-assignable keyboard shortcuts for scripts
         - Fixing incorrect positioning with repositioning script when using frames while groups are enabled

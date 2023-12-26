@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.4.1
+Version: 2.4.2
 About:
   # nvk_AUTODOPPLER
 
@@ -14,6 +14,8 @@ Links:
   Store Page https://gum.co/nvk_AUTODOPPLER
   User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+  2.4.2
+    - Fixed: possible crash on load with certain machines
   2.4.1
     + Licensing improvements
   2.4.0
