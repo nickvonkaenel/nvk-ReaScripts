@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.0.2
+Version: 1.0.3
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,9 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.0.3
+    + Drag and drop all valid results to folders, not just FX
+    + New option: reveal hidden tracks when selected in results list
   + 1.0.2
     - Fixed: Crash on load for certain systems due to actions.dat loading out of order
   + 1.0.1
