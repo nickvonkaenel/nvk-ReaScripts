@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.3.8
+Version: 2.4.1
 About:
   # nvk_AUTODOPPLER
 
@@ -14,6 +14,12 @@ Links:
   Store Page https://gum.co/nvk_AUTODOPPLER
   User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+  2.4.1
+    + Licensing improvements
+  2.4.0
+    + User-assignable keyboard shortcuts
+  2.3.9
+    - Fixed: crash when FX is disabled
   2.3.8
     - Fixed: crash when running script for the first time with items on the track
     - Fixed: crash when running older versions of GRM Doppler

@@ -26,7 +26,7 @@ function Main(first_run)
                 UnselectAllItems()
                 item.sel = true
                 if item.folder then
-                    item.track:Children(true):Items(item).sel = true
+                    groupSelect(item)
                 end
             end
         end

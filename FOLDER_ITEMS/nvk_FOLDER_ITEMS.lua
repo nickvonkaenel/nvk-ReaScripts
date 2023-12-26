@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.4.3
+Version: 2.5.0
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,16 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.0
+        + User-assignable keyboard shortcuts for scripts
+        - Fixing incorrect positioning with repositioning script when using frames while groups are enabled
+        + Reposition across tracks setting added to reposition script
+        + Rename script now removes number from end of name when it's loaded regardless of remove extensions setting
+        + New shortcut to rename items/track with Ctrl+Enter. The first item track will be renamed to the new name without numbers appended.
+        + UI improvements and additional options for reposition script
+        - Fixed reposition presets not working
+        + Improved behavior when selecting child items with folder items (affects editing scripts and main folder items script)
+        - Fixed: offline authorization not working properly for v2
     2.4.3
         + Support for takes settings
         + Increasing font size on reposition script
