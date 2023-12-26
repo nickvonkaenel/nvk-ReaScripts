@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.0.1
+Version: 1.0.2
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.0.2
+    - Fixed: Crash on load for certain systems due to actions.dat loading out of order
   + 1.0.1
     - Fixed: Duplicate tooltip on hover esc always closes script option
     - Fixed: AU plugins not adding properly
