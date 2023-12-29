@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.5.2
+Version: 1.5.3
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.5.3
+    - Fixed: Crash with project names that are just .rpp
   + 1.5.2
     - Crash when adding fx
   + 1.5.1
