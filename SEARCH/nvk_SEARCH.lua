@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.5.0
+Version: 1.5.1
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.5.1
+    - Fix for possible crash with some project names
   + 1.5.0
     + Multiple selection of items allowing for adding multiple FX at once or dragging/removing multiple results from a folder
     + New options: open projects in new tab, hide project patch, keep search on folder change
