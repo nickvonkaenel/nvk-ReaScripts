@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.5.3
+Version: 1.6.0
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,16 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.6.0
+    + New feature: add custom project paths in preferences
+      + Paths will be scanned recursively for .rpp files on add. They can be rescanned manually. Recent project files will still show up in the results so this won't need to be done often.
+      + Scanned projects can be sorted by name or last modified date (note: last modified date can slow down startup times if there are a lot of projects)
+      + When adding a path, a new folder will be created with that project path in the sidebar. FYI, if removed from this folder, it may be re-added next time a project path is added or removed.
+      + Recent projects will show up first in the results
+    + Rearranged preferences to make better use of space and fit new projects feature
+    + Preferences no longer behaves as a popup, and must be manually closed. It will reopen if the script is restarted while it is open.
+    + Tooltips when hovering over folders and project paths that are too long to display
+    - Fixed: Esc key was not closing the keyboard shortcut popup
   + 1.5.3
     - Fixed: Crash with project names that are just .rpp
   + 1.5.2
