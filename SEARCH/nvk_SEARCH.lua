@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.6.3
+Version: 1.6.4
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.6.4
+    - Fixed: when adding fx from sidebar to current selected folder, the folder was not being updated
   + 1.6.3
     - Fixed: incorrect link to forum thread
   + 1.6.2
