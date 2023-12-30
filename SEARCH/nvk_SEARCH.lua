@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.6.1
+Version: 1.6.2
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.6.2
+    - Fixed: cleared recent projects list was still showing up in results
   + 1.6.1
     - Improved speed of adding multiple fx in a row with enter
   + 1.6.0
