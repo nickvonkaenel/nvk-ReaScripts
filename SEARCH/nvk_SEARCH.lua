@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.6.0
+Version: 1.6.1
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.6.1
+    - Improved speed of adding multiple fx in a row with enter
   + 1.6.0
     + New feature: add custom project paths in preferences
       + Paths will be scanned recursively for .rpp files on add. They can be rescanned manually. Recent project files will still show up in the results so this won't need to be done often.

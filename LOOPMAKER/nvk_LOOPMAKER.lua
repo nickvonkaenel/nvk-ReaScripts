@@ -1,6 +1,6 @@
 --[[
 Description: nvk_LOOPMAKER
-Version: 2.0.2
+Version: 2.1.0
 About:
     # nvk_LOOPMAKER
     nvk_LOOPMAKER Creates perfect zero-crossing loops out of selected items. If Loop Count is set to a number higher than 1, it will create multiple loops out of a single item that can be played back to back with sample accurate transitions.
@@ -9,6 +9,10 @@ Links:
     Store Page https://store.nvk.tools/l/nvk_LOOPMAKER
     User Guide https://nvk.tools/doc/nvk_loopmaker
 Changelog:
+    2.1.0
+        + Pin button to allow script to remain open. Processed loops are unselected after applying.
+        + New action: Apply (keep open)
+        + UI improvements/changes to account for pin button
     2.0.2
         - Fixed: author name in reapack description
     2.0.1
