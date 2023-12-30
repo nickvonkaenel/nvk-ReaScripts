@@ -1,15 +1,17 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.6.2
+Version: 1.6.3
 About:
   # nvk_SEARCH
 
   This script is used to quickly search for FX, chains, actions, projects, etc in Reaper. Requires REAPER 7 or higher.
 Author: nvk
 Links:
-  REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
+  REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.6.3
+    - Fixed: incorrect link to forum thread
   + 1.6.2
     - Fixed: cleared recent projects list was still showing up in results
   + 1.6.1
