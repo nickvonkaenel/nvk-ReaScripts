@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.5.3
+Version: 2.5.4
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.4
+        - Refactoring debugging code
     2.5.3
         - Fixed: bug with imgui scripts where main action could be run twice
     2.5.2

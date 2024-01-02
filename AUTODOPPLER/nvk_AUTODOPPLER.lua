@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.4.3
+Version: 2.4.4
 About:
   # nvk_AUTODOPPLER
 
@@ -14,6 +14,8 @@ Links:
   Store Page https://gum.co/nvk_AUTODOPPLER
   User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+  2.4.4
+    - Refactoring debugging code
   2.4.3
     - Fixed: bug where render could trigger twice
   2.4.2

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.6.4
+Version: 1.6.6
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,12 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.6.6
+    - Fixed: actions not showing up in folders unless 'show command id' was enabled
+    - Fixed: crash when showing script in finder
+    + Open script option in context menu to open script in a text editor (or whatever is set as the default program for .lua files)
+  + 1.6.5
+    - Fixed: alternate fx add mode was not working properly
   + 1.6.4
     - Fixed: when adding fx from sidebar to current selected folder, the folder was not being updated
   + 1.6.3
