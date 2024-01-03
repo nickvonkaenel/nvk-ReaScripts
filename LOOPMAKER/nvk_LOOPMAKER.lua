@@ -1,6 +1,6 @@
 --[[
 Description: nvk_LOOPMAKER
-Version: 2.1.1
+Version: 2.2.0
 About:
     # nvk_LOOPMAKER
     nvk_LOOPMAKER Creates perfect zero-crossing loops out of selected items. If Loop Count is set to a number higher than 1, it will create multiple loops out of a single item that can be played back to back with sample accurate transitions.
@@ -9,6 +9,11 @@ Links:
     Store Page https://store.nvk.tools/l/nvk_LOOPMAKER
     User Guide https://nvk.tools/doc/nvk_loopmaker
 Changelog:
+    2.2.0
+        + Improved behavior when playing back loop (solos item tracks).
+        + Playback is now stopped when script is refocused in order to prevent unexpected behavior.
+        + New Play and Stop actions can be assigned to user hotkeys.
+        - Fixed: second snap setting shouldn't be applied to loops matching a time selection.
     2.1.1
         + Refactoring debugging code
     2.1.0

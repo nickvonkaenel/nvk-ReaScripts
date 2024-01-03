@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.6.6
+Version: 1.7.0
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,11 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.7.0
+    + Fx types now display in order of user preference in sidebar
+    + New option to 'Close if unfocused' in preferences
+    + Possible fix for crash with certain takes that have invalid source media
+    + New option in settings to import user folders from FX Browser into sidebar
   + 1.6.6
     - Fixed: actions not showing up in folders unless 'show command id' was enabled
     - Fixed: crash when showing script in finder
