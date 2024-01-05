@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.7.0
+Version: 1.8.0
 About:
   # nvk_SEARCH
 
@@ -10,11 +10,23 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.8.0
+    + Sort methods for results. Choose from relevance (new optimized search algorithm), order (results display in default order they are scanned), name (alphabetical a-z), or last modified date (if applicable)
+    + Improved hover text
+    + New option: Active filter disables filter keys
+    + New option: Actions - only show main section
+    + Show favorite icon in recent results (was confusing that you could favorite/unfavorite recent results without the icon)
+    - JSFX not showing up in sidebar FX list
+    + Changing label JSFX to JS in certain cases
+    + Capitalizing type names for more consistent display
+    + New keyboard shortcuts and slight changes to naming for open and open in external editor
+    - Fixed: cursor context could be lost when window is closed and re-opened (determing if cursor is on item or track)
   + 1.7.0
     + Fx types now display in order of user preference in sidebar
     + New option to 'Close if unfocused' in preferences
     + Possible fix for crash with certain takes that have invalid source media
     + New option in settings to import user folders from FX Browser into sidebar
+    + Search algorithm tweaked to hopefully give more useful results
   + 1.6.6
     - Fixed: actions not showing up in folders unless 'show command id' was enabled
     - Fixed: crash when showing script in finder
