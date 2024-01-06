@@ -33,8 +33,11 @@ local function new_cursor_pos(items)
 end
 
 local function next_column_pos(items)
-	local track = items[1].track.isparent and items[1].track or items[1].track.parent or items[1].track
-	local tracks = track:Children(true)
+	local tracks = Tracks({})
+	for i, item in ipairs(items) do
+		local track = item.track.isparent and item.track or item.track.parent or item.track
+		tracks = tracks + track:Children(true)
+	end
 	local columns = tracks:Columns()
 	local nextColumnPos
 	for _, column in ipairs(columns) do
@@ -72,6 +75,9 @@ function Main()
 		end
 	end
 	local minpos, maxpos = newitems.minpos, newitems.maxpos
+	if minpos < items.maxpos then
+		newitems.minpos = minpos + math.ceil(items.maxpos - minpos)
+	end
 	if DUPLICATE_RIPPLE and (#items > 1 or (nextItemPos and nextItemPos < maxpos)) and nextColumnPos and nextColumnPos < maxpos then
 		local newdiff = math.ceil(maxpos - minpos) + 1
 		if newdiff > diff then diff = newdiff end

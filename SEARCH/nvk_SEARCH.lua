@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.8.0
+Version: 1.8.1
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,11 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.8.1
+    + New option: FX - Always add to track
+    + Themes: import/export and save as global default
+    + Load time optimizations
+    - Fixed: preferences being closed could unfocus the script and cause it to close
   + 1.8.0
     + Sort methods for results. Choose from relevance (new optimized search algorithm), order (results display in default order they are scanned), name (alphabetical a-z), or last modified date (if applicable)
     + Improved hover text
@@ -95,6 +100,7 @@ Provides:
   **/*.otf
   [main] *.lua
 --]]
+STARTUP_TIME = reaper.time_precise()
 SCRIPT_FOLDER = 'search'
 r = reaper
 if not r.APIExists('EnumInstalledFX') then

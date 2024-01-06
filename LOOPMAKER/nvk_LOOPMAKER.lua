@@ -1,6 +1,6 @@
 --[[
 Description: nvk_LOOPMAKER
-Version: 2.2.1
+Version: 2.2.2
 About:
     # nvk_LOOPMAKER
     nvk_LOOPMAKER Creates perfect zero-crossing loops out of selected items. If Loop Count is set to a number higher than 1, it will create multiple loops out of a single item that can be played back to back with sample accurate transitions.
@@ -9,6 +9,10 @@ Links:
     Store Page https://store.nvk.tools/l/nvk_LOOPMAKER
     User Guide https://nvk.tools/doc/nvk_loopmaker
 Changelog:
+    2.2.2
+        + Support for import/export and global themes in theme editor
+        + Disable match length of overlapping items setting while in shepard tone mode
+        + Changing name of "disable auto updates" setting to "disable real-time updates" to be more clear
     2.2.1
         - Fixed: global actions run while script is focused should no longer cause unexpected behavior unless they directly modify the selected loop items. Note: it's still not recommended to use global actions while the script is focused.
     2.2.0

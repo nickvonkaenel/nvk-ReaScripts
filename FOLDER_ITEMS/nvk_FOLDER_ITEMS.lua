@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.5.4
+Version: 2.5.5
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,9 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.5
+        - Shared code fix for duplicate takes bug
+        - Adding option to import/export themes and global themes for imgui scripts
     2.5.4
         - Refactoring debugging code
     2.5.3
