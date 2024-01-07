@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.8.1
+Version: 1.9.0
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,15 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.9.0
+    + Command Palette mode: minimal search window with no sidebar or results until search is performed. Hides a lot of the UI. Can be toggled with the keyboard shortcut.
+    + Alphanumeric input now focuses the search bar from anywhere
+    + New shortcut options
+    - Fixed: search string help text now honors disabled result types
+    - Fixed: crash with alt-click on 'All' folder
+    - Fixed: enter on empty search could add fx
+    - Fixed: docking preferences script in main script window could cause script to break
+    - Fixed: FX window still shown even if 'show fx window after insertion' is disabled with certain Reaper preferences
   + 1.8.1
     + New option: FX - Always add to track
     + Themes: import/export and save as global default
