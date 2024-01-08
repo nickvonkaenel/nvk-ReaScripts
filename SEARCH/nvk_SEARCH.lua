@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.9.0
+Version: 1.9.1
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,11 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.9.1
+    + Persistent mode: with this enabled, the script will stay open until quit. It will reopen whenever it's run again, but won't have to rescan everything. This makes the startup time instantaneous. It will also remember the last search and any selected results. To fully close the script, use the quit hotkey.
+    + New option: Rescan results - mostly useful for persistent mode, in case you add new fx or actions while the script is open. This will rescan the results without having to restart the script.
+    + New option: Always on top - useful in case script is hidden behind other windows such as pinned fx.
+    - Fixed: couldn't rename folders because search would get focused from text entry.
   + 1.9.0
     + Command Palette mode: minimal search window with no sidebar or results until search is performed. Hides a lot of the UI. Can be toggled with the keyboard shortcut.
     + Alphanumeric input now focuses the search bar from anywhere
