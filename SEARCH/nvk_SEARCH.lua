@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.9.2
+Version: 1.9.3
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,10 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.9.3
+    - Context menu for alt add fx not working
+    + Option to load last search on startup
+    + Better handling of disabled checkboxes (show override setting)
   + 1.9.2
     + Improved behavior when dragging to re-order folders, results, fx
     - Palette mode UI could be positioned incorrectly if opening with a filter
