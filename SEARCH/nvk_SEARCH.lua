@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.9.1
+Version: 1.9.2
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,10 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.9.2
+    + Improved behavior when dragging to re-order folders, results, fx
+    - Palette mode UI could be positioned incorrectly if opening with a filter
+    + New scripts for opening with a specific filter enabled
   + 1.9.1
     + Persistent mode: with this enabled, the script will stay open until quit. It will reopen whenever it's run again, but won't have to rescan everything. This makes the startup time instantaneous. It will also remember the last search and any selected results. To fully close the script, use the quit hotkey.
     + New option: Rescan results - mostly useful for persistent mode, in case you add new fx or actions while the script is open. This will rescan the results without having to restart the script.

@@ -9,6 +9,8 @@ Links:
     Store Page https://store.nvk.tools/l/nvk_LOOPMAKER
     User Guide https://nvk.tools/doc/nvk_loopmaker
 Changelog:
+    2.2.4
+        - Incorrect colors of items on macOS
     2.2.3
         - Fixed: crash on upgrade popup
     2.2.2
