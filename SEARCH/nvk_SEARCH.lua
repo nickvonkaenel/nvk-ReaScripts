@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.9.4
+Version: 1.9.5
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.9.5
+    - Results not updating when re-opening script in persistent mode with an existing search
   + 1.9.4
     + FX menu popup no longer displays unless mouse is moved since it could be annoying if the mouse happened to be there on startup
     + Context menu option to add any fx as instrument track not just VSTi, AUi, etc
