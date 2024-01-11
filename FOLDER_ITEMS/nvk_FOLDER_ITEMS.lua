@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.5.5
+Version: 2.5.6
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.6
+        - Theme import not working on Windows
     2.5.5
         - Shared code fix for duplicate takes bug
         - Adding option to import/export themes and global themes for imgui scripts

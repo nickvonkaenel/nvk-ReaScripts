@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.9.5
+Version: 1.9.6
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.9.6
+    - Theme import not working on Windows
   + 1.9.5
     - Results not updating when re-opening script in persistent mode with an existing search
   + 1.9.4
