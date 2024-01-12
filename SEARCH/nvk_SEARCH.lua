@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.9.6
+Version: 1.9.7
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,9 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.9.7
+    - Fix crash when sorting results by name with unnamed markers in the project
+    - Certain keyboard shortcuts not working after opening the preferences window
   + 1.9.6
     - Theme import not working on Windows
   + 1.9.5

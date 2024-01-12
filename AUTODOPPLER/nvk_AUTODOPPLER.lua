@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.4.6
+Version: 2.4.7
 About:
   # nvk_AUTODOPPLER
 
@@ -14,6 +14,8 @@ Links:
   Store Page https://gum.co/nvk_AUTODOPPLER
   User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+  2.4.7
+    - Fixed: issue with certain keyboard shortcuts not working after opening preferences
   2.4.6
     - Theme import not working on Windows
   2.4.5
