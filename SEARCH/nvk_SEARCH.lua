@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.9.7
+Version: 1.10.0
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,9 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.10.0
+    + Updating layout of preferences, consolidating some categories and moving things around
+    + FX - Alt mode: option to change what happens when alt is held while adding fx. Can now switch to the alt key determining whether to add fx to an item or track. This overrides the default behavior of adding depending on focus.
   + 1.9.7
     - Fix crash when sorting results by name with unnamed markers in the project
     - Certain keyboard shortcuts not working after opening the preferences window
