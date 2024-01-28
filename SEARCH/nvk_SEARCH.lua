@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.10.0
+Version: 1.10.1
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,9 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.10.1
+    + Removing 'reveal hidden tracks' setting as it seems pointless. If you don't want a track to be revealed, don't select it.
+    + Fully collapsed tracks will now be revealed by uncollapsing the parent track when searched
   + 1.10.0
     + Updating layout of preferences, consolidating some categories and moving things around
     + FX - Alt mode: option to change what happens when alt is held while adding fx. Can now switch to the alt key determining whether to add fx to an item or track. This overrides the default behavior of adding depending on focus.

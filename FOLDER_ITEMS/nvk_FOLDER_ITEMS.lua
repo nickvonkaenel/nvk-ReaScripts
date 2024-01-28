@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.5.7
+Version: 2.5.9
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.9
+        - New wildcard for render directory: $projectrenderdirectory (will use the project render directory instead of custom preset directory, essentially the same behavior as the default tab)
+    2.5.8
+        - Fixed: when copying files, if the user selected the option to number different versions, instead of replacing then only the first file would be copied
     2.5.7
         - Fixed: issue with certain keyboard shortcuts not working after opening preferences
     2.5.6
