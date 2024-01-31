@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.1.1
+Version: 2.1.2
 About:
     # nvk_SUBPROJECT
 
@@ -10,6 +10,7 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.1.2 Refactoring
     2.1.1 Adding author name to script
     2.1.0
         - Fixed: crash when rendering project with folder items from the main project
@@ -31,6 +32,17 @@ if not functionsLoaded then return end
 local r = reaper
 
 -- SCRIPT --
+local function RemoveExtensions(name)
+    if not name then return '' end
+    name = name:match('(.+)%.[^%.]+$') or name
+    name = name:match('(.-)[- ]*glued') or name
+    name = name:match('(.+)[_ -]+%d+$') or name
+    name = name:match('(.-)[ ]*render') or name
+    name = name:match('(.+)reversed') or name
+    name = name:match('(.-)[_ -]+$') or name
+    return name
+end
+
 function Main()
     local focus = r.GetCursorContext()
     local subName

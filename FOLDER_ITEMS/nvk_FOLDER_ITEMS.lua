@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.5.9
+Version: 2.5.10
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.11
+        - Fixed: Sample rate not being set properly when using loopmaker on a project with use project sample rate enabled
+    2.5.10
+        - Fixed: new option for repositioning across tracks button (right-click to ignore tracks)
     2.5.9
         - New wildcard for render directory: $projectrenderdirectory (will use the project render directory instead of custom preset directory, essentially the same behavior as the default tab)
     2.5.8

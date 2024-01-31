@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.10.1
+Version: 1.10.2
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.10.2
+    - Fixed: crash when adding fx to the master track
   + 1.10.1
     + Removing 'reveal hidden tracks' setting as it seems pointless. If you don't want a track to be revealed, don't select it.
     + Fully collapsed tracks will now be revealed by uncollapsing the parent track when searched
