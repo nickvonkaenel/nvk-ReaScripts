@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.10.2
+Version: 1.10.3
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.10.3
+    + Open take source file in right-click context menu
   + 1.10.2
     - Fixed: crash when adding fx to the master track
   + 1.10.1
