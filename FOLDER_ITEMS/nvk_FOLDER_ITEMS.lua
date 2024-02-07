@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.5.10
+Version: 2.5.12
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.12
+        + Trial improvements
     2.5.11
         - Fixed: Sample rate not being set properly when using loopmaker on a project with use project sample rate enabled
     2.5.10

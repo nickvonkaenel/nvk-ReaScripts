@@ -1,6 +1,6 @@
 --[[
 Description: nvk_VARIATIONS
-Version: 1.0.2
+Version: 1.0.4
 About:
   # nvk_VARIATIONS
 
@@ -9,6 +9,10 @@ Author: nvk
 Links:
   Store Page https://gum.co/nvk_VARIATIONS
 Changelog:
+  + 1.0.4
+    - Reset button now resets take selection
+  + 1.0.3
+    + Trial improvements
   + 1.0.2
     + Edit cursor moved to the start of the first variation after running the script
     + Shortcuts to go to next/previous variation (default: F/D)

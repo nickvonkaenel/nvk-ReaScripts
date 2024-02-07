@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.4.2
+Version: 2.4.3
 About:
     # nvk_TAKES
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.4.3
+        + Trial improvements
     2.4.2
         - Theme import not working on Windows
     2.4.1

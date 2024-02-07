@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.4.8
+Version: 2.4.9
 About:
   # nvk_AUTODOPPLER
 
@@ -14,6 +14,8 @@ Links:
   Store Page https://gum.co/nvk_AUTODOPPLER
   User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+  2.4.9
+    + Trial improvements
   2.4.8
     + Shortcuts for remove FX (close script) and toggle FX bypass
   2.4.7
