@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.5.12
+Version: 2.5.13
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,9 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.13
+        - Fixed: console logging during use of reposition script (whoops!)
+        - Fixed: divide by zero error when percentage is set to 0 in reposition script
     2.5.12
         + Trial improvements
     2.5.11
