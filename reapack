@@ -75,8 +75,16 @@ handle_git_operations() {
 # Commit and push changes if needed
 handle_git_operations "$PWD" true
 
+
+
 # Run reapack-index and check if it succeeds
 reapack-index "$(pwd)" || exit_with_error "reapack-index command failed."
+
+# Remove old index-min.xml
+rm -f index-min.xml
+
+# Run reapack-index again but on index-min.xml
+reapack-index "$(pwd)" --output ./index-min.xml || exit_with_error "reapack-index command failed."
 
 # Push index.xml
 handle_git_operations "$PWD" false
@@ -95,7 +103,7 @@ for repo in nvk.tools Reapleton; do
     fi
 
     # Copy and commit index.xml
-    if cp "$main_dir_path/index.xml" "$repo_path/index.xml"; then
+    if cp "$main_dir_path/index-min.xml" "$repo_path/index.xml"; then
         cd "$repo_path" || exit_with_error "Failed to change directory to $repo_path."
         git add index.xml
         git commit -m "Update index.xml" || exit_with_error "Failed to commit index.xml in $repo."
