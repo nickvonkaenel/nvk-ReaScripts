@@ -10,6 +10,7 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
+    local item
     if selectItemUnderMouse then
         reaper.Main_OnCommand(40296, 0) -- select all tracks
         reaper.Main_OnCommand(40769, 0) -- unselect everything (have to select all tracks first else some envelope tracks can be selected)
@@ -34,13 +35,9 @@ function Main()
             end
         end
         local track = Track(r.GetMediaItem_Track(item))
-        local compact_tracks = track:UncompactChildren() -- store tracks to compact after, a v7 compatibility thing with hidden tracks
-        if track.foldercompact == 2 then
-            track.foldercompact = 0
-            compact_tracks[#compact_tracks + 1] = track
-        end
+        local compact_tracks = track:UncompactChildren(true) -- store tracks to compact after, a v7 compatibility thing with hidden tracks
         reaper.Main_OnCommand(40006, 0) -- remove items
-        for i, track in ipairs(compact_tracks) do track.foldercompact = 2 end
+        compact_tracks:Compact()
         return
     end
 
@@ -48,7 +45,7 @@ function Main()
         reaper.Main_OnCommand(40006, 0) -- remove items
         return
     end
-    window, segment, details = reaper.BR_GetMouseCursorContext()
+    local window, segment, details = reaper.BR_GetMouseCursorContext()
     if window == "tcp" or window == "unknown" then
         if segment == "track" then
             reaper.Main_OnCommand(41110, 0) -- select track under mouse
@@ -64,10 +61,10 @@ end
 
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
-reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_SAVEALLSELITEMS1"), 0)
+local items = Items()
 Main()
 reaper.Main_OnCommand(41110, 0) -- select track under mouse
-reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_RESTALLSELITEMS1"), 0)
+items.sel = true
 reaper.UpdateArrange()
 reaper.PreventUIRefresh(-1)
 reaper.Undo_EndBlock(scr.name, -1)

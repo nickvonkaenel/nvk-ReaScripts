@@ -1,6 +1,6 @@
 --[[
 Description: nvk_VARIATIONS
-Version: 1.0.4
+Version: 1.0.5
 About:
   # nvk_VARIATIONS
 
@@ -9,6 +9,9 @@ Author: nvk
 Links:
   Store Page https://gum.co/nvk_VARIATIONS
 Changelog:
+  + 1.0.5
+    + Display text of hovered item overrides when hovering toggles
+    + Option to hide envelopes after applying variations
   + 1.0.4
     - Reset button now resets take selection
   + 1.0.3

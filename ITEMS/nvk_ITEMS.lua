@@ -1,7 +1,8 @@
 -- @description nvk_ITEMS
 -- @author nvk
--- @version 1.5.1
+-- @version 1.6.0
 -- @changelog
+--   1.6.0 Adding new script: Unselect muted items
 --   1.5.1 Fixing undo text on toggle mute smart
 --   1.5 Project marker to item notes script
 --   1.3 Various new scripts

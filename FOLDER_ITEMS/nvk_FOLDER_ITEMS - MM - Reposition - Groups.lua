@@ -10,11 +10,13 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
+    local tracks = Tracks.All():Uncompact()
     TrackDoubleClick()
     GetItemsSnapOffsetsAndRemove()
     RepositionSelectedItemGroupsSMART()
     RestoreItemsSnapOffsets()
     reaper.Main_OnCommand(40290, 0) -- Time selection: Set time selection to items
+    tracks:Compact()
 end
 
 reaper.Undo_BeginBlock()

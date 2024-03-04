@@ -15,15 +15,11 @@ function Main()
         r.Main_OnCommand(40289, 0) -- unselect all items
         r.SetMediaItemSelected(item, true)
         groupSelect(item)
-        items = SaveSelectedItems()
+        local items = Items()
         r.Main_OnCommand(40513, 0) -- move edit cursor to mouse cursor
         r.Main_OnCommand(40757, 0) -- split items at edit cursor (select right)
-        r.SetEditCurPos(cursorPos, 0, 0)
-        for i, item in ipairs(items) do
-            if r.ValidatePtr(item, 'MediaItem*') then
-                r.SetMediaItemSelected(item, false)
-            end
-        end
+        r.SetEditCurPos(cursorPos, false, false)
+        items.sel = false
     else
         r.Main_OnCommand(40759, 0) -- split at edit cursor (select right)
     end

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.10.4
+Version: 1.10.5
 About:
   # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+  + 1.10.5
+    + Show recent results when a filter is active and the search bar is empty (was only showing recent results when no filter was active)
   + 1.10.4
     + Trial improvements
   + 1.10.3

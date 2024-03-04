@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.5.13
+Version: 2.6.0
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,13 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.6.0
+        - Fixed: experimental automatic item grouping not grouping nested folders properly
+        - Fixed: repositioning scripts and hidden tracks
+        + New scripts for cut/copy/paste to handle v7 hidden tracks option
+        + Additional subproject markers settings
+        + Notes from first item used for sausage files now usable for $itemnotes wildcard and metadata
+        + Notes can now be added to folder items if 'big names' and 'render settings in notes' are not enabled
     2.5.13
         - Fixed: console logging during use of reposition script (whoops!)
         - Fixed: divide by zero error when percentage is set to 0 in reposition script

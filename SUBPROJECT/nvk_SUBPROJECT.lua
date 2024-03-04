@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.1.3
+Version: 2.1.4
 About:
     # nvk_SUBPROJECT
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.1.4
+        + Fixed: excessive rendering (only render once now on creation)
     2.1.3
         + Trial improvements
     2.1.2 Refactoring
