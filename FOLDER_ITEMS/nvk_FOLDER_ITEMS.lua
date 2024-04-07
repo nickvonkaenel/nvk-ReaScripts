@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.6.0
+Version: 2.7.1
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,15 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.7.1
+        + Fixed: crash when using join script with default color track
+    2.7.0
+        + New script: Join - Joins selected folder items into a single folder item by creating a new empty item in a new track in the folder.
+    2.6.1
+        - Fixed: folder tracks with multiple nested folder tracks could have their depths altered when rendering a sausage item from one of the nested folder track parents
+        - Script UI is now resizable and settings is a popup window (old settings tab can still be enabled with shorcut for now, but will probably remove later)
+        - Greatly improved UI performance when using scripts with thousands of items (rename, render)
+        - Fixed rename track after folder creation not working properly
     2.6.0
         - Fixed: experimental automatic item grouping not grouping nested folders properly
         - Fixed: repositioning scripts and hidden tracks
