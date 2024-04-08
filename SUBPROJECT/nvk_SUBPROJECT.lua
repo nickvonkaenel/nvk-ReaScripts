@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.6.3
+Version: 2.6.4
 About:
     # nvk_SUBPROJECT
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.6.4
+        + Improved undo behavior
+        + Name folder items after subproject name if no name is present when creating subproject
+        ! Fix markers script now ignores item selection and time selection and adds start and end markers to the entire project
     2.6.3
         + Improved behavior for render script
     2.6.2

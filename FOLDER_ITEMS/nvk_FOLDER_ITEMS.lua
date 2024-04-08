@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.7.1
+Version: 2.7.2
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.7.2
+        + Fixed: rename script allows for naming conventions with multiple numbers at the end of the name i.e. "My Sound_01_01"
     2.7.1
         + Fixed: crash when using join script with default color track
     2.7.0
