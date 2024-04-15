@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.6.4
+Version: 2.6.5
 About:
     # nvk_SUBPROJECT
 
@@ -10,6 +10,11 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.6.5
+        + Display subproject targets in the script
+        + Improved target selection behavior (uses focus but also checks for selection of items/tracks as a backup)
+        + Warn if no valid targets without closing the script and losing settings
+        + Update saved settings immediately when adjusting settings in preferences so can be accessed by another run of the script
     2.6.4
         + Improved undo behavior
         + Name folder items after subproject name if no name is present when creating subproject
