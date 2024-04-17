@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.6.5
+Version: 2.7.0
 About:
     # nvk_SUBPROJECT
 
@@ -10,40 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
-    2.6.5
-        + Display subproject targets in the script
-        + Improved target selection behavior (uses focus but also checks for selection of items/tracks as a backup)
-        + Warn if no valid targets without closing the script and losing settings
-        + Update saved settings immediately when adjusting settings in preferences so can be accessed by another run of the script
-    2.6.4
-        + Improved undo behavior
-        + Name folder items after subproject name if no name is present when creating subproject
-        ! Fix markers script now ignores item selection and time selection and adds start and end markers to the entire project
-    2.6.3
-        + Improved behavior for render script
-    2.6.2
-        + Fixed: subproject marker fix not applying tail length
-    2.6.1
-        + Option to render without updating positions
-    2.6.0
-        + New option to set tail length for subproject items
-        ! Change in behavior: nvk_SUBPROJECT no longer updates the markers in the subproject when no items are selected. This is to allow for opening the script to adjust settings and didn't seem necessary since the markers are updated automatically when rendering the subproject with the script. If you really need the old behavior for some reason, you can uncomment the code in the script. There is also a separate script to fix markers too.
-        + New update scripts for flexibility in workflow
-        + New option to match subproject item positions to the main project subproject position
-        + New settings script to adjust specific subproject settings. Currently only the tail length is available.
-        + Searchable FX
-    2.5.2
-        + Complete UI overhaul - All settings are now available without needing to edit the script
-    2.2.0
-        + Adding ability to set channels for subproject
-    2.1.4
-        + Fixed: excessive rendering (only render once now on creation)
-    2.1.3
-        + Trial improvements
-    2.1.2 Refactoring
-    2.1.1 Adding author name to script
-    2.1.0
-        - Fixed: crash when rendering project with folder items from the main project
+    2.7.0
+        + Fixed: proper subproject colors on Windows
+        + Disable marker fix option to only update start/end markers when creating a subproject and let the user decide when to update markers
+    For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
 Provides:
     **/*.dat
     **/*.otf

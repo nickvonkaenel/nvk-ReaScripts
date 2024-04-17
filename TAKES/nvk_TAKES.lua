@@ -12,25 +12,7 @@ Links:
 Changelog:
     2.4.3
         + Trial improvements
-    2.4.2
-        - Theme import not working on Windows
-    2.4.1
-        - Fixed: issue with duplicate items and select next take script not rippling items properly if there were multiple folders of items selected
-        - Incorrect spacing when next take start position would cause take position to start before the previous take end position
-    2.4.0
-        + nvk_TAKES - Settings
-            + Added option to enable rippling items in the "Duplicate items and select next take SMART" script
-            + Added option to enable playback restart for the "Select previous/next take SMART" script
-    2.3.0
-        + Improved behavior with duplicate items and select next take script
-            + Duplicating single item inside of a folder track  will now place the item in the next folder item with matching name if it exists or place it in the next column space
-            + Duplicating multiple items will make room if needed on the track
-    2.2.1
-        - Fixed: issue with next take where new position could be calculated incorrectly
-    2.2.0
-        - Fixed: only add take markers to audio items
-    2.1.0
-        - Fixed: Duplicate items and select next take crash with hidden tracks
+    For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
 Provides:
     **/*.dat
     **/*.otf

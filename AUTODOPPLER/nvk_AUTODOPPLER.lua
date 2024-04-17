@@ -16,66 +16,7 @@ Links:
 Changelog:
   2.4.11
     + Possible fix for crash when using certain plug-ins
-  2.4.10
-    + Respect user setting for hiding master track in tcp when using nvk_DOPPLER
-  2.4.9
-    + Trial improvements
-  2.4.8
-    + Shortcuts for remove FX (close script) and toggle FX bypass
-  2.4.7
-    - Fixed: issue with certain keyboard shortcuts not working after opening preferences
-  2.4.6
-    - Theme import not working on Windows
-  2.4.5
-    + Support for import/export and global themes in theme editor
-  2.4.4
-    - Refactoring debugging code
-  2.4.3
-    - Fixed: bug where render could trigger twice
-  2.4.2
-    - Fixed: possible crash on load with certain machines
-  2.4.1
-    + Licensing improvements
-  2.4.0
-    + User-assignable keyboard shortcuts
-  2.3.9
-    - Fixed: crash when FX is disabled
-  2.3.8
-    - Fixed: crash when running script for the first time with items on the track
-    - Fixed: crash when running older versions of GRM Doppler
-  2.3.7
-    - Fixed: crash when using Quick Render, currently Quick render only works with AUTODOPPLER v1
-  2.3.6
-    - Fixed: certain custom fx parameters could cause sliders to jump around when adjusting them
-    - Removed: FX parameters option from automation section in Custom FX (since it doesn't do anything)
-  2.3.5
-    - Fixed: if jsfx were set to show filename and not show description, nvk_DOPPLER would get added repeatedly
-  2.3.4
-    + Presets combo box added for DopperPRO (if presets are found)
-  2.3.3 Logo update
-  2.3.2
-    - Only select custom fx track when adjusting automation
-  2.3.1
-    - Refactoring
-  2.3.0
-    + Unlink feature added to nvk_DOPPLER settings
-    - Fixed: Right-click to reset sliders not updating automation
-    + Right-click to reset randomization
-    + Hotkey to randomize all sliders [R] and reset all randomization [Shift+R]
-    + Lock button to lock in last touched FX parameter for custom fx
-  2.2.0
-    - Fixed: Switching tabs not updating fx settings
-    + nvk_DOPPLER v2: Updated UI, Added Depth knob to allow for more subtle tremolo fx
-  2.1.4
-    - Fixed: Crash when resetting settings on default tab
-    - Possible fix: crash when offset value is nil
-  2.1.2
-    + UI tweaks
-  2.1.1
-    - Fixed: Backwards compatibility with older versions of GRM Doppler
-  2.1.0
-    + Update to UI - rounder, cleaner, more icons
-    - Fixed: Crash when adding FX that aren't found
+  For full changelog, visit https://nvk.tools/doc/nvk_autodoppler#changelog
 Provides:
   **/*.dat
   **/*.otf
