@@ -92,26 +92,20 @@ function Main()
 
     curDepth = 0
     local function CreateItemFolders(t, depth, lastKey)
-        for k, v, isLast in PairsByKeys(t) do
+        for k, v in PairsByKeys(t) do
             local pos = initPos
-            local function CreateTrack(isItemTrack)
+            local function CreateTrack()
                 initTrackNum = initTrackNum + 1
                 reaper.InsertTrackAtIndex(initTrackNum, true)
                 local track = reaper.GetTrack(0, initTrackNum)
                 local newName = k
-                -- if isItemTrack then
-                --     --newName = string.match(newName, lastKey.."(.+)")
-                -- else
-                --     newName = lastKey.."_"..newName
-                -- end
-                
                 local prevTrack = reaper.GetTrack(0, initTrackNum - 1)
                 if (depth - curDepth) ~= 0 then
                     reaper.SetMediaTrackInfo_Value(prevTrack, "I_FOLDERDEPTH", depth - curDepth)
                 end
                 local parentTrack = reaper.GetParentTrack(track)
                 if parentTrack then
-                    local retval, parentTrackName = reaper.GetTrackName(parentTrack)
+                    local rv, parentTrackName = reaper.GetTrackName(parentTrack)
                     newName = string.match(newName, parentTrackName.."[_ -](.+)")
                     if not newName then newName = k end
                 elseif lastKey then
@@ -122,7 +116,7 @@ function Main()
                 return track
             end
             if v[1] then
-                local track = CreateTrack(true)
+                local track = CreateTrack()
                 table.sort(v, sortItems)
                 for i, item in ipairs(v) do
                     reaper.MoveMediaItemToTrack(item, track)
@@ -133,9 +127,8 @@ function Main()
                 
                 if tablesize(v) > 1 then
                     CreateTrack()
-                    lastKey = k
                 end
-                CreateItemFolders(v, depth + (tablesize(v) > 1 and 1 or 0), k, lastKey)
+                CreateItemFolders(v, depth + (tablesize(v) > 1 and 1 or 0), k)
             end
         end
     end

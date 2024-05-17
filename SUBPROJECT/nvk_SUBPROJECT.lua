@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.7.0
+Version: 2.7.2
 About:
     # nvk_SUBPROJECT
 
@@ -10,6 +10,11 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.7.2
+        Updating to ReaImGui v9
+        Better crash handling
+    2.7.1
+        Backwards compatibility with Reaper 6
     2.7.0
         + Fixed: proper subproject colors on Windows
         + Disable marker fix option to only update start/end markers when creating a subproject and let the user decide when to update markers

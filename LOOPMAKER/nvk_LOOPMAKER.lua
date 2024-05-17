@@ -1,6 +1,6 @@
 --[[
 Description: nvk_LOOPMAKER
-Version: 2.2.11
+Version: 2.2.13
 About:
     # nvk_LOOPMAKER
     nvk_LOOPMAKER Creates perfect zero-crossing loops out of selected items. If Loop Count is set to a number higher than 1, it will create multiple loops out of a single item that can be played back to back with sample accurate transitions.
@@ -9,48 +9,12 @@ Links:
     Store Page https://store.nvk.tools/l/nvk_LOOPMAKER
     User Guide https://nvk.tools/doc/nvk_loopmaker
 Changelog:
-    2.2.11
-        + Link to documentation when clicking on logo
-        + Show warning about time selection when opening script for the first time with a time selection
-    2.2.10
-        + Trial improvements
-    2.2.9
-        + Removing prefix/suffix from existing name before renaming so that it doesn't get added multiple times
-    2.2.8
-        + Testing Osara support
-    2.2.7
-        + Remove playback solo and time selection when closing script while playing
-        - Fixed: crash when changing project (unfortunately selected item is left in looped state, but this is better than crashing)
-    2.2.6
-        - Fixed: issue with certain keyboard shortcuts not working after opening preferences
-    2.2.5
-        - Theme import not working on Windows
-    2.2.4
-        - Incorrect colors of items on macOS
-    2.2.3
-        - Fixed: crash on upgrade popup
-    2.2.2
-        + Support for import/export and global themes in theme editor
-        + Disable match length of overlapping items setting while in shepard tone mode
-        + Changing name of "disable auto updates" setting to "disable real-time updates" to be more clear
-    2.2.1
-        - Fixed: global actions run while script is focused should no longer cause unexpected behavior unless they directly modify the selected loop items. Note: it's still not recommended to use global actions while the script is focused.
-    2.2.0
-        + Improved behavior when playing back loop (solos item tracks).
-        + Playback is now stopped when script is refocused in order to prevent unexpected behavior.
-        + New Play and Stop actions can be assigned to user hotkeys.
-        - Fixed: second snap setting shouldn't be applied to loops matching a time selection.
-    2.1.1
-        + Refactoring debugging code
-    2.1.0
-        + Pin button to allow script to remain open. Processed loops are unselected after applying.
-        + New action: Apply (keep open)
-        + UI improvements/changes to account for pin button
-    2.0.2
-        - Fixed: author name in reapack description
-    2.0.1
-        - Fixed: possible crash on load with certain machines
-    2.0.0
+    2.2.13
+        Updating to ReaImGui v9
+        Better crash handling
+    2.2.12
+        + Fixed: when glueing loops in a time selection, the glued items were duplicated for no reason
+    For full changelog, visit https://nvk.tools/doc/nvk_loopmaker#changelog
 Provides:
     **/*.dat
     **/*.otf

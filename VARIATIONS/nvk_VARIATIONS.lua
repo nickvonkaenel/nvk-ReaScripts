@@ -1,35 +1,22 @@
 --[[
 Description: nvk_VARIATIONS
-Version: 1.0.6
+Version: 1.0.7
 About:
-  # nvk_VARIATIONS
+    # nvk_VARIATIONS
 
-  Make variations of your items, randomized with a variety of parameters and automatic selection of takes. 
+    Make variations of your items, randomized with a variety of parameters and automatic selection of takes. 
 Author: nvk
 Links:
-  Store Page https://gum.co/nvk_VARIATIONS
+    Store Page https://gum.co/nvk_VARIATIONS
 Changelog:
-  + 1.0.6
-    - Fixed: ReaEQ not getting added for some users
-  + 1.0.5
-    + Display text of hovered item overrides when hovering toggles
-    + Option to hide envelopes after applying variations
-  + 1.0.4
-    - Reset button now resets take selection
-  + 1.0.3
-    + Trial improvements
-  + 1.0.2
-    + Edit cursor moved to the start of the first variation after running the script
-    + Shortcuts to go to next/previous variation (default: F/D)
-    + Playback from the script will skip to the start of the next variation when the current one ends
-  + 1.0.1
-    + Improved handling of folder/midi items
-  1.0.0
-    + Initial release
+    1.0.7
+        Updating to ReaImGui v9
+        Better crash handling
+    For full changelog, visit https://nvk.tools/doc/nvk_variations#changelog
 Provides:
-  **/*.dat
-  **/*.otf
-  [main] *.lua
+    **/*.dat
+    **/*.otf
+    [main] *.lua
 --]]
 SCRIPT_FOLDER = 'variations'
 r = reaper

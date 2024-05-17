@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.4.3
+Version: 2.4.5
 About:
     # nvk_TAKES
 
@@ -10,6 +10,11 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.4.5
+        Updating to ReaImGui v9
+        Better crash handling
+    2.4.4
+        New script: nvk_TAKES - Select random take SMART (no repeat) - will avoid selecting the current take if possible
     2.4.3
         + Trial improvements
     For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog

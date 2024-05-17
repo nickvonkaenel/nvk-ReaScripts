@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.7.2
+Version: 2.7.4
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,12 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.7.4
+        Updating to ReaImGui v9
+        Better crash handling
+    2.7.3
+        Non-active but hidden item lanes could create folder items
+        Folder items could crash when switching between projects with a large number of items immediately after making a change.
     2.7.2
         + Fixed: rename script allows for naming conventions with multiple numbers at the end of the name i.e. "My Sound_01_01"
     For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
@@ -20,8 +26,6 @@ Provides:
     [main] *.lua
 --]]
 -- SETUP --
-local is_new_value, filename, sectionID, cmdID, mode, resolution, val = reaper.get_action_context()
-isDefer = true
 r = reaper
 sep = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
@@ -30,7 +34,8 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 local function Exit()
-    reaper.SetToggleCommandState(sectionID, cmdID, 0)
+    reaper.SetToggleCommandState(scr.secID, scr.cmdID, 0)
+    r.RefreshToolbar2(scr.secID, scr.cmdID)
     ClearMarkers()
 end
 
@@ -111,8 +116,8 @@ local function Main()
 end
 
 if r.APIExists('JS_Mouse_GetState') and r.APIExists('CF_GetClipboard') then
-    r.SetToggleCommandState(sectionID, cmdID, 1)
-    r.RefreshToolbar2(sectionID, cmdID)
+    r.SetToggleCommandState(scr.secID, scr.cmdID, 1)
+    r.RefreshToolbar2(scr.secID, scr.cmdID)
     r.defer(Main)
     r.atexit(Exit)
 else
