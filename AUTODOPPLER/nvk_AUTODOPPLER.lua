@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.4.12
+Version: 2.4.14
 About:
     # nvk_AUTODOPPLER
 
@@ -14,6 +14,10 @@ Links:
     Store Page https://gum.co/nvk_AUTODOPPLER
     User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+    2.4.14
+        New fix for crash on custom fx
+    2.4.13
+        Tenative fix for crash on custom fx
     2.4.12
         Updating to ReaImGui v9
         Better crash handling
