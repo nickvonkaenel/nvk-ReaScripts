@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.11.1
+Version: 1.11.2
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,11 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+    1.11.2
+        Crash when removing project directories individually
+        Removing individual project directories could have removed incorrect folder in rare cases
+        Option to rescan project directories on startup
+        Crash when opening the script for the first time with no config (whooooops)
     1.11.1
         FX and Folders Sidebar now collapsible headers instead of option to hide
         Dividers and new folders get added at end of all selected folders to the same parent folder as the last selected folder
