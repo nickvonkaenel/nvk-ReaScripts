@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.11.2
+Version: 1.11.3
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+    1.11.3
+        Improvements to how folder colors are displayed
     1.11.2
         Crash when removing project directories individually
         Removing individual project directories could have removed incorrect folder in rare cases

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.7.4
+Version: 2.7.5
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.7.5
+        Folder items crash when tracks deleted in larger projects
     2.7.4
         Updating to ReaImGui v9
         Better crash handling

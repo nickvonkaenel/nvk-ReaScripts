@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.4.5
+Version: 2.4.7
 About:
     # nvk_TAKES
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.4.7
+        Duplicate items and select next take SMART could duplicate automation on other tracks in the same folder in some cases
+    2.4.6
+        Crash when changing takes in item with no take markers
     2.4.5
         Updating to ReaImGui v9
         Better crash handling

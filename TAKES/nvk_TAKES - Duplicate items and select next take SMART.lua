@@ -84,7 +84,7 @@ function Main()
 		tracks:InsertEmptySpace(items.maxpos, math.ceil(minpos - nextColumnPos + diff))
 		newitems.minpos = newCursorPos
 	end
-	tracks:DuplicateAutomation({ s = items.minpos, e = items.maxpos }, newCursorPos)
+	items.tracks:DuplicateAutomation({ s = items.minpos, e = items.maxpos }, newCursorPos)
 end
 
 r.Undo_BeginBlock()
