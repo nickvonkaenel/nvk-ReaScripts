@@ -8,79 +8,53 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function CopyItemParameters(item)
-    itemFadeinshape = r.GetMediaItemInfo_Value(item, "C_FADEINSHAPE")
-    itemFadeindir = r.GetMediaItemInfo_Value(item, "D_FADEINDIR")
-    itemFadeinlen = r.GetMediaItemInfo_Value(item, "D_FADEINLEN")
-    itemFadeinlen_auto = r.GetMediaItemInfo_Value(item, "D_FADEINLEN_AUTO")
-    itemFadeoutshape = r.GetMediaItemInfo_Value(item, "C_FADEOUTSHAPE")
-    itemFadeoutdir = r.GetMediaItemInfo_Value(item, "D_FADEOUTDIR")
-    itemFadeoutlen = r.GetMediaItemInfo_Value(item, "D_FADEOUTLEN")
-    itemFadeoutlen_auto = r.GetMediaItemInfo_Value(item, "D_FADEOUTLEN_AUTO")
-    itemSnapoffset = r.GetMediaItemInfo_Value(item, "D_SNAPOFFSET")
-    itemPos = r.GetMediaItemInfo_Value(item, "D_POSITION")
-    itemLength = r.GetMediaItemInfo_Value(item, "D_LENGTH")
-end
+run(function()
+    local items = Items()
 
-function PasteItemParameters(item)
-    r.SetMediaItemInfo_Value(item, "C_FADEINSHAPE", itemFadeinshape)
-    r.SetMediaItemInfo_Value(item, "D_FADEINDIR", itemFadeindir)
-    r.SetMediaItemInfo_Value(item, "D_FADEINLEN", itemFadeinlen)
-    r.SetMediaItemInfo_Value(item, "D_FADEINLEN_AUTO", itemFadeinlen_auto)
-    r.SetMediaItemInfo_Value(item, "C_FADEOUTSHAPE", itemFadeoutshape)
-    r.SetMediaItemInfo_Value(item, "D_FADEOUTDIR", itemFadeoutdir)
-    r.SetMediaItemInfo_Value(item, "D_FADEOUTLEN", itemFadeoutlen)
-    r.SetMediaItemInfo_Value(item, "D_FADEOUTLEN_AUTO", itemFadeoutlen_auto)
-    r.SetMediaItemInfo_Value(item, "D_SNAPOFFSET", itemSnapoffset)
-    r.SetMediaItemInfo_Value(item, "D_POSITION", itemPos)
-    r.SetMediaItemInfo_Value(item, "D_LENGTH", itemLength)
-end
-
-function Main()
-    itemCount = r.CountSelectedMediaItems(0)
-
-    if itemCount > 5 then
-        retval = r.ShowMessageBox("Render " .. itemCount .. " items?", "Confirm", 1)
-        if retval == 2 then
-            return
-        end
+    if #items > 5 and r.ShowMessageBox("Render " .. itemCount .. " items?", "Confirm", 1) == 2 then
+        return
     end
-    items = SaveSelectedItems()
 
-    for i, item in ipairs(items) do
-        take = r.GetActiveTake(item)
+    for _, item in ipairs(items) do
+        local take = item.take
         if take then
-            r.Main_OnCommand(40289, 0) -- unselect all items
-            r.SetMediaItemSelected(item, 1)
-            CopyItemParameters(item)
-            name = r.GetTakeName(take)
-            source = r.GetMediaItemTake_Source(take)
-            sourceLength = r.GetMediaSourceLength(source)
-            playrate = r.GetMediaItemTakeInfo_Value(take, "D_PLAYRATE")
-            offset = r.GetMediaItemTakeInfo_Value(take, "D_STARTOFFS")
-            r.SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", 0)
-            r.SetMediaItemInfo_Value(item, "D_LENGTH", sourceLength / playrate)
-            newOffset = offset / playrate
-            CopyTakeMarkers(take)
-            r.Main_OnCommand(40209, 0) -- apply track/take FX to items
-            r.Main_OnCommand(40126, 0) -- switch to previous take
-            r.SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", offset)
-            r.Main_OnCommand(r.NamedCommandLookup("_S&M_TAKEFX_OFFLINE"), 0) -- set all fx offline
-            r.Main_OnCommand(40125, 0) -- switch to next take
-            PasteItemParameters(item)
-            take = r.GetActiveTake(item)
-            PasteTakeMarkers(take)
-            r.SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", newOffset)
-            r.GetSetMediaItemTakeInfo_String(take, "P_NAME", name, 1)
-            r.SetMediaItemInfo_Value(item, "D_VOL", 1)
+            item:Select(true)
+            local fadeinlen = item.fadeinlen
+            local fadeoutlen = item.fadeoutlen
+            local fadeinshape = item.fadeinshape
+            local fadeoutshape = item.fadeoutshape
+            local fadeindir = item.fadeindir
+            local fadeoutdir = item.fadeoutdir
+            local name = take.name
+            local offset = take.offset
+            local pos = item.pos
+            local length = item.len
+            local playrate = take.playrate
+            item.offset = 0
+            item.take.length = take.srclen
+            local newOffset = offset / playrate
+            -- local takemarkers = take.takemarkers
+            r.Main_OnCommand(40209, 0) -- Item: Apply track/take FX to items
+            local newtake = item.take
+            assert(newtake, 'newtake is nil')
+            take.offset = offset
+            take:SetAllFXOffline(true)
+            item.fadeinlen = fadeinlen
+            item.fadeoutlen = fadeoutlen
+            item.fadeinshape = fadeinshape
+            item.fadeoutshape = fadeoutshape
+            item.fadeindir = fadeindir
+            item.fadeoutdir = fadeoutdir
+            newtake.name = name
+            newtake.offset = newOffset
+            item.pos = pos
+            item.len = length
+            item.vol = 1
+            newtake:Clips(true)
+            -- for i, takemarker in ipairs(takemarkers) do
+            --     newtake:SetTakeMarker(i, takemarker.name, takemarker.srcpos / playrate, takemarker.color)
+            -- end
         end
     end
-    RestoreSelectedItems(items)
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+    items:Select()
+end)

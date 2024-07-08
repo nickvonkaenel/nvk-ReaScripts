@@ -8,7 +8,7 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
+run(function()
     if r.CountSelectedMediaItems(0) > 0 then
         if r.HasExtState('nvk_TAKES', 'take_name') then
             local str = r.GetExtState('nvk_TAKES', 'take_name')
@@ -24,11 +24,4 @@ function Main()
             end
         end
     end
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

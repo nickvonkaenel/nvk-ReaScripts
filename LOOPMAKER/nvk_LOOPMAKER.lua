@@ -1,6 +1,6 @@
 --[[
 Description: nvk_LOOPMAKER
-Version: 2.2.13
+Version: 2.3.2
 About:
     # nvk_LOOPMAKER
     nvk_LOOPMAKER Creates perfect zero-crossing loops out of selected items. If Loop Count is set to a number higher than 1, it will create multiple loops out of a single item that can be played back to back with sample accurate transitions.
@@ -9,6 +9,14 @@ Links:
     Store Page https://store.nvk.tools/l/nvk_LOOPMAKER
     User Guide https://nvk.tools/doc/nvk_loopmaker
 Changelog:
+    2.3.2
+        Fix for stuttering when loopmaker is running and setting for cursor undo history is enabled (still stutters once when opening)
+    2.3.1
+        Fix crash on start if more than 8 items and color items enabled
+        Stats
+        Crash when non-audio items are selected
+    2.3.0
+        Dependencies moved to nvk_SHARED
     2.2.13
         Updating to ReaImGui v9
         Better crash handling
@@ -17,7 +25,6 @@ Changelog:
     For full changelog, visit https://nvk.tools/doc/nvk_loopmaker#changelog
 Provides:
     **/*.dat
-    **/*.otf
     [main] *.lua
 --]]
 SCRIPT_FOLDER = 'loopmaker'

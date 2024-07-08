@@ -9,12 +9,12 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
+run(function()
     r.DeleteExtState("nvk_TAKES - WidthFX", "fxName", true)
     r.DeleteExtState("nvk_TAKES - WidthFX", "param", true)
     local retval, i, fxidx, param = r.GetLastTouchedFX()
     if retval then
-        local track = r.GetTrack(0, i-1)
+        local track = r.GetTrack(0, i - 1)
         local retval, fxName = r.TrackFX_GetFXName(track, fxidx, "")
         fxName = string.gsub(fxName, ".*: ", "")
         r.SetExtState("nvk_TAKES - WidthFX", "fxName", fxName, true)
@@ -24,12 +24,4 @@ function Main()
             "Click the fx parameter you want to use for automation, then run the script again.\n\nThe fx and parameter you select will be saved and loaded the next time you run \'nvk_TAKES - Toggle width fx or toggle track width envelope\'",
             scr.name .. " - Custom", 0)
     end
-end
-
-scr.path, scr.name = ({r.get_action_context()})[2]:match "(.-)([^/\\]+).lua$"
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

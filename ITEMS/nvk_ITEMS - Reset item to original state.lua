@@ -1,34 +1,26 @@
 -- @noindex
 -- USER CONFIG --
--- SETUP--
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-r = reaper
+-- SETUP --
+local r = reaper
 sep = package.config:sub(1, 1)
-dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
-    local xStart, xEnd = reaper.GetSet_ArrangeView2(0, false, 0, 0)
-    local pos = reaper.GetCursorPosition()
-    for i = 0, reaper.CountSelectedMediaItems(0) - 1 do
-        local item = reaper.GetSelectedMediaItem(0, i)
-        local itemPos = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
-        local take = reaper.GetActiveTake(item)
-        local src = reaper.GetMediaItemTake_Source(take)
-        file = reaper.GetMediaSourceFileName(src, "")
-        local track = reaper.GetMediaItemTrack(item)
-        SetLastTouchedTrack(track)
-        reaper.DeleteTrackMediaItem(track, item)
-        reaper.SetEditCurPos(itemPos, false, false)
-        reaper.InsertMedia(file, 0)
+run(function()
+    local xStart, xEnd = r.GetSet_ArrangeView2(0, false, 0, 0)
+    local cursorPos = r.GetCursorPosition()
+    for _, item in ipairs(Items()) do
+        local itemPos = item.pos
+        item.track:SetLastTouched()
+        local file = item.srcfile
+        if file then
+            item:Delete()
+            r.SetEditCurPos(itemPos, false, false)
+            r.InsertMedia(file, 0)
+        end
     end
-    reaper.SetEditCurPos(pos, false, false)
-    reaper.GetSet_ArrangeView2(0, true, 0, 0, xStart, xEnd)
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+    r.SetEditCurPos(cursorPos, false, false)
+    r.GetSet_ArrangeView2(0, true, 0, 0, xStart, xEnd)
+end)

@@ -7,7 +7,7 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
+run(function()
     local initCursorPos = r.GetCursorPosition()
     local tracks = SaveSelectedTracks()
     local initItems = SaveSelectedItems()
@@ -36,7 +36,7 @@ function Main()
         end
     end
     groupSelect(initItem.item, cursorPos)
-    local items = Items()
+    local items = Items.Selected()
     if #items == 0 then return cleanup() end
     local initPos = math.huge
     for i, item in ipairs(items) do
@@ -103,11 +103,4 @@ function Main()
     end
 
     cleanup()
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

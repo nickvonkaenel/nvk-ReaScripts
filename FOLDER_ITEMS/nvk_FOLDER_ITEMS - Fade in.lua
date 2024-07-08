@@ -80,23 +80,24 @@ local function fadein_auto(item)
             if fadeOutStart > fadeInEnd then
                 r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, 0, 0, 0, true)
             else
-                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, fadeOutCurve, itemFadeOutDir, 0, true)
+                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, fadeOutCurve, itemFadeOutDir, false, true)
             end
         end
         if itemFadeOut > 0 then
             if fadeOutStart > fadeInEnd then
-                r.InsertEnvelopePointEx(env, autoitemIdx, fadeOutStart, 1, fadeOutCurve, itemFadeOutDir, 0, true)
+                r.InsertEnvelopePointEx(env, autoitemIdx, fadeOutStart, 1, fadeOutCurve, itemFadeOutDir, false, true)
             end
-            r.InsertEnvelopePointEx(env, autoitemIdx, item.pos + item.len - 0.000001, 0, 0, 0, 0, true)
+            r.InsertEnvelopePointEx(env, autoitemIdx, item.pos + item.len - 0.000001, 0, 0, 0, false, true)
         end
         r.Envelope_SortPointsEx(env, autoitemIdx)
     end
 end
 
-function Main()
+run(function()
     local item, cursorPos = SelectVisibleItemNearMouseCursor()
-    if not item then return end
+    if not item or not cursorPos then return end
     item = Item(item)
+    assert(item, 'item is nil')
     if item.folder then
         if FADE_FOLDER_ENVELOPE then
             item.fadeinpos = cursorPos
@@ -110,7 +111,7 @@ function Main()
         end
     end
 
-    local items = Items()
+    local items = Items.Selected()
 
     local init_fade_pos = items[1].fadeinpos
 
@@ -127,11 +128,4 @@ function Main()
         end
         if doFade then fadein(item, cursorPos) end
     end
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

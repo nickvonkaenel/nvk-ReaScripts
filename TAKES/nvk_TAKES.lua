@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.4.7
+Version: 2.5.1
 About:
     # nvk_TAKES
 
@@ -10,6 +10,13 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.1
+        Improved behavior of Render to new take with fx script
+        "Select takes containing text in project renamed" to "Find takes by name" and now has a UI
+    2.5.0
+        Dependencies moved to nvk_SHARED
+        Zoom to selected items after "Select takes containing text in project"
+        Improved take SMART behavior
     2.4.7
         Duplicate items and select next take SMART could duplicate automation on other tracks in the same folder in some cases
     2.4.6
@@ -24,7 +31,6 @@ Changelog:
     For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
 Provides:
     **/*.dat
-    **/*.otf
     [main] *.lua
     [main] *.eel
 --]]

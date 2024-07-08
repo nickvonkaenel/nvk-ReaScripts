@@ -14,27 +14,27 @@ if not functionsLoaded then return end
 -- SCRIPT --
 
 function Main()
-	tracks = SaveSelectedTracks()
-	items = SaveSelectedItems()
+	local tracks = SaveSelectedTracks()
+	local items = SaveSelectedItems()
 	SelectAllTracksExceptVideo()
 	reaper.Main_OnCommand(40359, 0) --track to default color
-	color_count = 0
+	local color_count = 0
 	reaper.SelectAllMediaItems(0, true)
 	reaper.Main_OnCommand(40707, 0) -- set all selected items to default color
 	for i = 0, reaper.CountTracks(0) - 1 do
 		reaper.SelectAllMediaItems(0, false)
-		track = reaper.GetTrack(0, i)
-		retval, trackname = reaper.GetSetMediaTrackInfo_String(track, "P_NAME", "something", false)
+		local track = reaper.GetTrack(0, i)
+		local retval, trackname = reaper.GetSetMediaTrackInfo_String(track, "P_NAME", "something", false)
 		trackname = string.upper(trackname)
-		depth = reaper.GetTrackDepth(track)
+		local depth = reaper.GetTrackDepth(track)
 		if reaper.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH') == 1 and trackname ~= "RENDERS" and trackname ~= "VIDEO" then
 			reaper.SetOnlyTrackSelected(track)
 			reaper.UpdateArrange()
 			reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_TRACKCUSTCOL" .. tostring((color_count % customColors) + 1)), 0)
 			reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_SELCHILDREN2"), 0)
-            child_tracks = SaveSelectedTracks()
+            local child_tracks = SaveSelectedTracks()
 			for i, track in ipairs(child_tracks) do
-				child_depth = reaper.GetTrackDepth(track)
+				local child_depth = reaper.GetTrackDepth(track)
 				if reaper.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH') == 1 and i > 1 or child_depth > depth + 1 then
 					reaper.SetMediaTrackInfo_Value(track,"I_SELECTED",0)
 				end

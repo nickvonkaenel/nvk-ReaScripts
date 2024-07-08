@@ -1,57 +1,28 @@
 -- @noindex
 -- USER CONFIG --
-splitLength = 1 -- default length
-splitSpace = 1 --default spaces
--- SETUP--
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-r = reaper
+DEFAULT_LENGTH = 1 -- default length
+DEFAULT_SPACE = 1  -- default spaces
+-- SETUP --
+local r = reaper
 sep = package.config:sub(1, 1)
-dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-
-function Main()
-    if reaper.CountSelectedMediaItems() > 0 then
-        retval, retvals_csv = reaper.GetUserInputs("Title", 2, "Length (in seconds),Space (in seconds)",
-                                  splitLength .. "," .. splitSpace)
-
-        if retval == false then
-            return
+run(function()
+    local retval, retvals_csv = r.GetUserInputs("Title", 2, "Length (in seconds),Space (in seconds)",
+        DEFAULT_LENGTH .. "," .. DEFAULT_SPACE)
+    if retval == false then return end
+    local splitLength, splitSpace = retvals_csv:match('(.+),(.+)')
+    splitLength = tonumber(splitLength) or error('Invalid input: ' .. splitLength)
+    splitSpace = tonumber(splitSpace) or error('Invalid input: ' .. splitSpace)
+    for _, item in ipairs(Items()) do
+        local splitPos = item.pos + splitLength
+        while splitPos < item.e do
+            item = item:Split(splitPos) or error('Split failed')
+            item.pos = splitPos + splitSpace
+            splitPos = item.pos + splitLength
         end
-
-        inputTable = {}
-        for input in string.gmatch(retvals_csv, '([^,]+)') do
-            tonumber(input)
-            table.insert(inputTable, input)
-        end
-        splitLength = tonumber(inputTable[1])
-        splitSpace = tonumber(inputTable[2])
-        if splitLength < 0.01 then
-            reaper.ShowMessageBox("Split length too small","Error", 1)
-            return
-        end
-
-        repositionTime = -splitSpace
-        startTime, endTime = reaper.BR_GetArrangeView(0)
-        cursorPos = reaper.GetCursorPosition()
-        if reaper.GetToggleCommandState(1156) == 1 then -- grouping override
-            reaper.Main_OnCommand(1156, 0)
-            groupingToggle = true
-        end
-        SplitItemsXSeconds(splitLength)
-        RepositionSelectedItems(repositionTime)
-        reaper.SetEditCurPos(cursorPos, 0, 0)
-        reaper.BR_SetArrangeView(0, startTime, endTime)
-        if groupingToggle then
-            reaper.Main_OnCommand(1156, 0)
-        end -- grouping override
     end
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
-
+end)

@@ -8,16 +8,6 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
-	for i = 0, r.CountSelectedMediaItems(0) - 1 do
-		item = r.GetSelectedMediaItem(0, i)
-		NextTake(item)
-	end
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+run(function()
+	Items():IncrementTake(1)
+end)

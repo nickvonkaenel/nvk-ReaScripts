@@ -1,45 +1,26 @@
 -- @noindex
--- USER CONFIG --
-moveAmount = 1
--- SETUP--
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-r = reaper
+-- SETUP --
+local r = reaper
 sep = package.config:sub(1, 1)
-dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
-    for i = 0, reaper.CountSelectedMediaItems(0) - 1 do
-        local item = reaper.GetSelectedMediaItem(0, i)
-        local track = reaper.GetMediaItemTrack(item)
-        local trackHeight = reaper.GetMediaTrackInfo_Value(track, 'I_TCPH')
-        if trackHeight >= 5 then
-            local trackNum = reaper.GetMediaTrackInfo_Value(track, "IP_TRACKNUMBER")
-            local newTrack = reaper.GetTrack(0, trackNum - 1 - moveAmount)
-            if newTrack then
-                local newTrackHeight = reaper.GetMediaTrackInfo_Value(newTrack, 'I_TCPH')
-                if newTrackHeight <= 5 then
-                    newTrack = nil
-                    for i = (trackNum - 1 - moveAmount), 0, - 1 do
-                        local track = reaper.GetTrack(0, i)
-                        local newTrackHeight = reaper.GetMediaTrackInfo_Value(track, 'I_TCPH')
-                        if newTrackHeight > 5 then
-                            newTrack = track
-                            break
-                        end
-                    end
-                end
-                if newTrack then
-                    reaper.MoveMediaItemToTrack(item, newTrack)
+run(function()
+    for i, item in ipairs(Items()) do
+        local track = item.track
+        if track.tcph >= 5 then
+            local num = track.num
+            while num > 1 do
+                num = num - 1
+                local newTrack = Track(num)
+                assert(newTrack, 'newTrack is nil')
+                if newTrack.tcph >= 5 then
+                    item.track = newTrack
+                    break
                 end
             end
         end
     end
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+end)

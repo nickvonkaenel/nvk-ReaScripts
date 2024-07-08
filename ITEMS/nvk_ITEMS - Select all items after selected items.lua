@@ -1,30 +1,20 @@
 -- @noindex
 -- USER CONFIG --
--- SETUP--
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-r = reaper
+-- SETUP --
+local r = reaper
 sep = package.config:sub(1, 1)
-dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
-    cursorPos = reaper.GetCursorPosition()
-    reaper.Main_OnCommand(41174, 0) --move cursor to end of items
-    itemsEnd = reaper.GetCursorPosition()
-    reaper.Main_OnCommand(40289, 0) --unselect all items
-    for i = 0, reaper.CountMediaItems(0) - 1 do
-        item = reaper.GetMediaItem(0, i)
-        itemPos = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
-        if itemPos > itemsEnd then
-            reaper.SetMediaItemSelected(item, true)
+run(function()
+    local items = Items()
+    local itemsEnd = items.e
+    items:Unselect()
+    for i, item in ipairs(Items.All()) do
+        if item.pos > itemsEnd then
+            item.sel = true
         end
     end
-    reaper.SetEditCurPos(cursorPos, 0, 0)
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+end)

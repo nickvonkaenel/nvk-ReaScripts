@@ -1,25 +1,17 @@
 -- @noindex
--- USER CONFIG --
--- SETUP--
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-r = reaper
+-- SETUP --
+local r = reaper
 sep = package.config:sub(1, 1)
-dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
-    for i = 0, reaper.CountSelectedMediaItems(0) - 1 do
-        item = reaper.GetSelectedMediaItem(0, i)
-        take = reaper.GetActiveTake(item)
-        length = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
-        takeOffset = reaper.GetMediaItemTakeInfo_Value(take, "D_STARTOFFS")
-        reaper.SetMediaItemTakeInfo_Value(take, "D_STARTOFFS", length + takeOffset)
+run(function()
+    for _, item in ipairs(Items()) do
+        local take = item.take
+        if take then
+            take.offset = (take.offset + take.length) % take.srclen
+        end
     end
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+end)

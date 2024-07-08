@@ -22,7 +22,7 @@ function GetItemPosition(item)
     return s, e
 end
 
-function Main()
+run(function()
     local retval, retvals_csv = r.GetUserInputs("Set Take Slope", 1, "Slope (+-4) or 5+ for random", "0")
     if not retval then return end
     local slopeIn = 0
@@ -45,11 +45,4 @@ function Main()
         end
         local retval = r.SetTakeStretchMarkerSlope(take, idx, slope)
     end
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

@@ -1,100 +1,54 @@
 -- @noindex
 -- Converts item fades to volume automation items and then removes fades. It automation item exists in same position as item will delete. Only works with linear fades
--- USER CONFIG --
--- SETUP--
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-r = reaper
+-- SETUP --
+local r = reaper
 sep = package.config:sub(1, 1)
-dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-
-function Main()
-    items = SaveSelectedItems()
-    tracks = SaveSelectedTracks()
+run(function()
+    local items = Items()
+    local tracks = Tracks()
     for i, item in ipairs(items) do
-        itemPos = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
-        itemLen = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
-        itemFadeIn = reaper.GetMediaItemInfo_Value(item, "D_FADEINLEN")
-        if itemFadeIn >= itemLen then
-            itemFadeIn = itemLen - 0.00001
-        end
-        itemFadeOut = reaper.GetMediaItemInfo_Value(item, "D_FADEOUTLEN")
-        if itemFadeOut >= itemLen then
-            itemFadeOut = itemLen - 0.00001
-        end
-        itemFadeInDir = reaper.GetMediaItemInfo_Value(item, "D_FADEINDIR") * 0.75
-        itemFadeOutDir = reaper.GetMediaItemInfo_Value(item, "D_FADEOUTDIR") * 0.75
-        fadeInEnd = itemPos + itemFadeIn
-        fadeOutStart = itemPos + itemLen - itemFadeOut
-        track = reaper.GetMediaItem_Track(item)
-        reaper.SetOnlyTrackSelected(track)
-        env = reaper.GetTrackEnvelopeByName(track, "Volume")
-        if not env then
-            reaper.Main_OnCommand(40406, 0) -- show volume env
-            env = reaper.GetTrackEnvelopeByName(track, "Volume")
-        end
-        if reaper.GetEnvelopeInfo_Value(env, "I_TCPH_USED") == 0 then
-            reaper.SetOnlyTrackSelected(track)
-            reaper.Main_OnCommand(40406, 0) -- toggle track volume envelope visible
-        end
-        autoitemIdx = GetAutoitem(env, itemPos)
+        local track = item.track
+        local env = track:ShowVolumeEnvelope()
+        local autoitemIdx = GetAutoitem(env, item.pos)
         if autoitemIdx then
-            reaper.Main_OnCommand(40769, 0) -- unselect all tracks/items/env
-            -- reaper.GetSetAutomationItemInfo(env, autoitemIdx, "D_LOOPSRC", 0, true)
-            -- reaper.UpdateArrange()
-            -- reaper.GetSetAutomationItemInfo(env, autoitemIdx, "D_LENGTH", itemLen, true)
-            reaper.GetSetAutomationItemInfo(env, autoitemIdx, "D_UISEL", 1, true)
-            reaper.Main_OnCommand(42086, 0) -- delete automation item
-            reaper.UpdateArrange()
+            r.Main_OnCommand(40769, 0) -- unselect all tracks/items/env
+            r.GetSetAutomationItemInfo(env, autoitemIdx, "D_UISEL", 1, true)
+            r.Main_OnCommand(42086, 0) -- delete automation item
         end
-        reaper.SetOnlyTrackSelected(track)
+        local itemFadeIn = item.fadeinlen >= item.len and item.len - 0.00001 or item.fadeinlen
+        local itemFadeOut = item.fadeoutlen >= item.len and item.len - 0.00001 or item.fadeoutlen
+        local itemFadeInDir = item.fadeindir * 0.5
+        local itemFadeOutDir = item.fadeoutdir * 0.5
+        local fadeInEnd = item.pos + itemFadeIn
+        local fadeOutStart = item.pos + item.len - itemFadeOut
         if itemFadeIn > 0 or itemFadeOut > 0 then
-            autoitemIdx = reaper.InsertAutomationItem(env, -1, itemPos, itemLen)
-            reaper.GetSetAutomationItemInfo(env, autoitemIdx, "D_LOOPSRC", 0, true)
-            reaper.DeleteEnvelopePointRangeEx(env, autoitemIdx, itemPos, itemPos + itemLen)
-            reaper.UpdateArrange()
+            autoitemIdx = r.InsertAutomationItem(env, -1, item.pos, item.len)
+            r.GetSetAutomationItemInfo(env, autoitemIdx, 'D_LOOPSRC', 0, true)
+            r.DeleteEnvelopePointRangeEx(env, autoitemIdx, item.pos, item.pos + item.len)
+            local fadeInCurve = itemFadeInDir == 0 and 0 or 5
+            local fadeOutCurve = itemFadeOutDir == 0 and 0 or 5
             if itemFadeIn > 0 then
-                if itemFadeInDir == 0 then
-                    curve = 0
-                else
-                    curve = 5
-                end
-                reaper.InsertEnvelopePointEx(env, autoitemIdx, itemPos, 0, curve, itemFadeInDir, 0, true)
+                r.InsertEnvelopePointEx(env, autoitemIdx, item.pos, 0, fadeInCurve, itemFadeInDir, false, true)
                 if fadeOutStart > fadeInEnd then
-                    reaper.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, 0, 0, 0, true)
+                    r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, 0, 0, false, true)
                 else
-                    if itemFadeOutDir == 0 then
-                        curve = 0
-                    else
-                        curve = 5
-                    end
-                    reaper.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, curve, itemFadeOutDir, 0, true)
+                    r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, fadeOutCurve, itemFadeOutDir, false, true)
                 end
             end
             if itemFadeOut > 0 then
                 if fadeOutStart > fadeInEnd then
-                    if itemFadeOutDir == 0 then
-                        curve = 0
-                    else
-                        curve = 5
-                    end
-                    reaper.InsertEnvelopePointEx(env, autoitemIdx, fadeOutStart, 1, curve, itemFadeOutDir, 0, true)
+                    r.InsertEnvelopePointEx(env, autoitemIdx, fadeOutStart, 1, fadeOutCurve, itemFadeOutDir, false, true)
                 end
-                reaper.InsertEnvelopePointEx(env, autoitemIdx, itemPos + itemLen - 0.000001, 0, 0, 0, 0, true)
+                r.InsertEnvelopePointEx(env, autoitemIdx, item.pos + item.len - 0.000001, 0, 0, 0, false, true)
             end
-            reaper.Envelope_SortPointsEx(env, autoitemIdx)
-            reaper.UpdateArrange()
+            r.Envelope_SortPointsEx(env, autoitemIdx)
         end
     end
-    RestoreSelectedItems(items)
-    RestoreSelectedTracks(tracks)
-    reaper.Main_OnCommand(41193, 0) -- remove item fades
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+    items:Select(true):RemoveFades(true)
+    tracks:Select(true)
+end)

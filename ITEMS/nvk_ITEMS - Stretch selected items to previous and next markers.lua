@@ -1,36 +1,27 @@
 -- @noindex
--- USER CONFIG --
--- SETUP--
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-r = reaper
+-- SETUP --
+local r = reaper
 sep = package.config:sub(1, 1)
-dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
-    for i = 0, reaper.CountSelectedMediaItems(0) - 1 do
-        item = reaper.GetSelectedMediaItem(0, i)
-        itemPos = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
-        itemLen = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
-        take = reaper.GetActiveTake(item)
-        playrate = reaper.GetMediaItemTakeInfo_Value(take, "D_PLAYRATE")
-        markeridx, regionidx = reaper.GetLastMarkerAndCurRegion(0, itemPos)
-        newPos = ({reaper.EnumProjectMarkers(markeridx)})[3]
-        newLen = ({reaper.EnumProjectMarkers(markeridx + 1)})[3] - newPos
-        if newLen == 0 then
-            return
+run(function()
+    local items = Items()
+    local idx = r.GetLastMarkerAndCurRegion(0, items.s)
+    local rv, isrgn, pos, rgnend, name, markrgnindexnumber = r.EnumProjectMarkers(idx)
+    local prevPos = pos
+    if not rv then return end
+    rv, isrgn, pos, rgnend, name, markrgnindexnumber = r.EnumProjectMarkers(idx + 1)
+    if not rv then return end
+    local newLen = pos - prevPos
+    items.pos = prevPos
+    for i, item in ipairs(Items()) do
+        if item.take then
+            local lenRatio = newLen / item.len
+            item.rate = item.rate / lenRatio
         end
-        lenRatio = newLen / itemLen
-        newPlayrate = playrate / lenRatio
-        reaper.SetMediaItemInfo_Value(item, "D_POSITION", newPos)
-        reaper.SetMediaItemInfo_Value(item, "D_LENGTH", newLen)
-        reaper.SetMediaItemTakeInfo_Value(take, "D_PLAYRATE", newPlayrate)
+        item.len = newLen
     end
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+end)

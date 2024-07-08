@@ -61,7 +61,7 @@ end
 
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
-local items = Items()
+local items = Items.Selected()
 Main()
 reaper.Main_OnCommand(41110, 0) -- select track under mouse
 items.sel = true

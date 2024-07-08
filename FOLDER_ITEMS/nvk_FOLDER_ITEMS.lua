@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.7.5
+Version: 2.8.5
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,30 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.8.5
+        Fixing bug introduced in 2.8.2 where item settings were getting saved before rendering
+        Backwards compatibility for SWS 2.14 functions since it's still in beta
+        Compatibility with updated nvk_PROPAGATE script
+        Possible fix for crash when adding markers with nvk_FOLDER_ITEMS
+    2.8.4
+        Fixing unnecessary undo points when using mousewheel volume script (requires nvk_SHARED v1.1.0)
+    2.8.3
+        Improvements to mousewheel pitch shift behavior. Items on the same track that don't overlap will now use the non-column pitch shift
+    2.8.2
+        Possible fix for script rendering certain sets of items in multiple groups when not necessary
+        Stats
+        Render SMART: Tail on/off setting not reset properly when closing the script without rendering
+        Rename: new option to rename track in addition to items
+        Rename: new items options - tracks, markers, regions
+    2.8.1
+        Crash when using normal render script
+    2.8.0
+        Dependencies moved to nvk_SHARED
+        Improved render item selection
+        New render settings: format, and bit depth (can be set per item too)
+        Deprecated "Show preferences in main window" option
+        Join items were not being removed from render list and rename list
+        Crash in rename script when no items or tracks selected
     2.7.5
         Folder items crash when tracks deleted in larger projects
     2.7.4
@@ -19,11 +43,10 @@ Changelog:
         Non-active but hidden item lanes could create folder items
         Folder items could crash when switching between projects with a large number of items immediately after making a change.
     2.7.2
-        + Fixed: rename script allows for naming conventions with multiple numbers at the end of the name i.e. "My Sound_01_01"
+        Fixed: rename script allows for naming conventions with multiple numbers at the end of the name i.e. "My Sound_01_01"
     For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
 Provides:
     **/*.dat
-    **/*.otf
     [windows] Data/curl/*.*
     [main] *.lua
 --]]
@@ -38,7 +61,7 @@ if not functionsLoaded then return end
 local function Exit()
     reaper.SetToggleCommandState(scr.secID, scr.cmdID, 0)
     r.RefreshToolbar2(scr.secID, scr.cmdID)
-    ClearMarkers()
+    FolderItems.ClearMarkers()
 end
 
 local prevProjState, projUpdate, prevProj
@@ -47,8 +70,8 @@ local r = reaper
 
 local items
 local function trackSelectionFollowsItemSelection()
-    if items == Items() then return end
-    items = Items()
+    if items == Items.Selected() then return end
+    items = Items.Selected()
     local itemsTracks = items.tracks
     if #itemsTracks == 0 then return end
     r.PreventUIRefresh(1)
@@ -102,7 +125,7 @@ local function Main()
     if projUpdate and itemCount == r.CountSelectedMediaItems(0) then
         if disableFolderItems then
             if settingsChanged then
-                ClearMarkers()
+                FolderItems.ClearMarkers()
             end
         else
             FolderItems.Fix(true)
@@ -115,6 +138,10 @@ local function Main()
     end
     r.PreventUIRefresh(-1)
     r.defer(Main)
+end
+
+if r.set_action_options then
+    r.set_action_options(1)
 end
 
 if r.APIExists('JS_Mouse_GetState') and r.APIExists('CF_GetClipboard') then

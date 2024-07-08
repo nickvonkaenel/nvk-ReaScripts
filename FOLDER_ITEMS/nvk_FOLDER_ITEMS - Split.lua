@@ -8,7 +8,7 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 local r = reaper
-function Main()
+run(function()
     cursorPos = r.GetCursorPosition()
     item = GetItemUnderMouseCursor()
     if item then
@@ -23,11 +23,4 @@ function Main()
     else
         r.Main_OnCommand(40759, 0) -- split at edit cursor (select right)
     end
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

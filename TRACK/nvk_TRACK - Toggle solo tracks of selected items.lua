@@ -12,43 +12,44 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
-    tracks = SaveSelectedTracks()
-    focus = reaper.GetCursorContext()
+    local tracks = SaveSelectedTracks()
+    local focus = r.GetCursorContext()
     if focus == 0 then
-        reaper.Main_OnCommand(7, 0)
+        r.Main_OnCommand(7, 0)
         return
     end
-    solo = true
-    for i = 0, reaper.CountTracks(0) - 1 do
+    local solo = true
+    for i = 0, r.CountTracks(0) - 1 do
         if not solo then
             return
         end
-        track = reaper.GetTrack(0, i)
-        if reaper.GetMediaTrackInfo_Value(track, "I_SOLO") > 0 then
-            reaper.Main_OnCommand(40340, 0) -- unsolo all
+        local track = r.GetTrack(0, i)
+        if r.GetMediaTrackInfo_Value(track, "I_SOLO") > 0 then
+            r.Main_OnCommand(40340, 0) -- unsolo all
             solo = false
             return
         end
     end
-    itemCount = reaper.CountSelectedMediaItems(0)
+    local itemCount = r.CountSelectedMediaItems(0)
     if solo and itemCount > 0 then
-        reaper.Main_OnCommand(40297, 0) -- unselect all tracks
+        r.Main_OnCommand(40297, 0) -- unselect all tracks
         for i = 0, itemCount - 1 do
-            item = reaper.GetSelectedMediaItem(0, i)
-            track = reaper.GetMediaItemTrack(item)
-            reaper.SetTrackSelected(track, true)
+            local item = r.GetSelectedMediaItem(0, i)
+            local track = r.GetMediaItemTrack(item)
+            r.SetTrackSelected(track, true)
         end
     end
-    reaper.Main_OnCommand(7, 0) -- toggle solo selected tracks
-    reaper.Main_OnCommand(40297, 0) -- unselect all tracks
+    r.Main_OnCommand(7, 0) -- toggle solo selected tracks
+    r.Main_OnCommand(40297, 0) -- unselect all tracks
     for i, track in ipairs(tracks) do
-        reaper.SetMediaTrackInfo_Value(track, "I_SELECTED", 1)
+        r.SetMediaTrackInfo_Value(track, "I_SELECTED", 1)
     end
 end
 
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
+
+r.Undo_BeginBlock()
+r.PreventUIRefresh(1)
 Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+r.UpdateArrange()
+r.PreventUIRefresh(-1)
+r.Undo_EndBlock(scr.name, -1)

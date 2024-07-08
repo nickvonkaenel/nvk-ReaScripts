@@ -9,15 +9,8 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
+run(function()
     local tracks = Tracks.All():Uncompact()
     r.Main_OnCommand(41384, 0) -- Edit: Cut items/tracks/envelope points (depending on focus) within time selection, if any (smart cut)
     tracks:Compact()
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+end)

@@ -9,10 +9,8 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT ---
-local track = r.GetTrack(0, 0)
-
-function Main()
-    local items = Items()
+run(function()
+    local items = Items.Selected()
     if #items == 0 then
         r.MB('No items selected', scr.name, 0)
         return
@@ -33,11 +31,4 @@ function Main()
     dummy_item.s, dummy_item.len = items.s, items.len
     dummy_item.name = '[JOIN]'
     dummy_item:Select()
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

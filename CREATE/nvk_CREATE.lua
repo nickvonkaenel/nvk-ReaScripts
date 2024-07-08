@@ -1,6 +1,6 @@
 --[[
 Description: nvk_CREATE
-Version: 1.8.17
+Version: 1.9.0
 About:
   # nvk_CREATE
 
@@ -19,7 +19,6 @@ Links:
   Neutronic's GitHub ReaScripts repository https://github.com/Neutronic/ReaScripts
 Provides:
   **/*.dat
-  **/*.otf
   Data/inv.cur
   [jsfx] *.jsfx
   [main] *.lua

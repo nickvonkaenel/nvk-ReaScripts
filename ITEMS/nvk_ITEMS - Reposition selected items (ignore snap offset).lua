@@ -1,49 +1,36 @@
 -- @noindex
 -- USER CONFIG --
--- SETUP--
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-r = reaper
+-- SETUP --
+local r = reaper
 sep = package.config:sub(1, 1)
-dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
-    if reaper.CountSelectedMediaItems() > 0 then
-        retval, retvals_csv = reaper.GetUserInputs("Reposition Items", 1, "Time (negative to use item end)", 0)
-        if retval == false then
-            return
-        end
+run(function()
+    if r.CountSelectedMediaItems() > 0 then
+        local retval, retvals_csv = r.GetUserInputs("Reposition Items", 1, "Time (negative to use item end)", '0')
+        if retval == false then return end
         local items = {}
-        for i = 1, reaper.CountSelectedMediaItems() do
-            local item = reaper.GetSelectedMediaItem(0, i-1)
-            items[i] = { item, reaper.GetMediaItemInfo_Value(item, "D_SNAPOFFSET") }
-            reaper.SetMediaItemInfo_Value(item, "D_SNAPOFFSET", 0)
+        for i = 1, r.CountSelectedMediaItems() do
+            local item = r.GetSelectedMediaItem(0, i - 1)
+            items[i] = { item, r.GetMediaItemInfo_Value(item, "D_SNAPOFFSET") }
+            r.SetMediaItemInfo_Value(item, "D_SNAPOFFSET", 0)
         end
-        reaper.UpdateArrange()
-        repositionTime = tonumber(retvals_csv)
+        r.UpdateArrange()
+        local repositionTime = tonumber(retvals_csv)
         if not repositionTime then return end
-        startTime, endTime = reaper.BR_GetArrangeView(0)
-        cursorPos = reaper.GetCursorPosition()
-        if reaper.GetToggleCommandState(1156) == 1 then -- grouping override
-            reaper.Main_OnCommand(1156, 0)
-            groupingToggle = true
-        end
+        local startTime, endTime = r.BR_GetArrangeView(0)
+        local cursorPos = r.GetCursorPosition()
+        local groupingToggle = r.GetToggleCommandState(1156) == 1
+        if groupingToggle then r.Main_OnCommand(1156, 0) end
         RepositionSelectedItems(repositionTime)
-        reaper.SetEditCurPos(cursorPos, 0, 0)
-        reaper.BR_SetArrangeView(0, startTime, endTime)
-        if groupingToggle then
-            reaper.Main_OnCommand(1156, 0)
-        end -- grouping override
+        r.SetEditCurPos(cursorPos, false, false)
+        r.BR_SetArrangeView(0, startTime, endTime)
+        if groupingToggle then r.Main_OnCommand(1156, 0) end
         for i = 1, #items do
-            reaper.SetMediaItemInfo_Value(items[i][1], "D_SNAPOFFSET", items[i][2])
+            r.SetMediaItemInfo_Value(items[i][1], "D_SNAPOFFSET", items[i][2])
         end
     end
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
-
+end)

@@ -8,7 +8,7 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
+run(function()
     local parentTrack = reaper.GetSelectedTrack(0, 0)
     if reaper.GetMediaTrackInfo_Value(parentTrack, "I_FOLDERDEPTH") ~= 1 then
         parentTrack = reaper.GetParentTrack(parentTrack)
@@ -40,11 +40,4 @@ function Main()
             reaper.MoveMediaItemToTrack(item[1], track)
         end
     end
-end        
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+end)

@@ -10,7 +10,7 @@ if not functionsLoaded then return end
 -- SCRIPT --
 
 if r.CountSelectedMediaItems(0)  == 0 then return end
-function Main()
+run(function()
     local str = ''
     for i = 1, r.CountSelectedMediaItems(0) do
         local item = r.GetSelectedMediaItem(0, i - 1)
@@ -22,11 +22,4 @@ function Main()
     end
     r.SetExtState('nvk_TAKES', 'take_name', str, false)
     r.CF_SetClipboard(StripNumbersAndExtensions(str))
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

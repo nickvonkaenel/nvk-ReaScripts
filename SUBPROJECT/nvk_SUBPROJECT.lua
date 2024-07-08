@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.7.2
+Version: 2.8.1
 About:
     # nvk_SUBPROJECT
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.8.1
+        Compatibility with nvk_SHARED v1.2.0
+    2.8.0
+        Dependencies moved to nvk_SHARED
     2.7.2
         Updating to ReaImGui v9
         Better crash handling
@@ -21,7 +25,6 @@ Changelog:
     For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
 Provides:
     **/*.dat
-    **/*.otf
     [main] *.lua
 --]]
 -- SETUP --

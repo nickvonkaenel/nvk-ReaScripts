@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.4.14
+Version: 2.5.2
 About:
     # nvk_AUTODOPPLER
 
@@ -14,6 +14,12 @@ Links:
     Store Page https://gum.co/nvk_AUTODOPPLER
     User Guide https://nvk.tools/doc/nvk_autodoppler
 Changelog:
+    2.5.2
+        Improved track selection on startup
+    2.5.1
+        SpinTracer support (beta)
+    2.5.0
+        Dependencies moved to nvk_SHARED
     2.4.14
         New fix for crash on custom fx
     2.4.13
@@ -26,7 +32,6 @@ Changelog:
     For full changelog, visit https://nvk.tools/doc/nvk_autodoppler#changelog
 Provides:
     **/*.dat
-    **/*.otf
     [jsfx] *.jsfx
     [main] *.eel
     Presets/*.*

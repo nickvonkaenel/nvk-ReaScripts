@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.11.3
+Version: 1.12.1
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,13 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+    1.12.1
+        Backspace now focuses search field
+    1.12.0
+        Dependencies moved to nvk_SHARED
+        In palette mode, large font sizes and zoom settings could cause the controls to be off screen
+        New startup options section: moving relevant settings to this area, adding option to load last folder selection
+        In persistent mode, the last folder selection no longer gets saved by default (setting added to restore last folder selection in either mode if desired)
     1.11.3
         Improvements to how folder colors are displayed
     1.11.2
@@ -39,7 +46,6 @@ Changelog:
   For full changelog, visit https://nvk.tools/doc/nvk_search#changelog
 Provides:
   **/*.dat
-  **/*.otf
   [main] *.lua
 --]]
 STARTUP_TIME = reaper.time_precise()

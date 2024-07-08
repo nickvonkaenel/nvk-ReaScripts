@@ -1,73 +1,48 @@
 -- @noindex
--- USER CONFIG --
-SkipItemEnds = false --set to true if you don't want to move cursor to the ends of items and instead go to the next transient otherwise set to false
--- SETUP--
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-r = reaper
+-- SETUP --
+local r = reaper
 sep = package.config:sub(1, 1)
-dofile(debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep .. "functions.dat")
+DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
+DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
-	itemCount = reaper.CountSelectedMediaItems(0)
-	cursorPos = reaper.GetCursorPosition()
-	if itemCount > 0 then
-		initItems = SaveSelectedItems()
-		item = reaper.GetSelectedMediaItem(0, 0)
-		itemPos = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
-		itemLen = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
-		itemEnd = itemPos + itemLen
-
-		if cursorPos == itemEnd then
-			reaper.Main_OnCommand(40417,0) -- select and move to next item in track
+run(function()
+	local tracks = Tracks()
+	if #tracks == 0 then
+		local track = Track(r.GetLastTouchedTrack())
+		if track then
+			tracks = Tracks { track }
 		else
-            reaper.Main_OnCommand(40375,0) --move to next transient in selected item
-            if cursorPos == reaper.GetCursorPosition() and not SkipItemEnds then
-                reaper.Main_OnCommand(41174, 0) --cursor to end of item
-            end
-        end
-	end
-	if cursorPos == reaper.GetCursorPosition() then
-		reaper.Main_OnCommand(40417,0) -- Select and move to next item in track
-		if cursorPos == reaper.GetCursorPosition() then
-			reaper.Main_OnCommand(40289, 0) --unselect all items
-			reaper.Main_OnCommand(40717, 0) --select all items in time selection
-			if reaper.CountSelectedMediaItems(0) == 0 then
-				reaper.Main_OnCommand(40182, 0) --select all items
+			local items = Items()
+			if #items == 0 then
+				return
 			end
-			itemCount = reaper.CountSelectedMediaItems(0)
-			itemsSorted = SaveSelectedItemsSorted()
-			reaper.Main_OnCommand(40289, 0) --unselect all items
-			for i, item in ipairs(itemsSorted) do
-				if item[2] > cursorPos then
-					reaper.SetMediaItemSelected(item[1], true)
-					track = reaper.GetMediaItem_Track(item[1])
-					reaper.SetOnlyTrackSelected(track)
-					reaper.Main_OnCommand(41173, 0) --move cursor to start of item
-					break
-				end
-				if item[3] > cursorPos then
-					reaper.SetMediaItemSelected(item[1], true)
-					track = reaper.GetMediaItem_Track(item[1])
-					reaper.SetOnlyTrackSelected(track)
-					reaper.Main_OnCommand(40375,0) --move to next transient in selected item
-					if cursorPos == reaper.GetCursorPosition() then
-						reaper.Main_OnCommand(40289, 0) --unselect all items
-					else
-						break
-					end
-				end
-			end
+			tracks = Tracks(items.tracks)
 		end
-    end
-	if reaper.CountSelectedMediaItems(0) == 0 and initItems then
-		RestoreSelectedItems(initItems)
 	end
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+	local columns = tracks:Columns()
+	if #columns == 0 then
+		return
+	end
+	local cursorPos = r.GetCursorPosition()
+	for _, column in ipairs(columns) do
+		if column.e > cursorPos then
+			column.items:Select(true)
+			if column.s <= cursorPos then
+				r.Main_OnCommand(40375, 0) -- Item navigation: Move cursor to next transient in items
+				if cursorPos == r.GetCursorPosition() then
+					r.SetEditCurPos(column.e, true, true)
+				end
+			else
+				r.SetEditCurPos(column.s, true, true)
+			end
+			for _, item in ipairs(column.items) do
+				if item.folder then
+					item:GroupSelect(true)
+				end
+			end
+			return
+		end
+	end
+end)

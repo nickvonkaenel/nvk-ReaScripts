@@ -8,7 +8,7 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
+run(function()
     local retval, retvals_csv = r.GetUserInputs(scr.name, 1, "Take Marker Name,extrawidth=220", "")
     if retval == false then return end
     local first_item = r.GetSelectedMediaItem(0, 0)
@@ -21,17 +21,10 @@ function Main()
         end
     end
 
-    for i = 0, r.CountSelectedMediaItems(0) -1 do
+    for i = 0, r.CountSelectedMediaItems(0) - 1 do
         local item = r.GetSelectedMediaItem(0, i)
         local take = r.GetActiveTake(item)
         local offset = r.GetMediaItemTakeInfo_Value(take, "D_STARTOFFS")
         r.SetTakeMarker(take, 0, retvals_csv, offset)
     end
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

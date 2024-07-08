@@ -10,24 +10,7 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
--- if not reaper.HasExtState(scr.name, "mm") then
---     reaper.SetExtState(scr.name, "mm", "true", true)
---     is_new_value, filename, sectionID, cmdID, mode, resolution, val = reaper.get_action_context()
---     actionID = reaper.ReverseNamedCommandLookup(cmdID)
---     actionID = "_" .. actionID
---     if actionID ~= reaper.GetMouseModifier("MM_CTX_TRACK_DBLCLK", 0, "") then
---         if reaper.ShowMessageBox(
---             "This script will change the double click mouse modifiers for tracks\n\nIf you would prefer to set up mouse modifiers manually, choose \'cancel\', then edit the script and change mouse_modifiers to \'false\'",
---             "Warning", 1) ~= 1 then
---             return
---         end
---         reaper.ShowMessageBox("Double click on a black space in the parent track to add folder items", "Instructions", 0)
---         reaper.SetMouseModifier("MM_CTX_TRACK_DBLCLK", 0, actionID)
---         return
---     end
--- end
-
-function Main()
+run(function()
     r.Main_OnCommand(41110, 0) -- select track under mouse
     local names = {}
     local items = Items.Unmuted()
@@ -54,7 +37,7 @@ function Main()
     local track_folder_items = track:FolderItems(columns)
     local name, name_id -- name id not used since we aren't worry about markers
     for _, col in ipairs(columns) do
-        local folder_item = FolderItems.ColumnOverlap(track_folder_items, col)
+        local folder_item = track_folder_items:ColumnOverlap(col)
         if folder_item then
             name, name_id = FolderItem.NameFormat(folder_item.name, names)
             FolderItem.Create(track, col, disableAutoName and folder_item.name or name, folder_item)
@@ -67,11 +50,4 @@ function Main()
         r.DeleteTrackMediaItem(track.track, folder_item.item)
     end
     -- need to group items if collapsed track
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+end)

@@ -8,7 +8,7 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
+run(function()
     QuickSaveItems()
     r.Main_OnCommand(40289, 0) -- unselect all items
     r.Main_OnCommand(40528, 0) -- select item under mouse cursor
@@ -21,11 +21,4 @@ function Main()
         end
     end
     QuickRestoreItems()
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

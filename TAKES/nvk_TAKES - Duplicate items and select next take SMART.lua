@@ -33,7 +33,7 @@ local function new_cursor_pos(items)
 end
 
 local function next_column_pos(items)
-	local tracks = Tracks({})
+	local tracks = Tracks.New({})
 	for i, item in ipairs(items) do
 		local track = item.track.isparent and item.track or item.track.parent or item.track
 		tracks = tracks + track:Children(true)
@@ -60,8 +60,8 @@ local function next_item_pos(items)
 	end
 end
 
-function Main()
-	local items = Items()
+run(function()
+	local items = Items.Selected()
 	if #items == 0 then return end
 	local newCursorPos, diff = new_cursor_pos(items)
 	local nextColumnPos, tracks = next_column_pos(items)
@@ -69,11 +69,7 @@ function Main()
 	local newitems = items:Duplicate()
 	items.sel = false
 	newitems.minpos = newCursorPos
-	for _, item in ipairs(newitems) do
-		if item.audio then
-			NextTakeMarkerOffset(item)
-		end
-	end
+	newitems.audio:IncrementTakeSMART(1)
 	local minpos, maxpos = newitems.minpos, newitems.maxpos
 	if minpos < items.maxpos then
 		newitems.minpos = minpos + math.ceil(items.maxpos - minpos)
@@ -85,11 +81,4 @@ function Main()
 		newitems.minpos = newCursorPos
 	end
 	items.tracks:DuplicateAutomation({ s = items.minpos, e = items.maxpos }, newCursorPos)
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

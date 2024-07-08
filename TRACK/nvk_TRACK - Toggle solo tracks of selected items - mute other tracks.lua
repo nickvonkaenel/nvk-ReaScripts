@@ -4,104 +4,102 @@
 local r = reaper
 scr = {}
 sep = package.config:sub(1, 1)
-local info = debug.getinfo(1,'S')
-scr.path, scr.name = info.source:match[[^@?(.*[\/])(.*)%.lua$]]
+local info = debug.getinfo(1, 'S')
+scr.path, scr.name = info.source:match [[^@?(.*[\/])(.*)%.lua$]]
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
 DATA_PATH = scr.path .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
+local tracks = {}
 function SoloRcv(track)
-  tracks[track] = true
-  --reaper.CSurf_OnSoloChangeEx(track, 1, false)
-  if reaper.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", false) then
-    reaper.SetMediaTrackInfo_Value(track, "B_MUTE", 0)
-    reaper.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", true)
-  end
-  local num_rcvs = reaper.GetTrackNumSends(track,-1)
-  for i = 0, num_rcvs - 1 do
-    local tr = reaper.GetTrackSendInfo_Value(track, -1, i, "P_SRCTRACK")
-    if not tracks[tr] then SoloRcv(tr) end
-  end
-  local num_snds = reaper.GetTrackNumSends(track,0)
-  for i = 0, num_snds - 1 do
-    local tr = reaper.GetTrackSendInfo_Value(track, 0, i, "P_DESTTRACK")
-    if not tracks[tr] then SoloRcv(tr) end
-  end
-  local trackCount = reaper.GetNumTracks()
-  local parentTrackDepth = reaper.GetTrackDepth(track)
-  local trackidx = reaper.GetMediaTrackInfo_Value(track, "IP_TRACKNUMBER")
-  local tr = reaper.GetTrack(0, trackidx)
-  if not tr then return end
-  local depth = reaper.GetTrackDepth(tr)
-  while depth > parentTrackDepth do
-    if not tracks[tr] then SoloRcv(tr) end
-    trackidx = trackidx + 1
-    if trackidx == trackCount then
-      break
+    tracks[track] = true
+    if r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", false) then
+        r.SetMediaTrackInfo_Value(track, "B_MUTE", 0)
+        r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", true)
     end
-    tr = reaper.GetTrack(0, trackidx)
-    depth = reaper.GetTrackDepth(tr)
-  end
-  tr = reaper.GetParentTrack(track)
-  if tr and not tracks[tr] then SoloRcv(tr) end
+    local num_rcvs = r.GetTrackNumSends(track, -1)
+    for i = 0, num_rcvs - 1 do
+        local tr = r.GetTrackSendInfo_Value(track, -1, i, "P_SRCTRACK")
+        if not tracks[tr] then SoloRcv(tr) end
+    end
+    local num_snds = r.GetTrackNumSends(track, 0)
+    for i = 0, num_snds - 1 do
+        local tr = r.GetTrackSendInfo_Value(track, 0, i, "P_DESTTRACK")
+        if not tracks[tr] then SoloRcv(tr) end
+    end
+    local trackCount = r.GetNumTracks()
+    local parentTrackDepth = r.GetTrackDepth(track)
+    local trackidx = r.GetMediaTrackInfo_Value(track, "IP_TRACKNUMBER")
+    local tr = r.GetTrack(0, trackidx)
+    if not tr then return end
+    local depth = r.GetTrackDepth(tr)
+    while depth > parentTrackDepth do
+        if not tracks[tr] then SoloRcv(tr) end
+        trackidx = trackidx + 1
+        if trackidx == trackCount then
+            break
+        end
+        tr = r.GetTrack(0, trackidx)
+        depth = r.GetTrackDepth(tr)
+    end
+    tr = r.GetParentTrack(track)
+    if tr and not tracks[tr] then SoloRcv(tr) end
 end
 
 function SoloTracks()
-  
-  local focus = reaper.GetCursorContext()
-  local itemCount = reaper.CountSelectedMediaItems(0)
-  local selTrackCount = reaper.CountSelectedTracks(0)
-  for i = 0, reaper.CountTracks(0) - 1 do
-    local track = reaper.GetTrack(0, i)
-    if reaper.GetMediaTrackInfo_Value(track, "B_MUTE") == 0 and reaper.GetMediaTrackInfo_Value(track, "B_SOLO_DEFEAT") == 0 then
-      reaper.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "1", true)
-      reaper.SetMediaTrackInfo_Value(track, "B_MUTE", 1)
+    local focus = r.GetCursorContext()
+    local itemCount = r.CountSelectedMediaItems(0)
+    local selTrackCount = r.CountSelectedTracks(0)
+    for i = 0, r.CountTracks(0) - 1 do
+        local track = r.GetTrack(0, i)
+        if r.GetMediaTrackInfo_Value(track, "B_MUTE") == 0 and r.GetMediaTrackInfo_Value(track, "B_SOLO_DEFEAT") == 0 then
+            r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "1", true)
+            r.SetMediaTrackInfo_Value(track, "B_MUTE", 1)
+        else
+            --r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", true)
+        end
+    end
+    if (focus == 0 or itemCount == 0) and selTrackCount > 0 then
+        for i = 0, r.CountSelectedTracks(0) - 1 do
+            local track = r.GetSelectedTrack(0, i)
+            r.CSurf_OnSoloChangeEx(track, 1, false)
+            SoloRcv(track)
+        end
+    elseif itemCount > 0 then
+        for i = 0, itemCount - 1 do
+            local item = r.GetSelectedMediaItem(0, i)
+            local track = r.GetMediaItem_Track(item)
+            r.CSurf_OnSoloChangeEx(track, 1, false)
+            SoloRcv(track)
+        end
     else
-      --reaper.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", true)
+        UnsoloTracks()
     end
-  end
-  if (focus == 0 or itemCount == 0) and selTrackCount > 0 then
-    for i = 0, reaper.CountSelectedTracks(0) - 1 do
-      local track = reaper.GetSelectedTrack(0, i)
-      reaper.CSurf_OnSoloChangeEx(track, 1, false)
-      SoloRcv(track)
-    end
-  elseif itemCount > 0 then
-    for i = 0, itemCount - 1 do
-      local item = reaper.GetSelectedMediaItem(0, i)
-      local track = reaper.GetMediaItem_Track(item)
-      reaper.CSurf_OnSoloChangeEx(track, 1, false)
-      SoloRcv(track)
-    end
-  else
-    UnsoloTracks()
-  end
 end
 
 function UnsoloTracks()
-  reaper.SoloAllTracks(0)
-  for i = 0, reaper.CountTracks(0) - 1 do
-    local track = reaper.GetTrack(0, i)
-    if reaper.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", false) then
-      reaper.SetMediaTrackInfo_Value(track, "B_MUTE", 0)
-      reaper.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", true)
+    r.SoloAllTracks(0)
+    for i = 0, r.CountTracks(0) - 1 do
+        local track = r.GetTrack(0, i)
+        if r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", false) then
+            r.SetMediaTrackInfo_Value(track, "B_MUTE", 0)
+            r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", true)
+        end
     end
-  end
 end
 
 function Main()
-  tracks = {}
-  if reaper.AnyTrackSolo(0) then
-    UnsoloTracks()
-  else
-    SoloTracks()
-  end
+    if r.AnyTrackSolo(0) then
+        UnsoloTracks()
+    else
+        SoloTracks()
+    end
 end
 
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
+r.Undo_BeginBlock()
+r.PreventUIRefresh(1)
 Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+r.UpdateArrange()
+r.PreventUIRefresh(-1)
+r.Undo_EndBlock(scr.name, -1)

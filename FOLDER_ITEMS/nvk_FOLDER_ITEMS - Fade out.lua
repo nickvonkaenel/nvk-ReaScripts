@@ -70,18 +70,18 @@ local function fadeout_auto(item)
         local fadeInCurve = itemFadeInDir == 0 and 0 or 5
         local fadeOutCurve = itemFadeOutDir == 0 and 0 or 5
         if itemFadeIn > 0 then
-            r.InsertEnvelopePointEx(env, autoitemIdx, item.pos, 0, fadeInCurve, itemFadeInDir, 0, true)
+            r.InsertEnvelopePointEx(env, autoitemIdx, item.pos, 0, fadeInCurve, itemFadeInDir, false, true)
             if fadeOutStart > fadeInEnd then
-                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, 0, 0, 0, true)
+                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, 0, 0, false, true)
             else
-                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, fadeOutCurve, itemFadeOutDir, 0, true)
+                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, fadeOutCurve, itemFadeOutDir, false, true)
             end
         end
         if itemFadeOut > 0 then
             if fadeOutStart > fadeInEnd then
-                r.InsertEnvelopePointEx(env, autoitemIdx, fadeOutStart, 1, fadeOutCurve, itemFadeOutDir, 0, true)
+                r.InsertEnvelopePointEx(env, autoitemIdx, fadeOutStart, 1, fadeOutCurve, itemFadeOutDir, false, true)
             end
-            r.InsertEnvelopePointEx(env, autoitemIdx, item.pos + item.len - 0.000001, 0, 0, 0, 0, true)
+            r.InsertEnvelopePointEx(env, autoitemIdx, item.pos + item.len - 0.000001, 0, 0, 0, false, true)
         end
         r.Envelope_SortPointsEx(env, autoitemIdx)
     end
@@ -104,7 +104,7 @@ function Main()
         end
     end
 
-    local items = Items()
+    local items = Items.Selected()
 
     local init_fade_pos = items[1].fadeoutpos
 

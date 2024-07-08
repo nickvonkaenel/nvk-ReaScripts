@@ -11,7 +11,7 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
+run(function()
     local setting_str = "nvk_TAKES - WidthFX"
     if r.HasExtState(setting_str, "fxName") and r.HasExtState(setting_str, "param") then
         paramNum = tonumber(r.GetExtState(setting_str, "param"))
@@ -63,12 +63,4 @@ function Main()
         end
     end
     RestoreSelectedTracks(tracks)
-end
-
-scr.path, scr.name = ({ r.get_action_context() })[2]:match "(.-)([^/\\]+).lua$"
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

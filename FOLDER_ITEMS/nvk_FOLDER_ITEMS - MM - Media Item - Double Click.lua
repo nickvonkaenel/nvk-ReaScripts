@@ -1,15 +1,15 @@
 -- @noindex
 -- Mouse modifier: This script will be assigned to your mouse modifiers by the folder items - settings script. Not expected to be assigned to a shortcut.
--- USER CONFIG--
--- SETUP--
+-- USER CONFIG --
+-- SETUP --
 r = reaper
 sep = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
 DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
--- SCRIPT--
-function Main()
+-- SCRIPT --
+run(function()
     if r.CountSelectedMediaItems(0) == 0 then return end
     local item = Item[1]
     local take = item.take
@@ -39,11 +39,4 @@ function Main()
     else
         r.Main_OnCommand(40850, 0) -- show notes for items
     end
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)
