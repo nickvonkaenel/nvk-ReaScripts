@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.7.0
+Version: 1.7.2
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,10 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.7.2
+        New script: Swap selected items tracks
+    1.7.1
+        Fixed bugs with align smart where it could get stuck in a single mode if all snap offsets were zero
     1.7.0
         nvk_SHARED library dependency
         Fixing bug with fade curve scripts where items would lose their fade curve settings after crossfading with another item

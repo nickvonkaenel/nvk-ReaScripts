@@ -51,13 +51,22 @@ local function sequential_tracks(items)
     end
 end
 
+local function allzero_snapoffsets(items)
+    for i, item in ipairs(items) do
+        if item.snapoffset ~= 0 then
+            return false
+        end
+    end
+    return true
+end
+
 
 local align = {
     'same_track',
     'same_track_sequential',
     'sequential_tracks',
     'sequential_tracks_same_pos',
-    'sequential_tracks_same_pos_snap_offset',
+    'sequential_tracks_snap_offset',
     'different_tracks',
     'different_tracks_same_pos',
     'different_tracks_snap_offset',
@@ -77,7 +86,8 @@ local align = {
         sequential_tracks(items)
         same_pos(items)
     end,
-    sequential_tracks_same_pos_snap_offset = function(items)
+    sequential_tracks_snap_offset = function(items)
+        if allzero_snapoffsets(items) then return true end
         sequential_tracks(items)
         snapoffset_pos(items)
     end,
@@ -98,6 +108,7 @@ local align = {
     end,
     different_tracks_snap_offset = function(items)
         if not config.mode:find('different_tracks') then return true end
+        if allzero_snapoffsets(items) then return true end
         reset_tracks(items)
         snapoffset_pos(items)
     end,
@@ -119,7 +130,7 @@ local function current_mode(items)
             return 'sequential_tracks_same_pos'
         end
         if items:AllSamePosition(true) then
-            return 'sequential_tracks_same_pos_snap_offset'
+            return 'sequential_tracks_snap_offset'
         end
         return 'sequential_tracks'
     end

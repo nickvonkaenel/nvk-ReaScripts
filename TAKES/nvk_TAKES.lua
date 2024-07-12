@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.5.1
+Version: 2.5.2
 About:
     # nvk_TAKES
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.2
+        Fixed positioning bug in duplicate takes script
     2.5.1
         Improved behavior of Render to new take with fx script
         "Select takes containing text in project renamed" to "Find takes by name" and now has a UI

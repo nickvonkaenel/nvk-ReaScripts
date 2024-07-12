@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.8.5
+Version: 2.8.6
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.8.6
+        Projects with render settings not set to render with items could cause render item mismatch popup when loading the script.
+        Crash when renaming from the results table directly in the rename script
+        New option to add custom UCS user categories in preferences
     2.8.5
         Fixing bug introduced in 2.8.2 where item settings were getting saved before rendering
         Backwards compatibility for SWS 2.14 functions since it's still in beta

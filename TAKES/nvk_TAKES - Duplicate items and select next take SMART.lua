@@ -9,15 +9,15 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 local function new_cursor_pos(items)
-	local minpos, maxpos = items.minpos, items.maxpos
-	local diff = math.ceil(maxpos - minpos) + 1
+	local minpos, maxend = items.minpos, items.maxend
+	local diff = math.ceil(maxend - minpos) + 1
 	local newCursorPos = minpos + diff
 	local item = items[1]
 	if item.folder or not item.track.parent then return newCursorPos, diff end
 	local track = item.track.parent
 	for i, folderitem in ipairs(track.folderitems) do
-		if folderitem.s > maxpos then break end
-		if folderitem.e >= minpos and folderitem.s <= maxpos then
+		if folderitem.s > maxend then break end
+		if folderitem.e >= minpos and folderitem.s <= maxend then
 			local nextfolderitem = track.folderitems[i + 1]
 			if nextfolderitem and FolderItem.NameCompare(folderitem, nextfolderitem) and nextfolderitem.s < minpos + math.ceil(folderitem.len) + 5 then
 				diff = nextfolderitem.s - folderitem.s
@@ -41,7 +41,7 @@ local function next_column_pos(items)
 	local columns = tracks:Columns()
 	local nextColumnPos
 	for _, column in ipairs(columns) do
-		if column.s > items.maxpos then
+		if column.s > items.maxend then
 			nextColumnPos = column.s
 			break
 		end
@@ -70,15 +70,15 @@ run(function()
 	items.sel = false
 	newitems.minpos = newCursorPos
 	newitems.audio:IncrementTakeSMART(1)
-	local minpos, maxpos = newitems.minpos, newitems.maxpos
-	if minpos < items.maxpos then
-		newitems.minpos = minpos + math.ceil(items.maxpos - minpos)
+	local minpos, maxend = newitems.minpos, newitems.maxend
+	if minpos < items.maxend then
+		newitems.minpos = minpos + math.ceil(items.maxend - minpos)
 	end
-	if DUPLICATE_RIPPLE and (#items > 1 or (nextItemPos and nextItemPos < maxpos)) and nextColumnPos and nextColumnPos < maxpos then
-		local newdiff = math.ceil(maxpos - minpos) + 1
+	if DUPLICATE_RIPPLE and (#items > 1 or (nextItemPos and nextItemPos < maxend)) and nextColumnPos and nextColumnPos < maxend then
+		local newdiff = math.ceil(maxend - minpos) + 1
 		if newdiff > diff then diff = newdiff end
-		tracks:InsertEmptySpace(items.maxpos, math.ceil(minpos - nextColumnPos + diff))
+		tracks:InsertEmptySpace(items.maxend, math.ceil(minpos - nextColumnPos + diff))
 		newitems.minpos = newCursorPos
 	end
-	items.tracks:DuplicateAutomation({ s = items.minpos, e = items.maxpos }, newCursorPos)
+	items.tracks:DuplicateAutomation({ s = items.minpos, e = items.maxend }, newCursorPos)
 end)
