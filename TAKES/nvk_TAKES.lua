@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.5.2
+Version: 2.5.3
 About:
     # nvk_TAKES
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.5.3
+        Improved ripple behavior in duplicate takes script
     2.5.2
         Fixed positioning bug in duplicate takes script
     2.5.1

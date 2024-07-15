@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 1.2.0
+Version: 1.3.1
 About:
     # nvk_SHARED
 

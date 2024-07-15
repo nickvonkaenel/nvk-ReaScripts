@@ -73,12 +73,13 @@ run(function()
 	local minpos, maxend = newitems.minpos, newitems.maxend
 	if minpos < items.maxend then
 		newitems.minpos = minpos + math.ceil(items.maxend - minpos)
+		minpos, maxend = newitems.minpos, newitems.maxend
 	end
 	if DUPLICATE_RIPPLE and (#items > 1 or (nextItemPos and nextItemPos < maxend)) and nextColumnPos and nextColumnPos < maxend then
 		local newdiff = math.ceil(maxend - minpos) + 1
 		if newdiff > diff then diff = newdiff end
 		tracks:InsertEmptySpace(items.maxend, math.ceil(minpos - nextColumnPos + diff))
-		newitems.minpos = newCursorPos
+		newitems.minpos = minpos
 	end
 	items.tracks:DuplicateAutomation({ s = items.minpos, e = items.maxend }, newCursorPos)
 end)
