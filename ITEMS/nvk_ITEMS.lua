@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.7.4
+Version: 1.7.5
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.7.5
+        Fixed: fade outs that extended past the fade in position would cause fade curve smart to choose the wrong fade to change
     1.7.4
         Improved performance of fade curve scripts
     1.7.3

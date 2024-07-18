@@ -15,10 +15,10 @@ if not functionsLoaded then return end
 local MediaItem, mousePos = r.BR_ItemAtMouseCursor()
 local item = Item(MediaItem)
 if item and mousePos >=0 then
-    if inrange(mousePos, item.fadeoutpos, item.e) then
-        MOUSEWHEEL_FADECURVE_OUT = true
-    elseif inrange(mousePos, item.s, item.fadeinpos) then
+    if inrange(mousePos, item.s, item.fadeinpos) then
         MOUSEWHEEL_FADECURVE_OUT = false
+    elseif inrange(mousePos, item.fadeoutpos, item.e) then
+        MOUSEWHEEL_FADECURVE_OUT = true
     end
 end
 
