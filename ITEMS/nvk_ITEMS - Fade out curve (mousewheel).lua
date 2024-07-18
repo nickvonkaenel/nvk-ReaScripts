@@ -12,4 +12,4 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-MousewheelDefer(MousewheelFadeCurve, true, is_new, val)
+MousewheelDefer(MousewheelFadeCurve, true, is_new, val, nil, MousewheelFadeCurveFinalize)

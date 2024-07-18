@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.7.3
+Version: 1.7.4
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.7.4
+        Improved performance of fade curve scripts
     1.7.3
         New script: Trim overlapping items to smallest item in each column
     1.7.2

@@ -22,4 +22,4 @@ if item and mousePos >=0 then
     end
 end
 
-MousewheelDefer(MousewheelFadeCurve, true, is_new, val)
+MousewheelDefer(MousewheelFadeCurve, true, is_new, val, nil, MousewheelFadeCurveFinalize)
