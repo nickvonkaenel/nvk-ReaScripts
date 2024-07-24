@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.12.2
+Version: 1.12.3
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
   User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
+    1.12.3
+        Moving persistent mode functions to nvk_SHARED, setting is now in 'Functionality' section
     1.12.2
         Crash when dragging favorite results to sort them
     1.12.1
