@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.8.7
+Version: 2.8.8
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,10 +10,11 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.8.8
+        Improving performance of render script
     2.8.7
         Adding persistent mode to rename script
         Adding persistent mode to render script
-        Improving performance of render script
     2.8.6
         Projects with render settings not set to render with items could cause render item mismatch popup when loading the script.
         Crash when renaming from the results table directly in the rename script

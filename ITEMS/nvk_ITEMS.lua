@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.7.5
+Version: 1.7.6
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.7.6
+        New scripts: Select and move edit cursor to next/previous item edge
     1.7.5
         Fixed: fade outs that extended past the fade in position would cause fade curve smart to choose the wrong fade to change
     1.7.4
@@ -42,4 +44,6 @@ Provides:
     **/*.dat
     [main] *.lua
 --]]
-reaper.ShowMessageBox("nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with items for game audio and sound design.", "nvk_ITEMS", 0)
+reaper.ShowMessageBox(
+"nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with items for game audio and sound design.",
+    "nvk_ITEMS", 0)
