@@ -102,7 +102,7 @@ if ! prompt_user "Do you want to submit the index to nvk.tools and reapleton.com
 fi
 
 # Handle git operations for nvk.tools and Reapleton
-for repo in nvk.tools Reapleton; do
+for repo in nvk.tools Reapleton nvk.tools-website/static; do
     repo_path="$parent_dir_path/$repo"
     if ! handle_git_operations "$repo_path" false; then
         break
