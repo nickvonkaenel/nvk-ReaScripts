@@ -12,18 +12,6 @@ Links:
 Changelog:
     2.8.2
         Adding option for mono channel subprojects. Still does a stereo render but automatically sets the item to downmixed stereo.
-    2.8.1
-        Compatibility with nvk_SHARED v1.2.0
-    2.8.0
-        Dependencies moved to nvk_SHARED
-    2.7.2
-        Updating to ReaImGui v9
-        Better crash handling
-    2.7.1
-        Backwards compatibility with Reaper 6
-    2.7.0
-        + Fixed: proper subproject colors on Windows
-        + Disable marker fix option to only update start/end markers when creating a subproject and let the user decide when to update markers
     For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
 Provides:
     **/*.dat

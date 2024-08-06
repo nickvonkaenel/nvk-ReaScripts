@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.7.6
+Version: 1.7.8
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,10 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.7.8
+        Fade curve scripts now use the nearest edge or fade start to the mouse position to determine if the fade should be in or out
+    1.7.7
+        Sort scripts now work with any zero-padded numbering scheme (as long as it's on the end of the name)
     1.7.6
         New scripts: Select and move edit cursor to next/previous item edge
     1.7.5

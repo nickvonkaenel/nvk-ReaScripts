@@ -12,13 +12,22 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-local MediaItem, mousePos = r.BR_ItemAtMouseCursor()
-local item = Item(MediaItem)
-if item and mousePos >=0 then
-    if inrange(mousePos, item.s, item.fadeinpos) then
-        MOUSEWHEEL_FADECURVE_OUT = false
-    elseif inrange(mousePos, item.fadeoutpos, item.e) then
-        MOUSEWHEEL_FADECURVE_OUT = true
+local mediaItem, mousePos = r.BR_ItemAtMouseCursor()
+local item = Item(mediaItem)
+if mousePos >=0 then
+    if item then
+        if inrange(mousePos, item.s, item.fadeinpos) then
+            MOUSEWHEEL_FADECURVE_OUT = false
+        elseif inrange(mousePos, item.fadeoutpos, item.e) then
+            MOUSEWHEEL_FADECURVE_OUT = true
+        else
+            MOUSEWHEEL_FADECURVE_OUT = math.abs(mousePos - item.fadeinpos) > math.abs(mousePos - item.fadeoutpos)
+        end
+    else
+        local nearestEdge, isEnd = Items():NearestEdge(mousePos)
+        if nearestEdge then
+            MOUSEWHEEL_FADECURVE_OUT = isEnd
+        end
     end
 end
 

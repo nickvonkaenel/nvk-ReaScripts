@@ -1,56 +1,24 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.12.3
+Version: 1.12.5
 About:
     # nvk_SEARCH
 
     This script is used to quickly search for FX, chains, actions, projects, etc in Reaper. Requires REAPER 7 or higher.
 Author: nvk
 Links:
-  REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
-  User Guide: https://nvk.tools/doc/nvk_SEARCH
+    REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
+    User Guide: https://nvk.tools/doc/nvk_SEARCH
 Changelog:
-    1.12.3
-        Moving persistent mode functions to nvk_SHARED, setting is now in 'Functionality' section
-    1.12.2
-        Crash when dragging favorite results to sort them
-    1.12.1
-        Backspace now focuses search field
-    1.12.0
-        Dependencies moved to nvk_SHARED
-        In palette mode, large font sizes and zoom settings could cause the controls to be off screen
-        New startup options section: moving relevant settings to this area, adding option to load last folder selection
-        In persistent mode, the last folder selection no longer gets saved by default (setting added to restore last folder selection in either mode if desired)
-    1.11.3
-        Improvements to how folder colors are displayed
-    1.11.2
-        Crash when removing project directories individually
-        Removing individual project directories could have removed incorrect folder in rare cases
-        Option to rescan project directories on startup
-        Crash when opening the script for the first time with no config (whooooops)
-    1.11.1
-        FX and Folders Sidebar now collapsible headers instead of option to hide
-        Dividers and new folders get added at end of all selected folders to the same parent folder as the last selected folder
-    1.11.0
-        Upgraded to ReaImGui 0.9
-        Folder coloring
-        Fixed: adding random fx from right-click menu of folder could add incorrect folder fx
-        Option to hide fx sidebar
-        Slight tweak to search algorithm so that results with the same word match multiple times are not scored higher
-        Close preferences window when closing script (still stays open in persistent mode)
-        You can now drag the All folder to a different position if you want to have the script open to a different folder by default. It will always open the first folder in the list.
-        Folder dividers
-        Betting crash handling
-        Multi-selection of folders - results will show all items from selected folders
-        Parent folders - selecting them will show all items from their children
-        Fix for escape key not clearing search field on newer versions of ReaImGui
-        Order of results when dragging multiple results is preserved
-    1.10.7
-        Fixed: Media folders being scanned for project files in subdirectories (loading subprojects)
-  For full changelog, visit https://nvk.tools/doc/nvk_search#changelog
+    1.12.5
+        Open in file explorer and open in external editor sometimes didn't work on Windows.
+        FX and Track Templates can create new tracks now if no items or tracks are selected.
+    1.12.4
+        Compatibility with new nvk_SHARED font system
+    For full changelog, visit https://nvk.tools/doc/nvk_search#changelog
 Provides:
-  **/*.dat
-  [main] *.lua
+    **/*.dat
+    [main] *.lua
 --]]
 STARTUP_TIME = reaper.time_precise()
 SCRIPT_FOLDER = 'search'

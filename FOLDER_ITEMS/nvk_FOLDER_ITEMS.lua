@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.8.10
+Version: 2.8.13
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,53 +10,11 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
-    2.8.10
-        Crash when selecting markers/regions in rename script
-    2.8.9
-        Crash from ReaPack update not removing old files
-    2.8.8
-        Improving performance of render script
-    2.8.7
-        Adding persistent mode to rename script
-        Adding persistent mode to render script
-    2.8.6
-        Projects with render settings not set to render with items could cause render item mismatch popup when loading the script.
-        Crash when renaming from the results table directly in the rename script
-        New option to add custom UCS user categories in preferences
-    2.8.5
-        Fixing bug introduced in 2.8.2 where item settings were getting saved before rendering
-        Backwards compatibility for SWS 2.14 functions since it's still in beta
-        Compatibility with updated nvk_PROPAGATE script
-        Possible fix for crash when adding markers with nvk_FOLDER_ITEMS
-    2.8.4
-        Fixing unnecessary undo points when using mousewheel volume script (requires nvk_SHARED v1.1.0)
-    2.8.3
-        Improvements to mousewheel pitch shift behavior. Items on the same track that don't overlap will now use the non-column pitch shift
-    2.8.2
-        Possible fix for script rendering certain sets of items in multiple groups when not necessary
-        Stats
-        Render SMART: Tail on/off setting not reset properly when closing the script without rendering
-        Rename: new option to rename track in addition to items
-        Rename: new items options - tracks, markers, regions
-    2.8.1
-        Crash when using normal render script
-    2.8.0
-        Dependencies moved to nvk_SHARED
-        Improved render item selection
-        New render settings: format, and bit depth (can be set per item too)
-        Deprecated "Show preferences in main window" option
-        Join items were not being removed from render list and rename list
-        Crash in rename script when no items or tracks selected
-    2.7.5
-        Folder items crash when tracks deleted in larger projects
-    2.7.4
-        Updating to ReaImGui v9
-        Better crash handling
-    2.7.3
-        Non-active but hidden item lanes could create folder items
-        Folder items could crash when switching between projects with a large number of items immediately after making a change.
-    2.7.2
-        Fixed: rename script allows for naming conventions with multiple numbers at the end of the name i.e. "My Sound_01_01"
+    2.8.13
+        Remove script can now remove FX when hovering over the open FX window
+        Added option for proportional fades when using mousewheel pitch shift
+    2.8.12
+        Performance improvements
     For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
 Provides:
     **/*.dat
@@ -171,6 +129,6 @@ else
     end
     if not r.APIExists('CF_GetClipboard') then
         r.ShowMessageBox('Please install the latest version of SWS Extension from:\nhttps://sws-extension.org/', scr
-            .name, 0)
+        .name, 0)
     end
 end

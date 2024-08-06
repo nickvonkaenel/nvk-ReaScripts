@@ -1,6 +1,4 @@
 -- @noindex
--- USER CONFIG --
-selectItemUnderMouse = true --this script doesn't really do much without this set to true, just deletes items or tracks
 -- SETUP --
 r = reaper
 sep = package.config:sub(1, 1)
@@ -9,62 +7,37 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
-    local item
-    if selectItemUnderMouse then
-        reaper.Main_OnCommand(40296, 0) -- select all tracks
-        reaper.Main_OnCommand(40769, 0) -- unselect everything (have to select all tracks first else some envelope tracks can be selected)
-        item = GetItemUnderMouseCursor()
-    else
-        if reaper.GetCursorContext() == 0 then
-            reaper.Main_OnCommand(40005, 0) -- remove track
-        else
-            reaper.Main_OnCommand(40006, 0) -- remove items
-        end
-        return
-    end
-
+run(function()
+    local x, y = r.GetMousePosition()
+    local item = Item(r.GetItemFromPoint(x, y, false))
     if item then
-        reaper.SetMediaItemSelected(item, true)
-        groupSelect(item)
-        local env = reaper.GetTrackEnvelopeByName(reaper.GetMediaItemTrack(item), "Volume")
-        if env then
-            local autoitemIdx = GetAutoitem(env, reaper.GetMediaItemInfo_Value(item, "D_POSITION"))
-            if autoitemIdx then
-                reaper.GetSetAutomationItemInfo(env, autoitemIdx, "D_UISEL", 1, true)
-            end
-        end
-        local track = Track(r.GetMediaItem_Track(item))
-        local compact_tracks = track:UncompactChildren(true) -- store tracks to compact after, a v7 compatibility thing with hidden tracks
-        reaper.Main_OnCommand(40006, 0) -- remove items
-        compact_tracks:Compact()
-        return
+        return item:DeleteVolumeAutoItem():GroupItems(true):Delete()
     end
-
-    if SelectAutomationItemUnderMouseCursor() then
-        reaper.Main_OnCommand(40006, 0) -- remove items
-        return
-    end
-    local window, segment, details = reaper.BR_GetMouseCursorContext()
-    if window == "tcp" or window == "unknown" then
-        if segment == "track" then
-            reaper.Main_OnCommand(41110, 0) -- select track under mouse
-            reaper.Main_OnCommand(40005, 0) -- remove track
-        elseif segment == "envelope" then
-            reaper.Main_OnCommand(reaper.NamedCommandLookup("_BR_SEL_ENV_MOUSE"), 0) -- select envelope track under mouse cursor
-            if reaper.GetSelectedEnvelope(0) then
-                reaper.Main_OnCommand(40065, 0) -- clear envelope
+    local mediaTrack, info = r.GetThingFromPoint(x, y)
+    if mediaTrack and info then
+        local track = Track(mediaTrack)
+        assert(track, 'Invalid track')
+        if info:find('^tcp') or info:find('^mcp') then
+            track:Delete()
+        elseif info:find('^env') then -- includes envcp
+            local envIdx = tonumber(info:match('%d+$'))
+            assert(envIdx, 'Invalid envelope index')
+            local env = Track(mediaTrack):EnvelopeByIdx(envIdx)
+            if info:find('envelope') then
+                local mousePos = r.GetSet_ArrangeView2(0, false, x, x + 1)
+                for i = 0, env.num_autoitems - 1 do
+                    local autoItem = AutoItem(env, i)
+                    if mousePos >= autoItem.pos and mousePos < autoItem.rgnend then
+                        autoItem:Delete()
+                        return
+                    end
+                end
             end
+            track:EnvelopeByIdx(envIdx):Delete()
+        elseif info:find('^fx') then
+            local fxIdx = tonumber(info:match('%d+$'))
+            assert(fxIdx, 'Invalid fx index')
+            track:DeleteFX(fxIdx)
         end
     end
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-local items = Items.Selected()
-Main()
-reaper.Main_OnCommand(41110, 0) -- select track under mouse
-items.sel = true
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+end)

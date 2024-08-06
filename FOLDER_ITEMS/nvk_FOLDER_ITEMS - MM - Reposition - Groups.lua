@@ -1,6 +1,5 @@
 -- @noindex
 -- Mouse modifier: This script will be assigned to your mouse modifiers by the folder items - settings script. Not expected to be assigned to a shortcut.
--- USER CONFIG --
 -- SETUP --
 r = reaper
 sep = package.config:sub(1, 1)

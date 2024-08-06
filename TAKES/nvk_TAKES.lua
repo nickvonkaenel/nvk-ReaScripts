@@ -12,26 +12,6 @@ Links:
 Changelog:
     2.5.3
         Improved ripple behavior in duplicate takes script
-    2.5.2
-        Fixed positioning bug in duplicate takes script
-    2.5.1
-        Improved behavior of Render to new take with fx script
-        "Select takes containing text in project renamed" to "Find takes by name" and now has a UI
-    2.5.0
-        Dependencies moved to nvk_SHARED
-        Zoom to selected items after "Select takes containing text in project"
-        Improved take SMART behavior
-    2.4.7
-        Duplicate items and select next take SMART could duplicate automation on other tracks in the same folder in some cases
-    2.4.6
-        Crash when changing takes in item with no take markers
-    2.4.5
-        Updating to ReaImGui v9
-        Better crash handling
-    2.4.4
-        New script: nvk_TAKES - Select random take SMART (no repeat) - will avoid selecting the current take if possible
-    2.4.3
-        + Trial improvements
     For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
 Provides:
     **/*.dat

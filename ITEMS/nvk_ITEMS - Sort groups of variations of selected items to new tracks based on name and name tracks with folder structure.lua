@@ -8,31 +8,7 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function NameFix(name)
-    if not name then return "" end
-    name = string.match(name, "(.+)%..+$") or name
-    return string.match(name, "(.+)[_ -]+[0-9]+[0-9]") or name
-end
-
-function PairsByKeys(t, f)
-    local a = {}
-    for n in pairs(t) do
-        table.insert(a, n)
-    end
-    table.sort(a, f)
-    local i = 0 -- iterator variable
-    local iter = function() -- iterator function
-        i = i + 1
-        if a[i] == nil then
-            return nil
-        else
-            return a[i], t[a[i]], i == #a
-        end
-    end
-    return iter
-end
-
-function tablesize(t)
+local function tablesize(t)
     local i = 0
     for n in pairs(t) do
         i = i + 1
@@ -40,29 +16,29 @@ function tablesize(t)
     return i
 end
 
-function GetActiveTakeName(item)
-    return reaper.GetTakeName(reaper.GetActiveTake(item))
+local function GetActiveTakeName(item)
+    return r.GetTakeName(r.GetActiveTake(item))
 end
 
-function sortItems(item1, item2)
+local function sortItems(item1, item2)
     return GetActiveTakeName(item1) < GetActiveTakeName(item2)
 end
 
-function Main()
+run (function()
     local itemNames = {}
-    local itemCount = reaper.CountSelectedMediaItems(0)
+    local itemCount = r.CountSelectedMediaItems(0)
     if itemCount == 0 then
         return
     end
-    local initItem = reaper.GetSelectedMediaItem(0, 0)
-    local initPos = reaper.GetMediaItemInfo_Value(initItem, "D_POSITION")
-    local initTrack = reaper.GetMediaItem_Track(initItem)
-    local initTrackNum = reaper.GetMediaTrackInfo_Value(initTrack, "IP_TRACKNUMBER") - 1
+    local initItem = r.GetSelectedMediaItem(0, 0)
+    local initPos = r.GetMediaItemInfo_Value(initItem, "D_POSITION")
+    local initTrack = r.GetMediaItem_Track(initItem)
+    local initTrackNum = r.GetMediaTrackInfo_Value(initTrack, "IP_TRACKNUMBER") - 1
     for i = 0, itemCount - 1 do
-        local item = reaper.GetSelectedMediaItem(0, i)
-        local take = reaper.GetActiveTake(item)
+        local item = r.GetSelectedMediaItem(0, i)
+        local take = r.GetActiveTake(item)
         if take then
-            local name = reaper.GetTakeName(take)
+            local name = r.GetTakeName(take)
             name = NameFix(name) or name
             if itemNames[name] then
                 table.insert(itemNames[name], item)
@@ -87,32 +63,32 @@ function Main()
         t[name] = itemTable
     end
 
-    for name, itemTable in PairsByKeys(itemNames) do
+    for name, itemTable in Tbl.PairsByKeys(itemNames) do
         NameTable(name, itemTable)
     end
 
-    curDepth = 0
+    local curDepth = 0
     local function CreateItemFolders(t, depth, lastKey)
-        for k, v in PairsByKeys(t) do
+        for k, v in Tbl.PairsByKeys(t) do
             local pos = initPos
             local function CreateTrack()
                 initTrackNum = initTrackNum + 1
-                reaper.InsertTrackAtIndex(initTrackNum, true)
-                local track = reaper.GetTrack(0, initTrackNum)
+                r.InsertTrackAtIndex(initTrackNum, true)
+                local track = r.GetTrack(0, initTrackNum)
                 local newName = k
-                local prevTrack = reaper.GetTrack(0, initTrackNum - 1)
+                local prevTrack = r.GetTrack(0, initTrackNum - 1)
                 if (depth - curDepth) ~= 0 then
-                    reaper.SetMediaTrackInfo_Value(prevTrack, "I_FOLDERDEPTH", depth - curDepth)
+                    r.SetMediaTrackInfo_Value(prevTrack, "I_FOLDERDEPTH", depth - curDepth)
                 end
-                local parentTrack = reaper.GetParentTrack(track)
+                local parentTrack = r.GetParentTrack(track)
                 if parentTrack then
-                    local rv, parentTrackName = reaper.GetTrackName(parentTrack)
+                    local rv, parentTrackName = r.GetTrackName(parentTrack)
                     newName = string.match(newName, parentTrackName.."[_ -](.+)")
                     if not newName then newName = k end
                 elseif lastKey then
                     newName = lastKey.."_"..newName
                 end
-                reaper.GetSetMediaTrackInfo_String(track, "P_NAME", newName, true)
+                r.GetSetMediaTrackInfo_String(track, "P_NAME", newName, true)
                 curDepth = depth
                 return track
             end
@@ -120,9 +96,9 @@ function Main()
                 local track = CreateTrack()
                 table.sort(v, sortItems)
                 for i, item in ipairs(v) do
-                    reaper.MoveMediaItemToTrack(item, track)
-                    reaper.SetMediaItemPosition(item, pos, true)
-                    pos = pos + reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
+                    r.MoveMediaItemToTrack(item, track)
+                    r.SetMediaItemPosition(item, pos, true)
+                    pos = pos + r.GetMediaItemInfo_Value(item, "D_LENGTH")
                 end
             elseif type(v) == "table" then
                 
@@ -135,22 +111,9 @@ function Main()
     end
 
     CreateItemFolders(itemFolders, 0)
-    local prevTrack = reaper.GetTrack(0, initTrackNum)
+    local prevTrack = r.GetTrack(0, initTrackNum)
     if (curDepth) ~= 0 then
-        reaper.SetMediaTrackInfo_Value(prevTrack, "I_FOLDERDEPTH", -curDepth)
+        r.SetMediaTrackInfo_Value(prevTrack, "I_FOLDERDEPTH", -curDepth)
     end
 
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
---reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
-
---[[
-Should make it so that items are organized alphabetically too
-Sort in folders by name
-Each word gets added to table and make unique folders for each group with more than one
-]]
+end)

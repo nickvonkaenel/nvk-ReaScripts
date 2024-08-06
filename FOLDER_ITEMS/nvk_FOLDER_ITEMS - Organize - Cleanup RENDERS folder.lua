@@ -11,10 +11,6 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-CleanUpRendersFolder(RENDERS_FOLDER_NAME)
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+run(function()
+    CleanUpRendersFolder(RENDERS_FOLDER_NAME)
+end)

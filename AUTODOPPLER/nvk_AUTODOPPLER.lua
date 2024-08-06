@@ -16,19 +16,6 @@ Links:
 Changelog:
     2.5.2
         Improved track selection on startup
-    2.5.1
-        SpinTracer support (beta)
-    2.5.0
-        Dependencies moved to nvk_SHARED
-    2.4.14
-        New fix for crash on custom fx
-    2.4.13
-        Tenative fix for crash on custom fx
-    2.4.12
-        Updating to ReaImGui v9
-        Better crash handling
-    2.4.11
-        Possible fix for crash when using certain plug-ins
     For full changelog, visit https://nvk.tools/doc/nvk_autodoppler#changelog
 Provides:
     **/*.dat

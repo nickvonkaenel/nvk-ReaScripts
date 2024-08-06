@@ -11,23 +11,6 @@ Links:
 Changelog:
     2.3.5
         Fix for crash with certain media files
-    2.3.4
-        Fix for occasional ImGui crash when more than 6 items are selected
-    2.3.3
-        Bug when matching loop to time selection
-    2.3.2
-        Fix for stuttering when loopmaker is running and setting for cursor undo history is enabled (still stutters once when opening)
-    2.3.1
-        Fix crash on start if more than 8 items and color items enabled
-        Stats
-        Crash when non-audio items are selected
-    2.3.0
-        Dependencies moved to nvk_SHARED
-    2.2.13
-        Updating to ReaImGui v9
-        Better crash handling
-    2.2.12
-        + Fixed: when glueing loops in a time selection, the glued items were duplicated for no reason
     For full changelog, visit https://nvk.tools/doc/nvk_loopmaker#changelog
 Provides:
     **/*.dat

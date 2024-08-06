@@ -1,5 +1,4 @@
 -- @noindex
--- USER CONFIG --
 -- SETUP --
 r = reaper
 sep = package.config:sub(1, 1)
@@ -94,21 +93,20 @@ local function fadein_auto(item)
 end
 
 run(function()
-    local item, cursorPos = SelectVisibleItemNearMouseCursor()
+    local item, cursorPos = Item.NearestToMouse()
     if not item or not cursorPos then return end
-    item = Item(item)
-    assert(item, 'item is nil')
     if item.folder then
         if FADE_FOLDER_ENVELOPE then
             item.fadeinpos = cursorPos
             fadein(item, cursorPos)
             fadein_auto(item)
-            groupSelect(item.item)
-            item.sel = true
+            item:GroupSelect(true)
             return
         else
-            groupSelect(item.item)
+            item:GroupSelect(true)
         end
+    else
+        item:Select(true)
     end
 
     local items = Items.Selected()

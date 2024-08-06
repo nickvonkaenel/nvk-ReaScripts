@@ -1,5 +1,4 @@
 -- @noindex
--- USER CONFIG --
 -- SETUP --
 r = reaper
 sep = package.config:sub(1, 1)
@@ -87,21 +86,22 @@ local function fadeout_auto(item)
     end
 end
 
-function Main()
-    local item, cursorPos = SelectVisibleItemNearMouseCursor()
-    if not item then return end
-    item = Item(item)
+run(function()
+    local item, cursorPos = Item.NearestToMouse()
+    if not item or not cursorPos then return end
     if item.folder then
         if FADE_FOLDER_ENVELOPE then
             item.fadeoutpos = cursorPos
             fadeout(item, cursorPos)
             fadeout_auto(item)
-            groupSelect(item.item)
+            item:GroupSelect(true)
             item.sel = true
             return
         else
-            groupSelect(item.item)
+            item:GroupSelect(true)
         end
+    else
+        item:Select(true)
     end
 
     local items = Items.Selected()
@@ -121,11 +121,4 @@ function Main()
         end
         if doFade then fadeout(item, cursorPos) end
     end
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

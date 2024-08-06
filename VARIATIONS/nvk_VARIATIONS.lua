@@ -17,14 +17,6 @@ Changelog:
         Project changes while the script is open have more predictable behavior
         Time selection to highlight variations
         New toggle button to copy automation
-    1.1.0
-        Dependencies moved to nvk_SHARED
-        Variation mode: loop
-        Option to constrain offsets to source length
-        Option for split pitch and tone sliders (up/down)
-    1.0.7
-        Updating to ReaImGui v9
-        Better crash handling
     For full changelog, visit https://nvk.tools/doc/nvk_variations#changelog
 Provides:
     **/*.dat

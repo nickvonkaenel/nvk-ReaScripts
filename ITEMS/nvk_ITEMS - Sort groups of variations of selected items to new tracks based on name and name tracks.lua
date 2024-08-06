@@ -8,30 +8,6 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function NameFix(name)
-    if not name then return "" end
-    name = string.match(name, "(.+)%..+$") or name
-    return string.match(name, "(.+)[_ -]+[0-9]+[0-9]") or name
-end
-
-function PairsByKeys(t, f)
-    local a = {}
-    for n in pairs(t) do
-        table.insert(a, n)
-    end
-    table.sort(a, f)
-    local i = 0 -- iterator variable
-    local iter = function() -- iterator function
-        i = i + 1
-        if a[i] == nil then
-            return nil
-        else
-            return a[i], t[a[i]]
-        end
-    end
-    return iter
-end
-
 run(function()
     local itemNames = {}
     local itemCount = r.CountSelectedMediaItems(0)
@@ -56,7 +32,7 @@ run(function()
         end
     end
 
-    for name, itemTable in PairsByKeys(itemNames) do
+    for name, itemTable in Tbl.PairsByKeys(itemNames) do
         local pos = initPos
         initTrackNum = initTrackNum + 1
         r.InsertTrackAtIndex(initTrackNum, true)

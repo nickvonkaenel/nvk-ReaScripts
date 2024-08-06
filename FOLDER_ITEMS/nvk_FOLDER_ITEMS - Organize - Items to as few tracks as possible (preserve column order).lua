@@ -9,7 +9,6 @@ DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-local r = reaper
 list = {}
 
 function list:Get()
@@ -19,7 +18,7 @@ function list:Get()
     for i = 1, r.CountSelectedMediaItems() do
         self.items[i] = {}
         self.items[i].item = r.GetSelectedMediaItem(0, i - 1)
-        
+
         self.items[i].pos = r.GetMediaItemInfo_Value(self.items[i].item, 'D_POSITION')
         self.items[i].len = r.GetMediaItemInfo_Value(self.items[i].item, 'D_LENGTH')
         self.items[i].end_pos = self.items[i].pos + self.items[i].len
@@ -51,14 +50,14 @@ function list:Get()
             c[1] = {
                 pos = item.pos,
                 end_pos = item.end_pos,
-                items = {item},
+                items = { item },
             }
         else
             if item.pos + 0.00000001 >= c[#c].end_pos then
                 c[#c + 1] = {
                     pos = item.pos,
                     end_pos = item.end_pos,
-                    items = {item},
+                    items = { item },
                 }
             else
                 if item.end_pos > c[#c].end_pos then c[#c].end_pos = item.end_pos end
@@ -91,12 +90,8 @@ function list:Organize()
     end
 end
 
-
-if reaper.CountSelectedMediaItems(0) == 0 then return end
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-list:Get()
-list:Organize()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+if r.CountSelectedMediaItems(0) == 0 then return end
+run(function()
+    list:Get()
+    list:Organize()
+end)
