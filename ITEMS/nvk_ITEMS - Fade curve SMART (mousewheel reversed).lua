@@ -14,7 +14,7 @@ if not functionsLoaded then return end
 -- SCRIPT --
 local mediaItem, mousePos = r.BR_ItemAtMouseCursor()
 local item = Item(mediaItem)
-if mousePos >=0 then
+if mousePos >= 0 then
     if item then
         if inrange(mousePos, item.s, item.fadeinpos) then
             MOUSEWHEEL_FADECURVE_OUT = false
@@ -24,9 +24,13 @@ if mousePos >=0 then
             MOUSEWHEEL_FADECURVE_OUT = math.abs(mousePos - item.fadeinpos) > math.abs(mousePos - item.fadeoutpos)
         end
     else
-        local nearestEdge, isEnd = Items():NearestEdge(mousePos)
-        if nearestEdge then
-            MOUSEWHEEL_FADECURVE_OUT = isEnd
+        local track = Track.UnderMouse()
+        local items = track and track:Items():Selected()
+        if items and #items > 0 then
+            local nearestEdge, isEnd = items:NearestEdge(mousePos)
+            if nearestEdge then
+                MOUSEWHEEL_FADECURVE_OUT = isEnd
+            end
         end
     end
 end

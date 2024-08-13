@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.8.2
+Version: 2.8.3
 About:
     # nvk_SUBPROJECT
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.8.3
+        Fix for occasional crash when updating subproject.
     2.8.2
         Adding option for mono channel subprojects. Still does a stereo render but automatically sets the item to downmixed stereo.
     For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog

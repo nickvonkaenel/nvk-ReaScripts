@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.8.13
+Version: 2.8.14
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/doc/nvk_workflow
 Changelog:
+    2.8.14
+        Render smart crash when closing project tab
     2.8.13
         Remove script can now remove FX when hovering over the open FX window
         Added option for proportional fades when using mousewheel pitch shift

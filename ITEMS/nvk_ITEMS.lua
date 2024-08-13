@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.7.8
+Version: 1.7.9
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.7.9
+        Fade curve smart only switches fade in and fade out target if mouse is on the same track as the selected items, otherwise it will default to fade out
     1.7.8
         Fade curve scripts now use the nearest edge or fade start to the mouse position to determine if the fade should be in or out
     1.7.7

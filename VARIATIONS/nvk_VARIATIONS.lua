@@ -1,6 +1,6 @@
 --[[
 Description: nvk_VARIATIONS
-Version: 1.2.0
+Version: 1.2.1
 About:
     # nvk_VARIATIONS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Store Page https://gum.co/nvk_VARIATIONS
 Changelog:
+    1.2.1
+        Offset wasn't being applied to selected items with 0 variations
     1.2.0
         Refactored for better performance/stability
         Improved ripple mode behavior
@@ -27,8 +29,6 @@ ipairs = function(t)
     if not t then error(debug.traceback()) end
     return ipairs2(t)
 end
-
-
 
 SCRIPT_FOLDER = 'variations'
 r = reaper
