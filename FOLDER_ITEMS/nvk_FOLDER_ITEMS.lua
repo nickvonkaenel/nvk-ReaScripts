@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.8.14
+Version: 2.9.0
 About:
     # nvk_FOLDER_ITEMS
 
@@ -8,8 +8,15 @@ About:
 Author: nvk
 Links:
     Store Page https://gum.co/nvk_WORKFLOW
-    User Guide https://nvk.tools/doc/nvk_workflow
+    User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.9.0
+        Updated to ReaImgui 0.9.2
+        Visual improvements
+        Remove script regression - wasn't deleting child tracks of parents like it used to
+        With folder item auto-naming disabled and marker variations enabled, sometimes the numbers could be off
+        Crash from 0 length items and folder items markers
+        Render smart not restoring project settings properly when switching tabs while the script is running
     2.8.14
         Render smart crash when closing project tab
     2.8.13
@@ -17,7 +24,7 @@ Changelog:
         Added option for proportional fades when using mousewheel pitch shift
     2.8.12
         Performance improvements
-    For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
+    For full changelog, visit https://nvk.tools/docs/workflow/folder_items#changelog
 Provides:
     **/*.dat
     [windows] Data/curl/*.*

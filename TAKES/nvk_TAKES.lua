@@ -8,11 +8,11 @@ About:
 Author: nvk
 Links:
     Store Page https://gum.co/nvk_WORKFLOW
-    User Guide https://nvk.tools/doc/nvk_workflow
+    User Guide https://nvk.tools/docs/workflow/takes
 Changelog:
     2.5.3
         Improved ripple behavior in duplicate takes script
-    For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
+    For full changelog, visit https://nvk.tools/docs/workflow/takes#changelog
 Provides:
     **/*.dat
     [main] *.lua

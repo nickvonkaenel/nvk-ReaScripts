@@ -12,11 +12,11 @@ About:
 Author: nvk
 Links:
     Store Page https://gum.co/nvk_AUTODOPPLER
-    User Guide https://nvk.tools/doc/nvk_autodoppler
+    User Guide https://nvk.tools/docs/autodoppler
 Changelog:
     2.5.2
         Improved track selection on startup
-    For full changelog, visit https://nvk.tools/doc/nvk_autodoppler#changelog
+    For full changelog, visit https://nvk.tools/docs/autodoppler#changelog
 Provides:
     **/*.dat
     [jsfx] *.jsfx

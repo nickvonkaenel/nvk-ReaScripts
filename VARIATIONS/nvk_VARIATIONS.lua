@@ -1,6 +1,6 @@
 --[[
 Description: nvk_VARIATIONS
-Version: 1.2.1
+Version: 1.3.0
 About:
     # nvk_VARIATIONS
 
@@ -8,7 +8,11 @@ About:
 Author: nvk
 Links:
     Store Page https://gum.co/nvk_VARIATIONS
+    User Guide https://nvk.tools/docs/variations
 Changelog:
+    1.3.0
+        Updated to ReaImgui 0.9.2
+        Visual improvements
     1.2.1
         Offset wasn't being applied to selected items with 0 variations
     1.2.0
@@ -19,7 +23,7 @@ Changelog:
         Project changes while the script is open have more predictable behavior
         Time selection to highlight variations
         New toggle button to copy automation
-    For full changelog, visit https://nvk.tools/doc/nvk_variations#changelog
+    For full changelog, visit https://nvk.tools/docs/variations#changelog
 Provides:
     **/*.dat
     [main] *.lua

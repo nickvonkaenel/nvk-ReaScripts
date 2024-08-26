@@ -18,7 +18,7 @@ run(function()
         local track = Track(mediaTrack)
         assert(track, 'Invalid track')
         if info:find('^tcp') or info:find('^mcp') then
-            track:Delete()
+            track:Children(true):Delete()
         elseif info:find('^env') then -- includes envcp
             local envIdx = tonumber(info:match('%d+$'))
             assert(envIdx, 'Invalid envelope index')

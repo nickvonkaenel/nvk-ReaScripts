@@ -8,13 +8,13 @@ About:
 Author: nvk
 Links:
     Store Page https://gum.co/nvk_WORKFLOW
-    User Guide https://nvk.tools/doc/nvk_workflow
+    User Guide https://nvk.tools/docs/workflow/subproject
 Changelog:
     2.8.3
         Fix for occasional crash when updating subproject.
     2.8.2
         Adding option for mono channel subprojects. Still does a stereo render but automatically sets the item to downmixed stereo.
-    For full changelog, visit https://nvk.tools/doc/nvk_workflow#changelog
+    For full changelog, visit https://nvk.tools/docs/workflow/subproject#changelog
 Provides:
     **/*.dat
     [main] *.lua

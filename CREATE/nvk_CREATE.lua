@@ -13,7 +13,7 @@ About:
 Author: nvk, Neutronic
 Links:
   Store Page https://gum.co/nvk_CREATE
-  User Guide https://nvk.tools/doc/nvk_CREATE
+  User Guide https://nvk.tools/docs/create
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   Neutronic's REAPER forum profile https://forum.cockos.com/member.php?u=66313
   Neutronic's GitHub ReaScripts repository https://github.com/Neutronic/ReaScripts

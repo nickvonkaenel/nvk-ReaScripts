@@ -7,11 +7,11 @@ About:
 Author: nvk
 Links:
     Store Page https://store.nvk.tools/l/nvk_LOOPMAKER
-    User Guide https://nvk.tools/doc/nvk_loopmaker
+    User Guide https://nvk.tools/docs/loopmaker
 Changelog:
     2.3.5
         Fix for crash with certain media files
-    For full changelog, visit https://nvk.tools/doc/nvk_loopmaker#changelog
+    For full changelog, visit https://nvk.tools/docs/loopmaker#changelog
 Provides:
     **/*.dat
     [main] *.lua

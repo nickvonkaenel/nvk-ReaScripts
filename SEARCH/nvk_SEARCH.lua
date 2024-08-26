@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.12.5
+Version: 1.13.0
 About:
     # nvk_SEARCH
 
@@ -8,14 +8,17 @@ About:
 Author: nvk
 Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
-    User Guide: https://nvk.tools/doc/nvk_SEARCH
+    User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.13.0
+        Updated to ReaImGui 0.9.2
+        Visual improvements
     1.12.5
         Open in file explorer and open in external editor sometimes didn't work on Windows.
         FX and Track Templates can create new tracks now if no items or tracks are selected.
     1.12.4
         Compatibility with new nvk_SHARED font system
-    For full changelog, visit https://nvk.tools/doc/nvk_search#changelog
+    For full changelog, visit https://nvk.tools/docs/search#changelog
 Provides:
     **/*.dat
     [main] *.lua
