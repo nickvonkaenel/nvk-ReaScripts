@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 1.9.0
+Version: 2.0.0
 About:
     # nvk_SHARED
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    2.0.0
+        Fixed font paths for Reaper 6
     1.9.0
         Updated to ReaImGui 0.9.2
     1.7.0

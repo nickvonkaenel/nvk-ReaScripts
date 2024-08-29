@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.13.0
+Version: 1.14.0
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.14.0
+        Fix for font paths in Reaper 6
     1.13.0
         Updated to ReaImGui 0.9.2
         Visual improvements
