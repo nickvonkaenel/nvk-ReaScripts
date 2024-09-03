@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 2.0.0
+Version: 2.0.1
 About:
     # nvk_SHARED
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    2.0.1
+        Allow for subprojects to be used by Loopmaker and Variations.
     2.0.0
         Fixed font paths for Reaper 6
     1.9.0

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.14.0
+Version: 1.15.0
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,11 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.15.0
+        New section in preferences for filter keys (filter changing based on first letter in search followed by space)
+        Option to disable filter keys completely
+        Option to change the filter key trigger from space to tab
+        User text color for parent folders not displayed correctly
     1.14.0
         Fix for font paths in Reaper 6
     1.13.0
