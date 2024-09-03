@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.5.3
+Version: 2.5.4
 About:
     # nvk_TAKES
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/takes
 Changelog:
+    2.5.4
+        Crash with render to new take with fx when more than 5 items are selected
     2.5.3
         Improved ripple behavior in duplicate takes script
     For full changelog, visit https://nvk.tools/docs/workflow/takes#changelog

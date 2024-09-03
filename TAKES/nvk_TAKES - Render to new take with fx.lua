@@ -11,7 +11,7 @@ if not functionsLoaded then return end
 run(function()
     local items = Items()
 
-    if #items > 5 and r.ShowMessageBox("Render " .. itemCount .. " items?", "Confirm", 1) == 2 then
+    if #items > 5 and r.ShowMessageBox("Render " .. #items .. " items?", "Confirm", 1) == 2 then
         return
     end
 
