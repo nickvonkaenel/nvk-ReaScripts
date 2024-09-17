@@ -1,9 +1,9 @@
 -- @noindex
 -- SETUP --
 r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT ---
@@ -17,9 +17,7 @@ local function fadeout(item, cursorPos)
     else
         item.fadeoutpos = cursorPos
     end
-    if not item.folder and FADE_OVERSHOOT then
-        item:FadeOvershoot()
-    end
+    if not item.folder and FADE_OVERSHOOT then item:FadeOvershoot() end
 end
 local function get_vol_env(track)
     local env = r.GetTrackEnvelopeByName(track, 'Volume')
@@ -94,11 +92,11 @@ run(function()
             item.fadeoutpos = cursorPos
             fadeout(item, cursorPos)
             fadeout_auto(item)
-            item:GroupSelect(true)
+            item:GroupSelect(true, true)
             item.sel = true
             return
         else
-            item:GroupSelect(true)
+            item:GroupSelect(true, true)
         end
     else
         item:Select(true)
@@ -115,9 +113,7 @@ run(function()
                 doFade = true
             end
         else -- default behavior, check if overlapping or shared edge
-            if item.e >= cursorPos or item.e == items[1].e then
-                doFade = true
-            end
+            if item.e >= cursorPos or item.e == items[1].e then doFade = true end
         end
         if doFade then fadeout(item, cursorPos) end
     end

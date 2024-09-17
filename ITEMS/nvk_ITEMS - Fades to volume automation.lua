@@ -2,9 +2,9 @@
 -- Converts item fades to volume automation items and then removes fades. It automation item exists in same position as item will delete. Only works with linear fades
 -- SETUP --
 local r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
@@ -17,7 +17,7 @@ run(function()
         local autoitemIdx = GetAutoitem(env, item.pos)
         if autoitemIdx then
             r.Main_OnCommand(40769, 0) -- unselect all tracks/items/env
-            r.GetSetAutomationItemInfo(env, autoitemIdx, "D_UISEL", 1, true)
+            r.GetSetAutomationItemInfo(env, autoitemIdx, 'D_UISEL', 1, true)
             r.Main_OnCommand(42086, 0) -- delete automation item
         end
         local itemFadeIn = item.fadeinlen >= item.len and item.len - 0.00001 or item.fadeinlen
@@ -42,7 +42,16 @@ run(function()
             end
             if itemFadeOut > 0 then
                 if fadeOutStart > fadeInEnd then
-                    r.InsertEnvelopePointEx(env, autoitemIdx, fadeOutStart, 1, fadeOutCurve, itemFadeOutDir, false, true)
+                    r.InsertEnvelopePointEx(
+                        env,
+                        autoitemIdx,
+                        fadeOutStart,
+                        1,
+                        fadeOutCurve,
+                        itemFadeOutDir,
+                        false,
+                        true
+                    )
                 end
                 r.InsertEnvelopePointEx(env, autoitemIdx, item.pos + item.len - 0.000001, 0, 0, 0, false, true)
             end

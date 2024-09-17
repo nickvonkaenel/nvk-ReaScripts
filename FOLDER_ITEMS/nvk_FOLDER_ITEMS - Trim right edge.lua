@@ -1,9 +1,9 @@
 -- @noindex
 -- SETUP --
 r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
@@ -42,12 +42,8 @@ run(function()
     for i, item in ipairs(items) do
         if i > 1 then
             if not item.mute then
-                if item.e > initEnd then
-                    initEnd = item.e
-                end
-                if item.s < initPos then
-                    initPos = item.s
-                end
+                if item.e > initEnd then initEnd = item.e end
+                if item.s < initPos then initPos = item.s end
             end
         end
     end
@@ -64,15 +60,11 @@ run(function()
         local itemLength = item.len
         local diff = item.e - cursorPos
         local newFadeOut = item.fadeoutlen - diff
-        if newFadeOut < 0 then
-            newFadeOut = defaultFadeLen
-        end
+        if newFadeOut < 0 then newFadeOut = defaultFadeLen end
         if i > 1 and item.s >= cursorPos then
             item.automute = true
         else
-            if i > 1 and item.automute and item.s < cursorPos then
-                item.automute = false
-            end
+            if i > 1 and item.automute and item.s < cursorPos then item.automute = false end
             if diff >= initDiff - 0.0001 or diff > 0 or (#items > 1 and i == 1) then
                 if item.track.isvisible then
                     r.Main_OnCommand(41311, 0) -- trim/untrim right edge -- doesn't work now with hidden tracks
@@ -90,9 +82,7 @@ run(function()
                         end
                     end
                 else
-                    if item.fadeoutlen > defaultFadeLen then
-                        item.fadeoutlen = newFadeOut
-                    end
+                    if item.fadeoutlen > defaultFadeLen then item.fadeoutlen = newFadeOut end
                 end
             end
         end
@@ -100,6 +90,6 @@ run(function()
             ConvertOverlappingFadesToVolumeAutomation()
         end
     end
-    
+
     cleanup()
 end)

@@ -15,4 +15,8 @@
 -- @provides
 --  [main] *.lua
 
-reaper.ShowMessageBox("nvk_MULTI is a collection of scripts that perform multiple actions depending on the context. To use these, make sure you have already downloaded the rest of the nvk-ReaScripts repo since they reference other scripts. Multitap scripts perform different actions depending on how many times you call the script in rapid succession (most likely will need to assign the script to a hotkey for this to work)", "nvk_MULTI", 0)
+reaper.ShowMessageBox(
+    'nvk_MULTI is a collection of scripts that perform multiple actions depending on the context. To use these, make sure you have already downloaded the rest of the nvk-ReaScripts repo since they reference other scripts. Multitap scripts perform different actions depending on how many times you call the script in rapid succession (most likely will need to assign the script to a hotkey for this to work)',
+    'nvk_MULTI',
+    0
+)

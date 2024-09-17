@@ -3,9 +3,9 @@
 -- SETUP --
 SCRIPT_FOLDER = 'simple'
 r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT INIT --
@@ -14,23 +14,15 @@ local r = reaper
 
 item_s = {}
 local item = r.GetSelectedMediaItem(0, 0)
-if item then
-    pcall(Load, select(2, reaper.GetSetMediaItemInfo_String(item, 'P_EXT:nvk_item_s', '', false)))
-end
+if item then pcall(Load, select(2, reaper.GetSetMediaItemInfo_String(item, 'P_EXT:nvk_item_s', '', false))) end
 
 local channels = math.floor(item_s.channels or 2)
 
 SimpleDraw = function()
     local rv
-    if scr.init then
-        ImGui.SetKeyboardFocusHere(ctx)
-    end
+    if scr.init then ImGui.SetKeyboardFocusHere(ctx) end
     rv, channels = ImGui.InputInt(ctx, 'Channels', channels)
-    if ImGui.IsItemDeactivatedAfterEdit(ctx) and Keyboard.Enter() then
-        Actions.Run()
-    end
+    if ImGui.IsItemDeactivatedAfterEdit(ctx) and Keyboard.Enter() then Actions.Run() end
 end
 
-SimpleRun = function()
-    SetSelectedItemsRenderSettings('channels', channels)
-end
+SimpleRun = function() SetSelectedItemsRenderSettings('channels', channels) end

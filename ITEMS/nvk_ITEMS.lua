@@ -51,5 +51,7 @@ Provides:
     [main] *.lua
 --]]
 reaper.ShowMessageBox(
-"nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with items for game audio and sound design.",
-    "nvk_ITEMS", 0)
+    'nvk_ITEMS is a collection of scripts designed to improve Reaper workflows with items for game audio and sound design.',
+    'nvk_ITEMS',
+    0
+)

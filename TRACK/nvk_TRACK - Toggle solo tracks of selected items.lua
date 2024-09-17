@@ -3,11 +3,11 @@
 -- SETUP --
 local r = reaper
 scr = {}
-sep = package.config:sub(1, 1)
-local info = debug.getinfo(1,'S')
-scr.path, scr.name = info.source:match[[^@?(.*[\/])(.*)%.lua$]]
+SEP = package.config:sub(1, 1)
+local info = debug.getinfo(1, 'S')
+scr.path, scr.name = info.source:match [[^@?(.*[\/])(.*)%.lua$]]
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = scr.path .. DATA .. sep
+DATA_PATH = scr.path .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
@@ -20,11 +20,9 @@ function Main()
     end
     local solo = true
     for i = 0, r.CountTracks(0) - 1 do
-        if not solo then
-            return
-        end
+        if not solo then return end
         local track = r.GetTrack(0, i)
-        if r.GetMediaTrackInfo_Value(track, "I_SOLO") > 0 then
+        if r.GetMediaTrackInfo_Value(track, 'I_SOLO') > 0 then
             r.Main_OnCommand(40340, 0) -- unsolo all
             solo = false
             return
@@ -42,10 +40,9 @@ function Main()
     r.Main_OnCommand(7, 0) -- toggle solo selected tracks
     r.Main_OnCommand(40297, 0) -- unselect all tracks
     for i, track in ipairs(tracks) do
-        r.SetMediaTrackInfo_Value(track, "I_SELECTED", 1)
+        r.SetMediaTrackInfo_Value(track, 'I_SELECTED', 1)
     end
 end
-
 
 r.Undo_BeginBlock()
 r.PreventUIRefresh(1)

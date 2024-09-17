@@ -23,21 +23,21 @@ Provides:
 -- SETUP --
 local r = reaper
 local is_new_value, filename, sectionID, cmdID, mode, resolution, val = r.get_action_context()
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-
 
 if not r.HasExtState('nvk_TAKES', 'firstrun') then
     r.SetExtState('nvk_TAKES', 'firstrun', 'true', true)
     r.MB(
         'This script automatically embeds take markers in the active take of the first selected item.\n\nThese markers can be used to easily shuffle through variations in files that contain more than one variation with a single keystroke using the "nvk_TAKES - Select previous/next take SMART" scripts.\n\nIt\'s recommended to add this script to a custom action and set that as a global startup action with SWS. You can also add this to a toolbar button or assign a keyboard shortcut to it if you rather enable/disable it manually.\n\nMake sure to select terminate instance when a popup appears the first time you toggle the script.',
-        'nvk_TAKES', 0)
+        'nvk_TAKES',
+        0
+    )
 end
-
 
 local last_take
 
@@ -71,9 +71,7 @@ function loop()
     r.defer(loop)
 end
 
-function exit()
-    r.SetToggleCommandState(sectionID, cmdID, 0)
-end
+function exit() r.SetToggleCommandState(sectionID, cmdID, 0) end
 
 r.SetToggleCommandState(sectionID, cmdID, 1)
 r.RefreshToolbar2(sectionID, cmdID)

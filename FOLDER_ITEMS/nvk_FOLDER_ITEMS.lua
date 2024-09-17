@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.9.0
+Version: 2.9.4
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,16 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.9.4
+        Shared library dependency
+    2.9.3
+        Keep tracks with items in order by time now allows for selecting multiple tracks for more specific sorting.
+    2.9.2
+        Bug in fade scripts where folder items weren't changing selection properly
+        Fade SMART script added
+    2.9.1
+        Added option to reset name to initial name in rename script (default local shortcut R). Useful when changing item selection without closing and re-opening the script.
+        Persistent mode now resets name properly when script is re-opened
     2.9.0
         Updated to ReaImgui 0.9.2
         Visual improvements
@@ -32,9 +42,9 @@ Provides:
 --]]
 -- SETUP --
 r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
@@ -46,7 +56,6 @@ end
 
 local prevProjState, projUpdate, prevProj
 local r = reaper
-
 
 local items
 local function trackSelectionFollowsItemSelection()
@@ -95,7 +104,7 @@ local function Main()
     local itemCount = r.CountSelectedMediaItems(0)
     if itemCount == 1 and context == 1 and autoSelect and mouseState == 1 then -- if mouse down
         GroupSelectCheck(r.GetSelectedMediaItem(0, 0))
-    elseif projUpdate and mouseState == 0 then                                 -- if mouse is not down
+    elseif projUpdate and mouseState == 0 then -- if mouse is not down
         if autoSelect and context >= 0 then
             for i = 0, itemCount - 1 do
                 GroupSelectCheck(r.GetSelectedMediaItem(0, i))
@@ -104,40 +113,37 @@ local function Main()
     end
     if projUpdate and itemCount == r.CountSelectedMediaItems(0) then
         if disableFolderItems then
-            if settingsChanged then
-                FolderItems.ClearMarkers()
-            end
+            if settingsChanged then FolderItems.ClearMarkers() end
         else
             FolderItems.Fix(true)
         end
         projUpdate = false
     end
     scr.init = nil
-    if context >= 0 and TRACK_SELECTION_FOLLOWS_ITEM_SELECTION then
-        trackSelectionFollowsItemSelection()
-    end
+    if context >= 0 and TRACK_SELECTION_FOLLOWS_ITEM_SELECTION then trackSelectionFollowsItemSelection() end
     r.PreventUIRefresh(-1)
     r.defer(Main)
 end
 
-if r.set_action_options then
-    r.set_action_options(1)
-end
+if r.set_action_options then r.set_action_options(1) end
 
-if r.APIExists('JS_Mouse_GetState') and r.APIExists('CF_GetClipboard') then
+if r.APIExists 'JS_Mouse_GetState' and r.APIExists 'CF_GetClipboard' then
     r.SetToggleCommandState(scr.secID, scr.cmdID, 1)
     r.RefreshToolbar2(scr.secID, scr.cmdID)
     r.defer(Main)
     r.atexit(Exit)
 else
-    if not r.APIExists('JS_Mouse_GetState') then
+    if not r.APIExists 'JS_Mouse_GetState' then
         r.ShowMessageBox('Please install js_ReaScript API via ReaPack before using script', scr.name, 0)
-        if r.ReaPack_GetRepositoryInfo and r.ReaPack_GetRepositoryInfo('ReaTeam Extensions') then
-            r.ReaPack_BrowsePackages([[^"js_ReaScriptAPI: API functions for ReaScripts"$ ^"ReaTeam Extensions"$]])
+        if r.ReaPack_GetRepositoryInfo and r.ReaPack_GetRepositoryInfo 'ReaTeam Extensions' then
+            r.ReaPack_BrowsePackages [[^"js_ReaScriptAPI: API functions for ReaScripts"$ ^"ReaTeam Extensions"$]]
         end
     end
-    if not r.APIExists('CF_GetClipboard') then
-        r.ShowMessageBox('Please install the latest version of SWS Extension from:\nhttps://sws-extension.org/', scr
-        .name, 0)
+    if not r.APIExists 'CF_GetClipboard' then
+        r.ShowMessageBox(
+            'Please install the latest version of SWS Extension from:\nhttps://sws-extension.org/',
+            scr.name,
+            0
+        )
     end
 end

@@ -4,9 +4,9 @@
 -- USER CONFIG --
 -- SETUP --
 r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
@@ -29,7 +29,7 @@ run(function()
         if not track or not track.isparent then return end
         local ls, le = r.GetSet_LoopTimeRange(false, false, 0, 0, false)
         if ls ~= le then
-            columns = track:ChildrenColumns({ s = ls, e = le })
+            columns = track:ChildrenColumns { s = ls, e = le }
         else
             columns = track:ChildrenColumns()
         end

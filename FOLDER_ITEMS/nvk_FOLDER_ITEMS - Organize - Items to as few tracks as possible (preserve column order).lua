@@ -3,9 +3,9 @@
 -- USER CONFIG --
 -- SETUP --
 r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
@@ -39,7 +39,9 @@ function list:Get()
     end
     self.init_track = self.items[1].track
     self.items_sort_pos = {}
-    for i = 1, #self.items do self.items_sort_pos[i] = self.items[i] end
+    for i = 1, #self.items do
+        self.items_sort_pos[i] = self.items[i]
+    end
     table.sort(self.items_sort_pos, function(a, b) return a.pos < b.pos end)
     self.columns = {}
     local items = self.items_sort_pos

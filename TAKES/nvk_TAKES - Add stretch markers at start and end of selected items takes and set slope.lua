@@ -2,9 +2,9 @@
 -- Select the takes you want to add stretch markers to and run the script. 0 will just put take markers at the start and end of the script. Positive numbers between -4 and 4 will pitch shift up or down. Anything above 5 will add increasing amounts of randomness.
 -- SCRIPT --
 local r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 
@@ -17,13 +17,13 @@ function SaveSelectedItems()
 end
 
 function GetItemPosition(item)
-    local s = r.GetMediaItemInfo_Value(item, "D_POSITION")
-    local e = s + r.GetMediaItemInfo_Value(item, "D_LENGTH")
+    local s = r.GetMediaItemInfo_Value(item, 'D_POSITION')
+    local e = s + r.GetMediaItemInfo_Value(item, 'D_LENGTH')
     return s, e
 end
 
 run(function()
-    local retval, retvals_csv = r.GetUserInputs("Set Take Slope", 1, "Slope (+-4) or 5+ for random", "0")
+    local retval, retvals_csv = r.GetUserInputs('Set Take Slope', 1, 'Slope (+-4) or 5+ for random', '0')
     if not retval then return end
     local slopeIn = 0
     if tonumber(retvals_csv) then slopeIn = tonumber(retvals_csv) end
@@ -31,8 +31,8 @@ run(function()
     r.Main_OnCommand(40796, 0) -- Clear take preserve pitch
     for i, item in ipairs(items) do
         local take = r.GetActiveTake(item)
-        local itemLength = r.GetMediaItemInfo_Value(item, "D_LENGTH")
-        local playrate = r.GetMediaItemTakeInfo_Value(take, "D_PLAYRATE")
+        local itemLength = r.GetMediaItemInfo_Value(item, 'D_LENGTH')
+        local playrate = r.GetMediaItemTakeInfo_Value(take, 'D_PLAYRATE')
         r.DeleteTakeStretchMarkers(take, 0, r.GetTakeNumStretchMarkers(take))
         local idx = r.SetTakeStretchMarker(take, -1, 0)
         r.SetTakeStretchMarker(take, -1, itemLength * playrate)

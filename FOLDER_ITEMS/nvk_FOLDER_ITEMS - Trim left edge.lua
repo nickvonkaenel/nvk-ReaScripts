@@ -1,9 +1,9 @@
 -- @noindex
 -- SETUP --
 r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
@@ -40,13 +40,9 @@ run(function()
     if #items == 0 then return cleanup() end
     local initPos = math.huge
     for i, item in ipairs(items) do
-        if i > 1 and not item.mute and item.s < initPos then
-            initPos = item.s
-        end
+        if i > 1 and not item.mute and item.s < initPos then initPos = item.s end
     end
-    if initPos == math.huge then
-        initPos = items[1].s
-    end
+    if initPos == math.huge then initPos = items[1].s end
     local initDiff = initPos - cursorPos
     r.SetEditCurPos(cursorPos, false, false)
     for i, item in ipairs(items) do
@@ -54,9 +50,7 @@ run(function()
         item.sel = true
         local diff = item.s - cursorPos
         local newFadeIn = item.fadeinlen + diff
-        if newFadeIn < 0 then
-            newFadeIn = defaultFadeLen
-        end
+        if newFadeIn < 0 then newFadeIn = defaultFadeLen end
 
         if i > 1 then
             if item.e <= cursorPos then
@@ -92,9 +86,7 @@ run(function()
                     end
                 end
             else
-                if item.fadeinlen > defaultFadeLen then
-                    item.fadeinlen = newFadeIn
-                end
+                if item.fadeinlen > defaultFadeLen then item.fadeinlen = newFadeIn end
             end
         end
         if (#items > 1 and i > 1) or (#items == 1 and not item.folder) then

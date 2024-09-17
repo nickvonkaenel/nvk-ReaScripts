@@ -2,42 +2,45 @@
 -- USER CONFIG --
 -- SETUP --
 r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 run(function()
-    local parentTrack = r.GetSelectedTrack(0, 0)
-    if r.GetMediaTrackInfo_Value(parentTrack, "I_FOLDERDEPTH") ~= 1 then
-        parentTrack = r.GetParentTrack(parentTrack)
-    end
-    local tracks = {}
-    if not parentTrack then
-        for i = 0, r.CountTracks(0) - 1 do
-            local track = r.GetTrack(0, i)
-            if r.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH") == 1 then
-                r.SetOnlyTrackSelected(track)
-                Main()
-            elseif r.GetTrackDepth(track) == 0 then
-                local muted = r.GetMediaTrackInfo_Value(track, "B_MUTE")
-                local trackFXCount = r.TrackFX_GetCount(track)
-                if muted == 0 and trackFXCount == 0 and r.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH") ~= 1 and r.GetTrackNumSends(track, -1) == 0 and r.GetTrackNumSends(track, 0) and r.GetTrackNumSends(track, 1) == 0 and r.GetMediaTrackInfo_Value(track, "I_RECARM") == 0 then -- make sure track not doing anything
-                    table.insert(tracks, track)
-                end
+    local tracks = Tracks()
+    if #tracks == 1 then
+        local track = tracks[1]
+        if track.isparent then
+            tracks = track:Children(true)
+        else
+            local parent_track = track.parent
+            if parent_track then
+                tracks = parent_track:Children(true)
+            else
+                tracks = Tracks.All()
             end
         end
-    else
-        tracks = GetChildrenTracksWithoutFX(parentTrack)
+        tracks = tracks.basic
+    elseif #tracks == 0 then
+        tracks = Tracks.All().basic
     end
-    SelectItemsInTimeSelectionOnTracks(tracks)
-    itemsTable = GetItemsOverlappingTable()
-    r.SelectAllMediaItems(0, false)
-    for i, itemTable in ipairs(itemsTable) do
-        local track = tracks[((i - 1) % #tracks) + 1]
-        for i, item in ipairs(itemTable) do
-            r.MoveMediaItemToTrack(item[1], track)
+
+    if #tracks == 0 then return end
+
+    local overlappingItems = {}
+    local col = Column.TimeSelection()
+    for _, track in ipairs(tracks) do
+        local columns = track:Columns(col)
+        for _, column in ipairs(columns) do
+            table.insert(overlappingItems, column.items)
         end
+    end
+
+    table.sort(overlappingItems, function(a, b) return a.s < b.s end)
+
+    for i, items in ipairs(overlappingItems) do
+        items.track = tracks[((i - 1) % #tracks) + 1]
     end
 end)

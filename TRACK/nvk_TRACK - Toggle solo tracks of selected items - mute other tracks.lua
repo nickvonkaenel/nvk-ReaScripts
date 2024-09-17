@@ -3,43 +3,41 @@
 -- SETUP --
 local r = reaper
 scr = {}
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 local info = debug.getinfo(1, 'S')
 scr.path, scr.name = info.source:match [[^@?(.*[\/])(.*)%.lua$]]
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = scr.path .. DATA .. sep
+DATA_PATH = scr.path .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 local tracks = {}
 function SoloRcv(track)
     tracks[track] = true
-    if r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", false) then
-        r.SetMediaTrackInfo_Value(track, "B_MUTE", 0)
-        r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", true)
+    if r.GetSetMediaTrackInfo_String(track, 'P_EXT:nvk_TRACK_AUTOMUTE', '', false) then
+        r.SetMediaTrackInfo_Value(track, 'B_MUTE', 0)
+        r.GetSetMediaTrackInfo_String(track, 'P_EXT:nvk_TRACK_AUTOMUTE', '', true)
     end
     local num_rcvs = r.GetTrackNumSends(track, -1)
     for i = 0, num_rcvs - 1 do
-        local tr = r.GetTrackSendInfo_Value(track, -1, i, "P_SRCTRACK")
+        local tr = r.GetTrackSendInfo_Value(track, -1, i, 'P_SRCTRACK')
         if not tracks[tr] then SoloRcv(tr) end
     end
     local num_snds = r.GetTrackNumSends(track, 0)
     for i = 0, num_snds - 1 do
-        local tr = r.GetTrackSendInfo_Value(track, 0, i, "P_DESTTRACK")
+        local tr = r.GetTrackSendInfo_Value(track, 0, i, 'P_DESTTRACK')
         if not tracks[tr] then SoloRcv(tr) end
     end
     local trackCount = r.GetNumTracks()
     local parentTrackDepth = r.GetTrackDepth(track)
-    local trackidx = r.GetMediaTrackInfo_Value(track, "IP_TRACKNUMBER")
+    local trackidx = r.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
     local tr = r.GetTrack(0, trackidx)
     if not tr then return end
     local depth = r.GetTrackDepth(tr)
     while depth > parentTrackDepth do
         if not tracks[tr] then SoloRcv(tr) end
         trackidx = trackidx + 1
-        if trackidx == trackCount then
-            break
-        end
+        if trackidx == trackCount then break end
         tr = r.GetTrack(0, trackidx)
         depth = r.GetTrackDepth(tr)
     end
@@ -53,9 +51,12 @@ function SoloTracks()
     local selTrackCount = r.CountSelectedTracks(0)
     for i = 0, r.CountTracks(0) - 1 do
         local track = r.GetTrack(0, i)
-        if r.GetMediaTrackInfo_Value(track, "B_MUTE") == 0 and r.GetMediaTrackInfo_Value(track, "B_SOLO_DEFEAT") == 0 then
-            r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "1", true)
-            r.SetMediaTrackInfo_Value(track, "B_MUTE", 1)
+        if
+            r.GetMediaTrackInfo_Value(track, 'B_MUTE') == 0
+            and r.GetMediaTrackInfo_Value(track, 'B_SOLO_DEFEAT') == 0
+        then
+            r.GetSetMediaTrackInfo_String(track, 'P_EXT:nvk_TRACK_AUTOMUTE', '1', true)
+            r.SetMediaTrackInfo_Value(track, 'B_MUTE', 1)
         else
             --r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", true)
         end
@@ -82,9 +83,9 @@ function UnsoloTracks()
     r.SoloAllTracks(0)
     for i = 0, r.CountTracks(0) - 1 do
         local track = r.GetTrack(0, i)
-        if r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", false) then
-            r.SetMediaTrackInfo_Value(track, "B_MUTE", 0)
-            r.GetSetMediaTrackInfo_String(track, "P_EXT:nvk_TRACK_AUTOMUTE", "", true)
+        if r.GetSetMediaTrackInfo_String(track, 'P_EXT:nvk_TRACK_AUTOMUTE', '', false) then
+            r.SetMediaTrackInfo_Value(track, 'B_MUTE', 0)
+            r.GetSetMediaTrackInfo_String(track, 'P_EXT:nvk_TRACK_AUTOMUTE', '', true)
         end
     end
 end

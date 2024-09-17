@@ -4,23 +4,23 @@
 -- SETUP --
 local r = reaper
 scr = {}
-sep = package.config:sub(1, 1)
-local info = debug.getinfo(1,'S')
-scr.path, scr.name = info.source:match[[^@?(.*[\/])(.*)%.lua$]]
+SEP = package.config:sub(1, 1)
+local info = debug.getinfo(1, 'S')
+scr.path, scr.name = info.source:match [[^@?(.*[\/])(.*)%.lua$]]
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = scr.path .. DATA .. sep
+DATA_PATH = scr.path .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
-	items_count = reaper.CountSelectedMediaItems(0)
-	focus = reaper.GetCursorContext()
-	if focus == 0 or items_count == 0 then
-		reaper.Main_OnCommand(reaper.NamedCommandLookup("_SWS_SELCHILDREN2"), 0)
-		reaper.Main_OnCommand(40359, 0) --track to default color
-	else
-		reaper.Main_OnCommand(40707, 0) --item to default color
-	end
+    items_count = reaper.CountSelectedMediaItems(0)
+    focus = reaper.GetCursorContext()
+    if focus == 0 or items_count == 0 then
+        reaper.Main_OnCommand(reaper.NamedCommandLookup '_SWS_SELCHILDREN2', 0)
+        reaper.Main_OnCommand(40359, 0) --track to default color
+    else
+        reaper.Main_OnCommand(40707, 0) --item to default color
+    end
 end
 
 reaper.Undo_BeginBlock()

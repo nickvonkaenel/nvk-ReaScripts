@@ -24,17 +24,17 @@ r = reaper
 
 local function RemoveExtensions(name)
     if not name then return '' end
-    name = name:match('(.+)%.[^%.]+$') or name
-    name = name:match('(.-)[- ]*glued') or name
-    name = name:match('(.+)[_ -]+%d+$') or name
-    name = name:match('(.-)[ ]*render') or name
-    name = name:match('(.+)reversed') or name
-    name = name:match('(.-)[_ -]+$') or name
+    name = name:match '(.+)%.[^%.]+$' or name
+    name = name:match '(.-)[- ]*glued' or name
+    name = name:match '(.+)[_ -]+%d+$' or name
+    name = name:match '(.-)[ ]*render' or name
+    name = name:match '(.+)reversed' or name
+    name = name:match '(.-)[_ -]+$' or name
     return name
 end
 
 function IsSubProject(item)
-    return select(2, r.GetItemStateChunk(item, '', false)):find('SOURCE RPP_PROJECT') and true or false
+    return select(2, r.GetItemStateChunk(item, '', false)):find 'SOURCE RPP_PROJECT' and true or false
 end
 
 FOCUS = r.GetCursorContext()
@@ -56,9 +56,7 @@ else
             if not IsSubProject(item) then
                 onlySubprojects = false
                 local take = r.GetActiveTake(item)
-                if take then
-                    SUBPROJECT_NAME = RemoveExtensions(r.GetTakeName(take))
-                end
+                if take then SUBPROJECT_NAME = RemoveExtensions(r.GetTakeName(take)) end
                 break
             end
         end
@@ -66,15 +64,15 @@ else
             DO_SUBPROJECT_FIX = true
             SCRIPT_FOLDER = nil
         end
-    -- else
-    --     DO_SUBPROJECT_MARKERS = true
-    --     SCRIPT_FOLDER = nil
+        -- else
+        --     DO_SUBPROJECT_MARKERS = true
+        --     SCRIPT_FOLDER = nil
     end
 end
 
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 
@@ -84,10 +82,10 @@ if DO_SUBPROJECT_FIX then
     SubProjectFix()
     r.Undo_EndBlock('nvk_SUBPROJECT - Update', -1)
     r.PreventUIRefresh(-1)
--- elseif DO_SUBPROJECT_MARKERS then
---     r.PreventUIRefresh(1)
---     r.Undo_BeginBlock()
---     SubProjectMarkers()
---     r.Undo_EndBlock('nvk_SUBPROJECT - Markers', -1)
---     r.PreventUIRefresh(-1)
+    -- elseif DO_SUBPROJECT_MARKERS then
+    --     r.PreventUIRefresh(1)
+    --     r.Undo_BeginBlock()
+    --     SubProjectMarkers()
+    --     r.Undo_EndBlock('nvk_SUBPROJECT - Markers', -1)
+    --     r.PreventUIRefresh(-1)
 end

@@ -1,9 +1,9 @@
 -- @noindex
 -- SETUP --
 r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT ---
@@ -16,9 +16,7 @@ local function fadein(item, cursorPos)
     else
         item.fadeinpos = cursorPos
     end
-    if not item.folder and FADE_OVERSHOOT then
-        item:FadeOvershoot()
-    end
+    if not item.folder and FADE_OVERSHOOT then item:FadeOvershoot() end
 end
 
 local function get_vol_env(track)
@@ -74,8 +72,7 @@ local function fadein_auto(item)
         local fadeInCurve = itemFadeInDir == 0 and 0 or 5
         local fadeOutCurve = itemFadeOutDir == 0 and 0 or 5
         if itemFadeIn > 0 then
-            r.InsertEnvelopePointEx(env, autoitemIdx, item.pos, 0, fadeInCurve,
-                itemFadeInDir, 0, true)
+            r.InsertEnvelopePointEx(env, autoitemIdx, item.pos, 0, fadeInCurve, itemFadeInDir, 0, true)
             if fadeOutStart > fadeInEnd then
                 r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, 0, 0, 0, true)
             else
@@ -100,10 +97,10 @@ run(function()
             item.fadeinpos = cursorPos
             fadein(item, cursorPos)
             fadein_auto(item)
-            item:GroupSelect(true)
+            item:GroupSelect(true, true)
             return
         else
-            item:GroupSelect(true)
+            item:GroupSelect(true, true)
         end
     else
         item:Select(true)
@@ -119,10 +116,8 @@ run(function()
             if item.fadeinpos < cursorPos or item.pos == items[1].pos or item.fadeinpos == init_fade_pos then
                 doFade = true
             end
-        else     -- default behavior, check if overlapping or shared edge
-            if item.pos <= cursorPos or item.pos == items[1].pos then
-                doFade = true
-            end
+        else -- default behavior, check if overlapping or shared edge
+            if item.pos <= cursorPos or item.pos == items[1].pos then doFade = true end
         end
         if doFade then fadein(item, cursorPos) end
     end

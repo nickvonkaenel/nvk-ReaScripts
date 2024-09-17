@@ -3,34 +3,28 @@
 -- SETUP --
 local r = reaper
 scr = {}
-sep = package.config:sub(1, 1)
-local info = debug.getinfo(1,'S')
-scr.path, scr.name = info.source:match[[^@?(.*[\/])(.*)%.lua$]]
+SEP = package.config:sub(1, 1)
+local info = debug.getinfo(1, 'S')
+scr.path, scr.name = info.source:match [[^@?(.*[\/])(.*)%.lua$]]
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = scr.path .. DATA .. sep
+DATA_PATH = scr.path .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 function Main()
     tracks = SaveSelectedTracks()
     for i, track in ipairs(tracks) do
-        if reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH") == 1 then
-            DeselectChildrenTracks(track)
-        end
-        if reaper.GetMediaTrackInfo_Value(track, "I_TCPH") < 5 then
-            reaper.SetTrackSelected(track, false)
-        end
+        if reaper.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH') == 1 then DeselectChildrenTracks(track) end
+        if reaper.GetMediaTrackInfo_Value(track, 'I_TCPH') < 5 then reaper.SetTrackSelected(track, false) end
     end
     newTracks = SaveSelectedTracksReverse()
     trackCount = reaper.CountTracks(0)
     for i, track in ipairs(newTracks) do
-        idx = reaper.GetMediaTrackInfo_Value(track, "IP_TRACKNUMBER") - 1
+        idx = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER') - 1
         trackDepth = reaper.GetTrackDepth(track)
-        trackFolderDepth = reaper.GetMediaTrackInfo_Value(track, "I_FOLDERDEPTH")
+        trackFolderDepth = reaper.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH')
         parent = reaper.GetParentTrack(track)
-        if idx == trackCount - 1 then
-            return
-        end
+        if idx == trackCount - 1 then return end
         reaper.SetOnlyTrackSelected(track)
         if trackFolderDepth == 1 then
             lastIdx = LastTrackInFolderIdx(track)
@@ -44,14 +38,14 @@ function Main()
         end
         for i = startIdxCheck, trackCount - 1 do
             nextTrack = reaper.GetTrack(0, i)
-            if reaper.GetMediaTrackInfo_Value(nextTrack, "I_TCPH") >= 5 then
+            if reaper.GetMediaTrackInfo_Value(nextTrack, 'I_TCPH') >= 5 then
                 nextTrackIdx = i
                 break
             end
         end
         nextDepth = reaper.GetTrackDepth(nextTrack)
-        nextFolderDepth = reaper.GetMediaTrackInfo_Value(nextTrack, "I_FOLDERDEPTH")
-        nextCompact = reaper.GetMediaTrackInfo_Value(nextTrack, "I_FOLDERCOMPACT")
+        nextFolderDepth = reaper.GetMediaTrackInfo_Value(nextTrack, 'I_FOLDERDEPTH')
+        nextCompact = reaper.GetMediaTrackInfo_Value(nextTrack, 'I_FOLDERCOMPACT')
         if nextFolderDepth < 0 then
             reaper.ReorderSelectedTracks(nextTrackIdx + 1, 2)
         elseif trackFolderDepth < 0 then

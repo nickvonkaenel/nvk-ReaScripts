@@ -2,9 +2,9 @@
 -- This script aligns items in various ways depending on what position they are currently in. Select some items and run the script a few times to see what it does.
 -- SETUP --
 local r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
@@ -17,9 +17,7 @@ end
 local function reset_tracks(items)
     for i, item in ipairs(items) do
         local track = Track(config.items[item.guid].track)
-        if track then
-            item.track = track
-        end
+        if track then item.track = track end
     end
 end
 
@@ -31,17 +29,11 @@ local function sequential_pos(items)
     end
 end
 
-local function same_pos(items)
-    items.pos = items[1].pos
-end
+local function same_pos(items) items.pos = items[1].pos end
 
-local function snapoffset_pos(items)
-    items.snapoffsetpos = items[1].snapoffsetpos
-end
+local function snapoffset_pos(items) items.snapoffsetpos = items[1].snapoffsetpos end
 
-local function same_track(items)
-    items.track = items[1].track
-end
+local function same_track(items) items.track = items[1].track end
 
 local function sequential_tracks(items)
     local idx = items[1].track.num
@@ -53,13 +45,10 @@ end
 
 local function allzero_snapoffsets(items)
     for i, item in ipairs(items) do
-        if item.snapoffset ~= 0 then
-            return false
-        end
+        if item.snapoffset ~= 0 then return false end
     end
     return true
 end
-
 
 local align = {
     'same_track',
@@ -92,22 +81,20 @@ local align = {
         snapoffset_pos(items)
     end,
     different_tracks = function(items)
-        if not config.mode:find('different_tracks') then return true end
+        if not config.mode:find 'different_tracks' then return true end
         for i, item in ipairs(items) do
             local track = Track(config.items[item.guid].track)
-            if track then
-                item.track = track
-            end
+            if track then item.track = track end
             item.pos = config.items[item.guid].pos
         end
     end,
     different_tracks_same_pos = function(items)
-        if not config.mode:find('different_tracks') then return true end
+        if not config.mode:find 'different_tracks' then return true end
         reset_tracks(items)
         same_pos(items)
     end,
     different_tracks_snap_offset = function(items)
-        if not config.mode:find('different_tracks') then return true end
+        if not config.mode:find 'different_tracks' then return true end
         if allzero_snapoffsets(items) then return true end
         reset_tracks(items)
         snapoffset_pos(items)
@@ -122,24 +109,14 @@ end
 ---@param items Items
 local function current_mode(items)
     local same_track = items:AllSameTrack()
-    if same_track then
-        return items:Sequential() and 'same_track_sequential' or 'same_track'
-    end
+    if same_track then return items:Sequential() and 'same_track_sequential' or 'same_track' end
     if items:SequentialTracks() then
-        if items:AllSamePosition() then
-            return 'sequential_tracks_same_pos'
-        end
-        if items:AllSamePosition(true) then
-            return 'sequential_tracks_snap_offset'
-        end
+        if items:AllSamePosition() then return 'sequential_tracks_same_pos' end
+        if items:AllSamePosition(true) then return 'sequential_tracks_snap_offset' end
         return 'sequential_tracks'
     end
-    if items:AllSamePosition() then
-        return 'different_tracks_same_pos'
-    end
-    if items:AllSamePosition(true) then
-        return 'different_tracks_snap_offset'
-    end
+    if items:AllSamePosition() then return 'different_tracks_same_pos' end
+    if items:AllSamePosition(true) then return 'different_tracks_snap_offset' end
     return 'different_tracks'
 end
 

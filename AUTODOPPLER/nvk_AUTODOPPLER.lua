@@ -25,15 +25,15 @@ Provides:
     [main] *.lua
 --]]
 --LEGACY OPTIONS (v1)-- not used in v2
-HideTooltips = false           --set to true to hide the tooltips else set to false
-AutoPositionFX = true          --automatically position fx window next to script UI when opening
+HideTooltips = false --set to true to hide the tooltips else set to false
+AutoPositionFX = true --automatically position fx window next to script UI when opening
 WarnWhenSwitchingPlugin = true --if set to false, there will be no warning when switching to a different plug-in
 --SCRIPT--
 SCRIPT_FOLDER = 'autodoppler'
 MULTIPLE_INSTANCES = true -- set to false to only allow one instance of the script to run
 r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end

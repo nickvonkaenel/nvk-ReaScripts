@@ -3,11 +3,11 @@
 -- SETUP --
 local r = reaper
 scr = {}
-sep = package.config:sub(1, 1)
-local info = debug.getinfo(1,'S')
-scr.path, scr.name = info.source:match[[^@?(.*[\/])(.*)%.lua$]]
+SEP = package.config:sub(1, 1)
+local info = debug.getinfo(1, 'S')
+scr.path, scr.name = info.source:match [[^@?(.*[\/])(.*)%.lua$]]
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = scr.path .. DATA .. sep
+DATA_PATH = scr.path .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
@@ -43,10 +43,11 @@ function Main()
         for j = 0, reaper.CountTrackMediaItems(track) - 1 do
             local item = reaper.GetTrackMediaItem(track, j)
             local takes = reaper.GetMediaItemNumTakes(item)
-            for k = 0, takes - 1 do CloseTakeFX(reaper.GetTake(item, k)) end
+            for k = 0, takes - 1 do
+                CloseTakeFX(reaper.GetTake(item, k))
+            end
         end
     end
-
 end
 
 reaper.Undo_BeginBlock()

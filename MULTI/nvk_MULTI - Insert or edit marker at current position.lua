@@ -8,7 +8,7 @@ function Main()
     end
 end
 
-scrPath,scrName=({reaper.get_action_context()})[2]:match"(.-)([^/\\]+).lua$"
+scrPath, scrName = ({ reaper.get_action_context() })[2]:match '(.-)([^/\\]+).lua$'
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
 Main()

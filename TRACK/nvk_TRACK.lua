@@ -15,4 +15,8 @@
 --  **/*.dat
 --  [main] *.lua
 
-reaper.ShowMessageBox("nvk_TRACK is a collection of scripts designed to improve Reaper workflows with tracks for game audio and sound design.", "nvk_TRACK", 0)
+reaper.ShowMessageBox(
+    'nvk_TRACK is a collection of scripts designed to improve Reaper workflows with tracks for game audio and sound design.',
+    'nvk_TRACK',
+    0
+)

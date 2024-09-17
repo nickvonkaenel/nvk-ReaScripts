@@ -2,9 +2,9 @@
 -- USER CONFIG --
 -- SETUP --
 local r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
@@ -25,15 +25,13 @@ run(function()
                     if num > 1 then
                         initItem.take:SetTakeMarker(-1, tostring(num), take.offset + item.snapoffset * take.playrate)
                     end
-                    if i > 1 then
-                        item:Delete()
-                    end
+                    if i > 1 then item:Delete() end
                 else
                     item:Select()
                 end
             else
                 if num > 1 then
-                    initItem.take:SetTakeMarker(-1, "1", initItem.offset + initItem.snapoffset * initItem.playrate)
+                    initItem.take:SetTakeMarker(-1, '1', initItem.offset + initItem.snapoffset * initItem.playrate)
                 end
                 initTrack = track
                 initItem = item
@@ -42,8 +40,6 @@ run(function()
             end
         end
     end
-    if num > 1 then
-        initItem.take:SetTakeMarker(-1, "1", initItem.offset + initItem.snapoffset * initItem.playrate)
-    end
+    if num > 1 then initItem.take:SetTakeMarker(-1, '1', initItem.offset + initItem.snapoffset * initItem.playrate) end
     r.Main_OnCommand(40543, 0) -- Take: Implode items on same track into takes
 end)

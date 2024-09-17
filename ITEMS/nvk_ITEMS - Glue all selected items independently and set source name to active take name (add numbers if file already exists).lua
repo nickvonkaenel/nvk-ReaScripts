@@ -2,37 +2,34 @@
 -- USER CONFIG --
 -- SETUP --
 local r = reaper
-sep = package.config:sub(1, 1)
+SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match("@(.+[/\\])") .. DATA .. sep
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 
 function copyFile(file, newFile)
-    local f = io.open(file, "rb")
-    local content = f:read("*a")
+    local f = io.open(file, 'rb')
+    local content = f:read '*a'
     f:close()
-    local f = io.open(newFile, "wb")
+    local f = io.open(newFile, 'wb')
     f:write(content)
     f:close()
 end
 
-
 function renameFile(file, newName)
-    if newName:match('(.+)(%..+)') then -- if newName has extension
-        newName = newName:match('(.+)(%..+)')
+    if newName:match '(.+)(%..+)' then -- if newName has extension
+        newName = newName:match '(.+)(%..+)'
     end
-    local path, name, ext = file:match('^(.+)[\\/](.+)(%..+)$')
-    local newFile = path .. sep .. newName
+    local path, name, ext = file:match '^(.+)[\\/](.+)(%..+)$'
+    local newFile = path .. SEP .. newName
     if reaper.file_exists(newFile .. ext) then
-        newFile = newFile .. "_"
+        newFile = newFile .. '_'
         local i = 1
         while true do
-            local num = string.format("%03d", tostring(i))
-            if not reaper.file_exists(newFile .. num .. ext) then
-                break
-            end
+            local num = string.format('%03d', tostring(i))
+            if not reaper.file_exists(newFile .. num .. ext) then break end
             i = i + 1
         end
         newFile = newFile .. num
@@ -45,9 +42,7 @@ function RenameTakeSource(take, name)
     local src = reaper.GetMediaItemTake_Source(take)
     local file = reaper.GetMediaSourceFileName(src)
     local newFile = renameFile(file, name)
-    if newFile then
-        reaper.BR_SetTakeSourceFromFile(take, newFile, false)
-    end
+    if newFile then reaper.BR_SetTakeSourceFromFile(take, newFile, false) end
 end
 
 function Main()
@@ -68,7 +63,7 @@ function Main()
         local newItem = reaper.GetSelectedMediaItem(0, 0)
         newItems[i] = newItem
         local newTake = reaper.GetActiveTake(newItem)
-        reaper.GetSetMediaItemTakeInfo_String(newTake, "P_NAME", name, true)
+        reaper.GetSetMediaItemTakeInfo_String(newTake, 'P_NAME', name, true)
         RenameTakeSource(newTake, name)
     end
     for i = 1, #newItems do
