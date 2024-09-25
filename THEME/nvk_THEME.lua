@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 0.1.3b
+Version: 0.1.4b
 Author: nvk
 Screenshots:
     https://imgur.com/a/GNSqRPq

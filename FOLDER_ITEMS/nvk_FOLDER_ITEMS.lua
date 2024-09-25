@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.9.4
+Version: 2.9.5
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.9.5
+        Added option to disable numbering for single item in rename script
     2.9.4
         Shared library dependency
     2.9.3
