@@ -1,7 +1,8 @@
 -- @description nvk_TRACK
 -- @author nvk
--- @version 1.3
+-- @version 1.4
 -- @changelog
+--   1.4 Shared library dependency
 --   1.2 Duplicate tracks or items depending on focus (includes automation items too)
 --   1.1 Adding some new scripts and renaming some old scripts
 --   1.0 Initial release
