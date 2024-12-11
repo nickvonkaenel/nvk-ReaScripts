@@ -60,7 +60,7 @@ run(function()
         local itemLength = item.len
         local diff = item.e - cursorPos
         local newFadeOut = item.fadeoutlen - diff
-        if newFadeOut < 0 then newFadeOut = defaultFadeLen end
+        if newFadeOut < 0 then newFadeOut = FADE_LENGTH_MIN end
         if i > 1 and item.s >= cursorPos then
             item.automute = true
         else
@@ -72,17 +72,17 @@ run(function()
                     item.len = itemLength - diff
                 end
                 TrimVolumeAutomationItem(item.item)
-                if keepFadeOutTimeWhenExtending and diff < 0 or keepFadeOutTimeAlways then
-                    if relativeFadeTime then
-                        if item.fadeinlen > defaultFadeLen then
+                if FADE_PRESERVE_LENGTH_EXTENDING and diff < 0 or FADE_PRESERVE_LENGTH_ALWAYS then
+                    if FADE_RELATIVE then
+                        if item.fadeinlen > FADE_LENGTH_MIN then
                             item.fadeinlen = item.fadeinlen * (item.len / itemLength)
                         end
-                        if item.fadeoutlen > defaultFadeLen then
+                        if item.fadeoutlen > FADE_LENGTH_MIN then
                             item.fadeoutlen = item.fadeoutlen * (item.len / itemLength)
                         end
                     end
                 else
-                    if item.fadeoutlen > defaultFadeLen then item.fadeoutlen = newFadeOut end
+                    if item.fadeoutlen > FADE_LENGTH_MIN then item.fadeoutlen = newFadeOut end
                 end
             end
         end

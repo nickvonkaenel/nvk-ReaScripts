@@ -27,7 +27,7 @@ if mousePos >= 0 then
         local track = Track.UnderMouse()
         local items = track and track:Items():Selected()
         if items and #items > 0 then
-            local nearestEdge, isEnd = items:NearestEdge(mousePos)
+            local nearestEdge, isEnd = items:NearestEdge(mousePos, true)
             if nearestEdge then MOUSEWHEEL_FADECURVE_OUT = isEnd end
         end
     end

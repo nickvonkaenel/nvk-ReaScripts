@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.7.9
+Version: 1.8.0
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.8.0
+        Compatibility with new nvk_SHARED functions, update both to latest version
     1.7.9
         Fade curve smart only switches fade in and fade out target if mouse is on the same track as the selected items, otherwise it will default to fade out
     1.7.8

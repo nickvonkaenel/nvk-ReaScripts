@@ -9,16 +9,15 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 run(function()
-    QuickSaveItems()
-    r.Main_OnCommand(40289, 0) -- unselect all items
+    local items = Items():Unselect()
     r.Main_OnCommand(40528, 0) -- select item under mouse cursor
     if r.CountSelectedMediaItems(0) > 0 then
         r.Main_OnCommand(42391, 0) -- quick add take marker at mouse position
-        item = r.GetSelectedMediaItem(0, 0)
-        take = r.GetActiveTake(item)
+        local item = r.GetSelectedMediaItem(0, 0)
+        local take = r.GetActiveTake(item)
         for i = 0, r.GetNumTakeMarkers(take) do
             r.SetTakeMarker(take, i, tostring(i + 1))
         end
     end
-    QuickRestoreItems()
+    items:Select(true)
 end)

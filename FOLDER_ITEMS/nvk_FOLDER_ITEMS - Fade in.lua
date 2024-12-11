@@ -8,17 +8,21 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT ---
 local r = reaper
+---@param item Item
+---@param cursorPos number
 local function fadein(item, cursorPos)
     if cursorPos > item.e then
-        item.fadeinpos = item.e - defaultFadeLen
+        item.fadeinpos = item.e - FADE_LENGTH_MIN
     elseif cursorPos < item.pos then
-        item.fadeinlen = defaultFadeLen
+        item.fadeinlen = FADE_LENGTH_MIN
     else
         item.fadeinpos = cursorPos
     end
     if not item.folder and FADE_OVERSHOOT then item:FadeOvershoot() end
 end
 
+---@param track MediaTrack
+---@return TrackEnvelope
 local function get_vol_env(track)
     local env = r.GetTrackEnvelopeByName(track, 'Volume')
     if not env then
@@ -32,13 +36,14 @@ local function get_vol_env(track)
     return env
 end
 
+---@param item Item
 local function fadein_auto(item)
     local itemFadeIn = item.fadeinlen >= item.len and item.len - 0.00001 or item.fadeinlen
     local itemFadeOut = item.fadeoutlen >= item.len and item.len - 0.00001 or item.fadeoutlen
     local itemFadeInDir = item.fadeindir * 0.75
     local itemFadeOutDir = item.fadeoutdir * 0.75
-    if itemFadeOut == defaultFadeLen then itemFadeOut = 0 end
-    if itemFadeIn == defaultFadeLen then itemFadeIn = 0 end
+    if itemFadeOut == FADE_LENGTH_MIN then itemFadeOut = 0 end
+    if itemFadeIn == FADE_LENGTH_MIN then itemFadeIn = 0 end
     local fadeInEnd = item.pos + itemFadeIn
     local fadeOutStart = item.pos + item.len - itemFadeOut
     local track = item.track.track
@@ -47,8 +52,10 @@ local function fadein_auto(item)
     if autoitemIdx then
         r.Main_OnCommand(40769, 0) -- unselect all tracks/items/env
         r.GetSetAutomationItemInfo(env, autoitemIdx, 'D_UISEL', 1, true)
+        ---@diagnostic disable-next-line
         local retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 3)
         if retval then
+            ---@diagnostic disable-next-line
             retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 2)
             if retval then
                 itemFadeOut = item.e - time
@@ -56,8 +63,10 @@ local function fadein_auto(item)
                 itemFadeOutDir = tension
             end
         else
+            ---@diagnostic disable-next-line
             retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 2)
             if retval then
+                ---@diagnostic disable-next-line
                 retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 1)
                 itemFadeOutDir = tension
             end
@@ -72,9 +81,9 @@ local function fadein_auto(item)
         local fadeInCurve = itemFadeInDir == 0 and 0 or 5
         local fadeOutCurve = itemFadeOutDir == 0 and 0 or 5
         if itemFadeIn > 0 then
-            r.InsertEnvelopePointEx(env, autoitemIdx, item.pos, 0, fadeInCurve, itemFadeInDir, 0, true)
+            r.InsertEnvelopePointEx(env, autoitemIdx, item.pos, 0, fadeInCurve, itemFadeInDir, false, true)
             if fadeOutStart > fadeInEnd then
-                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, 0, 0, 0, true)
+                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, 0, 0, false, true)
             else
                 r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, fadeOutCurve, itemFadeOutDir, false, true)
             end
@@ -90,20 +99,20 @@ local function fadein_auto(item)
 end
 
 run(function()
-    local item, cursorPos = Item.NearestToMouse()
-    if not item or not cursorPos then return end
-    if item.folder then
+    local mouseItem, cursorPos = Item.NearestToMouse()
+    if not mouseItem or not cursorPos then return end
+    if mouseItem.folder then
         if FADE_FOLDER_ENVELOPE then
-            item.fadeinpos = cursorPos
-            fadein(item, cursorPos)
-            fadein_auto(item)
-            item:GroupSelect(true, true)
+            mouseItem.fadeinpos = cursorPos
+            fadein(mouseItem, cursorPos)
+            fadein_auto(mouseItem)
+            mouseItem:GroupSelect(true, true)
             return
         else
-            item:GroupSelect(true, true)
+            mouseItem:GroupSelect(true, true)
         end
     else
-        item:Select(true)
+        mouseItem:Select(true)
     end
 
     local items = Items.Selected()

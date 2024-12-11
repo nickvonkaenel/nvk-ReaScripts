@@ -11,5 +11,5 @@ if not functionsLoaded then return end
 run(function()
     local items = Items()
     if #items == 0 then return end
-    r.SetExtState('nvk_copyPaste', 'itemPositions', table.concat(items.pos, ','), false)
+    r.SetExtState('nvk_copyPaste', 'itemPositions', table.concat(items.positions, ','), false)
 end)

@@ -10,7 +10,7 @@ if not functionsLoaded then return end
 run(function()
     local x, y = r.GetMousePosition()
     local item = Item(r.GetItemFromPoint(x, y, false))
-    if item then return item:DeleteVolumeAutoItem():GroupItems(true):Delete() end
+    if item then return item:DeleteVolumeAutoItem():ChildItems(true):Delete() end
     local mediaTrack, info = r.GetThingFromPoint(x, y)
     if mediaTrack and info then
         local track = Track(mediaTrack)

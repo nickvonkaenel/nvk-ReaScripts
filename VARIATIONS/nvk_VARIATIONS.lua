@@ -1,6 +1,6 @@
 --[[
 Description: nvk_VARIATIONS
-Version: 1.3.0
+Version: 1.3.1
 About:
     # nvk_VARIATIONS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_VARIATIONS
     User Guide https://nvk.tools/docs/variations
 Changelog:
+    1.3.1
+        Restart playback after randomizing parameters if playing
     1.3.0
         Updated to ReaImgui 0.9.2
         Visual improvements

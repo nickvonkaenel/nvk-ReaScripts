@@ -8,17 +8,20 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT ---
 local r = reaper
-
+---@param item Item
+---@param cursorPos number
 local function fadeout(item, cursorPos)
     if cursorPos < item.s then
-        item.fadeoutpos = item.s + defaultFadeLen
+        item.fadeoutpos = item.s + FADE_LENGTH_MIN
     elseif cursorPos > item.e then
-        item.fadeoutlen = defaultFadeLen
+        item.fadeoutlen = FADE_LENGTH_MIN
     else
         item.fadeoutpos = cursorPos
     end
     if not item.folder and FADE_OVERSHOOT then item:FadeOvershoot() end
 end
+---@param track MediaTrack
+---@return TrackEnvelope
 local function get_vol_env(track)
     local env = r.GetTrackEnvelopeByName(track, 'Volume')
     if not env then
@@ -32,13 +35,14 @@ local function get_vol_env(track)
     return env
 end
 
+---@param item Item
 local function fadeout_auto(item)
     local itemFadeIn = item.fadeinlen >= item.len and item.len - 0.00001 or item.fadeinlen
     local itemFadeOut = item.fadeoutlen >= item.len and item.len - 0.00001 or item.fadeoutlen
     local itemFadeInDir = item.fadeindir * 0.5
     local itemFadeOutDir = item.fadeoutdir * 0.5
-    if itemFadeOut == defaultFadeLen then itemFadeOut = 0 end
-    if itemFadeIn == defaultFadeLen then itemFadeIn = 0 end
+    if itemFadeOut == FADE_LENGTH_MIN then itemFadeOut = 0 end
+    if itemFadeIn == FADE_LENGTH_MIN then itemFadeIn = 0 end
     local fadeInEnd = item.pos + itemFadeIn
     local fadeOutStart = item.pos + item.len - itemFadeOut
     local track = item.track.track
@@ -47,10 +51,13 @@ local function fadeout_auto(item)
     if autoitemIdx then
         r.Main_OnCommand(40769, 0) -- unselect all tracks/items/env
         r.GetSetAutomationItemInfo(env, autoitemIdx, 'D_UISEL', 1, true)
+        ---@diagnostic disable-next-line
         local retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 2)
         if retval then
+            ---@diagnostic disable-next-line
             retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 0)
             if retval then itemFadeInDir = tension end
+            ---@diagnostic disable-next-line
             retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 1)
             if retval then
                 itemFadeIn = time - item.pos
@@ -85,21 +92,21 @@ local function fadeout_auto(item)
 end
 
 run(function()
-    local item, cursorPos = Item.NearestToMouse()
-    if not item or not cursorPos then return end
-    if item.folder then
+    local mouseItem, cursorPos = Item.NearestToMouse()
+    if not mouseItem or not cursorPos then return end
+    if mouseItem.folder then
         if FADE_FOLDER_ENVELOPE then
-            item.fadeoutpos = cursorPos
-            fadeout(item, cursorPos)
-            fadeout_auto(item)
-            item:GroupSelect(true, true)
-            item.sel = true
+            mouseItem.fadeoutpos = cursorPos
+            fadeout(mouseItem, cursorPos)
+            fadeout_auto(mouseItem)
+            mouseItem:GroupSelect(true, true)
+            mouseItem.sel = true
             return
         else
-            item:GroupSelect(true, true)
+            mouseItem:GroupSelect(true, true)
         end
     else
-        item:Select(true)
+        mouseItem:Select(true)
     end
 
     local items = Items.Selected()

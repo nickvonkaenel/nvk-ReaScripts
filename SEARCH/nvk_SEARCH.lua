@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.15.0
+Version: 1.15.3
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,12 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.15.3
+        Error when using keyboard shortcuts to navigate results in palette mode with no search string
+    1.15.2
+        Refactoring - make sure to grab latest version of nvk_SHARED
+    1.15.1
+        When selecting items, the cursor now properly moves to the start of the items
     1.15.0
         New section in preferences for filter keys (filter changing based on first letter in search followed by space)
         Option to disable filter keys completely

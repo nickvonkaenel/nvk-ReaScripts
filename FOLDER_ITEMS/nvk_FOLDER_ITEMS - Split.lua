@@ -9,18 +9,16 @@ if not functionsLoaded then return end
 -- SCRIPT --
 local r = reaper
 run(function()
-    cursorPos = r.GetCursorPosition()
-    item = GetItemUnderMouseCursor()
-    if item then
-        r.Main_OnCommand(40289, 0) -- unselect all items
-        r.SetMediaItemSelected(item, true)
-        groupSelect(item)
-        local items = Items()
-        r.Main_OnCommand(40513, 0) -- move edit cursor to mouse cursor
-        r.Main_OnCommand(40757, 0) -- split items at edit cursor (select right)
-        r.SetEditCurPos(cursorPos, false, false)
-        items.sel = false
-    else
+    local cursorPos = r.GetCursorPosition()
+    local item = Item.UnderMouse()
+    if not item then
         r.Main_OnCommand(40759, 0) -- split at edit cursor (select right)
+        return
     end
+    item:GroupSelect(true, true)
+    local items = Items()
+    r.Main_OnCommand(40513, 0) -- move edit cursor to mouse cursor
+    r.Main_OnCommand(40757, 0) -- split items at edit cursor (select right)
+    r.SetEditCurPos(cursorPos, false, false)
+    items:Unselect()
 end)

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 2.3.0
+Version: 2.5.1
 About:
     # nvk_SHARED
 
@@ -9,6 +9,14 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    2.5.0
+        License Manager - Manage activation and deactivation of script licenses
+        Improved remove icons and added confirmation to preset removal
+        Licensing improvements
+    2.4.0
+        Moved FX search to shared library
+    2.3.0
+        Fix bug with fade scripts and items with shared or overlapping edges
     2.2.0
         New functions and refactored code
     2.0.1

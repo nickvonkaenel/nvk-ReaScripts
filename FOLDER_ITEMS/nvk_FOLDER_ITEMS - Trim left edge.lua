@@ -50,7 +50,7 @@ run(function()
         item.sel = true
         local diff = item.s - cursorPos
         local newFadeIn = item.fadeinlen + diff
-        if newFadeIn < 0 then newFadeIn = defaultFadeLen end
+        if newFadeIn < 0 then newFadeIn = FADE_LENGTH_MIN end
 
         if i > 1 then
             if item.e <= cursorPos then
@@ -76,17 +76,17 @@ run(function()
             end
 
             TrimVolumeAutomationItemFromLeft(item.item, cursorPos, initItemPos)
-            if (keepFadeOutTimeWhenExtending and diff > 0) or keepFadeOutTimeAlways then
-                if relativeFadeTime then
-                    if item.fadeinlen > defaultFadeLen then
+            if (FADE_PRESERVE_LENGTH_EXTENDING and diff > 0) or FADE_PRESERVE_LENGTH_ALWAYS then
+                if FADE_RELATIVE then
+                    if item.fadeinlen > FADE_LENGTH_MIN then
                         item.fadeinlen = item.fadeinlen * (item.len / initItemLen)
                     end
-                    if item.fadeoutlen > defaultFadeLen then
+                    if item.fadeoutlen > FADE_LENGTH_MIN then
                         item.fadeoutlen = item.fadeoutlen * (item.len / initItemLen)
                     end
                 end
             else
-                if item.fadeinlen > defaultFadeLen then item.fadeinlen = newFadeIn end
+                if item.fadeinlen > FADE_LENGTH_MIN then item.fadeinlen = newFadeIn end
             end
         end
         if (#items > 1 and i > 1) or (#items == 1 and not item.folder) then

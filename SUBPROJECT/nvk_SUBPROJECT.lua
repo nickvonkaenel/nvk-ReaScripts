@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.8.3
+Version: 2.8.5
 About:
     # nvk_SUBPROJECT
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/subproject
 Changelog:
+    2.8.5
+        Refactoring - make sure to grab latest version of nvk_SHARED
+    2.8.4
+        Refactoring - make sure to update to latest version of FOLDER_ITEMS
     2.8.3
         Fix for occasional crash when updating subproject.
     2.8.2

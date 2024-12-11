@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.9.5
+Version: 2.9.7
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,12 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.9.7
+        Capitalize first no longer capitalizes letters after numbers (i.e. 9mm was being capitalized to 9Mm)
+        Disable hyphens in UCS since it breaks the parser (this probably shouldn't be allowed by the spec anyways)
+    2.9.6
+        Refactoring - make sure to update all other scripts to latest
+        Removing logic in render item selection that prevented items on muted tracks from being selected since it could prevent items on tracks with certain types of automation from being selected
     2.9.5
         Added option to disable numbering for single item in rename script
     2.9.4
@@ -104,17 +110,17 @@ local function Main()
         SETTINGS_LOADED = false
     end
     local itemCount = r.CountSelectedMediaItems(0)
-    if itemCount == 1 and context == 1 and autoSelect and mouseState == 1 then -- if mouse down
+    if itemCount == 1 and context == 1 and FOLDER_ITEMS_AUTO_SELECT and mouseState == 1 then -- if mouse down
         GroupSelectCheck(r.GetSelectedMediaItem(0, 0))
     elseif projUpdate and mouseState == 0 then -- if mouse is not down
-        if autoSelect and context >= 0 then
+        if FOLDER_ITEMS_AUTO_SELECT and context >= 0 then
             for i = 0, itemCount - 1 do
                 GroupSelectCheck(r.GetSelectedMediaItem(0, i))
             end
         end
     end
     if projUpdate and itemCount == r.CountSelectedMediaItems(0) then
-        if disableFolderItems then
+        if FOLDER_ITEMS_DISABLE then
             if settingsChanged then FolderItems.ClearMarkers() end
         else
             FolderItems.Fix(true)

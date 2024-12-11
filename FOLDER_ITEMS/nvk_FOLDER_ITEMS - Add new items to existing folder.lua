@@ -35,14 +35,14 @@ run(function()
         end
     end
     local track_folder_items = track:FolderItems(columns)
-    local name, name_id -- name id not used since we aren't worry about markers
+    local name -- name id not used since we aren't worry about markers
     for _, col in ipairs(columns) do
         local folder_item = track_folder_items:ColumnOverlap(col)
         if folder_item then
-            name, name_id = FolderItem.NameFormat(folder_item.name, names)
-            FolderItem.Create(track, col, disableAutoName and folder_item.name or name, folder_item)
+            name = FolderItem.NameFormat(folder_item.name, names)
+            FolderItem.Create(track, col, FOLDER_ITEMS_DISABLE_AUTO_NAMING and folder_item.name or name, folder_item)
         else
-            name, name_id = FolderItem.NameFormat(disableAutoName and ' ' or name, names)
+            name = FolderItem.NameFormat(FOLDER_ITEMS_DISABLE_AUTO_NAMING and ' ' or name, names)
             folder_item = FolderItem.Create(track, col, name)
         end
     end
