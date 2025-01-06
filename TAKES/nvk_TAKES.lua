@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.5.5
+Version: 2.5.6
 About:
     # nvk_TAKES
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/takes
 Changelog:
+    2.5.6
+        Improvements to toolbar button states
     2.5.5
         Error when running quick add numbered take marker script
     2.5.4
@@ -43,10 +45,9 @@ end
 
 local last_take
 
-function loop()
+local function main()
     local item = r.GetSelectedMediaItem(0, 0)
-    if item then take = r.GetActiveTake(item) end
-    if IsAudioItem(item) then
+    if item and IsAudioItem(item) then
         local take = r.GetActiveTake(item)
         if take and take ~= last_take then
             last_take = take
@@ -61,21 +62,16 @@ function loop()
                     local takeMarkerPos = r.GetTakeMarker(take, 0)
                     local takeOffset = r.GetMediaItemTakeInfo_Value(take, 'D_STARTOFFS')
                     local takePlayrate = r.GetMediaItemTakeInfo_Value(take, 'D_PLAYRATE')
-                    local takeMarkerPos = takeMarkerPos - takeOffset
-                    if takeMarkerPos > 0 then
-                        takeMarkerPos = takeMarkerPos / takePlayrate
-                        r.SetMediaItemInfo_Value(item, 'D_SNAPOFFSET', takeMarkerPos)
+                    local takeMarkerOffset = takeMarkerPos - takeOffset
+                    if takeMarkerOffset > 0 then
+                        takeMarkerOffset = takeMarkerOffset / takePlayrate
+                        r.SetMediaItemInfo_Value(item, 'D_SNAPOFFSET', takeMarkerOffset)
                     end
                 end
             end
         end
     end
-    r.defer(loop)
+    r.defer(main)
 end
 
-function exit() r.SetToggleCommandState(sectionID, cmdID, 0) end
-
-r.SetToggleCommandState(sectionID, cmdID, 1)
-r.RefreshToolbar2(sectionID, cmdID)
-r.defer(loop)
-r.atexit(exit)
+ToggleDefer(main)

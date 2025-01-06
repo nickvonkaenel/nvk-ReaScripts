@@ -22,7 +22,7 @@ run(function()
             local rv, isrgn, pos, rgnend, name, markrgnindexnumber = r.EnumProjectMarkers(idx)
             if not isrgn then
                 if pos > itemEnd then break end
-                if pos >= itemPos then
+                if float_equal(pos, itemPos) then
                     cnt = cnt + 1
                     r.GetSetMediaItemInfo_String(item, 'P_NOTES', name, true)
                 end

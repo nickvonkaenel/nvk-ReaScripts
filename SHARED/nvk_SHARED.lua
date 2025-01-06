@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 2.5.1
+Version: 2.6.2
 About:
     # nvk_SHARED
 
@@ -9,6 +9,13 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    2.6.2
+        Adding Startup Actions script - set up startup actions to run when Reaper starts
+        Fixing error with takes on certain files (nil diff)
+    2.6.1
+        Removing the last track in a folder could cause the folder structure to be incorrect
+    2.6.0
+        Support for nvk_THEME scripts
     2.5.0
         License Manager - Manage activation and deactivation of script licenses
         Improved remove icons and added confirmation to preset removal

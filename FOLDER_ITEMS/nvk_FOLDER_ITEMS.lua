@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.9.7
+Version: 2.9.9
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.9.9
+        Only remove last matching appended numbers in sausage file in render script
+    2.9.8
+        Refactoring for less code duplication - update shared library
     2.9.7
         Capitalize first no longer capitalizes letters after numbers (i.e. 9mm was being capitalized to 9Mm)
         Disable hyphens in UCS since it breaks the parser (this probably shouldn't be allowed by the spec anyways)
@@ -56,12 +60,6 @@ DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-local function Exit()
-    reaper.SetToggleCommandState(scr.secID, scr.cmdID, 0)
-    r.RefreshToolbar2(scr.secID, scr.cmdID)
-    FolderItems.ClearMarkers()
-end
-
 local prevProjState, projUpdate, prevProj
 local r = reaper
 
@@ -84,7 +82,7 @@ local function trackSelectionFollowsItemSelection()
     r.PreventUIRefresh(-1)
 end
 
-local function Main()
+local function main()
     r.PreventUIRefresh(1)
     local context = r.GetCursorContext()
     local mouseState = r.JS_Mouse_GetState(0x00000001)
@@ -130,16 +128,11 @@ local function Main()
     scr.init = nil
     if context >= 0 and TRACK_SELECTION_FOLLOWS_ITEM_SELECTION then trackSelectionFollowsItemSelection() end
     r.PreventUIRefresh(-1)
-    r.defer(Main)
+    r.defer(main)
 end
 
-if r.set_action_options then r.set_action_options(1) end
-
 if r.APIExists 'JS_Mouse_GetState' and r.APIExists 'CF_GetClipboard' then
-    r.SetToggleCommandState(scr.secID, scr.cmdID, 1)
-    r.RefreshToolbar2(scr.secID, scr.cmdID)
-    r.defer(Main)
-    r.atexit(Exit)
+    ToggleDefer(main, FolderItems.ClearMarkers)
 else
     if not r.APIExists 'JS_Mouse_GetState' then
         r.ShowMessageBox('Please install js_ReaScript API via ReaPack before using script', scr.name, 0)

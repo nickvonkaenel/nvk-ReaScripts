@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.15.3
+Version: 1.16.0
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,10 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.16.0
+        Incorrect results window height in palette mode with results scaling
+        Use defaults when creating a new track in a project
+        Option to include folder name in search
     1.15.3
         Error when using keyboard shortcuts to navigate results in palette mode with no search string
     1.15.2

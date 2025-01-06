@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.8.0
+Version: 1.8.1
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.8.1
+        Fix bug in project marker to item notes script with floating point comparisons
     1.8.0
         Compatibility with new nvk_SHARED functions, update both to latest version
     1.7.9
