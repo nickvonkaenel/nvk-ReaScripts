@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 2.6.2
+Version: 2.6.3
 About:
     # nvk_SHARED
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    2.6.3
+        Tweaks to FX search UI
     2.6.2
         Adding Startup Actions script - set up startup actions to run when Reaper starts
         Fixing error with takes on certain files (nil diff)

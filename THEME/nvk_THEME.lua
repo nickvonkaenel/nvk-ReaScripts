@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.0.0
+Version: 1.0.1
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,9 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.0.1
+        Checkbox to show FX inserts in track panel
+        Option to show embedded FX UI in TCP for custom FX
     1.0.0 Initial release
 Provides:
     [main] *.lua

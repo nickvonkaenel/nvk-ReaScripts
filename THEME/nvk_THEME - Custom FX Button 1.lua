@@ -6,10 +6,13 @@ DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 
 run(function()
-    local custom_fx = GetCustomFX()
+    local custom_fx, embedded_fx_ui = GetCustomFX()
     local fx_name = custom_fx and custom_fx[1]
     if not fx_name then
         r.Main_OnCommand(41757, 0) -- Track: Insert/show ReaEQ (track EQ)
+        if embedded_fx_ui then
+            r.Main_OnCommand(42340, 0) -- FX: Show all FX embedded UI in TCP (selected tracks)
+        end
         return
     end
     local track = r.GetSelectedTrack(0, 0)
@@ -18,9 +21,17 @@ run(function()
     local fx = r.TrackFX_AddByName(track, fx_name, false, 1)
     if not fx then
         r.Main_OnCommand(41757, 0) -- Track: Insert/show ReaEQ (track EQ)
+        if embedded_fx_ui then
+            r.Main_OnCommand(42340, 0) -- FX: Show all FX embedded UI in TCP (selected tracks)
+        end
         return
     end
-    if not fx_exists then return end -- don't close the FX when it's first added
+    if not fx_exists then
+        if embedded_fx_ui then
+            r.Main_OnCommand(42340, 0) -- FX: Show all FX embedded UI in TCP (selected tracks)
+        end
+        return -- don't close the FX when it's first added
+    end
     if r.TrackFX_GetOpen(track, fx) then
         r.TrackFX_SetOpen(track, fx, false)
     else
