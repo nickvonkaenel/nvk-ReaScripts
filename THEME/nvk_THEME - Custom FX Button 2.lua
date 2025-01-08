@@ -11,6 +11,10 @@ run(function()
     local track = r.GetSelectedTrack(0, 0)
     if not track then return end
     local fx_exists = r.TrackFX_AddByName(track, fx_name, false, 0) ~= -1
+    if not fx_exists and fx_name:find '^AU' then -- au has to be formatted differently for some reason on certain systems, but we only need to do this when it's not already added
+        local prefix, fx, developer = fx_name:match '(.+:)(.+) %((.+)%)'
+        fx_name = prefix .. developer .. ': ' .. fx
+    end
     local fx = r.TrackFX_AddByName(track, fx_name, false, 1)
     if not fx then
         r.MB('FX not found. Configure custom FX in nvk_THEME - Settings', scr.name, 0)

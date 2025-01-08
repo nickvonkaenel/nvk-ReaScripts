@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.0.1
+Version: 1.0.2
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,8 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.0.2
+        Fix AU plugins not working as custom FX on some systems
     1.0.1
         Checkbox to show FX inserts in track panel
         Option to show embedded FX UI in TCP for custom FX
