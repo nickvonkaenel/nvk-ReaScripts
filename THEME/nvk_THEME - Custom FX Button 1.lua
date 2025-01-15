@@ -1,4 +1,5 @@
 -- @noindex
+-- This script executes the custom FX button behavior for nvk_THEME. It can be defined in the nvk_THEME - Settings script. It is not intended to be used on it's own.
 r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
@@ -7,14 +8,22 @@ dofile(DATA_PATH .. 'functions.dat')
 
 run(function()
     local custom_fx, embedded_fx_ui = GetCustomFX()
-    local fx_name = custom_fx and custom_fx[1]
-    if not fx_name then
+    if not custom_fx or not custom_fx[1] then
         r.Main_OnCommand(41757, 0) -- Track: Insert/show ReaEQ (track EQ)
         if embedded_fx_ui then
             r.Main_OnCommand(42340, 0) -- FX: Show all FX embedded UI in TCP (selected tracks)
         end
         return
     end
+    local fx_name
+    local tbl = custom_fx[1]
+
+    -- backwards compatibility
+    if type(tbl) == 'string' then tbl = { name = tbl } end
+    assert(type(tbl) == 'table')
+
+    if ExecuteCustomFXAction(tbl) then return end
+    fx_name = tbl.name
     local track = r.GetSelectedTrack(0, 0)
     if not track then return end
     local fx_exists = r.TrackFX_AddByName(track, fx_name, false, 0) ~= -1

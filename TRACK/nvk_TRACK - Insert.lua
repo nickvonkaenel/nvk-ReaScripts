@@ -1,6 +1,5 @@
 -- @noindex
 -- This script slightly improves the behavior of the default "Insert track" action by not adding a track to a collapsed folder track and adding a track to a folder track if it's the last track in the folder.
--- It also colors the track based on the color of the parent track
 -- SETUP --
 r = reaper
 SEP = package.config:sub(1, 1)
@@ -25,7 +24,4 @@ run(function()
     else
         r.Main_OnCommand(40001, 0) -- Track: Insert new track
     end
-    track = Tracks.Selected()[1]
-    local parent_track = track.parent
-    if parent_track and parent_track.color then track.color = parent_track.color end
 end)

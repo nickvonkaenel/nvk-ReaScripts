@@ -1,6 +1,5 @@
 -- @noindex
--- This script slightly improves the behavior of the default "Insert track" action by not adding a track to a collapsed folder track and adding a track to a folder track if it's the last track in the folder.
--- It also colors the track based on the color of the parent track
+-- This script slightly improves the behavior of the default "Insert track" action by not adding a track to a collapsed folder track and adding a track to a folder track if it's the last track in the folder. It also applies the nvk_THEME track colors so that there aren't any UI flashes.
 -- SETUP --
 r = reaper
 SEP = package.config:sub(1, 1)
@@ -25,7 +24,11 @@ run(function()
     else
         r.Main_OnCommand(40001, 0) -- Track: Insert new track
     end
-    track = Tracks.Selected()[1]
-    local parent_track = track.parent
-    if parent_track and parent_track.color then track.color = parent_track.color end
+    local colors = GetTrackColors()
+    if not colors then
+        r.MB('Configure Track Colors in nvk_THEME - Settings first', scr.name, 0)
+        r.Main_OnCommand(r.NamedCommandLookup '_RS5090bcf8eb35e73f381a07670564e93f184342d7', 0) -- Script: nvk_THEME - Settings.lua
+        return
+    end
+    ColorTracks(colors)
 end)

@@ -1,21 +1,27 @@
--- @description nvk_TRACK
--- @author nvk
--- @version 1.4
--- @changelog
---   1.4 Shared library dependency
---   1.2 Duplicate tracks or items depending on focus (includes automation items too)
---   1.1 Adding some new scripts and renaming some old scripts
---   1.0 Initial release
--- @link
---   Store Page https://gumroad.com/nvktools
--- @about
---   # nvk_TRACK
---
---   nvk_TRACK is a collection of scripts designed to improve Reaper workflows with tracks for game audio and sound design.
--- @provides
---  **/*.dat
---  [main] *.lua
+--[[
+Description: nvk_TRACK
+Version: 1.5
+About:
+    # nvk_TRACK
 
+    nvk_TRACK is a collection of scripts designed to improve Reaper workflows with tracks for game audio and sound design.
+Author: nvk
+Website: https://nvk.tools
+Changelog:
+    1.5
+        New script: Insert. This script slightly improves the behavior of the default "Insert track" action by not adding a track to a collapsed folder track and adding a track to a folder track if it's the last track in the folder.
+    1.4
+        Compatibility with new nvk_SHARED functions, update both to latest version
+    1.2
+        New script: Duplicate tracks or items depending on focus (includes automation items too)
+    1.1
+        Adding some new scripts and renaming some old scripts
+    1.0
+        Initial release
+Provides:
+    **/*.dat
+    [main] *.lua
+--]]
 reaper.ShowMessageBox(
     'nvk_TRACK is a collection of scripts designed to improve Reaper workflows with tracks for game audio and sound design.',
     'nvk_TRACK',

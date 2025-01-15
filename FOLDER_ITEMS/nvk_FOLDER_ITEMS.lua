@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.9.9
+Version: 2.10.0
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,12 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.10.0
+        Render Smart:
+            Better warnings when trying to render unnamed folder items
+            Add keyboard shortcut to open rename script from render smart
+            No longer render muted items by default, can be enabled in preferences
+            Tooltips for muted item rendering options
     2.9.9
         Only remove last matching appended numbers in sausage file in render script
     2.9.8

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.0.2
+Version: 1.1.2
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,27 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.1.2
+        Reduce large gradient color jumps with folders with less than 3 child tracks
+        A few minor track color theme tweaks
+    1.1.1
+        Refactoring child track color gradients. Now allows for both gradient modes simultaneously and for control over the child track colors without a gradient.
+        Optimized track color performance
+        New script: Track Colors - Insert track and apply colors. Improves default insert track behavior and also applies the nvk_THEME track colors so that there aren't any UI flashes. Can also be used instead of the manual color apply script if you only want updates when a new track is added.
+        Streamlining included Track Colors themes
+    1.1.0
+        Add gradients to child tracks with Track Colors. Three modes: None, Brightness, and Next color.
+        Execute actions instead of inserting FX with custom FX buttons
+        Reduced default padding between buttons for slightly more compact theme, can be adjusted in the theme settings if the old padding amount is preferred or you want to reduce it further
+        Multi-row TCP fx inserts
+        Option for MCP FX inserts of the side of the track along with custom width
+        Adjust FX inserts, FX parameters, and send list inserts height in master MCP
+        Change MCP and master MCP meter size
+        Change button padding in all layouts
+        Fix mcp latch preview env button
+        Fix UI interactions with theme parameters with the same label
+        Automatically show embedded FX UI in TCP for custom FX
+        Improved tooltips
     1.0.2
         Fix AU plugins not working as custom FX on some systems
     1.0.1
