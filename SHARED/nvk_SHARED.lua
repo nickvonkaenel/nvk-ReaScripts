@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 2.8.0
+Version: 2.9.0
 About:
     # nvk_SHARED
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    2.9.0
+        Fix for nvk_THEME
     2.8.0
         More nvk_THEME features
         Improved performance of track color functions

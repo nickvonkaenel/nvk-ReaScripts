@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.1.2
+Version: 1.1.3
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,8 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.1.3
+        UI jank when searching for FX in custom FX button section (requires update to nvk_SHARED)
     1.1.2
         Reduce large gradient color jumps with folders with less than 3 child tracks
         A few minor track color theme tweaks
