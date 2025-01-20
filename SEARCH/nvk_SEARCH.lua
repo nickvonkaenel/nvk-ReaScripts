@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.16.0
+Version: 1.16.1
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.16.1
+        Warn if REAPER 7.18 or higher is not installed (required for InsertTrackInProject)
     1.16.0
         Incorrect results window height in palette mode with results scaling
         Use defaults when creating a new track in a project
@@ -43,8 +45,8 @@ Provides:
 STARTUP_TIME = reaper.time_precise()
 SCRIPT_FOLDER = 'search'
 r = reaper
-if not r.APIExists 'EnumInstalledFX' then
-    r.MB('Please update to REAPER 7 or higher to use the script.', 'nvk_SEARCH', 0)
+if not r.APIExists 'InsertTrackInProject' then
+    r.MB('Please update to REAPER 7.18 or higher to use the script.', 'nvk_SEARCH', 0)
     return
 end
 SEP = package.config:sub(1, 1)
