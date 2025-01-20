@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 2.9.1
+Version: 2.9.2
 About:
     # nvk_SHARED
 
@@ -9,7 +9,7 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
-    2.9.1
+    2.9.2
         Error when opening Startup Actions without the full nvk.tools repository in the actions list
     2.9.0
         Fix for nvk_THEME
