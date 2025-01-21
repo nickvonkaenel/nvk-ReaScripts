@@ -1377,8 +1377,10 @@ For full changelog, visit https://nvk.tools/docs/workflow/takes#changelog]]></ch
         <link rel="website" href="https://gum.co/nvk_THEME">Store Page</link>
         <link rel="website" href="https://nvk.tools/docs/theme">User Guide</link>
       </metadata>
-      <version name="1.1.3" author="nvk" time="2025-01-17T04:35:15Z">
-        <changelog><![CDATA[1.1.3
+      <version name="1.1.4" author="nvk" time="2025-01-21T01:47:06Z">
+        <changelog><![CDATA[1.1.4
+    Use track default settings when inserting track
+1.1.3
     UI jank when searching for FX in custom FX button section (requires update to nvk_SHARED)
 1.1.2
     Reduce large gradient color jumps with folders with less than 3 child tracks
@@ -1407,41 +1409,41 @@ For full changelog, visit https://nvk.tools/docs/workflow/takes#changelog]]></ch
     Checkbox to show FX inserts in track panel
     Option to show embedded FX UI in TCP for custom FX
 1.0.0 Initial release]]></changelog>
-        <source main="main" file="nvk_THEME - Custom FX Button 1.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME%20-%20Custom%20FX%20Button%201.lua</source>
-        <source main="main" file="nvk_THEME - Custom FX Button 2.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME%20-%20Custom%20FX%20Button%202.lua</source>
-        <source main="main" file="nvk_THEME - Output - Quad.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME%20-%20Output%20-%20Quad.lua</source>
-        <source main="main" file="nvk_THEME - Output - Stereo.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME%20-%20Output%20-%20Stereo.lua</source>
-        <source main="main" file="nvk_THEME - Output - Surround.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME%20-%20Output%20-%20Surround.lua</source>
-        <source main="main" file="nvk_THEME - Settings.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME%20-%20Settings.lua</source>
-        <source main="main" file="nvk_THEME - TCP - Toggle.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME%20-%20TCP%20-%20Toggle.lua</source>
-        <source main="main" file="nvk_THEME - Track Colors - Apply - Auto.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME%20-%20Track%20Colors%20-%20Apply%20-%20Auto.lua</source>
-        <source main="main" file="nvk_THEME - Track Colors - Apply - Manual.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME%20-%20Track%20Colors%20-%20Apply%20-%20Manual.lua</source>
-        <source main="main" file="nvk_THEME - Track Colors - Insert track and apply colors.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME%20-%20Track%20Colors%20-%20Insert%20track%20and%20apply%20colors.lua</source>
-        <source main="main">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME.lua</source>
-        <source file="Data/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/functions.dat</source>
-        <source file="Data/scripts/settings/data/actions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/scripts/settings/data/actions.dat</source>
-        <source file="Data/scripts/settings/data/config.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/scripts/settings/data/config.dat</source>
-        <source file="Data/scripts/settings/data/exit.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/scripts/settings/data/exit.dat</source>
-        <source file="Data/scripts/settings/data/frame.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/scripts/settings/data/frame.dat</source>
-        <source file="Data/scripts/settings/data/fx.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/scripts/settings/data/fx.dat</source>
-        <source file="Data/scripts/settings/data/loop.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/scripts/settings/data/loop.dat</source>
-        <source file="Data/scripts/settings/data/prefs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/scripts/settings/data/prefs.dat</source>
-        <source file="Data/scripts/settings/data/tabs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/scripts/settings/data/tabs.dat</source>
-        <source file="Data/scripts/settings/data/theme.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/scripts/settings/data/theme.dat</source>
-        <source file="Data/scripts/settings/main.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data/scripts/settings/main.dat</source>
-        <source file="Data53/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/functions.dat</source>
-        <source file="Data53/scripts/settings/data/actions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/scripts/settings/data/actions.dat</source>
-        <source file="Data53/scripts/settings/data/config.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/scripts/settings/data/config.dat</source>
-        <source file="Data53/scripts/settings/data/exit.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/scripts/settings/data/exit.dat</source>
-        <source file="Data53/scripts/settings/data/frame.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/scripts/settings/data/frame.dat</source>
-        <source file="Data53/scripts/settings/data/fx.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/scripts/settings/data/fx.dat</source>
-        <source file="Data53/scripts/settings/data/loop.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/scripts/settings/data/loop.dat</source>
-        <source file="Data53/scripts/settings/data/prefs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/scripts/settings/data/prefs.dat</source>
-        <source file="Data53/scripts/settings/data/tabs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/scripts/settings/data/tabs.dat</source>
-        <source file="Data53/scripts/settings/data/theme.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/scripts/settings/data/theme.dat</source>
-        <source file="Data53/scripts/settings/main.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/Data53/scripts/settings/main.dat</source>
-        <source type="theme" file="nvk_THEME_Dark.ReaperThemeZip">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME_Dark.ReaperThemeZip</source>
-        <source type="theme" file="nvk_THEME_Light.ReaperThemeZip">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/f4ef7c3a7c9dbc81639b2edd0f1ebef9433f6f05/THEME/nvk_THEME_Light.ReaperThemeZip</source>
+        <source main="main" file="nvk_THEME - Custom FX Button 1.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME%20-%20Custom%20FX%20Button%201.lua</source>
+        <source main="main" file="nvk_THEME - Custom FX Button 2.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME%20-%20Custom%20FX%20Button%202.lua</source>
+        <source main="main" file="nvk_THEME - Output - Quad.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME%20-%20Output%20-%20Quad.lua</source>
+        <source main="main" file="nvk_THEME - Output - Stereo.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME%20-%20Output%20-%20Stereo.lua</source>
+        <source main="main" file="nvk_THEME - Output - Surround.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME%20-%20Output%20-%20Surround.lua</source>
+        <source main="main" file="nvk_THEME - Settings.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME%20-%20Settings.lua</source>
+        <source main="main" file="nvk_THEME - TCP - Toggle.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME%20-%20TCP%20-%20Toggle.lua</source>
+        <source main="main" file="nvk_THEME - Track Colors - Apply - Auto.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME%20-%20Track%20Colors%20-%20Apply%20-%20Auto.lua</source>
+        <source main="main" file="nvk_THEME - Track Colors - Apply - Manual.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME%20-%20Track%20Colors%20-%20Apply%20-%20Manual.lua</source>
+        <source main="main" file="nvk_THEME - Track Colors - Insert track and apply colors.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME%20-%20Track%20Colors%20-%20Insert%20track%20and%20apply%20colors.lua</source>
+        <source main="main">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME.lua</source>
+        <source file="Data/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/functions.dat</source>
+        <source file="Data/scripts/settings/data/actions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/scripts/settings/data/actions.dat</source>
+        <source file="Data/scripts/settings/data/config.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/scripts/settings/data/config.dat</source>
+        <source file="Data/scripts/settings/data/exit.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/scripts/settings/data/exit.dat</source>
+        <source file="Data/scripts/settings/data/frame.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/scripts/settings/data/frame.dat</source>
+        <source file="Data/scripts/settings/data/fx.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/scripts/settings/data/fx.dat</source>
+        <source file="Data/scripts/settings/data/loop.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/scripts/settings/data/loop.dat</source>
+        <source file="Data/scripts/settings/data/prefs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/scripts/settings/data/prefs.dat</source>
+        <source file="Data/scripts/settings/data/tabs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/scripts/settings/data/tabs.dat</source>
+        <source file="Data/scripts/settings/data/theme.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/scripts/settings/data/theme.dat</source>
+        <source file="Data/scripts/settings/main.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data/scripts/settings/main.dat</source>
+        <source file="Data53/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/functions.dat</source>
+        <source file="Data53/scripts/settings/data/actions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/scripts/settings/data/actions.dat</source>
+        <source file="Data53/scripts/settings/data/config.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/scripts/settings/data/config.dat</source>
+        <source file="Data53/scripts/settings/data/exit.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/scripts/settings/data/exit.dat</source>
+        <source file="Data53/scripts/settings/data/frame.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/scripts/settings/data/frame.dat</source>
+        <source file="Data53/scripts/settings/data/fx.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/scripts/settings/data/fx.dat</source>
+        <source file="Data53/scripts/settings/data/loop.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/scripts/settings/data/loop.dat</source>
+        <source file="Data53/scripts/settings/data/prefs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/scripts/settings/data/prefs.dat</source>
+        <source file="Data53/scripts/settings/data/tabs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/scripts/settings/data/tabs.dat</source>
+        <source file="Data53/scripts/settings/data/theme.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/scripts/settings/data/theme.dat</source>
+        <source file="Data53/scripts/settings/main.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/Data53/scripts/settings/main.dat</source>
+        <source type="theme" file="nvk_THEME_Dark.ReaperThemeZip">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME_Dark.ReaperThemeZip</source>
+        <source type="theme" file="nvk_THEME_Light.ReaperThemeZip">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/THEME/nvk_THEME_Light.ReaperThemeZip</source>
       </version>
     </reapack>
   </category>
@@ -1458,8 +1460,10 @@ For full changelog, visit https://nvk.tools/docs/workflow/takes#changelog]]></ch
 ]]></description>
         <link rel="website">https://nvk.tools</link>
       </metadata>
-      <version name="1.5" author="nvk" time="2025-01-15T15:36:22Z">
-        <changelog><![CDATA[1.5
+      <version name="1.5.1" author="nvk" time="2025-01-21T01:47:06Z">
+        <changelog><![CDATA[1.5.1
+    Use track defaults when adding new tracks
+1.5
     New script: Insert. This script slightly improves the behavior of the default "Insert track" action by not adding a track to a collapsed folder track and adding a track to a folder track if it's the last track in the folder.
 1.4
     Compatibility with new nvk_SHARED functions, update both to latest version
@@ -1469,29 +1473,29 @@ For full changelog, visit https://nvk.tools/docs/workflow/takes#changelog]]></ch
     Adding some new scripts and renaming some old scripts
 1.0
     Initial release]]></changelog>
-        <source file="Data/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/Data/functions.dat</source>
-        <source file="Data53/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/Data53/functions.dat</source>
-        <source main="main" file="nvk_TRACK - Close all track FX windows.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Close%20all%20track%20FX%20windows.lua</source>
-        <source main="main" file="nvk_TRACK - Color folder and named tracks with SWS custom colors (parent tracks only but color all items).lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Color%20folder%20and%20named%20tracks%20with%20SWS%20custom%20colors%20(parent%20tracks%20only%20but%20color%20all%20items).lua</source>
-        <source main="main" file="nvk_TRACK - Color folder and named tracks with SWS custom colors (parent tracks only).lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Color%20folder%20and%20named%20tracks%20with%20SWS%20custom%20colors%20(parent%20tracks%20only).lua</source>
-        <source main="main" file="nvk_TRACK - Color folder and named tracks with SWS custom colors.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Color%20folder%20and%20named%20tracks%20with%20SWS%20custom%20colors.lua</source>
-        <source main="main" file="nvk_TRACK - Cycle folder state of all tracks.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Cycle%20folder%20state%20of%20all%20tracks.lua</source>
-        <source main="main" file="nvk_TRACK - Duplicate tracks or items depending on focus.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Duplicate%20tracks%20or%20items%20depending%20on%20focus.lua</source>
-        <source main="main" file="nvk_TRACK - Insert and set color to parent track color.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Insert%20and%20set%20color%20to%20parent%20track%20color.lua</source>
-        <source main="main" file="nvk_TRACK - Insert.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Insert.lua</source>
-        <source main="main" file="nvk_TRACK - Move folder and named tracks to bottom of project and video track to top.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Move%20folder%20and%20named%20tracks%20to%20bottom%20of%20project%20and%20video%20track%20to%20top.lua</source>
-        <source main="main" file="nvk_TRACK - Move folder and named tracks to top of project and video track to top.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Move%20folder%20and%20named%20tracks%20to%20top%20of%20project%20and%20video%20track%20to%20top.lua</source>
-        <source main="main" file="nvk_TRACK - Move selected tracks down SMART.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Move%20selected%20tracks%20down%20SMART.lua</source>
-        <source main="main" file="nvk_TRACK - Move selected tracks up SMART.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Move%20selected%20tracks%20up%20SMART.lua</source>
-        <source main="main" file="nvk_TRACK - Remove bypassed and offline FX from selected tracks.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Remove%20bypassed%20and%20offline%20FX%20from%20selected%20tracks.lua</source>
-        <source main="main" file="nvk_TRACK - Remove unused tracks.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Remove%20unused%20tracks.lua</source>
-        <source main="main" file="nvk_TRACK - Reset track or item color depending on focus.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Reset%20track%20or%20item%20color%20depending%20on%20focus.lua</source>
-        <source main="main" file="nvk_TRACK - Set master track channel count.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Set%20master%20track%20channel%20count.lua</source>
-        <source main="main" file="nvk_TRACK - Set selected tracks channel count.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Set%20selected%20tracks%20channel%20count.lua</source>
-        <source main="main" file="nvk_TRACK - Toggle mute tracks of selected items.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Toggle%20mute%20tracks%20of%20selected%20items.lua</source>
-        <source main="main" file="nvk_TRACK - Toggle solo tracks of selected items - mute other tracks.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Toggle%20solo%20tracks%20of%20selected%20items%20-%20mute%20other%20tracks.lua</source>
-        <source main="main" file="nvk_TRACK - Toggle solo tracks of selected items.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK%20-%20Toggle%20solo%20tracks%20of%20selected%20items.lua</source>
-        <source main="main">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/a73319bc9a2315d85da0cd1bb7fceeb7fc647f20/TRACK/nvk_TRACK.lua</source>
+        <source file="Data/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/Data/functions.dat</source>
+        <source file="Data53/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/Data53/functions.dat</source>
+        <source main="main" file="nvk_TRACK - Close all track FX windows.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Close%20all%20track%20FX%20windows.lua</source>
+        <source main="main" file="nvk_TRACK - Color folder and named tracks with SWS custom colors (parent tracks only but color all items).lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Color%20folder%20and%20named%20tracks%20with%20SWS%20custom%20colors%20(parent%20tracks%20only%20but%20color%20all%20items).lua</source>
+        <source main="main" file="nvk_TRACK - Color folder and named tracks with SWS custom colors (parent tracks only).lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Color%20folder%20and%20named%20tracks%20with%20SWS%20custom%20colors%20(parent%20tracks%20only).lua</source>
+        <source main="main" file="nvk_TRACK - Color folder and named tracks with SWS custom colors.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Color%20folder%20and%20named%20tracks%20with%20SWS%20custom%20colors.lua</source>
+        <source main="main" file="nvk_TRACK - Cycle folder state of all tracks.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Cycle%20folder%20state%20of%20all%20tracks.lua</source>
+        <source main="main" file="nvk_TRACK - Duplicate tracks or items depending on focus.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Duplicate%20tracks%20or%20items%20depending%20on%20focus.lua</source>
+        <source main="main" file="nvk_TRACK - Insert and set color to parent track color.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Insert%20and%20set%20color%20to%20parent%20track%20color.lua</source>
+        <source main="main" file="nvk_TRACK - Insert.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Insert.lua</source>
+        <source main="main" file="nvk_TRACK - Move folder and named tracks to bottom of project and video track to top.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Move%20folder%20and%20named%20tracks%20to%20bottom%20of%20project%20and%20video%20track%20to%20top.lua</source>
+        <source main="main" file="nvk_TRACK - Move folder and named tracks to top of project and video track to top.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Move%20folder%20and%20named%20tracks%20to%20top%20of%20project%20and%20video%20track%20to%20top.lua</source>
+        <source main="main" file="nvk_TRACK - Move selected tracks down SMART.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Move%20selected%20tracks%20down%20SMART.lua</source>
+        <source main="main" file="nvk_TRACK - Move selected tracks up SMART.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Move%20selected%20tracks%20up%20SMART.lua</source>
+        <source main="main" file="nvk_TRACK - Remove bypassed and offline FX from selected tracks.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Remove%20bypassed%20and%20offline%20FX%20from%20selected%20tracks.lua</source>
+        <source main="main" file="nvk_TRACK - Remove unused tracks.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Remove%20unused%20tracks.lua</source>
+        <source main="main" file="nvk_TRACK - Reset track or item color depending on focus.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Reset%20track%20or%20item%20color%20depending%20on%20focus.lua</source>
+        <source main="main" file="nvk_TRACK - Set master track channel count.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Set%20master%20track%20channel%20count.lua</source>
+        <source main="main" file="nvk_TRACK - Set selected tracks channel count.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Set%20selected%20tracks%20channel%20count.lua</source>
+        <source main="main" file="nvk_TRACK - Toggle mute tracks of selected items.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Toggle%20mute%20tracks%20of%20selected%20items.lua</source>
+        <source main="main" file="nvk_TRACK - Toggle solo tracks of selected items - mute other tracks.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Toggle%20solo%20tracks%20of%20selected%20items%20-%20mute%20other%20tracks.lua</source>
+        <source main="main" file="nvk_TRACK - Toggle solo tracks of selected items.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK%20-%20Toggle%20solo%20tracks%20of%20selected%20items.lua</source>
+        <source main="main">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/2ef2e8f88f843c1a977facf1ecff240fbf9a8e36/TRACK/nvk_TRACK.lua</source>
       </version>
     </reapack>
   </category>
