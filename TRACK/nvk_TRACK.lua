@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TRACK
-Version: 1.5
+Version: 1.5.1
 About:
     # nvk_TRACK
 
@@ -8,6 +8,8 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.5.1
+        Use track defaults when adding new tracks
     1.5
         New script: Insert. This script slightly improves the behavior of the default "Insert track" action by not adding a track to a collapsed folder track and adding a track to a folder track if it's the last track in the folder.
     1.4

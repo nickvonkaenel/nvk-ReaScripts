@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.1.3
+Version: 1.1.4
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,8 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.1.4
+        Use track default settings when inserting track
     1.1.3
         UI jank when searching for FX in custom FX button section (requires update to nvk_SHARED)
     1.1.2

@@ -14,9 +14,9 @@ run(function()
         local folderdepth = track.folderdepth
         if track.folder and track.foldercompact == 2 then
             local last_track = assert(track:Children():Last())
-            Track.Insert(last_track.num, nil, true):SetLastTouched()
+            Track.Insert(last_track.num):SetLastTouched()
         elseif folderdepth < 0 then
-            Track.Insert(track.num, nil, true):SetLastTouched().folderdepth = folderdepth
+            Track.Insert(track.num):SetLastTouched().folderdepth = folderdepth
             track.folderdepth = 0
         else
             r.Main_OnCommand(40001, 0) -- Track: Insert new track
