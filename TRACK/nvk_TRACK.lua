@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TRACK
-Version: 1.5.1
+Version: 1.5.2
 About:
     # nvk_TRACK
 
@@ -8,6 +8,8 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.5.2
+        Duplicate tracks or items depending on focus now prevents grouped items from being linked to the previous track group
     1.5.1
         Use track defaults when adding new tracks
     1.5

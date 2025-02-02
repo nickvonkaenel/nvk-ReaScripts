@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.10.0
+Version: 2.10.1
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.10.1
+        Use current render format and bit depth settings when switching to presets made in older versions of Render SMART
     2.10.0
         Render Smart:
             Better warnings when trying to render unnamed folder items

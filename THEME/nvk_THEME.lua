@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.1.4
+Version: 1.2.4
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,33 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.2.4
+        Better UX for track color theme save/import/export
+    1.2.3
+        Track color theme import/export
+        Improvements to settings layout
+    1.2.2
+        Items settings
+        Adding new track name colors sometimes shifted names
+        Changed layout of settings in order to make it fit on smaller screens
+    1.2.1
+        Custom track name coloring displaying incorrect color on windows
+        Option to color child tracks based on top-level folder track color
+    1.2.0
+        Major change: redesigned track routing and envelope buttons to be more efficient with horizontal space
+        Track coloring - can now automatically color tracks that match a specified name
+        Dual pan support for TCP and MCP
+        Adjustable font sizes
+        MCP design revamp
+        Deprecated: Layout B. Can now be toggled globally with the setting "Color track on selection only"
+        Theme now allows for user-defined peak edges setting in Reaper preferences
+        TCP meter width setting
+        Improved location of custom FX buttons
+        Added TCP folder button and option to disable (hover bottom left corner to use)
+        MCP collapse folder button
+        Minor UX improvements
+    1.1.5
+        Add option to select custom colors for specified track names
     1.1.4
         Use track default settings when inserting track
     1.1.3
