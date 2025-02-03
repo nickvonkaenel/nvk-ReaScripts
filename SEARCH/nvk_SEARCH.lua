@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.16.1
+Version: 1.16.2
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,9 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.16.2
+        Add support for smart folders (thanks Sexan for helping with this)
+        Option to keep window focused after adding FX
     1.16.1
         Warn if REAPER 7.18 or higher is not installed (required for InsertTrackInProject)
     1.16.0
