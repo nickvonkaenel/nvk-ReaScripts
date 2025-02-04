@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.16.2
+Version: 1.16.3
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.16.3
+        Improvements to smart folder results
     1.16.2
         Add support for smart folders (thanks Sexan for helping with this)
         Option to keep window focused after adding FX

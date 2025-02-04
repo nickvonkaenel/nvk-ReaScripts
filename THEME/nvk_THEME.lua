@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.2.4
+Version: 1.2.5
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,9 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.2.5
+        Improved track meter icons for unsoloed, dimmed, and muted tracks. Now unsolo icon is more easily distinguishable from solo icon and smaller to be less obtrusive.
+        Custom FX 2 button in MCP now opens the correct FX/action
     1.2.4
         Better UX for track color theme save/import/export
     1.2.3
