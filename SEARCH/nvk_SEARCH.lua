@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.16.3
+Version: 1.16.4
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,9 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.16.4
+        FX chains now show up in FX folder results
+        Better display of project folder path in folder list + option to hide it
     1.16.3
         Improvements to smart folder results
     1.16.2
