@@ -914,8 +914,11 @@ For full changelog, visit https://nvk.tools/docs/loopmaker#changelog]]></changel
         <link rel="website" href="https://forum.cockos.com/showthread.php?t=286729">REAPER forum thread</link>
         <link rel="website" href="https://nvk.tools/docs/search">User Guide:</link>
       </metadata>
-      <version name="1.16.3" author="nvk" time="2025-02-04T17:21:29Z">
-        <changelog><![CDATA[1.16.3
+      <version name="1.16.4" author="nvk" time="2025-02-05T08:50:51Z">
+        <changelog><![CDATA[1.16.4
+    FX chains now show up in FX folder results
+    Better display of project folder path in folder list + option to hide it
+1.16.3
     Improvements to smart folder results
 1.16.2
     Add support for smart folders (thanks Sexan for helping with this)
@@ -948,66 +951,66 @@ For full changelog, visit https://nvk.tools/docs/loopmaker#changelog]]></changel
 1.12.4
     Compatibility with new nvk_SHARED font system
 For full changelog, visit https://nvk.tools/docs/search#changelog]]></changelog>
-        <source file="Data/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/functions.dat</source>
-        <source file="Data/scripts/search/data/action.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/action.dat</source>
-        <source file="Data/scripts/search/data/actions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/actions.dat</source>
-        <source file="Data/scripts/search/data/bar.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/bar.dat</source>
-        <source file="Data/scripts/search/data/config.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/config.dat</source>
-        <source file="Data/scripts/search/data/dnd.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/dnd.dat</source>
-        <source file="Data/scripts/search/data/exit.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/exit.dat</source>
-        <source file="Data/scripts/search/data/folder.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/folder.dat</source>
-        <source file="Data/scripts/search/data/folders.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/folders.dat</source>
-        <source file="Data/scripts/search/data/font.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/font.dat</source>
-        <source file="Data/scripts/search/data/frame.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/frame.dat</source>
-        <source file="Data/scripts/search/data/fx.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/fx.dat</source>
-        <source file="Data/scripts/search/data/loop.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/loop.dat</source>
-        <source file="Data/scripts/search/data/markers.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/markers.dat</source>
-        <source file="Data/scripts/search/data/prefs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/prefs.dat</source>
-        <source file="Data/scripts/search/data/project.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/project.dat</source>
-        <source file="Data/scripts/search/data/recent.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/recent.dat</source>
-        <source file="Data/scripts/search/data/regions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/regions.dat</source>
-        <source file="Data/scripts/search/data/result.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/result.dat</source>
-        <source file="Data/scripts/search/data/results.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/results.dat</source>
-        <source file="Data/scripts/search/data/search.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/search.dat</source>
-        <source file="Data/scripts/search/data/takes.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/takes.dat</source>
-        <source file="Data/scripts/search/data/tracks.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/data/tracks.dat</source>
-        <source file="Data/scripts/search/main.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data/scripts/search/main.dat</source>
-        <source file="Data53/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/functions.dat</source>
-        <source file="Data53/scripts/search/data/action.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/action.dat</source>
-        <source file="Data53/scripts/search/data/actions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/actions.dat</source>
-        <source file="Data53/scripts/search/data/bar.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/bar.dat</source>
-        <source file="Data53/scripts/search/data/config.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/config.dat</source>
-        <source file="Data53/scripts/search/data/dnd.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/dnd.dat</source>
-        <source file="Data53/scripts/search/data/exit.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/exit.dat</source>
-        <source file="Data53/scripts/search/data/folder.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/folder.dat</source>
-        <source file="Data53/scripts/search/data/folders.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/folders.dat</source>
-        <source file="Data53/scripts/search/data/font.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/font.dat</source>
-        <source file="Data53/scripts/search/data/frame.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/frame.dat</source>
-        <source file="Data53/scripts/search/data/fx.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/fx.dat</source>
-        <source file="Data53/scripts/search/data/loop.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/loop.dat</source>
-        <source file="Data53/scripts/search/data/markers.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/markers.dat</source>
-        <source file="Data53/scripts/search/data/prefs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/prefs.dat</source>
-        <source file="Data53/scripts/search/data/project.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/project.dat</source>
-        <source file="Data53/scripts/search/data/recent.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/recent.dat</source>
-        <source file="Data53/scripts/search/data/regions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/regions.dat</source>
-        <source file="Data53/scripts/search/data/result.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/result.dat</source>
-        <source file="Data53/scripts/search/data/results.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/results.dat</source>
-        <source file="Data53/scripts/search/data/search.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/search.dat</source>
-        <source file="Data53/scripts/search/data/takes.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/takes.dat</source>
-        <source file="Data53/scripts/search/data/tracks.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/data/tracks.dat</source>
-        <source file="Data53/scripts/search/main.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/Data53/scripts/search/main.dat</source>
-        <source main="main" file="nvk_SEARCH - Action.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20Action.lua</source>
-        <source main="main" file="nvk_SEARCH - All.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20All.lua</source>
-        <source main="main" file="nvk_SEARCH - Chain.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20Chain.lua</source>
-        <source main="main" file="nvk_SEARCH - FX.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20FX.lua</source>
-        <source main="main" file="nvk_SEARCH - Folder Item.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20Folder%20Item.lua</source>
-        <source main="main" file="nvk_SEARCH - Marker.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20Marker.lua</source>
-        <source main="main" file="nvk_SEARCH - Project.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20Project.lua</source>
-        <source main="main" file="nvk_SEARCH - Region.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20Region.lua</source>
-        <source main="main" file="nvk_SEARCH - Take.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20Take.lua</source>
-        <source main="main" file="nvk_SEARCH - Track Template.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20Track%20Template.lua</source>
-        <source main="main" file="nvk_SEARCH - Track.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH%20-%20Track.lua</source>
-        <source main="main">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/e60b6e43281bfd1356d9bf877406f45a78b02523/SEARCH/nvk_SEARCH.lua</source>
+        <source file="Data/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/functions.dat</source>
+        <source file="Data/scripts/search/data/action.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/action.dat</source>
+        <source file="Data/scripts/search/data/actions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/actions.dat</source>
+        <source file="Data/scripts/search/data/bar.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/bar.dat</source>
+        <source file="Data/scripts/search/data/config.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/config.dat</source>
+        <source file="Data/scripts/search/data/dnd.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/dnd.dat</source>
+        <source file="Data/scripts/search/data/exit.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/exit.dat</source>
+        <source file="Data/scripts/search/data/folder.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/folder.dat</source>
+        <source file="Data/scripts/search/data/folders.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/folders.dat</source>
+        <source file="Data/scripts/search/data/font.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/font.dat</source>
+        <source file="Data/scripts/search/data/frame.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/frame.dat</source>
+        <source file="Data/scripts/search/data/fx.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/fx.dat</source>
+        <source file="Data/scripts/search/data/loop.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/loop.dat</source>
+        <source file="Data/scripts/search/data/markers.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/markers.dat</source>
+        <source file="Data/scripts/search/data/prefs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/prefs.dat</source>
+        <source file="Data/scripts/search/data/project.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/project.dat</source>
+        <source file="Data/scripts/search/data/recent.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/recent.dat</source>
+        <source file="Data/scripts/search/data/regions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/regions.dat</source>
+        <source file="Data/scripts/search/data/result.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/result.dat</source>
+        <source file="Data/scripts/search/data/results.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/results.dat</source>
+        <source file="Data/scripts/search/data/search.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/search.dat</source>
+        <source file="Data/scripts/search/data/takes.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/takes.dat</source>
+        <source file="Data/scripts/search/data/tracks.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/data/tracks.dat</source>
+        <source file="Data/scripts/search/main.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data/scripts/search/main.dat</source>
+        <source file="Data53/functions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/functions.dat</source>
+        <source file="Data53/scripts/search/data/action.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/action.dat</source>
+        <source file="Data53/scripts/search/data/actions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/actions.dat</source>
+        <source file="Data53/scripts/search/data/bar.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/bar.dat</source>
+        <source file="Data53/scripts/search/data/config.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/config.dat</source>
+        <source file="Data53/scripts/search/data/dnd.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/dnd.dat</source>
+        <source file="Data53/scripts/search/data/exit.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/exit.dat</source>
+        <source file="Data53/scripts/search/data/folder.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/folder.dat</source>
+        <source file="Data53/scripts/search/data/folders.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/folders.dat</source>
+        <source file="Data53/scripts/search/data/font.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/font.dat</source>
+        <source file="Data53/scripts/search/data/frame.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/frame.dat</source>
+        <source file="Data53/scripts/search/data/fx.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/fx.dat</source>
+        <source file="Data53/scripts/search/data/loop.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/loop.dat</source>
+        <source file="Data53/scripts/search/data/markers.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/markers.dat</source>
+        <source file="Data53/scripts/search/data/prefs.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/prefs.dat</source>
+        <source file="Data53/scripts/search/data/project.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/project.dat</source>
+        <source file="Data53/scripts/search/data/recent.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/recent.dat</source>
+        <source file="Data53/scripts/search/data/regions.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/regions.dat</source>
+        <source file="Data53/scripts/search/data/result.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/result.dat</source>
+        <source file="Data53/scripts/search/data/results.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/results.dat</source>
+        <source file="Data53/scripts/search/data/search.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/search.dat</source>
+        <source file="Data53/scripts/search/data/takes.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/takes.dat</source>
+        <source file="Data53/scripts/search/data/tracks.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/data/tracks.dat</source>
+        <source file="Data53/scripts/search/main.dat">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/Data53/scripts/search/main.dat</source>
+        <source main="main" file="nvk_SEARCH - Action.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20Action.lua</source>
+        <source main="main" file="nvk_SEARCH - All.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20All.lua</source>
+        <source main="main" file="nvk_SEARCH - Chain.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20Chain.lua</source>
+        <source main="main" file="nvk_SEARCH - FX.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20FX.lua</source>
+        <source main="main" file="nvk_SEARCH - Folder Item.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20Folder%20Item.lua</source>
+        <source main="main" file="nvk_SEARCH - Marker.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20Marker.lua</source>
+        <source main="main" file="nvk_SEARCH - Project.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20Project.lua</source>
+        <source main="main" file="nvk_SEARCH - Region.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20Region.lua</source>
+        <source main="main" file="nvk_SEARCH - Take.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20Take.lua</source>
+        <source main="main" file="nvk_SEARCH - Track Template.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20Track%20Template.lua</source>
+        <source main="main" file="nvk_SEARCH - Track.lua">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH%20-%20Track.lua</source>
+        <source main="main">https://github.com/NickvonKaenel/nvk-ReaScripts/raw/971b5a12b09427fa9403f80bd6e9737cc0336e38/SEARCH/nvk_SEARCH.lua</source>
       </version>
     </reapack>
   </category>
