@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TRACK
-Version: 1.5.2
+Version: 1.6.0
 About:
     # nvk_TRACK
 
@@ -8,6 +8,8 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.6.0
+        Deprecating SWS color scripts
     1.5.2
         Duplicate tracks or items depending on focus now prevents grouped items from being linked to the previous track group
     1.5.1

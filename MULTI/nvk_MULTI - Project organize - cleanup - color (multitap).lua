@@ -1,4 +1,5 @@
 -- @noindex
+local r = reaper
 -- USER CONFIG --
 RainbowItems = false
 -- SCRIPT --
@@ -35,8 +36,7 @@ function Main()
             RestoreSelectedItems(items)
         else
             reaper.Main_OnCommand(reaper.NamedCommandLookup '_RSe357cdb22b7617e5366c779ae624212071459ac1', 0) --Script: nvk_TRACK - Move folder and named tracks to top of project and video track to top.lua
-            reaper.Main_OnCommand(reaper.NamedCommandLookup '_RS16b5e1c6166bcb0dd0a1e000f94068da4dc6acc8', 0) --Script: nvk_TRACK - Color folder and named tracks with SWS custom colors.lua
-
+            r.Main_OnCommand(r.NamedCommandLookup '_RS0a4fcdc750b810a7eabed6d24d882a6b4a7a5af3', 0) -- Script: nvk_THEME - Track Colors - Apply - Manual.lua
             local section, key = 'nvk_projectOrganize', 'time'
             local time = os.time()
 

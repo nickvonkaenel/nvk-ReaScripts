@@ -1,65 +1,49 @@
 -- @noindex
--- USER CONFIG --
 -- SETUP --
-local r = reaper
-scr = {}
+r = reaper
 SEP = package.config:sub(1, 1)
-local info = debug.getinfo(1, 'S')
-scr.path, scr.name = info.source:match [[^@?(.*[\/])(.*)%.lua$]]
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = scr.path .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-function Main()
-    tracks = SaveSelectedTracks()
-    for i, track in ipairs(tracks) do
-        if reaper.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH') == 1 then DeselectChildrenTracks(track) end
-        if reaper.GetMediaTrackInfo_Value(track, 'I_TCPH') < 5 then reaper.SetTrackSelected(track, false) end
+run(function()
+    local tracks = Tracks.Selected()
+    for _, track in ipairs(tracks) do
+        if track.parent then track:Children():Unselect() end
+        if not track.visible then track:Unselect() end
     end
-    newTracks = SaveSelectedTracks()
-    trackCount = reaper.CountTracks(0)
-    for i, track in ipairs(newTracks) do
-        idx = reaper.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER') - 1
+    local move_tracks = Tracks.Selected()
+    local track_count = r.CountTracks(0)
+    for i, track in ipairs(move_tracks) do
+        local idx = track.num - 1
         if idx == 0 then return end
-        reaper.SetOnlyTrackSelected(track)
-        for i = idx - 1, 0, -1 do
-            prevTrack = reaper.GetTrack(0, i)
-            if reaper.GetMediaTrackInfo_Value(prevTrack, 'I_TCPH') >= 5 then
-                prevTrackIdx = i
+        local prev_track, prev_track_idx
+        for j = idx - 1, 0, -1 do
+            prev_track = assert(Track(j + 1))
+            if prev_track.visible then
+                prev_track_idx = j
                 break
             end
         end
-        trackDepth = reaper.GetTrackDepth(track)
-        prevDepth = reaper.GetTrackDepth(prevTrack)
-        prevFolderDepth = reaper.GetMediaTrackInfo_Value(prevTrack, 'I_FOLDERDEPTH')
-        prevCompact = reaper.GetMediaTrackInfo_Value(prevTrack, 'I_FOLDERCOMPACT')
-        parent = reaper.GetParentTrack(track)
-        if prevFolderDepth < 0 then
-            reaper.ReorderSelectedTracks(idx, 2)
-        elseif prevFolderDepth == 1 and prevTrack ~= parent and prevCompact == 2 and trackDepth ~= prevDepth then
-            reaper.ReorderSelectedTracks(prevTrackIdx, 0)
-            reaper.SetOnlyTrackSelected(prevTrack)
-            reaper.ReorderSelectedTracks(prevTrackIdx, 0)
+        if prev_track.folderdepth < 0 then
+            r.ReorderSelectedTracks(idx, 2)
+        elseif prev_track.folderdepth == 1 and prev_track ~= track.parent and prev_track.foldercompact == 2 then
+            r.ReorderSelectedTracks(prev_track_idx, 0)
+            r.SetOnlyTrackSelected(prev_track.track)
+            r.ReorderSelectedTracks(prev_track_idx, 0)
         else
-            reaper.ReorderSelectedTracks(prevTrackIdx, 0)
+            r.ReorderSelectedTracks(prev_track_idx, 0)
         end
         if i == 1 then
-            if idx < trackCount - 1 then
-                reaper.Main_OnCommand(40285, 0)
-                reaper.Main_OnCommand(40286, 0)
+            if idx < track_count - 1 then
+                r.Main_OnCommand(40285, 0) -- Track: Go to next track
+                r.Main_OnCommand(40286, 0) -- Track: Go to previous track
             else
-                reaper.Main_OnCommand(40286, 0)
-                reaper.Main_OnCommand(40285, 0)
+                r.Main_OnCommand(40286, 0) -- Track: Go to previous track
+                r.Main_OnCommand(40285, 0) -- Track: Go to next track
             end
         end
     end
-    RestoreSelectedTracks(tracks)
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+    tracks:Select(true)
+end)

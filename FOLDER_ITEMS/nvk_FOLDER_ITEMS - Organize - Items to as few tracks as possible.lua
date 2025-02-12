@@ -1,6 +1,5 @@
 -- @noindex
--- Sorts items onto as few tracks as possible. With no items selected it will take into account folders and only work on the folder you have selected. If a non-folder track is selected, it will work on the entire project. It takes into account tracks with fx/sends so that things don't get messed up hopefully. If you have items selected, it doesn't check the tracks and just sorts the selected items on the tracks starting with the first track the items are on.
--- USER CONFIG --
+-- Sorts items onto as few tracks as possible. With no items selected it will take into account folders and only work on the folder you have selected. If a non-folder track is selected, it will work on the entire project. It takes into account tracks with fx/sends/names/etc so that things don't get messed up hopefully. If you have items selected, it doesn't check the tracks and just sorts the selected items on the tracks starting with the first track the items are on.
 -- SETUP --
 r = reaper
 SEP = package.config:sub(1, 1)
@@ -10,100 +9,66 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 
-initTrack = r.GetSelectedTrack(0, 0)
-tracksToRemove = {}
-
-function Main()
-    local tracks = {}
-    if r.CountSelectedMediaItems(0) == 0 then
-        local parentTrack = r.GetSelectedTrack(0, 0)
-        if parentTrack and r.GetMediaTrackInfo_Value(parentTrack, 'I_FOLDERDEPTH') ~= 1 then
-            parentTrack = r.GetParentTrack(parentTrack)
-        end
-        if not parentTrack then
-            for i = 0, r.CountTracks(0) - 1 do
-                local track = r.GetTrack(0, i)
-                if r.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH') == 1 then
-                    r.SetOnlyTrackSelected(track)
-                    Main()
-                elseif r.GetTrackDepth(track) == 0 then
-                    local muted = r.GetMediaTrackInfo_Value(track, 'B_MUTE')
-                    local trackFXCount = r.TrackFX_GetCount(track)
-                    if
-                        muted == 0
-                        and trackFXCount == 0
-                        and r.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH') ~= 1
-                        and r.GetTrackNumSends(track, -1) == 0
-                        and r.GetTrackNumSends(track, 0)
-                        and r.GetTrackNumSends(track, 1) == 0
-                        and r.GetMediaTrackInfo_Value(track, 'I_RECARM') == 0
-                    then -- make sure track not doing anything
-                        table.insert(tracks, track)
-                    end
-                end
+run(function()
+    local track_groups = {}
+    local init_items = Items.Selected()
+    if #init_items == 0 then
+        local tracks = Tracks.Selected()
+        if #tracks == 0 then tracks = Tracks.All() end
+        if #tracks == 1 and not tracks[1].folder then tracks = Tracks.All() end
+        local parent_tracks = tracks:Parents()
+        if #parent_tracks > 0 then
+            for i, track in ipairs(parent_tracks) do
+                local child_tracks = track:Children().basic
+                local child_items = child_tracks:Items(Column.TimeSelection())
+                if #child_items > 0 then table.insert(track_groups, { tracks = child_tracks, items = child_items }) end
             end
         else
-            tracks = GetChildrenTracksWithoutFX(parentTrack)
+            table.insert(track_groups, { tracks = tracks, items = tracks.items })
         end
-        if #tracks == 0 then return end
-        SelectItemsInTimeSelectionOnTracks(tracks)
     else
-        firstTrack = r.GetMediaItemTrack(r.GetSelectedMediaItem(0, 0))
-        firstTrackIdx = r.GetMediaTrackInfo_Value(firstTrack, 'IP_TRACKNUMBER') - 1
+        local first_track_num = init_items:First().track.num
+        local tracks = Tracks.All():Filter(function(track) return track.num >= first_track_num end)
+        table.insert(track_groups, { tracks = tracks, items = init_items })
     end
-    itemsTable = GetItemsOverlappingTable()
-    r.SelectAllMediaItems(0, false)
-    lastEnd = 0
-    sortItems = {}
-    sortedItemsCount = 0
-    totalItems = #itemsTable
-    while sortedItemsCount < totalItems do
-        table.insert(sortItems, {})
-        lastEnd = 0
-        remainingItems = {}
-        for i, itemTable in ipairs(itemsTable) do
-            local s = itemTable[1][2]
-            local e = itemTable[#itemTable][3]
-            if s > lastEnd then
-                lastEnd = e
-                sortedItemsCount = sortedItemsCount + 1
-                table.insert(sortItems[#sortItems], itemTable)
+    for _, track_group in ipairs(track_groups) do
+        local tracks = track_group.tracks
+        local items = track_group.items
+        local item_columns = {}
+        local tracks_hash = {}
+        for i, item in ipairs(items) do
+            local media_track = item.track.track
+            if tracks_hash[media_track] then
+                table.insert(tracks_hash[media_track], item)
             else
-                table.insert(remainingItems, itemTable)
+                tracks_hash[media_track] = Items.New { item }
             end
         end
-        itemsTable = remainingItems
-        table.sort(itemsTable, function(a, b) return a[1][2] < b[1][2] end)
-    end
-    if #tracks > 0 then
-        for i, itemTables in ipairs(sortItems) do
-            local track = tracks[i]
-            for i, itemTable in ipairs(itemTables) do
-                for i, item in ipairs(itemTable) do
-                    r.MoveMediaItemToTrack(item[1], track)
+        for _, track_items in pairs(tracks_hash) do
+            local columns = Columns.New(track_items)
+            for i, column in ipairs(columns) do
+                table.insert(item_columns, column)
+            end
+        end
+        table.sort(item_columns, function(a, b) return a.s < b.s end)
+        local tracks_idx = 1
+        while #item_columns > 0 do
+            local track = tracks[tracks_idx]
+            assert(track)
+            local last_end = 0
+            local i = 1
+            while i <= #item_columns do
+                local column = item_columns[i]
+                if column.s >= last_end then
+                    column.items.track = track
+                    last_end = column.e
+                    table.remove(item_columns, i)
+                else
+                    i = i + 1
                 end
             end
+            tracks_idx = tracks_idx + 1
         end
-        for i = #sortItems + 1, #tracks do
-            table.insert(tracksToRemove, tracks[i])
-        end
-    else
-        for i, itemTables in ipairs(sortItems) do
-            local track = r.GetTrack(0, firstTrackIdx + i - 1)
-            for i, itemTable in ipairs(itemTables) do
-                for i, item in ipairs(itemTable) do
-                    r.MoveMediaItemToTrack(item[1], track)
-                end
-            end
-        end
+        tracks.unused:Delete()
     end
-end
-
-run(function()
-    Main()
-    for i, track in ipairs(tracksToRemove) do
-        r.SetOnlyTrackSelected(track)
-        r.Main_OnCommand(40005, 0) --remove tracks
-    end
-    if r.ValidatePtr(initTrack, 'MediaTrack*') then r.SetOnlyTrackSelected(initTrack) end
 end)

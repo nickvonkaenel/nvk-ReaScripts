@@ -13,9 +13,9 @@ run(function()
             local vol = item.vol
             if vol > 0 then
                 item.vol = 0
-                item:ExtSet('nvk_TOGGLEVOL', vol)
+                item:SetExtState('nvk_TOGGLEVOL', vol)
             else
-                item.vol = tonumber(item:ExtGet 'nvk_TOGGLEVOL') or 1
+                item.vol = tonumber(item:GetExtState 'nvk_TOGGLEVOL') or 1
             end
         else
             item.mute = not item.mute

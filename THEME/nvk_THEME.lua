@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.2.5
+Version: 1.2.6
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,12 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.2.6
+        Settings presets
+        Standalone track colors script
+        New track color options: confirm before applying track coloring to new projects, disable track coloring on current project, and preserve manually colored tracks
+        Store open header states when closing and reopening the settings script
+        Fixing bug where peaks edges settings were not persisting across Reaper sessions
     1.2.5
         Improved track meter icons for unsoloed, dimmed, and muted tracks. Now unsolo icon is more easily distinguishable from solo icon and smaller to be less obtrusive.
         Custom FX 2 button in MCP now opens the correct FX/action

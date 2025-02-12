@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.8.1
+Version: 1.9.0
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.9.0
+        New scripts: Select items on track before mouse, Select items on track after mouse. Requires update to nvk_SHARED.
     1.8.1
         Fix bug in project marker to item notes script with floating point comparisons
     1.8.0

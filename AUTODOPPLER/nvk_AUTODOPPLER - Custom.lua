@@ -38,4 +38,5 @@ audioCmdId = reaper.NamedCommandLookup '_RScee1d114d47d9f1b05cd5790f2dfd7f874c7b
 
 dofile(GetPath 'gui')
 dofile(GetPath 'functions')
+dofile(GetPath 'v1functions')
 Run()

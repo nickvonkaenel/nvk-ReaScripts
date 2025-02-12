@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.16.4
+Version: 1.17.0
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,12 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.17.0
+        New filter option: project templates (filter key: s)
+        Adding option to open projects as templates from right-click context menu
+        Context menu for project templates allows them to be opened not as a template, but a project in case you want to edit them
+        Palette mode is now moveable and resizable (move by dragging from the right edge)
+        Better tooltips for palette mode buttons
     1.16.4
         FX chains now show up in FX folder results
         Better display of project folder path in folder list + option to hide it

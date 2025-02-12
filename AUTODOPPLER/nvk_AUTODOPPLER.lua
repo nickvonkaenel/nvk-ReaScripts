@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.5.2
+Version: 2.5.3
 About:
     # nvk_AUTODOPPLER
 
@@ -14,6 +14,8 @@ Links:
     Store Page https://gum.co/nvk_AUTODOPPLER
     User Guide https://nvk.tools/docs/autodoppler
 Changelog:
+    2.5.3
+        Warn if trying to run on Reaper v7.31 or v7.32 since it has a bug that prevents nvk_AUTODOPPLER from working properly
     2.5.2
         Improved track selection on startup
     For full changelog, visit https://nvk.tools/docs/autodoppler#changelog

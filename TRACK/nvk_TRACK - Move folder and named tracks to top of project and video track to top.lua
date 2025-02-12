@@ -1,53 +1,23 @@
 -- @noindex
--- USER CONFIG --
 -- SETUP --
-local r = reaper
-scr = {}
+r = reaper
 SEP = package.config:sub(1, 1)
-local info = debug.getinfo(1, 'S')
-scr.path, scr.name = info.source:match [[^@?(.*[\/])(.*)%.lua$]]
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = scr.path .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-
-function Main()
-    tracks = SaveSelectedTracks()
-    reaper.Main_OnCommand(40297, 0) -- unselect all tracks
-    for i = 0, reaper.CountTracks(0) - 1 do
-        track = reaper.GetTrack(0, i)
-        retval, trackname = reaper.GetSetMediaTrackInfo_String(track, 'P_NAME', 'something', false)
-        if
-            reaper.GetMediaTrackInfo_Value(track, 'I_FOLDERDEPTH') == 0
-            and reaper.GetTrackDepth(track) == 0
-            and trackname == ''
-        then
-            reaper.SetMediaTrackInfo_Value(track, 'I_SELECTED', 1)
-        end
-    end
-    reaper.ReorderSelectedTracks(reaper.CountTracks(0), 0)
-    reaper.Main_OnCommand(40297, 0) -- unselect all tracks
-    for i = 0, reaper.CountTracks(0) - 1 do
-        track = reaper.GetTrack(0, i)
-        retval, trackname = reaper.GetSetMediaTrackInfo_String(track, 'P_NAME', 'something', false)
-        trackname = string.upper(trackname)
-        if trackname == 'RENDERS' then reaper.SetMediaTrackInfo_Value(track, 'I_SELECTED', 1) end
-        if trackname == 'VIDEO' then
-            reaper.SetMediaTrackInfo_Value(track, 'I_SELECTED', 1)
-            break
-        end
-    end
-    reaper.ReorderSelectedTracks(0, 0)
-    reaper.Main_OnCommand(40297, 0) -- unselect all tracks
-    for i, track in ipairs(tracks) do
-        reaper.SetMediaTrackInfo_Value(track, 'I_SELECTED', 1)
-    end
-end
-
-reaper.Undo_BeginBlock()
-reaper.PreventUIRefresh(1)
-Main()
-reaper.UpdateArrange()
-reaper.PreventUIRefresh(-1)
-reaper.Undo_EndBlock(scr.name, -1)
+run(function()
+    local selected_tracks = Tracks.Selected()
+    local tracks = Tracks.All()
+    tracks
+        :Filter(function(track)
+            if track.unnamed and track.depth == 0 and track.folderdepth == 0 then return true end
+        end)
+        :Select(true)
+    r.ReorderSelectedTracks(r.CountTracks(0), 0)
+    tracks:NameContains('video'):Select(true)
+    tracks:NameContains('renders'):Select(true)
+    r.ReorderSelectedTracks(0, 0)
+    selected_tracks:Select(true)
+end)

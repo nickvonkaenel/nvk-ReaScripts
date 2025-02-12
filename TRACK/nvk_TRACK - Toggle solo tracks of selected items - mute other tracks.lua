@@ -1,18 +1,15 @@
 -- @noindex
--- USER CONFIG --
 -- SETUP --
-local r = reaper
-scr = {}
+r = reaper
 SEP = package.config:sub(1, 1)
-local info = debug.getinfo(1, 'S')
-scr.path, scr.name = info.source:match [[^@?(.*[\/])(.*)%.lua$]]
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = scr.path .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 local tracks = {}
-function SoloRcv(track)
+
+local function SoloRcv(track)
     tracks[track] = true
     if r.GetSetMediaTrackInfo_String(track, 'P_EXT:nvk_TRACK_AUTOMUTE', '', false) then
         r.SetMediaTrackInfo_Value(track, 'B_MUTE', 0)
@@ -45,7 +42,18 @@ function SoloRcv(track)
     if tr and not tracks[tr] then SoloRcv(tr) end
 end
 
-function SoloTracks()
+local function UnsoloTracks()
+    r.SoloAllTracks(0)
+    for i = 0, r.CountTracks(0) - 1 do
+        local track = r.GetTrack(0, i)
+        if r.GetSetMediaTrackInfo_String(track, 'P_EXT:nvk_TRACK_AUTOMUTE', '', false) then
+            r.SetMediaTrackInfo_Value(track, 'B_MUTE', 0)
+            r.GetSetMediaTrackInfo_String(track, 'P_EXT:nvk_TRACK_AUTOMUTE', '', true)
+        end
+    end
+end
+
+local function SoloTracks()
     local focus = r.GetCursorContext()
     local itemCount = r.CountSelectedMediaItems(0)
     local selTrackCount = r.CountSelectedTracks(0)
@@ -79,28 +87,10 @@ function SoloTracks()
     end
 end
 
-function UnsoloTracks()
-    r.SoloAllTracks(0)
-    for i = 0, r.CountTracks(0) - 1 do
-        local track = r.GetTrack(0, i)
-        if r.GetSetMediaTrackInfo_String(track, 'P_EXT:nvk_TRACK_AUTOMUTE', '', false) then
-            r.SetMediaTrackInfo_Value(track, 'B_MUTE', 0)
-            r.GetSetMediaTrackInfo_String(track, 'P_EXT:nvk_TRACK_AUTOMUTE', '', true)
-        end
-    end
-end
-
-function Main()
+run(function()
     if r.AnyTrackSolo(0) then
         UnsoloTracks()
     else
         SoloTracks()
     end
-end
-
-r.Undo_BeginBlock()
-r.PreventUIRefresh(1)
-Main()
-r.UpdateArrange()
-r.PreventUIRefresh(-1)
-r.Undo_EndBlock(scr.name, -1)
+end)

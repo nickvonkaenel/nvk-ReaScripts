@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 2.9.3
+Version: 3.1.0
 About:
     # nvk_SHARED
 
@@ -9,6 +9,12 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    3.1.0
+        New functions for various script updates
+        Better fix for persistent mode. Make sure to select 'new instance' when prompted for the first time after running the script while it's already open.
+        Fix for error on upgrade notification
+    3.0.0
+        New functions for items scripts
     2.9.3
         Change to set_action_options API in Reaper 7.32 caused scripts in persistent mode to not re-open after closing the script
     2.9.2

@@ -57,6 +57,7 @@ audioCmdId = reaper.NamedCommandLookup '_RScee1d114d47d9f1b05cd5790f2dfd7f874c7b
 
 dofile(debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP .. 'gui.dat')
 dofile(debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP .. 'functions.dat')
+dofile(debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP .. 'v1functions.dat')
 
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)

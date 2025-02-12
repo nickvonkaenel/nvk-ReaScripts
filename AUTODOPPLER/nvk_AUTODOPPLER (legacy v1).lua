@@ -62,6 +62,7 @@ audioCmdId = r.NamedCommandLookup '_RScee1d114d47d9f1b05cd5790f2dfd7f874c7bfe7' 
 
 loadfile(GetPath 'gui')()
 loadfile(GetPath 'functions')()
+loadfile(GetPath 'v1functions')()
 dofile(debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP .. 'functions.dat')
 
 time = r.time_precise()

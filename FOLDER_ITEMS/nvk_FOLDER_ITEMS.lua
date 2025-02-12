@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.10.2
+Version: 2.11.0
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,11 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.11.0
+        Adding back legacy script "Add new items to existing folder - Rename" by special request
+        Add new items to existing track now groups items on collapsed tracks
+        Fixing edge case error with trim scripts
+        Rename after folder creation not working properly
     2.10.2
         Add option to preserve metadata when rendering
         Fix for render settings not being initialized properly in persistent mode

@@ -2,7 +2,7 @@
 -- SCRIPT --
 
 function Main()
-    focus = reaper.GetCursorContext()
+    local focus = reaper.GetCursorContext()
 
     if focus == 0 then
         reaper.Main_OnCommand(reaper.NamedCommandLookup '_RS90f1766432b9584da292a0f204465bb6e1483c20', 0) --Script: nvk_TRACK - Move selected tracks up SMART.lua
@@ -24,7 +24,7 @@ function Main()
     end
 end
 
-scrPath, scrName = ({ reaper.get_action_context() })[2]:match '(.-)([^/\\]+).lua$'
+local _, scrName = ({ reaper.get_action_context() })[2]:match '(.-)([^/\\]+).lua$'
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
 Main()

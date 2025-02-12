@@ -1,6 +1,5 @@
 --@noindex
-
-function Main()
+local function main()
     if reaper.GetCursorContext() == 0 then
         reaper.Main_OnCommand(8, 0)
         return
@@ -22,10 +21,11 @@ function Main()
     end
 end
 
-scrPath, scrName = ({ reaper.get_action_context() })[2]:match '(.-)([^/\\]+).lua$'
+local scrName = ({ reaper.get_action_context() })[2]:match '.-([^/\\]+).lua$'
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
-Main()
+main()
 reaper.UpdateArrange()
+reaper.UpdateTimeline()
 reaper.PreventUIRefresh(-1)
 reaper.Undo_EndBlock(scrName, -1)

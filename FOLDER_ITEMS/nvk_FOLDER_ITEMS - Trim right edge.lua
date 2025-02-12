@@ -34,6 +34,7 @@ run(function()
             initItem = r.GetSelectedMediaItem(0, 0)
         end
     end
+    if not initItem then return cleanup() end
     groupSelect(initItem, cursorPos)
     local items = Items.Selected()
     if #items == 0 then return cleanup() end
@@ -66,7 +67,7 @@ run(function()
         else
             if i > 1 and item.automute and item.s < cursorPos then item.automute = false end
             if diff >= initDiff - 0.0001 or diff > 0 or (#items > 1 and i == 1) then
-                if item.track.isvisible then
+                if item.track.visible then
                     r.Main_OnCommand(41311, 0) -- trim/untrim right edge -- doesn't work now with hidden tracks
                 elseif item.s < cursorPos then
                     item.len = itemLength - diff
@@ -86,9 +87,7 @@ run(function()
                 end
             end
         end
-        if (#items > 1 and i > 1) or (#items == 1 and not item.folder) then
-            ConvertOverlappingFadesToVolumeAutomation()
-        end
+        if not item.folder and FADE_OVERSHOOT then item:FadeOvershoot() end
     end
 
     cleanup()

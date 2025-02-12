@@ -6,7 +6,7 @@ function Main()
     reaper.Main_OnCommand(reaper.NamedCommandLookup '_RS8a7afcdb07a2f63a50d1c80ab76d0fd3cb95e78e', 0)
 end
 
-scrPath, scrName = ({ reaper.get_action_context() })[2]:match '(.-)([^/\\]+).lua$'
+local _, scrName = ({ reaper.get_action_context() })[2]:match '(.-)([^/\\]+).lua$'
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
 Main()
