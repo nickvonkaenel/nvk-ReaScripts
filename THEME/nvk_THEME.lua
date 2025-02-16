@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.2.6
+Version: 1.2.7
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,8 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.2.7
+        Error when disabling parent track coloring in settings
     1.2.6
         Settings presets
         Standalone track colors script

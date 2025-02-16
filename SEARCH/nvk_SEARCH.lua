@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.17.0
+Version: 1.17.1
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.17.1
+        Error when opening palette mode again after adding a result with persistent mode enabled
     1.17.0
         New filter option: project templates (filter key: s)
         Adding option to open projects as templates from right-click context menu

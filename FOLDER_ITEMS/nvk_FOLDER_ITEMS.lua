@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.11.0
+Version: 2.11.1
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.11.1
+        Changing default behavior of reposition script when applying settings without closing the script. Now after repositioning, it will unselect all items and keep the current settings.
+        To revert to the previous behavior, you can toggle the "Preserve item selection" option in the preferences.
+        Better handling of numbers when rendering sausage files
     2.11.0
         Adding back legacy script "Add new items to existing folder - Rename" by special request
         Add new items to existing track now groups items on collapsed tracks
