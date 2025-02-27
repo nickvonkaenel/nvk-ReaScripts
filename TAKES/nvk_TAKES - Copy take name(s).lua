@@ -19,5 +19,5 @@ run(function()
         if takeName then str = str .. takeName .. '\n' end
     end
     r.SetExtState('nvk_TAKES', 'take_name', str, false)
-    r.CF_SetClipboard(StripNumbersAndExtensions(str))
+    r.CF_SetClipboard(RemoveExtensions(str))
 end)

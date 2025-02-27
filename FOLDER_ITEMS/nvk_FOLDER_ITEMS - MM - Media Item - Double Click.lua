@@ -9,18 +9,18 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 run(function()
-    if r.CountSelectedMediaItems(0) == 0 then return end
-    local item = Item[1]
+    local item = Item.Selected()
+    if not item then return end
     local take = item.take
     if take then
         if item.midi then
             r.Main_OnCommand(40153, 0) -- open in midi editor
         elseif item.subproject then
             r.Main_OnCommand(41816, 0) -- open project in new tab
-            local startPos, endPos = GetSubprojectStartAndEnd()
-            if startPos and endPos then
-                local loopStart = startPos + take.offset
-                r.MoveEditCursor(loopStart - r.GetCursorPosition(), false) -- have to add this since set edit cursor is bugged
+            local start_pos, end_pos = GetSubprojectStartAndEnd()
+            if start_pos and end_pos then
+                local loop_start = start_pos + take.offset
+                r.MoveEditCursor(loop_start - r.GetCursorPosition(), false) -- have to add this since set edit cursor is bugged
             end
         elseif item.folder then
             local track = item.track
@@ -31,7 +31,8 @@ run(function()
                 r.Main_OnCommand(40850, 0) -- show notes for items
             end
         elseif DOUBLE_CLICK_ITEM_REGION and item.audio then
-            SelectTakeRegion(take.take, item.source)
+            local offset = ((r.GetCursorPosition() - item.pos) * take.rate + take.offset)
+            take:CropToNearestClip(offset)
         else
             r.Main_OnCommand(40009, 0) -- show media item/take properties
         end

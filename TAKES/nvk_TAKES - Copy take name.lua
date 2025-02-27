@@ -10,7 +10,7 @@ if not functionsLoaded then return end
 -- SCRIPT --
 run(function()
     if r.CountSelectedMediaItems(0) > 0 then
-        r.CF_SetClipboard(StripNumbersAndExtensions(GetActiveTakeName(r.GetSelectedMediaItem(0, 0))))
+        r.CF_SetClipboard(RemoveExtensions(GetActiveTakeName(r.GetSelectedMediaItem(0, 0))))
         local str = ''
         for i = 1, r.CountSelectedMediaItems(0) do
             local item = r.GetSelectedMediaItem(0, i - 1)

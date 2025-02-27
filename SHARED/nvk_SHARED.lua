@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 3.1.0
+Version: 3.2.0
 About:
     # nvk_SHARED
 
@@ -9,50 +9,13 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    3.2.0
+        Improved tab order icons
     3.1.0
         New functions for various script updates
         Better fix for persistent mode. Make sure to select 'new instance' when prompted for the first time after running the script while it's already open.
         Fix for error on upgrade notification
-    3.0.0
-        New functions for items scripts
-    2.9.3
-        Change to set_action_options API in Reaper 7.32 caused scripts in persistent mode to not re-open after closing the script
-    2.9.2
-        Error when opening Startup Actions without the full nvk.tools repository in the actions list
-    2.9.0
-        Fix for nvk_THEME
-    2.8.0
-        More nvk_THEME features
-        Improved performance of track color functions
-    2.7.0
-        new nvk_THEME features
-    2.6.3
-        Tweaks to FX search UI
-    2.6.2
-        Adding Startup Actions script - set up startup actions to run when Reaper starts
-        Fixing error with takes on certain files (nil diff)
-    2.6.1
-        Removing the last track in a folder could cause the folder structure to be incorrect
-    2.6.0
-        Support for nvk_THEME scripts
-    2.5.0
-        License Manager - Manage activation and deactivation of script licenses
-        Improved remove icons and added confirmation to preset removal
-        Licensing improvements
-    2.4.0
-        Moved FX search to shared library
-    2.3.0
-        Fix bug with fade scripts and items with shared or overlapping edges
-    2.2.0
-        New functions and refactored code
-    2.0.1
-        Allow for subprojects to be used by Loopmaker and Variations.
-    2.0.0
-        Fixed font paths for Reaper 6
-    1.9.0
-        Updated to ReaImGui 0.9.2
-    1.7.0
-        Custom fonts moved to global font folder so you don't have to copy them to a folder for each script. If you had custom fonts, you will need to move them to the new location. You can find the new location in the script settings under Fonts > Add more fonts...
+    For full changelog, visit https://nvk.tools/docs/shared#changelog
 Provides:
     **/*.dat
     **/*.otf

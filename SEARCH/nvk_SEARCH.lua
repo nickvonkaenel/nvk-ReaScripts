@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.17.1
+Version: 1.17.2
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,9 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.17.2
+        Refactoring - make sure to grab latest version of nvk_SHARED
+        Alt key to open or not open projects in new tab (opposite of default setting)
     1.17.1
         Error when opening palette mode again after adding a result with persistent mode enabled
     1.17.0

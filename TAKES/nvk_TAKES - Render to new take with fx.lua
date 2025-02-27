@@ -48,10 +48,7 @@ run(function()
             item.pos = pos
             item.len = length
             item.vol = 1
-            newtake:Clips(true)
-            -- for i, takemarker in ipairs(takemarkers) do
-            --     newtake:SetTakeMarker(i, takemarker.name, takemarker.srcpos / playrate, takemarker.color)
-            -- end
+            newtake:Clips()
         end
     end
     items:Select()

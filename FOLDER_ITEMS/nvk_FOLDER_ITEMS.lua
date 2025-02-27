@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.11.1
+Version: 2.11.3
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,62 +10,12 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
-    2.11.1
-        Changing default behavior of reposition script when applying settings without closing the script. Now after repositioning, it will unselect all items and keep the current settings.
-        To revert to the previous behavior, you can toggle the "Preserve item selection" option in the preferences.
-        Better handling of numbers when rendering sausage files
-    2.11.0
-        Adding back legacy script "Add new items to existing folder - Rename" by special request
-        Add new items to existing track now groups items on collapsed tracks
-        Fixing edge case error with trim scripts
-        Rename after folder creation not working properly
-    2.10.2
-        Add option to preserve metadata when rendering
-        Fix for render settings not being initialized properly in persistent mode
-    2.10.1
-        Use current render format and bit depth settings when switching to presets made in older versions of Render SMART
-    2.10.0
-        Render Smart:
-            Better warnings when trying to render unnamed folder items
-            Add keyboard shortcut to open rename script from render smart
-            No longer render muted items by default, can be enabled in preferences
-            Tooltips for muted item rendering options
-    2.9.9
-        Only remove last matching appended numbers in sausage file in render script
-    2.9.8
-        Refactoring for less code duplication - update shared library
-    2.9.7
-        Capitalize first no longer capitalizes letters after numbers (i.e. 9mm was being capitalized to 9Mm)
-        Disable hyphens in UCS since it breaks the parser (this probably shouldn't be allowed by the spec anyways)
-    2.9.6
-        Refactoring - make sure to update all other scripts to latest
-        Removing logic in render item selection that prevented items on muted tracks from being selected since it could prevent items on tracks with certain types of automation from being selected
-    2.9.5
-        Added option to disable numbering for single item in rename script
-    2.9.4
-        Shared library dependency
-    2.9.3
-        Keep tracks with items in order by time now allows for selecting multiple tracks for more specific sorting.
-    2.9.2
-        Bug in fade scripts where folder items weren't changing selection properly
-        Fade SMART script added
-    2.9.1
-        Added option to reset name to initial name in rename script (default local shortcut R). Useful when changing item selection without closing and re-opening the script.
-        Persistent mode now resets name properly when script is re-opened
-    2.9.0
-        Updated to ReaImgui 0.9.2
-        Visual improvements
-        Remove script regression - wasn't deleting child tracks of parents like it used to
-        With folder item auto-naming disabled and marker variations enabled, sometimes the numbers could be off
-        Crash from 0 length items and folder items markers
-        Render smart not restoring project settings properly when switching tabs while the script is running
-    2.8.14
-        Render smart crash when closing project tab
-    2.8.13
-        Remove script can now remove FX when hovering over the open FX window
-        Added option for proportional fades when using mousewheel pitch shift
-    2.8.12
-        Performance improvements
+    2.11.3
+        Error when enabling render variants and trying to render without changing any render variant settings
+    2.11.2
+        Refactoring - support for latest versions of nvk_TAKES and nvk_SUBPROJECT
+        Checkbox to number items in rename script was disabled until opening the preferences window for the first time
+        Tooltip improvements
     For full changelog, visit https://nvk.tools/docs/workflow/folder_items#changelog
 Provides:
     **/*.dat

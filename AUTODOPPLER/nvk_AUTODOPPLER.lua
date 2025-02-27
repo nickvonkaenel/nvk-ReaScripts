@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.5.3
+Version: 2.5.4
 About:
     # nvk_AUTODOPPLER
 
@@ -14,6 +14,8 @@ Links:
     Store Page https://gum.co/nvk_AUTODOPPLER
     User Guide https://nvk.tools/docs/autodoppler
 Changelog:
+    2.5.4
+        Code refactoring and update to nvk_SHARED 3.2.0
     2.5.3
         Warn if trying to run on Reaper v7.31 or v7.32 since it has a bug that prevents nvk_AUTODOPPLER from working properly
     2.5.2

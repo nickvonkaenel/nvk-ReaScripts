@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.8.5
+Version: 2.8.6
 About:
     # nvk_SUBPROJECT
 
@@ -10,14 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/subproject
 Changelog:
-    2.8.5
-        Refactoring - make sure to grab latest version of nvk_SHARED
-    2.8.4
-        Refactoring - make sure to update to latest version of FOLDER_ITEMS
-    2.8.3
-        Fix for occasional crash when updating subproject.
-    2.8.2
-        Adding option for mono channel subprojects. Still does a stereo render but automatically sets the item to downmixed stereo.
+    2.8.6
+        Refactoring - grab latest version of nvk_FOLDER_ITEMS
     For full changelog, visit https://nvk.tools/docs/workflow/subproject#changelog
 Provides:
     **/*.dat
@@ -26,7 +20,7 @@ Provides:
 -- SETUP --
 r = reaper
 
-local function RemoveExtensions(name)
+local function remove_extensions(name)
     if not name then return '' end
     name = name:match '(.+)%.[^%.]+$' or name
     name = name:match '(.-)[- ]*glued' or name
@@ -37,7 +31,7 @@ local function RemoveExtensions(name)
     return name
 end
 
-function IsSubProject(item)
+local function is_subproject(item)
     return select(2, r.GetItemStateChunk(item, '', false)):find 'SOURCE RPP_PROJECT' and true or false
 end
 
@@ -49,7 +43,7 @@ if FOCUS == 0 then
     local track = r.GetSelectedTrack(0, 0)
     if track then
         _, SUBPROJECT_NAME = r.GetTrackName(track)
-        SUBPROJECT_NAME = RemoveExtensions(SUBPROJECT_NAME)
+        SUBPROJECT_NAME = remove_extensions(SUBPROJECT_NAME)
     end
 else
     local itemCount = r.CountSelectedMediaItems(0)
@@ -57,10 +51,10 @@ else
         local onlySubprojects = true
         for i = 0, itemCount - 1 do
             local item = r.GetSelectedMediaItem(0, i)
-            if not IsSubProject(item) then
+            if not is_subproject(item) then
                 onlySubprojects = false
                 local take = r.GetActiveTake(item)
-                if take then SUBPROJECT_NAME = RemoveExtensions(r.GetTakeName(take)) end
+                if take then SUBPROJECT_NAME = remove_extensions(r.GetTakeName(take)) end
                 break
             end
         end
@@ -68,9 +62,6 @@ else
             DO_SUBPROJECT_FIX = true
             SCRIPT_FOLDER = nil
         end
-        -- else
-        --     DO_SUBPROJECT_MARKERS = true
-        --     SCRIPT_FOLDER = nil
     end
 end
 
@@ -86,10 +77,4 @@ if DO_SUBPROJECT_FIX then
     SubProjectFix()
     r.Undo_EndBlock('nvk_SUBPROJECT - Update', -1)
     r.PreventUIRefresh(-1)
-    -- elseif DO_SUBPROJECT_MARKERS then
-    --     r.PreventUIRefresh(1)
-    --     r.Undo_BeginBlock()
-    --     SubProjectMarkers()
-    --     r.Undo_EndBlock('nvk_SUBPROJECT - Markers', -1)
-    --     r.PreventUIRefresh(-1)
 end

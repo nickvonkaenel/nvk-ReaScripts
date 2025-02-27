@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.5.6
+Version: 2.5.7
 About:
     # nvk_TAKES
 
@@ -10,14 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/takes
 Changelog:
-    2.5.6
-        Improvements to toolbar button states
-    2.5.5
-        Error when running quick add numbered take marker script
-    2.5.4
-        Crash with render to new take with fx when more than 5 items are selected
-    2.5.3
-        Improved ripple behavior in duplicate takes script
+    2.5.7
+        Refactoring - grab latest version of nvk_FOLDER_ITEMS
+        Deprecating 5.1 to quad script (doesn't seem to work in newer versions of Reaper)
+        Adding option to disable take markers in nvk_TAKES - Settings (takes functionality will still work, snap offsets will still be added since they are required for optimal behavior)
     For full changelog, visit https://nvk.tools/docs/workflow/takes#changelog
 Provides:
     **/*.dat
@@ -26,7 +22,6 @@ Provides:
 --]]
 -- SETUP --
 local r = reaper
-local is_new_value, filename, sectionID, cmdID, mode, resolution, val = r.get_action_context()
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
 DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
@@ -46,29 +41,16 @@ end
 local last_take
 
 local function main()
-    local item = r.GetSelectedMediaItem(0, 0)
-    if item and IsAudioItem(item) then
-        local take = r.GetActiveTake(item)
-        if take and take ~= last_take then
-            last_take = take
-            if r.TakeIsMIDI(take) then return end
-            local src = r.GetMediaItemTake_Source(take)
-            local srcLen = r.GetMediaSourceLength(src)
-            local _, _, _, rev = r.PCM_Source_GetSectionInfo(src)
-            local rv, takeMarkersAdded = GetTakeDbCache(take, src, srcLen, rev)
-            if takeMarkersAdded then
-                local snapOffset = r.GetMediaItemInfo_Value(item, 'D_SNAPOFFSET')
-                if snapOffset == 0 then
-                    local takeMarkerPos = r.GetTakeMarker(take, 0)
-                    local takeOffset = r.GetMediaItemTakeInfo_Value(take, 'D_STARTOFFS')
-                    local takePlayrate = r.GetMediaItemTakeInfo_Value(take, 'D_PLAYRATE')
-                    local takeMarkerOffset = takeMarkerPos - takeOffset
-                    if takeMarkerOffset > 0 then
-                        takeMarkerOffset = takeMarkerOffset / takePlayrate
-                        r.SetMediaItemInfo_Value(item, 'D_SNAPOFFSET', takeMarkerOffset)
-                    end
-                end
+    local item = Item.Selected()
+    if item then
+        local take = item.take
+        if take and take.mediatake ~= last_take then
+            if r.GetExtState('nvk_TAKES', 'reload_config') == 'true' then
+                r.DeleteExtState('nvk_TAKES', 'reload_config', false)
+                LoadTakesSettings()
             end
+            last_take = take.mediatake
+            take:Clips()
         end
     end
     r.defer(main)
