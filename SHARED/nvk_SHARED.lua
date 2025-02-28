@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 3.2.0
+Version: 3.2.1
 About:
     # nvk_SHARED
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    3.2.1
+        Improvements to behavior of automatic folder item creation on muted parent tracks. Now if a parent track is muted, named folder items will not be removed or updated. This is to avoid situations where named folder items were removed when muting groups of tracks all at once.
     3.2.0
         Improved tab order icons
     3.1.0
