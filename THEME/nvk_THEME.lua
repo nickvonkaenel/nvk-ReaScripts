@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.3.0
+Version: 1.3.1
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,8 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.3.1
+        Notify if nvk_SHARED is not updated to the required version
     1.3.0
         IMPORTANT: "Selection overlay strength" has been renamed to "Selected track brightness" for clarity. It also now covers a wider range of brightness levels so you will need to adjust it if you have a custom setting.
         THEME:

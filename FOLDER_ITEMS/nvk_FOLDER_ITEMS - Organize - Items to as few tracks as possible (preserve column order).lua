@@ -9,9 +9,9 @@ DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-list = {}
+local organizer = {}
 
-function list:Get()
+function organizer:Get()
     self.items = {}
     self.item_tracks = {}
     self.item_guids = {}
@@ -69,7 +69,7 @@ function list:Get()
     end
 end
 
-function list:Organize()
+function organizer:Organize()
     for i = 1, #self.columns do
         local c = self.columns[i]
         local track_num = r.GetMediaTrackInfo_Value(self.init_track, 'IP_TRACKNUMBER')
@@ -94,6 +94,6 @@ end
 
 if r.CountSelectedMediaItems(0) == 0 then return end
 run(function()
-    list:Get()
-    list:Organize()
+    organizer:Get()
+    organizer:Organize()
 end)

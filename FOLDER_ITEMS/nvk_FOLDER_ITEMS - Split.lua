@@ -7,7 +7,6 @@ DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
-local r = reaper
 run(function()
     local cursorPos = r.GetCursorPosition()
     local item = Item.UnderMouse()

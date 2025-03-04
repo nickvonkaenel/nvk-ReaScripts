@@ -9,53 +9,44 @@ dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
 run(function()
-    local items = Items()
-    local tracks = Tracks()
+    local items = Items.Selected()
+    local tracks = Tracks.Selected()
     for i, item in ipairs(items) do
         local track = item.track
         local env = track:ShowVolumeEnvelope()
-        local autoitemIdx = GetAutoitem(env, item.pos)
-        if autoitemIdx then
+        local autoitem_idx = GetAutoitem(env, item.pos)
+        if autoitem_idx then
             r.Main_OnCommand(40769, 0) -- unselect all tracks/items/env
-            r.GetSetAutomationItemInfo(env, autoitemIdx, 'D_UISEL', 1, true)
+            r.GetSetAutomationItemInfo(env, autoitem_idx, 'D_UISEL', 1, true)
             r.Main_OnCommand(42086, 0) -- delete automation item
         end
-        local itemFadeIn = item.fadeinlen >= item.len and item.len - 0.00001 or item.fadeinlen
-        local itemFadeOut = item.fadeoutlen >= item.len and item.len - 0.00001 or item.fadeoutlen
-        local itemFadeInDir = item.fadeindir * 0.5
-        local itemFadeOutDir = item.fadeoutdir * 0.5
-        local fadeInEnd = item.pos + itemFadeIn
-        local fadeOutStart = item.pos + item.len - itemFadeOut
-        if itemFadeIn > 0 or itemFadeOut > 0 then
-            autoitemIdx = r.InsertAutomationItem(env, -1, item.pos, item.len)
-            r.GetSetAutomationItemInfo(env, autoitemIdx, 'D_LOOPSRC', 0, true)
-            r.DeleteEnvelopePointRangeEx(env, autoitemIdx, item.pos, item.pos + item.len)
-            local fadeInCurve = itemFadeInDir == 0 and 0 or 5
-            local fadeOutCurve = itemFadeOutDir == 0 and 0 or 5
-            if itemFadeIn > 0 then
-                r.InsertEnvelopePointEx(env, autoitemIdx, item.pos, 0, fadeInCurve, itemFadeInDir, false, true)
-                if fadeOutStart > fadeInEnd then
-                    r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, 0, 0, false, true)
+        local fadein = item.fadeinlen >= item.len and item.len - 0.00001 or item.fadeinlen
+        local fadeout = item.fadeoutlen >= item.len and item.len - 0.00001 or item.fadeoutlen
+        local fadeindir = item.fadeindir * 0.5
+        local fadeoutdir = item.fadeoutdir * 0.5
+        local fadeinend = item.pos + fadein
+        local fadeoutstart = item.pos + item.len - fadeout
+        if fadein > 0 or fadeout > 0 then
+            autoitem_idx = r.InsertAutomationItem(env, -1, item.pos, item.len)
+            r.GetSetAutomationItemInfo(env, autoitem_idx, 'D_LOOPSRC', 0, true)
+            r.DeleteEnvelopePointRangeEx(env, autoitem_idx, item.pos, item.pos + item.len)
+            local fadeincurve = fadeindir == 0 and 0 or 5
+            local fadeoutcurve = fadeoutdir == 0 and 0 or 5
+            if fadein > 0 then
+                r.InsertEnvelopePointEx(env, autoitem_idx, item.pos, 0, fadeincurve, fadeindir, false, true)
+                if fadeoutstart > fadeinend then
+                    r.InsertEnvelopePointEx(env, autoitem_idx, fadeinend, 1, 0, 0, false, true)
                 else
-                    r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, fadeOutCurve, itemFadeOutDir, false, true)
+                    r.InsertEnvelopePointEx(env, autoitem_idx, fadeinend, 1, fadeoutcurve, fadeoutdir, false, true)
                 end
             end
-            if itemFadeOut > 0 then
-                if fadeOutStart > fadeInEnd then
-                    r.InsertEnvelopePointEx(
-                        env,
-                        autoitemIdx,
-                        fadeOutStart,
-                        1,
-                        fadeOutCurve,
-                        itemFadeOutDir,
-                        false,
-                        true
-                    )
+            if fadeout > 0 then
+                if fadeoutstart > fadeinend then
+                    r.InsertEnvelopePointEx(env, autoitem_idx, fadeoutstart, 1, fadeoutcurve, fadeoutdir, false, true)
                 end
-                r.InsertEnvelopePointEx(env, autoitemIdx, item.pos + item.len - 0.000001, 0, 0, 0, false, true)
+                r.InsertEnvelopePointEx(env, autoitem_idx, item.pos + item.len - 0.000001, 0, 0, 0, false, true)
             end
-            r.Envelope_SortPointsEx(env, autoitemIdx)
+            r.Envelope_SortPointsEx(env, autoitem_idx)
         end
     end
     items:Select(true):RemoveFades(true)

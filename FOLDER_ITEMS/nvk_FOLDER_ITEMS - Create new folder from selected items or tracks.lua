@@ -32,7 +32,7 @@ end
 local rv = run(function()
     local focus = r.GetCursorContext()
     local items = Items.Selected()
-    local tracks = Tracks()
+    local tracks = Tracks.Selected()
     if focus == 0 or #items == 0 then
         if #tracks == 0 then return end
         create_folder(tracks)
@@ -47,7 +47,7 @@ local rv = run(function()
             r.Main_OnCommand(40006, 0) -- Item: Remove items
             Track(idx):SetLastTouched()
             r.Main_OnCommand(42398, 0) -- Item: Paste items/tracks
-            item_tracks = Tracks()
+            item_tracks = Tracks.Selected()
             item_tracks.items.unselected:Delete() -- delete unselected newly copied items on new tracks
         end
         create_folder(item_tracks)

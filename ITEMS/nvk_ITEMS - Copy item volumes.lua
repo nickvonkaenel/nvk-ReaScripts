@@ -10,10 +10,10 @@ if not functionsLoaded then return end
 run(function()
     local items = Items()
     if #items == 0 then return end
-    local itemVolumes = {}
+    local vols = {}
     for i, item in ipairs(items) do
         local take = item.take
-        itemVolumes[i] = db2spl(item.vol + (take and take.vol or 0))
+        vols[i] = db2spl(item.vol + (take and take.vol or 0))
     end
-    r.SetExtState('nvk_copyPaste', 'itemVolumes', table.concat(itemVolumes, ','), false)
+    r.SetExtState('nvk_copyPaste', 'itemVolumes', table.concat(vols, ','), false)
 end)

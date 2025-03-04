@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.11.3
+Version: 2.11.4
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.11.4
+        Rename reset button in match mode also resets the input name
+        Keyboard shortcut for Rename reset button
+        Change Match/Replace button icon to asterisk from magnifying glass
     2.11.3
         Error when enabling render variants and trying to render without changing any render variant settings
     2.11.2
