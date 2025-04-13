@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.4.1
+Version: 1.4.3
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,8 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.4.3
+        Fixed error when using custom track name colors on folder tracks
     1.4.2
         New options for importing/exporting theme colors (nvktracktheme, SWSColor, clipboard)
     1.4.1
