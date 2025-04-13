@@ -12,15 +12,15 @@ table.insert(bar.buttons, 1, 'pin')
 
 s.str = s.str or ''
 
-SimpleDraw = function()
+function SimpleDraw()
     local rv
     if scr.init then ImGui.SetKeyboardFocusHere(ctx) end
     rv, s.str = ImGui.InputText(ctx, 'Name', s.str, ImGui.InputTextFlags_AutoSelectAll)
     if ImGui.IsItemDeactivatedAfterEdit(ctx) and Keyboard.Enter() then Actions.Run() end
 end
 
-SimpleRun = function()
+function SimpleRun()
     local searchString = s.str:lower()
-    Items.All():Filter(function(item) return item.name:lower():find(searchString) end):Select(true)
+    Items.All():Filter(function(item) return not not item.name:lower():find(searchString) end):Select(true)
     r.Main_OnCommand(41622, 0) -- View: Toggle zoom to selected items
 end

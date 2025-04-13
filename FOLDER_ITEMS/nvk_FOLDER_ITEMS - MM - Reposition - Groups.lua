@@ -10,10 +10,14 @@ if not functionsLoaded then return end
 -- SCRIPT --
 run(function()
     local tracks = Tracks.All():Uncompact()
-    TrackDoubleClick()
+    local track = Track.Selected()
+    if track then track:Children(true):Items(Column.TimeSelection()):Select(true) end
     GetItemsSnapOffsetsAndRemove()
     RepositionSelectedItemGroupsSMART()
     RestoreItemsSnapOffsets()
-    reaper.Main_OnCommand(40290, 0) -- Time selection: Set time selection to items
+    r.Main_OnCommand(40290, 0) -- Time selection: Set time selection to items
+    r.PreventUIRefresh(-1)
+    r.Main_OnCommand(40031, 0) -- View: Zoom time selection
+    r.PreventUIRefresh(1)
     tracks:Compact()
 end)

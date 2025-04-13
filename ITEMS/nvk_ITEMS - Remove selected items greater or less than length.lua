@@ -15,7 +15,7 @@ table.insert(bar.buttons, 1, 'pin')
 
 local less, greater = DEFAULT_LESS, DEFAULT_GREATER
 
-SimpleDraw = function()
+function SimpleDraw()
     local rv
     rv, less, greater = ImGui.DragFloatRange2(
         ctx,
@@ -36,6 +36,6 @@ SimpleDraw = function()
     if ImGui.Button(ctx, 'Remove ' .. #items .. ' items') then Actions.Run() end
 end
 
-SimpleRun = function()
+function SimpleRun()
     Items():Filter(function(item) return item.len < less or item.len > greater end):Delete()
 end

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.8.6
+Version: 2.9.0
 About:
     # nvk_SUBPROJECT
 
@@ -10,8 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/subproject
 Changelog:
-    2.8.6
-        Refactoring - grab latest version of nvk_FOLDER_ITEMS
+    2.9.0
+        Time selections could interfere with subproject render length
+    2.8.7
+        Refactoring - grab latest version of nvk_FOLDER_ITEMS and nvk_SHARED
     For full changelog, visit https://nvk.tools/docs/workflow/subproject#changelog
 Provides:
     **/*.dat

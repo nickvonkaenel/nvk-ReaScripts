@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.5.5
+Version: 2.6.1
 About:
     # nvk_AUTODOPPLER
 
@@ -14,6 +14,11 @@ Links:
     Store Page https://gum.co/nvk_AUTODOPPLER
     User Guide https://nvk.tools/docs/autodoppler
 Changelog:
+    2.6.1
+        Use track channel count for render
+    2.6.0
+        Added support for Sound Particles EDU version
+        Render Sound Particles as multiple items, otherwise it would only render the first one
     2.5.5
         "Always reset values on open" setting now works properly
     2.5.4

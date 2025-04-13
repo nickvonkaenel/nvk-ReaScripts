@@ -21,6 +21,9 @@ run(function()
     local itemCount = r.CountSelectedMediaItems(0)
     local tracks = SaveSelectedTracks()
     if itemCount > 0 then
+        if itemCount > 6 then
+            if r.MB('Add FX to ' .. itemCount .. ' takes?', scr.name, 1) ~= 1 then return end
+        end
         for i = 0, itemCount - 1 do
             local item = r.GetSelectedMediaItem(0, i)
             local take = r.GetActiveTake(item)

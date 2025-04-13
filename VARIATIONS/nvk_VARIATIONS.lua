@@ -1,6 +1,6 @@
 --[[
 Description: nvk_VARIATIONS
-Version: 1.3.3
+Version: 1.3.4
 About:
     # nvk_VARIATIONS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_VARIATIONS
     User Guide https://nvk.tools/docs/variations
 Changelog:
+    1.3.4
+        Refactoring - make sure to grab latest version of nvk_SHARED
     1.3.3
         Refactoring - make sure to grab latest version of nvk_SHARED
     1.3.2

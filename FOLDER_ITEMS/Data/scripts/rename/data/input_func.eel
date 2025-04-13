@@ -1,0 +1,303 @@
+// @noindex
+function toupper(c)
+(
+    c >= 'a' && c <= 'z' ? c - 32 : c;
+);
+
+function tolower(c)
+(
+    c >= 'A' && c <= 'Z' ? c + 32 : c;
+);
+
+function allupper(s)
+local(i, c, opened)
+(
+    i = 0;
+    opened = 0;
+    while(c = str_getchar(s, i)) (
+        (c == '<') ? (
+            opened = 1;
+        ) : (
+            (c == '>') ? (
+                opened = 0;
+            ) : (
+                (!opened) ? (
+                    str_setchar(s, i, toupper(c));
+                );
+            );
+        );
+        i += 1;
+    );
+    s;
+);
+
+function alllower(s)
+local(i, c, opened)
+(
+    i = 0;
+    opened = 0;
+    while(c = str_getchar(s, i)) (
+        (c == '<') ? (
+            opened = 1;
+        ) : (
+            (c == '>') ? (
+                opened = 0;
+            ) : (
+                (!opened) ? (
+                    str_setchar(s, i, tolower(c));
+                );
+            );
+        );
+        i += 1;
+    );
+    s;
+);
+
+function altUpperLower(s)
+local(i, c, opened)
+(
+    i = 0;
+    opened = 0;
+    while(c = str_getchar(s, i)) (
+        (c == '<') ? (
+            opened = 1;
+        ) : (
+            (c == '>') ? (
+                opened = 0;
+            ) : (
+                (!opened) ? (
+                    (i % 2) ? (
+                        str_setchar(s, i, toupper(c));
+                    ) : (
+                        str_setchar(s, i, tolower(c));
+                    );
+                );
+            );
+        );
+        i += 1;
+    );
+    s;
+);
+
+function isAlphaNumeric(c)
+(
+    (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '<'; // allow < for wildcards
+);
+
+function capitalizeFirst(s)
+(
+    i = 0;
+    while(c = str_getchar(s, i)) (
+        i == 0 || !isAlphaNumeric(str_getchar(s, i - 1)) ? (
+            str_setchar(s, i, toupper(c));
+        );
+        i += 1;
+    );
+    s;
+);
+
+function RemoveDoubleSpaces(str, char)
+    local (c, next_c, i)
+(
+    i = 0;
+    #temp = "";
+    while(c = str_getchar(str, i)) (
+        next_c = str_getchar(str, i + 1);
+        c != char || next_c != char ? (
+            str_setchar(#temp, strlen(#temp), c);
+        );
+        i += 1;
+    );
+    strcpy(str, #temp);
+    str;
+);
+
+function FilterStringFromChar(str, char)
+    local (c, i)
+(
+    i = 0;
+    #temp = "";
+    while(c = str_getchar(str, i)) (
+        c != char ? (
+            str_setchar(#temp, strlen(#temp), c);
+        );
+        i += 1;
+    );
+    strcpy(str, #temp);
+    str;
+);
+
+function space_remove(s)
+(
+    FilterStringFromChar(s, $' ');
+    s;
+);
+
+function get_space_str()
+(
+    spaces == 1 ? "_" : spaces == 2 ? "-" : spaces == 3 ? "" : " ";
+);
+
+function space_replace(s)
+    local (c, i)
+(
+    i = 0;
+    while(c = str_getchar(s, i)) (
+        c == ' ' ? (
+            str_setchar(s, i, spaces == 1 ? $'_' : $'-');
+        );
+        i += 1;
+    );
+    RemoveDoubleSpaces(s, spaces == 1 ? $'_' : $'-');
+    s;
+);
+
+function is_illegal_char(c)
+(
+    c == $'\' || c == $'/' || c == $'?' || c == $'%' || c == $':' || c == $'|' || c == $'"' || c == $'<' || c == $'>' || c == $'.' || c == $',' || c == $';' || c == $'=';
+);
+
+function remove_illegal_chars(str)
+    local (c, i)
+(
+    i = 0;
+    #temp = "";
+    while(c = str_getchar(str, i)) (
+        !is_illegal_char(c) ? (
+            str_setchar(#temp, strlen(#temp), c);
+        );
+        i += 1;
+    );
+    strcpy(str, #temp);
+    str;
+);
+
+function ucs_space_replace(s)
+    local (c, i)
+(
+    i = 0;
+    while(c = str_getchar(s, i)) (
+        (c == '_' || c == '-' ) ? (
+            str_setchar(s, i, $' ');
+        );
+        i += 1;
+    );
+    RemoveDoubleSpaces(s, $' ');
+    remove_illegal_chars(s);
+    s;
+);
+
+function remove_char_pos(str, pos)
+    local (c, i)
+(
+    i = 0;
+    #temp = "";
+    while(c = str_getchar(str, i)) (
+        i != pos ? (
+            str_setchar(#temp, i, c);
+        );
+        i += 1;
+    );
+    strcpy(str, #temp);
+    str;
+);
+
+function do_space_autocomplete(str)
+    local (c, i, found)
+(
+    i = 0;
+    found = 0;
+    while(c = str_getchar(str, i)) (
+        c == 31 ? found = 1;
+        i += 1;
+    );
+    found;
+);
+
+function do_space_replace()
+(
+    spaces == 1 ? (
+        EventChar = '_';
+    );
+    spaces == 2 ? (
+        EventChar = '-';
+    );
+    spaces == 3 ? (
+        EventChar = 0;
+    );
+);
+
+EventFlag == InputTextFlags_CallbackCharFilter ? (
+    EventChar == ' ' ? (
+        space_pressed = 1;
+        space_autocomplete && !shift? (
+            has_auto_str ? (
+                EventChar = 31;
+            ) : (
+                EventChar = 0;
+            );
+        ) : (
+            do_space_replace();
+        );
+    ) : (
+        format == 1 ? (
+            EventChar < 48 || EventChar > 57 ? (
+                EventChar = 0;
+            );
+        );
+    );
+) : (
+    strcpy(#str, #Buf);
+    capitalize == 1 ? capitalizeFirst(#str);
+    capitalize == 2 ? allupper(#str);
+    capitalize == 3 ? altUpperLower(#str);
+    capitalize == 4 ? alllower(#str);
+    spaces > 0 && spaces < 3 ? space_replace(#str);
+    spaces == 3 ? space_remove(#str);
+    spaces == 100 ? ucs_space_replace(#str);
+    // TODO: these currently only works for one match, need to make it work for every match
+    matchi("%0{before}snvk*", #str) ? (
+        #temp = strcat(before, "nvk");
+        matchi("*nvk%0{after}s", #str) ? (
+            strcat(#temp, after);
+        );
+        strcpy(#str, #temp);
+    );
+    match("%0{before}s_-_*", #str) ? (
+        #temp = strcat(before, " - ");
+        matchi("*_-_%0{after}s", #str) ? (
+            strcat(#temp, after);
+        );
+        strcpy(#str, #temp);
+    );
+    match("%0{before}s._*", #str) ? (
+        #temp = strcat(before, ". ");
+        matchi("*._%0{after}s", #str) ? (
+            strcat(#temp, after);
+        );
+        strcpy(#str, #temp);
+    );
+    cur = CursorPos;
+    sel_start = SelectionStart;
+    sel_end = SelectionEnd;
+    (EventFlag == InputTextFlags_CallbackCompletion || do_space_autocomplete(#Buf)) && has_auto_str ? (
+        #str = auto_str;
+        cur = strlen(auto_str);
+    );
+    max_length > 0 ? (
+        strlen(#str) > max_length ? (
+            #temp = "";
+            strcpy_substr(#temp, #str, 0, max_length);
+              strcpy(#str, #temp);
+            //cur = max_length;
+        );
+    );
+    strcpy(x, #str);
+    strcmp(#Buf, #str) != 0 ? (
+        InputTextCallback_DeleteChars(0, strlen(#Buf));
+        InputTextCallback_InsertChars(0, x);
+        CursorPos = cur;
+        SelectionStart = sel_start;
+        SelectionEnd = sel_end;
+    );
+);

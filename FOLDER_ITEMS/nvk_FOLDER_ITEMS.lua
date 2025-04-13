@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.11.4
+Version: 2.12.1
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,25 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.12.1
+        Moving 'Include automation items in folder items' to 'Experimental' section. When a track is collapsed/hidden and an automation item is larger than the size of the item in it's track, it won't move with the item. There doesn't seem to be a way to fix this, so I'm leaving it in the experimental section for now.
+        Partially fix some visual glitches in rename script with certain strings that get processed after input
+        Fix regression when rendering sausage items
+    2.12.0
+        New option: Include automation items in folder items
+            Use automation items when calculating the size of folder items
+            Select overlapping automation items when selecting folder items
+            Select overlapping automation items when selecting items
+            Note: automation will not move with items unless you have the "Move envelope points with media items setting enabled"
+            Note: automation items will not move if there are no items on the same track as the automation item
+            Pitch shift will affect automation items within the item or folder items bounds
+        Rename "Deselect..." scripts to "Unselect..." to match Reaper terminology
+        Ignore overlapping items as well as items contained by folder items when determining render items
+        MM Reposition scripts now zoom to the time selection after repositioning
+        New script: Shuffle - Shuffles the order of selected columns of items, useful for changing the order of folder items or individual items by shuffling their positions
+        New option: Include muted tracks. If enabled, items on muted tracks will be included in folder item calculations. Avoids situations where folder items were accidentally deleted when muting layers for preview. This will be enabled by default for new users.
+        New script: Name selected folder items from child items.
+        Volume automation items are only trimmed automatically now when volume envelope fades are enabled
     2.11.4
         Rename reset button in match mode also resets the input name
         Keyboard shortcut for Rename reset button
@@ -23,6 +42,7 @@ Changelog:
     For full changelog, visit https://nvk.tools/docs/workflow/folder_items#changelog
 Provides:
     **/*.dat
+    **/*.eel
     [windows] Data/curl/*.*
     [main] *.lua
 --]]
@@ -38,7 +58,7 @@ local prevProjState, projUpdate, prevProj
 local r = reaper
 
 local items
-local function trackSelectionFollowsItemSelection()
+local function track_follows_item_selection()
     if items == Items.Selected() then return end
     items = Items.Selected()
     local itemsTracks = items.tracks
@@ -83,13 +103,9 @@ local function main()
     end
     local itemCount = r.CountSelectedMediaItems(0)
     if itemCount == 1 and context == 1 and FOLDER_ITEMS_AUTO_SELECT and mouseState == 1 then -- if mouse down
-        GroupSelectCheck(r.GetSelectedMediaItem(0, 0))
+        Item.Selected():GroupSelect()
     elseif projUpdate and mouseState == 0 then -- if mouse is not down
-        if FOLDER_ITEMS_AUTO_SELECT and context >= 0 then
-            for i = 0, itemCount - 1 do
-                GroupSelectCheck(r.GetSelectedMediaItem(0, i))
-            end
-        end
+        if FOLDER_ITEMS_AUTO_SELECT and context >= 0 then Items.Selected():GroupSelect() end
     end
     if projUpdate and itemCount == r.CountSelectedMediaItems(0) then
         if FOLDER_ITEMS_DISABLE then
@@ -100,7 +116,7 @@ local function main()
         projUpdate = false
     end
     scr.init = nil
-    if context >= 0 and TRACK_SELECTION_FOLLOWS_ITEM_SELECTION then trackSelectionFollowsItemSelection() end
+    if context >= 0 and TRACK_SELECTION_FOLLOWS_ITEM_SELECTION then track_follows_item_selection() end
     r.PreventUIRefresh(-1)
     r.defer(main)
 end

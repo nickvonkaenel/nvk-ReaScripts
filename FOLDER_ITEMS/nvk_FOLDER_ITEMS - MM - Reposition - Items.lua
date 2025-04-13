@@ -14,6 +14,9 @@ run(function()
     GetItemsSnapOffsetsAndRemove()
     RepositionSelectedItemsSMART()
     RestoreItemsSnapOffsets()
-    reaper.Main_OnCommand(40290, 0) -- Time selection: Set time selection to items
+    r.Main_OnCommand(40290, 0) -- Time selection: Set time selection to items
+    r.PreventUIRefresh(-1)
+    r.Main_OnCommand(40031, 0) -- View: Zoom time selection
+    r.PreventUIRefresh(1)
     tracks:Compact()
 end)

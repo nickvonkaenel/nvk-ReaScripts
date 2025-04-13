@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.17.2
+Version: 1.17.5
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,13 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.17.5
+        Add shortcut to add FX to specific slot numbers (e.g. Ctrl+1 adds to FX slot 1, etc.)
+    1.17.4
+        Make new track with armed midi the default behavior when adding instrument plug-ins. Now alt-add will add to the selected track or item
+        New hotkey: Ctrl+F to clear the search field and reset the filter
+    1.17.3
+        Script was not properly getting the last clicked item or track when determining where to add FX
     1.17.2
         Refactoring - make sure to grab latest version of nvk_SHARED
         Alt key to open or not open projects in new tab (opposite of default setting)

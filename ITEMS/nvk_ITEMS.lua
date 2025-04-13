@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.9.0
+Version: 1.10.0
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.10.0
+        Adding back nvk_ITEMS - Group contiguous item columns
     1.9.0
         New scripts: Select items on track before mouse, Select items on track after mouse. Requires update to nvk_SHARED.
     1.8.1

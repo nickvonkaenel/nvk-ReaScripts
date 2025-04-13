@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 3.2.2
+Version: 3.4.1
 About:
     # nvk_SHARED
 
@@ -9,6 +9,19 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    3.4.1
+        Fix for update notifications showing when no updates are available
+        Restore undocked window size when undocking script after reopening
+        Optimization: ReaImGui scripts now use less cpu while running in the background.
+    3.4.0
+        Docked windows not focused when opening new instance of a script
+        Docked windows now have a different color scheme to blend in better with Reaper UI
+        Persistent mode now disabled while scripts are docked since it doesn't work well with docked windows
+        Restore undocked window size when undocking script
+        Notify user when update is available
+        Minor UI improvements
+    3.3.0
+        Warn if adding FX to a large number of items/tracks at once
     3.2.2
         Startup Actions:
             Allow for reordering user actions

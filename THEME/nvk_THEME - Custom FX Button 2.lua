@@ -5,9 +5,10 @@ SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
 DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
+if not functionsLoaded then return end
 
 run(function()
-    local custom_fx, embedded_fx_ui = GetCustomFX()
+    local custom_fx, embedded_fx_ui, always_add_new_instance = GetCustomFX()
     local tbl = custom_fx and custom_fx[2] or { name = 'VST:ReaComp (Cockos)' }
 
     -- backwards compatibility
@@ -23,13 +24,13 @@ run(function()
         local prefix, fx, developer = fx_name:match '(.+:)(.+) %((.+)%)'
         fx_name = prefix .. developer .. ': ' .. fx
     end
-    local fx = r.TrackFX_AddByName(track, fx_name, false, 1)
+    local fx = r.TrackFX_AddByName(track, fx_name, false, always_add_new_instance and -1 or 1)
     if not fx then
         r.MB('FX not found. Configure custom FX in nvk_THEME - Settings', scr.name, 0)
         r.Main_OnCommand(r.NamedCommandLookup '_RS5090bcf8eb35e73f381a07670564e93f184342d7', 0) -- Script: nvk_THEME - Settings.lua
         return
     end
-    if not fx_exists then
+    if not fx_exists or always_add_new_instance then
         if embedded_fx_ui then
             r.Main_OnCommand(42340, 0) -- FX: Show all FX embedded UI in TCP (selected tracks)
         end

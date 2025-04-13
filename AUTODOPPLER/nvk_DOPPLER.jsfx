@@ -654,7 +654,7 @@ function ui_text(text) local (text_h, text_w, boxwidth, boxheight, valign, halig
 		);
 		fontscale != 1 ? (
 			fontsize = max(8, floor(fontscale*uix_drawconfig_current[8/*uix_DRAWCONFIG:FONTSIZE*/]*uix_drawconfig_current[9/*uix_DRAWCONFIG:RETINA_SCALING*/]));
-			// TODO: why is fontscale set here?
+			// why is fontscale set here?
 			fontscale = fontsize/uix_drawconfig_current[8/*uix_DRAWCONFIG:FONTSIZE*/];
 			gfx_setfont(
 				16,
@@ -1466,7 +1466,7 @@ function uix_control_color_from_theme(x, y) (
 
 function control_start(defaultPage, theme, imageBuffer) local(reset, i, x, y, osCheck) (
 	ui_start(defaultPage);
-	// TODO: check retina here?
+	// check retina here?
 	reset = (uix_control_theme_prev != theme || uix_control_width_prev != gfx_w || uix_control_height_prev != gfx_h);
 	uix_control_theme_prev = theme;
 	uix_control_width_prev = gfx_w;
@@ -2969,7 +2969,7 @@ function control_hidden_text(text) local(i) (
 		ui_click(2) || (ui_click() && ui_clickcount() == 3) ? ( // Right-click
 			uix_control_hidden_text_active_x = ui_left();
 			uix_control_hidden_text_active_y = ui_top();
-			// TODO: select-all here, when it's implemented
+			// select-all here, when it's implemented
 			uix_control_hidden_text_state = control_textinput_focus(0);
 			uix_control_hidden_text_state = control_textinput_select(uix_control_hidden_text_state, 0, strlen(text));
 		);
@@ -2991,7 +2991,7 @@ function control_hidden_textnumber(actualnumber, number, format) local(i) (
 			sprintf(#uix_control_hidden_textnumber, format ? format : "%f", number);
 			uix_control_hidden_text_active_x = ui_left();
 			uix_control_hidden_text_active_y = ui_top();
-			// TODO: select-all here, when it's implemented
+			// select-all here, when it's implemented
 			uix_control_hidden_text_state = control_textinput_focus(0);
 			uix_control_hidden_text_state = control_textinput_select(uix_control_hidden_text_state, 0, strlen(#uix_control_hidden_textnumber));
 		);

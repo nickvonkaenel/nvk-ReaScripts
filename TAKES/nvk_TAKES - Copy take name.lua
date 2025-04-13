@@ -1,23 +1,15 @@
 -- @noindex
--- USER CONFIG --
--- SETUP --
-local r = reaper
+-- Copies the take name to the clipboard as well as storing them to be pasted by nvk_TAKES - Paste copied take names to selected items.lua
+r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
 DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
--- SCRIPT --
+
 run(function()
-    if r.CountSelectedMediaItems(0) > 0 then
-        r.CF_SetClipboard(RemoveExtensions(GetActiveTakeName(r.GetSelectedMediaItem(0, 0))))
-        local str = ''
-        for i = 1, r.CountSelectedMediaItems(0) do
-            local item = r.GetSelectedMediaItem(0, i - 1)
-            local take = r.GetActiveTake(item)
-            local takeName = r.GetTakeName(take)
-            if takeName then str = str .. takeName .. '\n' end
-        end
-        r.SetExtState('nvk_TAKES', 'take_name', str, false)
-    end
+    if r.CountSelectedMediaItems(0) == 0 then return end
+    local name = Item.Selected().name
+    r.SetExtState('nvk_TAKES', 'take_name', name, false)
+    r.CF_SetClipboard(RemoveExtensions(name))
 end)

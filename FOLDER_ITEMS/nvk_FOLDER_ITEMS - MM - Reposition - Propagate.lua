@@ -18,6 +18,9 @@ run(function()
         r.Main_OnCommand(r.NamedCommandLookup '_RS6fa1efbf615b0c385fc6bb27ca7865918dfc19a6', 0) -- nvk_PROPAGATE
         RestoreItemsSnapOffsets()
         r.Main_OnCommand(40290, 0) -- Time selection: Set time selection to items
+        r.PreventUIRefresh(-1)
+        r.Main_OnCommand(40031, 0) -- View: Zoom time selection
+        r.PreventUIRefresh(1)
     end
     tracks:Compact()
 end)

@@ -18,11 +18,11 @@ if item then pcall(Load, select(2, reaper.GetSetMediaItemInfo_String(item, 'P_EX
 
 local channels = math.floor(item_s.channels or 2)
 
-SimpleDraw = function()
+function SimpleDraw()
     local rv
     if scr.init then ImGui.SetKeyboardFocusHere(ctx) end
     rv, channels = ImGui.InputInt(ctx, 'Channels', channels)
     if ImGui.IsItemDeactivatedAfterEdit(ctx) and Keyboard.Enter() then Actions.Run() end
 end
 
-SimpleRun = function() SetSelectedItemsRenderSettings('channels', channels) end
+function SimpleRun() SetSelectedItemsRenderSettings('channels', channels) end

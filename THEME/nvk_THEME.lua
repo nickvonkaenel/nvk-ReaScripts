@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.3.1
+Version: 1.4.1
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,25 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.4.2
+        New options for importing/exporting theme colors (nvktracktheme, SWSColor, clipboard)
+    1.4.1
+        Fixed midi inline editor background colors
+        Added meter color to dedicated sends section
+        Added midi inline editor icons (+hidpi)
+        Improvements to theme settings preservation
+    1.4.0
+        Full color mode for mixer tracks
+        New transport buttons for enabling track colors, next theme, previous theme
+        Meter width values are now rounded to the nearest odd number for better appearance
+        Color values could not update in real-time with changes depending on previous settings before recent update
+        Preserve theme settings when switching between themes while the settings script is closed
+        Mixer track colors now update immediately when changing settings
+        Preserve theme settings when copying cfg files
+        Improved import/export track color theme behavior
+        Custom track name colors now work with child tracks
+        Prompt to automatically color tracks when opening a project was still coloring them even if no was selected
+        Option to always add new instance of custom FX (default is to toggle the UI if it's already added)
     1.3.1
         Notify if nvk_SHARED is not updated to the required version
     1.3.0
@@ -38,16 +57,13 @@ Provides:
     [theme] nvk_THEME_Dark.ReaperThemeZip
     [theme] nvk_THEME_Light.ReaperThemeZip
 --]]
-
--- SETUP --
-local r = reaper
 r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
 DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
--- SCRIPT --
+
 local last_theme = r.GetLastColorThemeFile()
 if not last_theme:find 'nvk_THEME' then
     local init_theme = os_is.mac and 'nvk_THEME_Dark' or 'nvk_THEME_Light'

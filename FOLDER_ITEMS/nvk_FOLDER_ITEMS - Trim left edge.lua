@@ -7,68 +7,61 @@ DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
 dofile(DATA_PATH .. 'functions.dat')
 if not functionsLoaded then return end
 -- SCRIPT --
+---@param track Track?
+---@param pos number
+---@return Item?
+local function next_track_item_in_arrangeview(track, pos)
+    if not track then return end
+    return track:Items({ s = pos, e = Column.ArrangeView().e }):First()
+end
+
 run(function()
-    local initCursorPos = r.GetCursorPosition()
-    local tracks = SaveSelectedTracks()
-    local initItems = SaveSelectedItems()
-    local function cleanup()
-        r.SetEditCurPos(initCursorPos, false, false)
-        RestoreSelectedItems(initItems)
-        RestoreSelectedTracks(tracks)
-    end
+    local restore = RestoreArrangeState()
 
     r.Main_OnCommand(40513, 0) -- move edit cursor to mouse cursor
-    r.Main_OnCommand(41110, 0) -- select track under mouse
-    r.Main_OnCommand(40289, 0) -- unselect all items
-    local cursorPos = r.GetCursorPosition()
-    local initItem = Item(GetItemUnderMouseCursor())
-    if initItem then
-        initItem.sel = true
+    local cursor_pos = r.GetCursorPosition()
+    local init_item = Item.UnderMouse(false)
+        or next_track_item_in_arrangeview(Track.UnderMouse(), cursor_pos)
+        or Item.Selected()
+    if init_item then
+        init_item:Select(true)
     else
-        local startTime, endTime = r.BR_GetArrangeView(0)
-        MoveEditCursorToNextItemEdgeAndSelect()
-        local newStartTime, newEndTime = r.BR_GetArrangeView(0)
-        if startTime and (newStartTime ~= startTime or r.CountSelectedMediaItems(0) == 0) then
-            r.BR_SetArrangeView(0, startTime, endTime)
-            return cleanup()
-        else
-            initItem = Item(r.GetSelectedMediaItem(0, 0))
-        end
+        return restore()
     end
-    if not initItem then return cleanup() end
-    groupSelect(initItem.item, cursorPos)
+
+    -- group select on the target size of the item after extending
+    init_item.track:GroupSelect(Column.New(init_item):Extend(cursor_pos))
     local items = Items.Selected()
-    if #items == 0 then return cleanup() end
-    local initPos = math.huge
+    if #items == 0 then return restore() end
+    local init_pos = math.huge
     for i, item in ipairs(items) do
-        if i > 1 and not item.mute and item.s < initPos then initPos = item.s end
+        if i > 1 and not item.mute and item.s < init_pos then init_pos = item.s end
     end
-    if initPos == math.huge then initPos = items[1].s end
-    local initDiff = initPos - cursorPos
-    r.SetEditCurPos(cursorPos, false, false)
+    if init_pos == math.huge then init_pos = items:First().s end
+    local init_diff = init_pos - cursor_pos
+    r.SetEditCurPos(cursor_pos, false, false)
     for i, item in ipairs(items) do
-        r.SelectAllMediaItems(0, false)
-        item.sel = true
-        local diff = item.s - cursorPos
+        local diff = item.s - cursor_pos
         local newFadeIn = item.fadeinlen + diff
         if newFadeIn < 0 then newFadeIn = FADE_LENGTH_MIN end
 
         if i > 1 then
-            if item.e <= cursorPos then
+            if item.e <= cursor_pos then
                 item.automute = true
             elseif item.automute then
                 item.automute = false
             end
         end
 
-        if diff <= initDiff + 0.0001 or diff < 0 or (#items > 1 and i == 1) then
-            local initItemPos = item.s
-            local initItemLen = item.len
+        if diff <= init_diff + 0.0001 or diff < 0 or (#items > 1 and i == 1) then
+            local init_item_pos = item.s
+            local init_item_len = item.len
             if item.track.visible then
+                item:Select(true)
                 r.Main_OnCommand(41305, 0) -- trim/untrim left edge -- doesn't work with hidden tracks
-            elseif item.e > cursorPos then
-                item.len = initItemLen + diff
-                item.s = cursorPos
+            elseif item.e > cursor_pos then
+                item.len = init_item_len + diff
+                item.s = cursor_pos
                 if item.snapoffset > 0 then item.snapoffset = item.snapoffset + diff end
                 local takes = item.takes
                 for _, take in ipairs(takes) do
@@ -76,14 +69,14 @@ run(function()
                 end
             end
 
-            TrimVolumeAutomationItemFromLeft(item.item, cursorPos, initItemPos)
+            TrimVolumeAutomationItemFromLeft(item.item, cursor_pos, init_item_pos)
             if (FADE_PRESERVE_LENGTH_EXTENDING and diff > 0) or FADE_PRESERVE_LENGTH_ALWAYS then
                 if FADE_RELATIVE then
                     if item.fadeinlen > FADE_LENGTH_MIN then
-                        item.fadeinlen = item.fadeinlen * (item.len / initItemLen)
+                        item.fadeinlen = item.fadeinlen * (item.len / init_item_len)
                     end
                     if item.fadeoutlen > FADE_LENGTH_MIN then
-                        item.fadeoutlen = item.fadeoutlen * (item.len / initItemLen)
+                        item.fadeoutlen = item.fadeoutlen * (item.len / init_item_len)
                     end
                 end
             else
@@ -93,5 +86,5 @@ run(function()
         if not item.folder and FADE_OVERSHOOT then item:FadeOvershoot() end
     end
 
-    cleanup()
+    restore()
 end)

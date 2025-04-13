@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.5.7
+Version: 2.5.9
 About:
     # nvk_TAKES
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/takes
 Changelog:
+    2.5.9
+        Fixing issue with copy/paste take names scripts
+    2.5.8
+        Warn if adding FX to a large number of items/tracks at once with toggle width fx
     2.5.7
         Refactoring - grab latest version of nvk_FOLDER_ITEMS
         Deprecating 5.1 to quad script (doesn't seem to work in newer versions of Reaper)

@@ -17,7 +17,11 @@ run(function()
     end
     local track = items.tracks[1]
     if not track.folder then
-        r.MB('First selected items not on a folder track', scr.name, 0)
+        r.MB(
+            'To use this script, select multiple folder items that you want to join into a single folder item. A blank item and track will be created to fill the gap between the folder items.',
+            scr.name,
+            0
+        )
         return
     end
     local tracks = track:Children()
