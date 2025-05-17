@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 3.5.0
+Version: 3.5.1
 About:
     # nvk_SHARED
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    3.5.1
+        New option to force resizeable window as a workaround for undesired behavior with tiling window managers in Linux
     3.5.0
         IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
         New keyboard shortcuts to zoom, change font size, and center window over Reaper arrange in ReaImGui scripts
