@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.10.0
+Version: 1.11.0
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,10 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.11.0
+        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
+        Removing "Glue all selected items independently and set source name to active take name" scripts. It was making duplicate files instead of properly renaming.
+        Adding "Glue selected items independently (preserve name)" which preserves the name of the items when gluing but doesn't rename the source file
     1.10.0
         Adding back nvk_ITEMS - Group contiguous item columns
     1.9.0

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.17.5
+Version: 1.17.7
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,12 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.17.7
+        Option to check for missing project files and remove them from the search results (increases startup time)
+        Removing unnecessary Reaper 6 compatibility code
+    1.17.6
+        Dragging a virtual instrument to an empty track area will create a new armed track
+        Fix right-click context menu text for virtual instruments
     1.17.5
         Add shortcut to add FX to specific slot numbers (e.g. Ctrl+1 adds to FX slot 1, etc.)
     1.17.4

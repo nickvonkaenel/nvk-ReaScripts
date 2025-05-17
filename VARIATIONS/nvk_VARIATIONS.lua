@@ -1,6 +1,6 @@
 --[[
 Description: nvk_VARIATIONS
-Version: 1.3.4
+Version: 1.4.0
 About:
     # nvk_VARIATIONS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_VARIATIONS
     User Guide https://nvk.tools/docs/variations
 Changelog:
+    1.4.0
+        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
     1.3.4
         Refactoring - make sure to grab latest version of nvk_SHARED
     1.3.3

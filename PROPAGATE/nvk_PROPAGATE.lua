@@ -1,6 +1,6 @@
 --[[
 Description: nvk_PROPAGATE
-Version: 2.0.0
+Version: 2.1.0
 About:
     # nvk_PROPAGATE
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    2.1.0
+        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
     2.0.0
         Updated to use ReaImGui
         nvk_SHARED dependency

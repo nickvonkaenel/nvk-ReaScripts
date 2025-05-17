@@ -15,7 +15,7 @@ run(function()
     local retval, i, fxidx, param = r.GetLastTouchedFX()
     if retval then
         local track = r.GetTrack(0, i - 1)
-        local retval, fxName = r.TrackFX_GetFXName(track, fxidx, '')
+        local _, fxName = r.TrackFX_GetFXName(track, fxidx)
         fxName = string.gsub(fxName, '.*: ', '')
         r.SetExtState('nvk_TAKES - WidthFX', 'fxName', fxName, true)
         r.SetExtState('nvk_TAKES - WidthFX', 'param', tostring(param), true)

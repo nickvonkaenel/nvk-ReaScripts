@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.6.1
+Version: 2.7.0
 About:
     # nvk_AUTODOPPLER
 
@@ -14,6 +14,9 @@ Links:
     Store Page https://gum.co/nvk_AUTODOPPLER
     User Guide https://nvk.tools/docs/autodoppler
 Changelog:
+    2.7.0
+        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
+        Removing legacy v1 version of the script, v1 licenses now work with v2
     2.6.1
         Use track channel count for render
     2.6.0
@@ -35,10 +38,6 @@ Provides:
     Presets/*.*
     [main] *.lua
 --]]
---LEGACY OPTIONS (v1)-- not used in v2
-HideTooltips = false --set to true to hide the tooltips else set to false
-AutoPositionFX = true --automatically position fx window next to script UI when opening
-WarnWhenSwitchingPlugin = true --if set to false, there will be no warning when switching to a different plug-in
 --SCRIPT--
 SCRIPT_FOLDER = 'autodoppler'
 MULTIPLE_INSTANCES = true -- set to false to only allow one instance of the script to run

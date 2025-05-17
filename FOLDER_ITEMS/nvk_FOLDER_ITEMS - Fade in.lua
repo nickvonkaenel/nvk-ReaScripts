@@ -52,22 +52,18 @@ local function fadein_auto(item)
     if autoitemIdx then
         r.Main_OnCommand(40769, 0) -- unselect all tracks/items/env
         r.GetSetAutomationItemInfo(env, autoitemIdx, 'D_UISEL', 1, true)
-        ---@diagnostic disable-next-line
-        local retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 3)
+        local retval, time, _, _, tension = r.GetEnvelopePointEx(env, autoitemIdx, 3)
         if retval then
-            ---@diagnostic disable-next-line
-            retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 2)
+            retval, time, _, _, tension = r.GetEnvelopePointEx(env, autoitemIdx, 2)
             if retval then
                 itemFadeOut = item.e - time
                 fadeOutStart = time
                 itemFadeOutDir = tension
             end
         else
-            ---@diagnostic disable-next-line
-            retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 2)
+            retval, time, _, _, tension = r.GetEnvelopePointEx(env, autoitemIdx, 2)
             if retval then
-                ---@diagnostic disable-next-line
-                retval, time, value, shape, tension, selected = r.GetEnvelopePointEx(env, autoitemIdx, 1)
+                retval, time, _, _, tension = r.GetEnvelopePointEx(env, autoitemIdx, 1)
                 itemFadeOutDir = tension
             end
         end
@@ -75,6 +71,8 @@ local function fadein_auto(item)
         r.SetOnlyTrackSelected(track)
     end
     if itemFadeIn > 0 or itemFadeOut > 0 then
+        local scaling_mode = r.GetEnvelopeScalingMode(env)
+        local unity = r.ScaleToEnvelopeMode(scaling_mode, 1)
         autoitemIdx = r.InsertAutomationItem(env, -1, item.pos, item.len)
         r.GetSetAutomationItemInfo(env, autoitemIdx, 'D_LOOPSRC', 0, true)
         r.DeleteEnvelopePointRangeEx(env, autoitemIdx, item.pos, item.pos + item.len)
@@ -83,14 +81,23 @@ local function fadein_auto(item)
         if itemFadeIn > 0 then
             r.InsertEnvelopePointEx(env, autoitemIdx, item.pos, 0, fadeInCurve, itemFadeInDir, false, true)
             if fadeOutStart > fadeInEnd then
-                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, 0, 0, false, true)
+                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, unity, 0, 0, false, true)
             else
-                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, 1, fadeOutCurve, itemFadeOutDir, false, true)
+                r.InsertEnvelopePointEx(env, autoitemIdx, fadeInEnd, unity, fadeOutCurve, itemFadeOutDir, false, true)
             end
         end
         if itemFadeOut > 0 then
             if fadeOutStart > fadeInEnd then
-                r.InsertEnvelopePointEx(env, autoitemIdx, fadeOutStart, 1, fadeOutCurve, itemFadeOutDir, false, true)
+                r.InsertEnvelopePointEx(
+                    env,
+                    autoitemIdx,
+                    fadeOutStart,
+                    unity,
+                    fadeOutCurve,
+                    itemFadeOutDir,
+                    false,
+                    true
+                )
             end
             r.InsertEnvelopePointEx(env, autoitemIdx, item.pos + item.len - 0.000001, 0, 0, 0, false, true)
         end

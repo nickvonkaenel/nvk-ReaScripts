@@ -12,7 +12,7 @@ if not functionsLoaded then return end
 run(function()
     local folder_items = FolderItems.Selected():FirstTrackOnly()
     for _, folder_item in ipairs(folder_items) do
-        local child_item = folder_item:ChildItems():First()
+        local child_item = folder_item:ChildItems():Filter(function(item) return not item.join end):First()
         if child_item then folder_item.name = child_item.name end
     end
 end)

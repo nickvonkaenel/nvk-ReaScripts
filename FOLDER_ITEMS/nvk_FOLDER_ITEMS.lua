@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.12.1
+Version: 2.13.0
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,14 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.13.0
+        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
+        Store render variant paths separately from render paths (they will still show up in the render path list but normal render paths won't show up in render variant list)
+        Disable prefix/suffix for initial name on items that already have a name
+        Improve rename script behavior with names that end in numbers without separator characters beforehand
+        Ignore join items in 'Name seelected folder items from child items' script
+        Fix for folder item fade automation not working with fader scaling
+        Folder items render no longer overrides user settings for silence trim/padding options
     2.12.1
         Moving 'Include automation items in folder items' to 'Experimental' section. When a track is collapsed/hidden and an automation item is larger than the size of the item in it's track, it won't move with the item. There doesn't seem to be a way to fix this, so I'm leaving it in the experimental section for now.
         Partially fix some visual glitches in rename script with certain strings that get processed after input

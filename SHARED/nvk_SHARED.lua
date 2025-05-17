@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 3.4.1
+Version: 3.5.0
 About:
     # nvk_SHARED
 
@@ -9,6 +9,15 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    3.5.0
+        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
+        New keyboard shortcuts to zoom, change font size, and center window over Reaper arrange in ReaImGui scripts
+        Allow for custom theming of certain window colors based on docked state
+        Take into account items on nested parent tracks when calculating folder item columns with top-level setting enabled
+        License verification now notifies user when license key is for a different product
+        Fix for error in random take function when the current take can't be found
+    3.4.2
+        Exclude tracks with excluded words from being added to folder items in parent tracks
     3.4.1
         Fix for update notifications showing when no updates are available
         Restore undocked window size when undocking script after reopening

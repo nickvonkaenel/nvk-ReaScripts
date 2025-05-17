@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TAKES
-Version: 2.5.9
+Version: 2.6.0
 About:
     # nvk_TAKES
 
@@ -10,6 +10,9 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/takes
 Changelog:
+    2.6.0
+        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
+        New script: nvk_TAKES - Set snap offset to first visible take marker
     2.5.9
         Fixing issue with copy/paste take names scripts
     2.5.8

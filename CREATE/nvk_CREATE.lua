@@ -1,6 +1,6 @@
 --[[
 Description: nvk_CREATE
-Version: 1.9.2
+Version: 1.9.4
 About:
   # nvk_CREATE
 
@@ -17,6 +17,11 @@ Links:
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   Neutronic's REAPER forum profile https://forum.cockos.com/member.php?u=66313
   Neutronic's GitHub ReaScripts repository https://github.com/Neutronic/ReaScripts
+Changelog:
+  1.9.4
+    Removing opacity options since it was causing UI glitches when resizing REAPER tracks
+  1.9.3
+    Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
 Provides:
   **/*.dat
   Data/inv.cur

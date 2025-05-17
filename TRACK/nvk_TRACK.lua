@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TRACK
-Version: 1.6.0
+Version: 1.7.0
 About:
     # nvk_TRACK
 
@@ -8,6 +8,10 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.7.0
+        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
+    1.6.1
+        Duplicate tracks or items script now works with razor edits and envelope points
     1.6.0
         Deprecating SWS color scripts
     1.5.2

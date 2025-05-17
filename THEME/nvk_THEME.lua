@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.4.3
+Version: 1.4.6
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,12 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.4.6
+        Improved behavior with custom fx buttons and embedded tcp fx ui
+    1.4.5
+        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
+    1.4.4
+        New actions to load theme tab presets
     1.4.3
         Fixed error when using custom track name colors on folder tracks
     1.4.2
