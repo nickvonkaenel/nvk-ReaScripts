@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 3.5.1
+Version: 3.5.2
 About:
     # nvk_SHARED
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    3.5.2
+        Fix for required words setting not working for folder items
     3.5.1
         New option to force resizeable window as a workaround for undesired behavior with tiling window managers in Linux
     3.5.0

@@ -37,6 +37,7 @@ run(function()
             end
         end
         if next_track.folderdepth < 0 then
+            if not next_track_idx then return end -- next track isn't visible
             r.ReorderSelectedTracks(next_track_idx + 1, 2)
         elseif depth < 0 then
             r.ReorderSelectedTracks(next_track_idx + 1, 0)

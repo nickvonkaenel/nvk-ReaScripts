@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TRACK
-Version: 1.7.0
+Version: 1.7.1
 About:
     # nvk_TRACK
 
@@ -8,6 +8,8 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.7.1
+        Fix error when using the "Move selected tracks down" script and the next track isn't visible
     1.7.0
         IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
     1.6.1
