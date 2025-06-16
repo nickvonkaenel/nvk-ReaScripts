@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.13.1
+Version: 2.14.1
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,10 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.14.1
+        Option to store script settings with project in rename script
+    2.14.0
+        New option to specify track names should be excluded from contributing to folder item size calculations. Requires nvk_SHARED 3.6.0
     2.13.1
         Improvements to Join script
     2.13.0

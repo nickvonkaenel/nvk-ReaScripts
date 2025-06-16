@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 3.5.2
+Version: 3.6.3
 About:
     # nvk_SHARED
 
@@ -9,6 +9,10 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    3.6.3
+        Font selection box not showing selected font name as selected in certain cases
+    3.6.0
+        IMPORTANT: reverting behavior introduced in 3.4.2 to exclude tracks with excluded words from being added to folder items in parent tracks. If this behavior is desired, there is a new setting in "nvk_FOLDER_ITEMS - Settings" Track Filters which can be used to specify exactly which track names should be excluded from contributing to folder item size calcultation. Will need to update to nvk_FOLDER_ITEMS 2.13.2 to change the setting
     3.5.2
         Fix for required words setting not working for folder items
     3.5.1

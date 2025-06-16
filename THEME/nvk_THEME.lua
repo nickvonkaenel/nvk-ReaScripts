@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.4.6
+Version: 1.4.7
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,8 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.4.7
+        New script to color selected items to a random track color
     1.4.6
         Improved behavior with custom fx buttons and embedded tcp fx ui
     1.4.5

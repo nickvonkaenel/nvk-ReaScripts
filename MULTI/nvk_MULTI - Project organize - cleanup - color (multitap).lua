@@ -1,7 +1,5 @@
 -- @noindex
 local r = reaper
--- USER CONFIG --
-RainbowItems = false
 -- SCRIPT --
 function SaveSelectedItems(selectedItemsTable)
     for i = 0, reaper.CountSelectedMediaItems(0) - 1 do
@@ -25,14 +23,7 @@ function Main()
         if reaper.CountSelectedMediaItems(0) > 0 then
             local items = {}
             SaveSelectedItems(items)
-            if RainbowItems then
-                for i, item in ipairs(items) do
-                    reaper.Main_OnCommand(reaper.NamedCommandLookup '_SWS_COLITEMNEXTCUST', 0) --SWS: Set selected item(s) to next custom color
-                    reaper.SetMediaItemSelected(item, 0)
-                end
-            else
-                reaper.Main_OnCommand(reaper.NamedCommandLookup '_SWS_ITEMRANDCOL', 0) --items to one random custom color
-            end
+            r.Main_OnCommand(r.NamedCommandLookup '_RSe896f82bdd3cd3d72527c29a63409d623fb37e79', 0) -- Script: nvk_THEME - Track Colors - Set selected items to random track color.lua
             RestoreSelectedItems(items)
         else
             reaper.Main_OnCommand(reaper.NamedCommandLookup '_RSe357cdb22b7617e5366c779ae624212071459ac1', 0) --Script: nvk_TRACK - Move folder and named tracks to top of project and video track to top.lua

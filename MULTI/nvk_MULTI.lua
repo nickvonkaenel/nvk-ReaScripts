@@ -1,6 +1,6 @@
 --[[
 Description: nvk_MULTI
-Version: 1.4.0
+Version: 1.4.1
 About:
     # nvk_MULTI
 
@@ -8,6 +8,8 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.4.1
+        Make use of new nvk_THEME item coloring script
     1.4.0
         IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
     1.3.0

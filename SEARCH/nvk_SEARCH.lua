@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.17.7
+Version: 1.17.8
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,9 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.17.8
+        Reverting back to old behavior of adding to the selected track or item when adding instrument plug-ins. The default behavior can now be changed in the settings and as before toggled with alt
+        Name tracks when adding instruments
     1.17.7
         Option to check for missing project files and remove them from the search results (increases startup time)
         Removing unnecessary Reaper 6 compatibility code
