@@ -1,6 +1,6 @@
 --[[
 Description: nvk_CREATE
-Version: 1.9.4
+Version: 1.9.5
 About:
   # nvk_CREATE
 
@@ -18,6 +18,8 @@ Links:
   Neutronic's REAPER forum profile https://forum.cockos.com/member.php?u=66313
   Neutronic's GitHub ReaScripts repository https://github.com/Neutronic/ReaScripts
 Changelog:
+  1.9.5
+    Setting max automatic fade length to 4 seconds
   1.9.4
     Removing opacity options since it was causing UI glitches when resizing REAPER tracks
   1.9.3

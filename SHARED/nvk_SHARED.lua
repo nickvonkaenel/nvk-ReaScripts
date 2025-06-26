@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 3.6.3
+Version: 3.7.0
 About:
     # nvk_SHARED
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    3.7.0
+        Support for new nvk_SEARCH features
     3.6.3
         Font selection box not showing selected font name as selected in certain cases
     3.6.0
