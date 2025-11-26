@@ -5,8 +5,8 @@
 local r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end
 -- SCRIPT --
 run(function()
@@ -21,7 +21,7 @@ run(function()
         r.SetExtState('nvk_TAKES - WidthFX', 'param', tostring(param), true)
     else
         r.ShowMessageBox(
-            "Click the fx parameter you want to use for automation, then run the script again.\n\nThe fx and parameter you select will be saved and loaded the next time you run 'nvk_TAKES - Toggle width fx or toggle track width envelope'",
+            'Click the fx parameter you want to use for automation, then run the script again.\n\nThe fx and parameter you select will be saved and loaded the next time you run \'nvk_TAKES - Toggle width fx or toggle track width envelope\'',
             scr.name .. ' - Custom',
             0
         )

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.17.9
+Version: 1.19.1
 About:
     # nvk_SEARCH
 
@@ -10,84 +10,37 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
-    1.17.9
-        Option to set new instrument tracks to auto-arm when selected
-    1.17.8
-        Reverting back to old behavior of adding to the selected track or item when adding instrument plug-ins. The default behavior can now be changed in the settings and as before toggled with alt
-        Name tracks when adding instruments
-    1.17.7
-        Option to check for missing project files and remove them from the search results (increases startup time)
-        Removing unnecessary Reaper 6 compatibility code
-    1.17.6
-        Dragging a virtual instrument to an empty track area will create a new armed track
-        Fix right-click context menu text for virtual instruments
-    1.17.5
-        Add shortcut to add FX to specific slot numbers (e.g. Ctrl+1 adds to FX slot 1, etc.)
-    1.17.4
-        Make new track with armed midi the default behavior when adding instrument plug-ins. Now alt-add will add to the selected track or item
-        New hotkey: Ctrl+F to clear the search field and reset the filter
-    1.17.3
-        Script was not properly getting the last clicked item or track when determining where to add FX
-    1.17.2
-        Refactoring - make sure to grab latest version of nvk_SHARED
-        Alt key to open or not open projects in new tab (opposite of default setting)
-    1.17.1
-        Error when opening palette mode again after adding a result with persistent mode enabled
-    1.17.0
-        New filter option: project templates (filter key: s)
-        Adding option to open projects as templates from right-click context menu
-        Context menu for project templates allows them to be opened not as a template, but a project in case you want to edit them
-        Palette mode is now moveable and resizable (move by dragging from the right edge)
-        Better tooltips for palette mode buttons
-    1.16.4
-        FX chains now show up in FX folder results
-        Better display of project folder path in folder list + option to hide it
-    1.16.3
-        Improvements to smart folder results
-    1.16.2
-        Add support for smart folders (thanks Sexan for helping with this)
-        Option to keep window focused after adding FX
-    1.16.1
-        Warn if REAPER 7.18 or higher is not installed (required for InsertTrackInProject)
-    1.16.0
-        Incorrect results window height in palette mode with results scaling
-        Use defaults when creating a new track in a project
-        Option to include folder name in search
-    1.15.3
-        Error when using keyboard shortcuts to navigate results in palette mode with no search string
-    1.15.2
-        Refactoring - make sure to grab latest version of nvk_SHARED
-    1.15.1
-        When selecting items, the cursor now properly moves to the start of the items
-    1.15.0
-        New section in preferences for filter keys (filter changing based on first letter in search followed by space)
-        Option to disable filter keys completely
-        Option to change the filter key trigger from space to tab
-        User text color for parent folders not displayed correctly
-    1.14.0
-        Fix for font paths in Reaper 6
-    1.13.0
-        Updated to ReaImGui 0.9.2
-        Visual improvements
-    1.12.5
-        Open in file explorer and open in external editor sometimes didn't work on Windows.
-        FX and Track Templates can create new tracks now if no items or tracks are selected.
-    1.12.4
-        Compatibility with new nvk_SHARED font system
+    1.19.1
+        Improve behavior when nvk_SEARCH is set to always on top and a project is loaded with prompts in the same location as the script. Not completely fixed, recommend not using 'Always on Top' if possible
+    1.19.0
+        Updated layout for preferences window
+        Reduce flicker when opening palette mode
+    1.18.3
+        Adding subprojects as a result type. Filter key for project templates is now 'n' instead of 's'.
+    1.18.2
+        Selecting multiple results and pressing enter will now add all of them properly
+        Sidebar can now be moved to the right side of the window
+        Font improvements
+    1.18.1
+        Fix for error when timestamps aren't parsed correctly
+        New tracks added with drag and drop will now be selected and set to last touched in order to match behavior of the built-in FX browser
+        Error when parsing smart fx folders with no string match
+    1.18.0
+        Compatibility with nvk_SHARED 4.0.0. Make sure to update all your scripts to the latest version.
     For full changelog, visit https://nvk.tools/docs/search#changelog
 Provides:
-    **/*.dat
+    Data/**/*.lua
     [main] *.lua
 --]]
 STARTUP_TIME = reaper.time_precise()
 SCRIPT_FOLDER = 'search'
 r = reaper
-if not r.APIExists 'InsertTrackInProject' then
+if not r.APIExists('InsertTrackInProject') then
     r.MB('Please update to REAPER 7.18 or higher to use the script.', 'nvk_SEARCH', 0)
     return
 end
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end

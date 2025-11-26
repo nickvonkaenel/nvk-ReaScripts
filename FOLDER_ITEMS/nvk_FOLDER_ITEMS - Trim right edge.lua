@@ -3,8 +3,8 @@
 r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end
 -- SCRIPT --
 ---@param track Track?
@@ -12,7 +12,9 @@ if not functionsLoaded then return end
 ---@return Item?
 local function prev_track_item_in_arrangeview(track, pos)
     if not track then return end
-    return track:Items({ s = Column.ArrangeView().s, e = pos }):Last()
+    local start = Column.ArrangeView().s
+    local item = track:Items({ s = -math.huge, e = pos }):Last()
+    if item.rgnend > start then return item end
 end
 run(function()
     local restore = RestoreArrangeState()

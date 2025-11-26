@@ -4,8 +4,8 @@ SCRIPT_FOLDER = 'simple'
 r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end
 
 bar.no_logo_text = true
@@ -23,7 +23,7 @@ function SimpleDraw()
     if proj ~= scr.proj then
         scr.proj = proj
         scr.proj_name = r.GetProjectName(proj)
-        scr.proj_name = scr.proj_name:match '(.+)%.[^%.]+$' or scr.proj_name
+        scr.proj_name = scr.proj_name:match('(.+)%.[^%.]+$') or scr.proj_name
         LoadSubprojectSettings()
     end
 
@@ -49,7 +49,7 @@ function SimpleDraw()
     if ImGui.BeginTable(ctx, 'buttons', 2, nil, w) then
         ImGui.TableSetupColumn(ctx, 'reset', ImGui.TableColumnFlags_WidthStretch)
         ImGui.TableSetupColumn(ctx, 'apply', ImGui.TableColumnFlags_WidthStretch)
-        ImGui.PushFont(ctx, fonts.heading2)
+        ImGui.PushFont(ctx, FONT.default, FONT_SIZE.heading2)
         ImGui.PushStyleVar(ctx, ImGui.StyleVar_FrameRounding, 24)
         ImGui.TableNextColumn(ctx)
         if ImGui.Button(ctx, 'Cancel', -FLT_MIN, h * 1.1) then scr.exit = true end

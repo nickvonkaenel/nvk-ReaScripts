@@ -11,7 +11,7 @@ local function main()
             local take = reaper.GetActiveTake(item)
             if take then
                 if reaper.TakeFX_GetCount(take) > 0 then
-                    reaper.Main_OnCommand(reaper.NamedCommandLookup '_S&M_TGL_TAKEFX_BYP', 0) --fx bypass toggle items
+                    reaper.Main_OnCommand(reaper.NamedCommandLookup('_S&M_TGL_TAKEFX_BYP'), 0) --fx bypass toggle items
                     fx_found = true
                     break
                 end
@@ -21,7 +21,7 @@ local function main()
     end
 end
 
-local scrName = ({ reaper.get_action_context() })[2]:match '.-([^/\\]+).lua$'
+local scrName = ({ reaper.get_action_context() })[2]:match('.-([^/\\]+).lua$')
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
 main()

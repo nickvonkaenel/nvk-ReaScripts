@@ -1,6 +1,6 @@
 --[[
 Description: nvk_VARIATIONS
-Version: 1.4.0
+Version: 1.5.1
 About:
     # nvk_VARIATIONS
 
@@ -10,32 +10,11 @@ Links:
     Store Page https://gum.co/nvk_VARIATIONS
     User Guide https://nvk.tools/docs/variations
 Changelog:
-    1.4.0
-        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
-    1.3.4
-        Refactoring - make sure to grab latest version of nvk_SHARED
-    1.3.3
-        Refactoring - make sure to grab latest version of nvk_SHARED
-    1.3.2
-        Option to round pitch shift amount to nearest semitone
-    1.3.1
-        Restart playback after randomizing parameters if playing
-    1.3.0
-        Updated to ReaImgui 0.9.2
-        Visual improvements
-    1.2.1
-        Offset wasn't being applied to selected items with 0 variations
-    1.2.0
-        Refactored for better performance/stability
-        Improved ripple mode behavior
-        New option "Ripple markers": if enabled, ripple mode: All will move markers in addition to items
-        Better handling of nested folder items
-        Project changes while the script is open have more predictable behavior
-        Time selection to highlight variations
-        New toggle button to copy automation
+    1.5.0
+        Compatibility with nvk_SHARED 4.0.0. Make sure to update all your scripts to the latest version.
     For full changelog, visit https://nvk.tools/docs/variations#changelog
 Provides:
-    **/*.dat
+    Data/**/*.lua
     [main] *.lua
 --]]
 local ipairs2 = ipairs
@@ -48,5 +27,5 @@ SCRIPT_FOLDER = 'variations'
 r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_PROPAGATE
-Version: 2.1.0
+Version: 2.2.0
 About:
     # nvk_PROPAGATE
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    2.2.0
+        Compatibility with nvk_SHARED 4.0.0. Make sure to update all your scripts to the latest version.
     2.1.0
         IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
     2.0.0
@@ -17,13 +19,13 @@ Changelog:
     1.0.0
         Initial release
 Provides:
-  **/*.dat
+  Data/**/*.lua
   [main] *.lua
 --]]
 SCRIPT_FOLDER = 'propagate'
 r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end

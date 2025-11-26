@@ -18,23 +18,23 @@ function Main()
     local focus = reaper.GetCursorContext()
 
     if focus == 0 then
-        reaper.Main_OnCommand(reaper.NamedCommandLookup '_SWS_TRACKRANDCOL', 0) --SWS: Set selected track(s) to one random custom color
+        reaper.Main_OnCommand(reaper.NamedCommandLookup('_SWS_TRACKRANDCOL'), 0) --SWS: Set selected track(s) to one random custom color
     else
         if reaper.CountSelectedMediaItems(0) > 0 then
             local items = {}
             SaveSelectedItems(items)
-            r.Main_OnCommand(r.NamedCommandLookup '_RSe896f82bdd3cd3d72527c29a63409d623fb37e79', 0) -- Script: nvk_THEME - Track Colors - Set selected items to random track color.lua
+            r.Main_OnCommand(r.NamedCommandLookup('_RSe896f82bdd3cd3d72527c29a63409d623fb37e79'), 0) -- Script: nvk_THEME - Track Colors - Set selected items to random track color.lua
             RestoreSelectedItems(items)
         else
-            reaper.Main_OnCommand(reaper.NamedCommandLookup '_RSe357cdb22b7617e5366c779ae624212071459ac1', 0) --Script: nvk_TRACK - Move folder and named tracks to top of project and video track to top.lua
-            r.Main_OnCommand(r.NamedCommandLookup '_RS0a4fcdc750b810a7eabed6d24d882a6b4a7a5af3', 0) -- Script: nvk_THEME - Track Colors - Apply - Manual.lua
+            reaper.Main_OnCommand(reaper.NamedCommandLookup('_RSe357cdb22b7617e5366c779ae624212071459ac1'), 0) --Script: nvk_TRACK - Move folder and named tracks to top of project and video track to top.lua
+            r.Main_OnCommand(r.NamedCommandLookup('_RS0a4fcdc750b810a7eabed6d24d882a6b4a7a5af3'), 0) -- Script: nvk_THEME - Track Colors - Apply - Manual.lua
             local section, key = 'nvk_projectOrganize', 'time'
             local time = os.time()
 
             if reaper.HasExtState(section, key) then
                 local oldTime = reaper.GetExtState(section, key)
                 if time - oldTime < 1 then
-                    reaper.Main_OnCommand(reaper.NamedCommandLookup '_RSe5d6c1d1ae4478f4e98b19af2855be9c8d2e96d3', 0) --Script: nvk_TRACK - Remove unused tracks.lua
+                    reaper.Main_OnCommand(reaper.NamedCommandLookup('_RSe5d6c1d1ae4478f4e98b19af2855be9c8d2e96d3'), 0) --Script: nvk_TRACK - Remove unused tracks.lua
                 end
                 reaper.DeleteExtState(section, key, false)
             end
@@ -43,7 +43,7 @@ function Main()
     end
 end
 
-local scrPath, scrName = ({ reaper.get_action_context() })[2]:match '(.-)([^/\\]+).lua$'
+local scrPath, scrName = ({ reaper.get_action_context() })[2]:match('(.-)([^/\\]+).lua$')
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
 Main()

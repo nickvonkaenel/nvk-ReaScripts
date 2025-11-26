@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.10.1
+Version: 2.11.0
 About:
     # nvk_SUBPROJECT
 
@@ -10,17 +10,12 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/subproject
 Changelog:
-    2.10.1
-        Time selection length will now be used when creating subprojects with empty tracks
-    2.10.0
-        IMPORTANT: Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
-    2.9.0
-        Time selections could interfere with subproject render length
-    2.8.7
-        Refactoring - grab latest version of nvk_FOLDER_ITEMS and nvk_SHARED
+    2.11.0
+        Compatibility with nvk_SHARED 4.0.0. Make sure to update all your scripts to the latest version.
+        Fixing regression where folder tracks were being created in the main project instead of the subproject
     For full changelog, visit https://nvk.tools/docs/workflow/subproject#changelog
 Provides:
-    **/*.dat
+    Data/**/*.lua
     [main] *.lua
 --]]
 -- SETUP --
@@ -28,17 +23,17 @@ r = reaper
 
 local function remove_extensions(name)
     if not name then return '' end
-    name = name:match '(.+)%.[^%.]+$' or name
-    name = name:match '(.-)[- ]*glued' or name
-    name = name:match '(.+)[_ -]+%d+$' or name
-    name = name:match '(.-)[ ]*render' or name
-    name = name:match '(.+)reversed' or name
-    name = name:match '(.-)[_ -]+$' or name
+    name = name:match('(.+)%.[^%.]+$') or name
+    name = name:match('(.-)[- ]*glued') or name
+    name = name:match('(.+)[_ -]+%d+$') or name
+    name = name:match('(.-)[ ]*render') or name
+    name = name:match('(.+)reversed') or name
+    name = name:match('(.-)[_ -]+$') or name
     return name
 end
 
 local function is_subproject(item)
-    return select(2, r.GetItemStateChunk(item, '', false)):find 'SOURCE RPP_PROJECT' and true or false
+    return select(2, r.GetItemStateChunk(item, '', false)):find('SOURCE RPP_PROJECT') and true or false
 end
 
 FOCUS = r.GetCursorContext()
@@ -73,8 +68,8 @@ end
 
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end
 
 if DO_SUBPROJECT_FIX then

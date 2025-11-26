@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.12.0
+Version: 1.13.1
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.13.0
+        Compatibility with nvk_SHARED 4.0.0. Make sure to update all your scripts to the latest version.
     1.12.0
         Adding some new scripts
     1.11.0
@@ -61,7 +63,7 @@ Changelog:
     1.0.1 Fixing bug in 'nvk_ITEMS - Move cursor to next/previous transient', adding option to skip item ends
     1.0.0 Initial release
 Provides:
-    **/*.dat
+    Data/**/*.lua
     [main] *.lua
 --]]
 reaper.ShowMessageBox(

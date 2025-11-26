@@ -7,5 +7,5 @@ local r = reaper
 r.Undo_BeginBlock()
 r.SetExtState('nvk_VARIATIONS', 'preset', '1', false)
 r.SetExtState('nvk_VARIATIONS', 'var_amt', '1', false)
-r.Main_OnCommand(r.NamedCommandLookup '_RS27a8818a7d4eb2c7e02a8893c95d52ae96852382', 0) -- nvk_VARIATIONS
+r.Main_OnCommand(r.NamedCommandLookup('_RS27a8818a7d4eb2c7e02a8893c95d52ae96852382'), 0) -- nvk_VARIATIONS
 r.Undo_EndBlock('nvk_VARIATIONS - New Variation - Preset 1', -1)

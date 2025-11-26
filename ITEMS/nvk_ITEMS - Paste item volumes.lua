@@ -3,8 +3,8 @@
 local r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end
 -- SCRIPT --
 run(function()
@@ -12,7 +12,7 @@ run(function()
     if not itemVolumesString then return end
     local items = Items()
     local i = 0
-    for volume in itemVolumesString:gmatch '([^,]+)' do
+    for volume in itemVolumesString:gmatch('([^,]+)') do
         i = i + 1
         if i > #items then break end
         local item = items[i]

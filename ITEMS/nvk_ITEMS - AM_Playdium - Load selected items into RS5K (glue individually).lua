@@ -3,14 +3,14 @@
 r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end
 
 local function hasRS5k(track)
     for i = 0, track.fxcount - 1 do
         local rv, fxname = r.TrackFX_GetFXName(track.mediatrack, i)
-        if fxname:find 'RS5K' then return true end
+        if fxname:find('RS5K') then return true end
     end
     return false
 end
@@ -25,8 +25,8 @@ run(function()
     local midirand_idx, rs5k_idx
     for i = 0, track.fxcount - 1 do
         local rv, fxname = reaper.TrackFX_GetFXName(mediatrack, i)
-        if fxname:find 'RS5K' then rs5k_idx = i end
-        if fxname:find '_AM_Playdium_Random_Midi_Velocity_Generator' then midirand_idx = i end
+        if fxname:find('RS5K') then rs5k_idx = i end
+        if fxname:find('_AM_Playdium_Random_Midi_Velocity_Generator') then midirand_idx = i end
     end
     if not midirand_idx then
         midirand_idx = reaper.TrackFX_AddByName(mediatrack, '_AM_Playdium_Random_Midi_Velocity_Generator', false, -1)

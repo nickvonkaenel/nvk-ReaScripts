@@ -1,12 +1,11 @@
 -- @noindex
 -- Sorts items onto as few tracks as possible. With no items selected it will take into account folders and only work on the folder you have selected. If a non-folder track is selected, it will work on the entire project. It takes into account tracks with fx/sends so that things don't get messed up hopefully. If you have items selected, it doesn't check the tracks and just sorts the selected items on the tracks starting with the first track the items are on.
--- USER CONFIG --
 -- SETUP --
 r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end
 -- SCRIPT --
 local organizer = {}
@@ -76,8 +75,8 @@ function organizer:Organize()
         local move_track = self.init_track
         local last_track
         table.sort(c.items, function(a, b) return a.track_num < b.track_num end)
-        for i = 1, #c.items do
-            local item = c.items[i]
+        for j = 1, #c.items do
+            local item = c.items[j]
             local track = item.track
             if not last_track then last_track = track end
             if track ~= last_track then

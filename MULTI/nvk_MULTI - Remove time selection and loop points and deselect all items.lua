@@ -1,6 +1,6 @@
 --@noindex
 --SCRIPT--
-local scrName = ({ reaper.get_action_context() })[2]:match '.-([^/\\]+).lua$'
+local scrName = ({ reaper.get_action_context() })[2]:match('.-([^/\\]+).lua$')
 reaper.Undo_BeginBlock()
 reaper.PreventUIRefresh(1)
 reaper.Main_OnCommand(40020, 0)

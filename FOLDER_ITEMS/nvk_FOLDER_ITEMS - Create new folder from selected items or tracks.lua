@@ -4,8 +4,8 @@
 r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end
 -- SCRIPT --
 ---@param tracks Tracks
@@ -45,12 +45,15 @@ local rv = run(function()
         end
         create_folder(item_tracks)
     end
+    if COLOR_TRACKS_AFTER_FOLDER_CREATION then
+        r.Main_OnCommand(r.NamedCommandLookup('_RS0a4fcdc750b810a7eabed6d24d882a6b4a7a5af3'), 0) -- Script: nvk_THEME - Track Colors - Apply - Manual.lua
+    end
     return true
 end)
 
 if rv then -- for some reason, when these are in the main function, they don't work
     if RENAME_ITEMS_AFTER_FOLDER_CREATION and r.CountSelectedMediaItems(0) > 0 then
-        r.Main_OnCommand(r.NamedCommandLookup '_RSe8733f58b84754de32c3dd2cdd466a1ac6231322', 0) -- rename items
+        r.Main_OnCommand(r.NamedCommandLookup('_RSe8733f58b84754de32c3dd2cdd466a1ac6231322'), 0) -- rename items
     elseif RENAME_TRACK_AFTER_NEW_FOLDER_CREATION then
         r.Main_OnCommand(40696, 0) -- rename last touched track
     end

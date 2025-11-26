@@ -227,6 +227,35 @@ function do_space_replace()
     );
 );
 
+// removes text from the cursor position to the previous space/underscore/hyphen or start of string
+function remove_word(str, pos)
+    local (c, i, start_pos)
+(
+    i = pos - 2;
+    #temp = "";
+    start_pos = -1;
+    while(c = str_getchar(str, i)) (
+        i -= 1;
+        (c == ' ' || c == '_' || c == '-') ? (
+            i > 0 ? (
+                start_pos = i + 1;
+            );
+            i = -1;
+        );
+    );
+    i = 0;
+    while(c = str_getchar(str, i)) (
+        i <= start_pos ? (
+            str_setchar(#temp, i, c);
+        );
+        i += 1;
+    );
+    strcpy(str, #temp);
+    SelectionStart = 0;
+    SelectionEnd = 0;
+    str;
+);
+
 EventFlag == InputTextFlags_CallbackCharFilter ? (
     EventChar == ' ' ? (
         space_pressed = 1;
@@ -255,6 +284,10 @@ EventFlag == InputTextFlags_CallbackCharFilter ? (
     spaces > 0 && spaces < 3 ? space_replace(#str);
     spaces == 3 ? space_remove(#str);
     spaces == 100 ? ucs_space_replace(#str);
+    do_remove_word > 0 ? (
+        remove_word(#str, CursorPos);
+        do_remove_word = 0;
+    );
     // TODO: these currently only works for one match, need to make it work for every match
     matchi("%0{before}snvk*", #str) ? (
         #temp = strcat(before, "nvk");

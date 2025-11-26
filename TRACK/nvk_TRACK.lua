@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TRACK
-Version: 1.7.1
+Version: 1.8.1
 About:
     # nvk_TRACK
 
@@ -8,6 +8,10 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.8.1
+        Insert track would sometimes cause folder heirarchy to get modified unintentionally
+    1.8.0
+        Compatibility with nvk_SHARED 4.0.0. Make sure to update all your scripts to the latest version.
     1.7.1
         Fix error when using the "Move selected tracks down" script and the next track isn't visible
     1.7.0
@@ -31,7 +35,7 @@ Changelog:
     1.0
         Initial release
 Provides:
-    **/*.dat
+    Data/**/*.lua
     [main] *.lua
 --]]
 reaper.ShowMessageBox(

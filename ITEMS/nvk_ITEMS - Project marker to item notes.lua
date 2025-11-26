@@ -4,8 +4,8 @@
 local r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end
 -- USER CONFIG --
 SHOW_SUCCESS_MESSAGE = true -- change to false if you don't want feedback after
@@ -22,7 +22,7 @@ run(function()
             local rv, isrgn, pos, rgnend, name, markrgnindexnumber = r.EnumProjectMarkers(idx)
             if not isrgn then
                 if pos > itemEnd then break end
-                if float_equal(pos, itemPos) then
+                if FloatEqual(pos, itemPos) then
                     cnt = cnt + 1
                     r.GetSetMediaItemInfo_String(item, 'P_NOTES', name, true)
                 end

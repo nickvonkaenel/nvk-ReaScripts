@@ -4,8 +4,8 @@
 local r = reaper
 SEP = package.config:sub(1, 1)
 DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match '@(.+[/\\])' .. DATA .. SEP
-dofile(DATA_PATH .. 'functions.dat')
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+dofile(DATA_PATH .. 'functions.lua')
 if not functionsLoaded then return end
 -- SCRIPT --
 local function reset_pos(items)
@@ -81,7 +81,7 @@ local align = {
         snapoffset_pos(items)
     end,
     different_tracks = function(items)
-        if not config.mode:find 'different_tracks' then return true end
+        if not config.mode:find('different_tracks') then return true end
         for i, item in ipairs(items) do
             local track = Track(config.items[item.guid].track)
             if track then item.track = track end
@@ -89,12 +89,12 @@ local align = {
         end
     end,
     different_tracks_same_pos = function(items)
-        if not config.mode:find 'different_tracks' then return true end
+        if not config.mode:find('different_tracks') then return true end
         reset_tracks(items)
         same_pos(items)
     end,
     different_tracks_snap_offset = function(items)
-        if not config.mode:find 'different_tracks' then return true end
+        if not config.mode:find('different_tracks') then return true end
         if allzero_snapoffsets(items) then return true end
         reset_tracks(items)
         snapoffset_pos(items)
@@ -133,7 +133,7 @@ run(function()
     local items = Items():Filter(function(item) return not item.folder end)
     if #items == 0 then return end
     local mode = current_mode(items)
-    pcall(doFile, scr.paths.config)
+    pcall(dofile, scr.paths.config)
     if not config or config.guid ~= guid_string(items) then
         config = {
             guid = guid_string(items),
