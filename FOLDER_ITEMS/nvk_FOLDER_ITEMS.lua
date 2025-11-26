@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.15.3
+Version: 2.15.4
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.15.4
+        Error when selecting UCS user categories in preferences
     2.15.3
         Allow trimming from edge if target item is partially visible (before it had to be mostly visible)
     2.15.2
