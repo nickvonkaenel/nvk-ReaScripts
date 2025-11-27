@@ -14,7 +14,7 @@ local function prev_track_item_in_arrangeview(track, pos)
     if not track then return end
     local start = Column.ArrangeView().s
     local item = track:Items({ s = -math.huge, e = pos }):Last()
-    if item.rgnend > start then return item end
+    if item and item.rgnend > start then return item end
 end
 run(function()
     local restore = RestoreArrangeState()

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.5.1
+Version: 1.5.2
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,8 @@ Links:
     Store Page https://gum.co/nvk_THEME
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.5.2
+        Error when selecting transport settings section
     1.5.1
         Fix sizing of independent track colors window
         Disable the gradient checkbox when it would have no effect

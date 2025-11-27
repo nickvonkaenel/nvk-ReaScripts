@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.15.4
+Version: 2.15.5
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.15.5
+        Error when using trim scripts with no items selected
     2.15.4
         Error when selecting UCS user categories in preferences
     2.15.3

@@ -14,7 +14,7 @@ local function next_track_item_in_arrangeview(track, pos)
     if not track then return end
     local _end = Column.ArrangeView().e
     local item = track:Items({ s = pos, e = math.huge }):First()
-    if item.pos < _end then return item end
+    if item and item.pos < _end then return item end
 end
 
 run(function()
