@@ -3,10 +3,11 @@
 SCRIPT_FOLDER = 'simple'
 r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 
 bar.no_logo_text = true
 
@@ -29,7 +30,9 @@ function SimpleDraw()
 
     bar.hover_txt = bar.hover_txt or 'nvk_SP Settings'
     local rv
-    if not config.tail then config.tail = 0 end
+    if not config.tail then
+        config.tail = 0
+    end
     local precision = config.tail < 0.1 and 3 or config.tail < 1 and 2 or 1
     local format = string.format('%%.%df', precision)
     rv, config.tail = gui.Drag(
@@ -52,10 +55,14 @@ function SimpleDraw()
         ImGui.PushFont(ctx, FONT.default, FONT_SIZE.heading2)
         ImGui.PushStyleVar(ctx, ImGui.StyleVar_FrameRounding, 24)
         ImGui.TableNextColumn(ctx)
-        if ImGui.Button(ctx, 'Cancel', -FLT_MIN, h * 1.1) then scr.exit = true end
+        if ImGui.Button(ctx, 'Cancel', -FLT_MIN, h * 1.1) then
+            scr.exit = true
+        end
         ImGui.TableNextColumn(ctx)
         Colors.ColoredButtonPush()
-        if ImGui.Button(ctx, 'Ok', -FLT_MIN, h * 1.1) then Actions.Run() end
+        if ImGui.Button(ctx, 'Ok', -FLT_MIN, h * 1.1) then
+            Actions.Run()
+        end
         Colors.ColoredButtonPop()
         ImGui.PopFont(ctx)
         ImGui.PopStyleVar(ctx)

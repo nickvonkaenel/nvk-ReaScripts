@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 1.19.1
+Version: 1.20.0
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,9 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    1.20.0
+        Added 'Take Marker' as a result type
+        Fix error when adding fx to a folder with the right click menu when an empty folder name exists
     1.19.1
         Improve behavior when nvk_SEARCH is set to always on top and a project is loaded with prompts in the same location as the script. Not completely fixed, recommend not using 'Always on Top' if possible
     1.19.0
@@ -40,7 +43,8 @@ if not r.APIExists('InsertTrackInProject') then
     return
 end
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end

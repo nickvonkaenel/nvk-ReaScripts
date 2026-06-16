@@ -2,14 +2,17 @@
 -- SETUP --
 local r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 run(function()
     local track = Tracks()[1] or Track.LastTouched()
-    if not track then return end
+    if not track then
+        return
+    end
     local cursorPos = r.GetCursorPosition()
     local items = track.items
     for i = #items, 1, -1 do

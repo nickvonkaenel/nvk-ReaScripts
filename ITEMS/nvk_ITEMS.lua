@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.13.1
+Version: 1.13.3
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,10 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.13.3
+        Improved behavior of select and move to next item and preserve playback state script
+    1.13.2
+        Toggle high resolution peaks on selected video items
     1.13.0
         Compatibility with nvk_SHARED 4.0.0. Make sure to update all your scripts to the latest version.
     1.12.0

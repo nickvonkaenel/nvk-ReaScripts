@@ -251,6 +251,7 @@ function remove_word(str, pos)
         i += 1;
     );
     strcpy(str, #temp);
+    CursorPos = start_pos >= 0 ? (start_pos + 1) : 0;
     SelectionStart = 0;
     SelectionEnd = 0;
     str;

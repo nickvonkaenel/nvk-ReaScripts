@@ -7,10 +7,11 @@ MOUSEWHEEL_FADECURVE_OUT = true -- if true, will use fade out when mouse isn't h
 local is_new, _, _, _, _, _, val = reaper.get_action_context() -- has to be called first to get proper action context for mousewheel
 local r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 local mediaitem, mousepos = r.BR_ItemAtMouseCursor()
 local item = Item(mediaitem)
@@ -28,7 +29,9 @@ if mousepos >= 0 then
         local items = track and track:Items():Selected()
         if items and #items > 0 then
             local nearestEdge, isEnd = items:NearestEdge(mousepos, true)
-            if nearestEdge then MOUSEWHEEL_FADECURVE_OUT = isEnd end
+            if nearestEdge then
+                MOUSEWHEEL_FADECURVE_OUT = isEnd
+            end
         end
     end
 end

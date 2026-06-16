@@ -1,41 +1,47 @@
 -- @noindex
+-- Removes folder items, items, tracks, envelopes, automation items, or FX depending on where the mouse is hovering.
 -- SETUP --
 r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 run(function()
     local x, y = r.GetMousePosition()
     local item = Item(r.GetItemFromPoint(x, y, false))
-    if item then return item:DeleteVolumeAutoItem():ChildItems(true):Delete() end
-    local mediaTrack, info = r.GetThingFromPoint(x, y)
-    if mediaTrack and info then
-        local track = Track(mediaTrack)
+    if item then
+        if item.folder then
+            item:DeleteVolumeAutoItem():ChildItems(true):Delete()
+        else
+            item:Delete()
+        end
+        return
+    end
+    local media_track, info = r.GetThingFromPoint(x, y)
+    if media_track and info then
+        local track = Track(media_track)
         assert(track, 'Invalid track')
         if info:find('^tcp') or info:find('^mcp') then
             track:Children(true):Delete()
         elseif info:find('^env') then -- includes envcp
-            local envIdx = tonumber(info:match('%d+$'))
-            assert(envIdx, 'Invalid envelope index')
-            local env = Track(mediaTrack):EnvelopeByIdx(envIdx)
+            local env_idx = math.floor(assert(tonumber(info:match('%d+$')), 'Invalid envelope index'))
+            local env = assert(track:EnvelopeByIdx(env_idx), 'Invalid envelope')
             if info:find('envelope') then
-                local mousePos = r.GetSet_ArrangeView2(0, false, x, x + 1)
+                local mouse_pos = r.GetSet_ArrangeView2(0, false, x, x + 1)
                 for i = 0, env.num_autoitems - 1 do
-                    local autoItem = AutoItem(env, i)
-                    if mousePos >= autoItem.pos and mousePos < autoItem.rgnend then
-                        autoItem:Delete()
+                    local auto_item = AutoItem(env, i)
+                    if mouse_pos >= auto_item.pos and mouse_pos < auto_item.rgnend then
+                        auto_item:Delete()
                         return
                     end
                 end
             end
-            track:EnvelopeByIdx(envIdx):Delete()
+            assert(track:EnvelopeByIdx(env_idx), 'Invalid Envelope'):Delete()
         elseif info:find('^fx') then
-            local fxIdx = tonumber(info:match('%d+$'))
-            assert(fxIdx, 'Invalid fx index')
-            track:DeleteFX(fxIdx)
+            track:FX_Delete(math.floor(assert(tonumber(info:match('%d+$')), 'Invalid fx index')))
         end
     end
 end)

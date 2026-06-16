@@ -6,10 +6,11 @@ DEFAULT_GREATER = 300
 SCRIPT_FOLDER = 'simple'
 local r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 table.insert(bar.buttons, 1, 'pin')
 
@@ -29,13 +30,19 @@ function SimpleDraw()
         '%.1f seconds',
         ImGui.SliderFlags_Logarithmic | ImGui.SliderFlags_NoRoundToFormat
     )
-    local items = Items():Filter(function(item) return item.len < less or item.len > greater end)
+    local items = Items():Filter(function(item)
+        return item.len < less or item.len > greater
+    end)
     ImGui.Spacing(ctx)
     ImGui.Spacing(ctx)
     ImGui.Spacing(ctx)
-    if ImGui.Button(ctx, 'Remove ' .. #items .. ' items') then Actions.Run() end
+    if ImGui.Button(ctx, 'Remove ' .. #items .. ' items') then
+        Actions.Run()
+    end
 end
 
 function SimpleRun()
-    Items():Filter(function(item) return item.len < less or item.len > greater end):Delete()
+    Items():Filter(function(item)
+        return item.len < less or item.len > greater
+    end):Delete()
 end

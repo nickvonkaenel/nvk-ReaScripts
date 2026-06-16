@@ -2,10 +2,11 @@
 -- SETUP --
 r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 local tracks = {}
 
@@ -18,28 +19,40 @@ local function SoloRcv(track)
     local num_rcvs = r.GetTrackNumSends(track, -1)
     for i = 0, num_rcvs - 1 do
         local tr = r.GetTrackSendInfo_Value(track, -1, i, 'P_SRCTRACK')
-        if not tracks[tr] then SoloRcv(tr) end
+        if not tracks[tr] then
+            SoloRcv(tr)
+        end
     end
     local num_snds = r.GetTrackNumSends(track, 0)
     for i = 0, num_snds - 1 do
         local tr = r.GetTrackSendInfo_Value(track, 0, i, 'P_DESTTRACK')
-        if not tracks[tr] then SoloRcv(tr) end
+        if not tracks[tr] then
+            SoloRcv(tr)
+        end
     end
     local trackCount = r.GetNumTracks()
     local parentTrackDepth = r.GetTrackDepth(track)
     local trackidx = r.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
     local tr = r.GetTrack(0, trackidx)
-    if not tr then return end
+    if not tr then
+        return
+    end
     local depth = r.GetTrackDepth(tr)
     while depth > parentTrackDepth do
-        if not tracks[tr] then SoloRcv(tr) end
+        if not tracks[tr] then
+            SoloRcv(tr)
+        end
         trackidx = trackidx + 1
-        if trackidx == trackCount then break end
+        if trackidx == trackCount then
+            break
+        end
         tr = r.GetTrack(0, trackidx)
         depth = r.GetTrackDepth(tr)
     end
     tr = r.GetParentTrack(track)
-    if tr and not tracks[tr] then SoloRcv(tr) end
+    if tr and not tracks[tr] then
+        SoloRcv(tr)
+    end
 end
 
 local function UnsoloTracks()

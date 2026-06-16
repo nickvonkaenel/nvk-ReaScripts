@@ -2,14 +2,17 @@
 -- SETUP --
 local r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 run(function()
     local items = Items()
-    if #items == 0 then return end
+    if #items == 0 then
+        return
+    end
     local vols = {}
     for i, item in ipairs(items) do
         local take = item.take

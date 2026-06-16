@@ -103,7 +103,9 @@ ADDITIONAL_RENDER_SETTINGS = {
         name = 'check_out_files',
         label = 'Check out files (Waapi)',
         tooltip = 'Check out files from Source Control before rendering',
-        disable = function(render_settings) return render_settings.disable_render end,
+        disable = function(render_settings)
+            return render_settings.disable_render
+        end,
     },
 }
 
@@ -117,7 +119,9 @@ ADDITIONAL_RENDER_SETTINGS = {
 ---@param files string[] array-like table of paths for the files being rendered
 ---@param render_settings RenderSettings settings used for the rendered files
 function PRE_RENDER(files, render_settings)
-    if not render_settings.check_out_files then return end
+    if not render_settings.check_out_files then
+        return
+    end
     if r.AK_Waapi_Connect('127.0.0.1', 8080) then
         local ak_options = r.AK_AkJson_Map()
         local ak_files = r.AK_AkJson_Array()
@@ -149,11 +153,15 @@ local source_directory = home_directory .. '/Source_SFX/'
 ---@param files string[] array-like table of file paths
 ---@param render_settings RenderSettings settings used for the rendered files
 function POST_RENDER(files, render_settings)
-    if render_settings.print_rendered_files then r.ShowConsoleMsg(table.concat(files, '\n')) end
+    if render_settings.print_rendered_files then
+        r.ShowConsoleMsg(table.concat(files, '\n'))
+    end
     if render_settings.copy_to_source_directory then
         local function copy_file(source, dest)
             local in_file = io.open(source, 'rb')
-            if not in_file then return false, 'Could not open source file for reading' end
+            if not in_file then
+                return false, 'Could not open source file for reading'
+            end
 
             local out_file = io.open(dest, 'wb')
             if not out_file then
@@ -172,7 +180,9 @@ function POST_RENDER(files, render_settings)
             local source_file = file:match('([^/\\]+)$')
             local target_file = source_directory .. source_file
             local success, error_msg = copy_file(file, target_file)
-            if not success and error_msg then r.ShowConsoleMsg(error_msg) end
+            if not success and error_msg then
+                r.ShowConsoleMsg(error_msg)
+            end
         end
     end
 end

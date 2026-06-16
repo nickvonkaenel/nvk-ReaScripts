@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 4.3.0
+Version: 4.4.0
 About:
     # nvk_SHARED
 
@@ -9,6 +9,10 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    4.4.0
+        Allow for disabling close if unfocused in command pallette mode
+        Fix for duplicated markers when undoing folder item duplication
+        Move region ends when moving markers with ripple in nvk_VARIATIONS
     4.3.0
         Improve behavior when nvk_SEARCH is set to always on top and a project is loaded with prompts in the same location as the script. Not completely fixed, recommend not using 'Always on Top' if possible
     4.2.0

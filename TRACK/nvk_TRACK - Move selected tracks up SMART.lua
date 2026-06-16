@@ -2,22 +2,29 @@
 -- SETUP --
 r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 run(function()
     local tracks = Tracks.Selected()
     for _, track in ipairs(tracks) do
-        if track.parent then track:Children():Unselect() end
-        if not track.visible then track:Unselect() end
+        if track.parent then
+            track:Children():Unselect()
+        end
+        if not track.visible then
+            track:Unselect()
+        end
     end
     local move_tracks = Tracks.Selected()
     local track_count = r.CountTracks(0)
     for i, track in ipairs(move_tracks) do
         local idx = track.num - 1
-        if idx == 0 then return end
+        if idx == 0 then
+            return
+        end
         local prev_track, prev_track_idx
         for j = idx - 1, 0, -1 do
             prev_track = assert(Track(j + 1))

@@ -3,10 +3,11 @@
 -- SETUP --
 r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 ---@param tracks Tracks
 local function create_folder(tracks)
@@ -18,7 +19,9 @@ local function create_folder(tracks)
         FolderItem.Create(parent, column).sel = true
     end
     items.sel = true
-    if COLLAPSE_FOLDER_TRACK_AFTER_CREATION then parent:ToggleVisibility() end
+    if COLLAPSE_FOLDER_TRACK_AFTER_CREATION then
+        parent:ToggleVisibility()
+    end
     parent:SetLastTouched()
 end
 
@@ -27,7 +30,9 @@ local rv = run(function()
     local items = Items.Selected()
     local tracks = Tracks.Selected()
     if focus == 0 or #items == 0 then
-        if #tracks == 0 then return end
+        if #tracks == 0 then
+            return
+        end
         create_folder(tracks)
     else
         local item_tracks = items.tracks

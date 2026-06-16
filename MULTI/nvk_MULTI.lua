@@ -1,6 +1,6 @@
 --[[
 Description: nvk_MULTI
-Version: 1.4.1
+Version: 1.4.2
 About:
     # nvk_MULTI
 
@@ -8,6 +8,8 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.4.2
+        New script: nvk_MULTI - Remove time selection and loop points and deselect all items and stop playback and unsolo all tracks.lua
     1.4.1
         Make use of new nvk_THEME item coloring script
     1.4.0

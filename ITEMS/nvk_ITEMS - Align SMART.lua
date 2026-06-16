@@ -3,11 +3,14 @@
 -- SETUP --
 local r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
+local config
+
 local function reset_pos(items)
     for i, item in ipairs(items) do
         item.pos = config.items[item.guid].pos
@@ -17,7 +20,9 @@ end
 local function reset_tracks(items)
     for i, item in ipairs(items) do
         local track = Track(config.items[item.guid].track)
-        if track then item.track = track end
+        if track then
+            item.track = track
+        end
     end
 end
 
@@ -29,11 +34,17 @@ local function sequential_pos(items)
     end
 end
 
-local function same_pos(items) items.pos = items[1].pos end
+local function same_pos(items)
+    items.pos = items[1].pos
+end
 
-local function snapoffset_pos(items) items.snapoffsetpos = items[1].snapoffsetpos end
+local function snapoffset_pos(items)
+    items.snapoffsetpos = items[1].snapoffsetpos
+end
 
-local function same_track(items) items.track = items[1].track end
+local function same_track(items)
+    items.track = items[1].track
+end
 
 local function sequential_tracks(items)
     local idx = items[1].track.num
@@ -45,7 +56,9 @@ end
 
 local function allzero_snapoffsets(items)
     for i, item in ipairs(items) do
-        if item.snapoffset ~= 0 then return false end
+        if item.snapoffset ~= 0 then
+            return false
+        end
     end
     return true
 end
@@ -76,26 +89,38 @@ local align = {
         same_pos(items)
     end,
     sequential_tracks_snap_offset = function(items)
-        if allzero_snapoffsets(items) then return true end
+        if allzero_snapoffsets(items) then
+            return true
+        end
         sequential_tracks(items)
         snapoffset_pos(items)
     end,
     different_tracks = function(items)
-        if not config.mode:find('different_tracks') then return true end
+        if not config.mode:find('different_tracks') then
+            return true
+        end
         for i, item in ipairs(items) do
             local track = Track(config.items[item.guid].track)
-            if track then item.track = track end
+            if track then
+                item.track = track
+            end
             item.pos = config.items[item.guid].pos
         end
     end,
     different_tracks_same_pos = function(items)
-        if not config.mode:find('different_tracks') then return true end
+        if not config.mode:find('different_tracks') then
+            return true
+        end
         reset_tracks(items)
         same_pos(items)
     end,
     different_tracks_snap_offset = function(items)
-        if not config.mode:find('different_tracks') then return true end
-        if allzero_snapoffsets(items) then return true end
+        if not config.mode:find('different_tracks') then
+            return true
+        end
+        if allzero_snapoffsets(items) then
+            return true
+        end
         reset_tracks(items)
         snapoffset_pos(items)
     end,
@@ -109,14 +134,24 @@ end
 ---@param items Items
 local function current_mode(items)
     local same_track = items:AllSameTrack()
-    if same_track then return items:Sequential() and 'same_track_sequential' or 'same_track' end
+    if same_track then
+        return items:Sequential() and 'same_track_sequential' or 'same_track'
+    end
     if items:SequentialTracks() then
-        if items:AllSamePosition() then return 'sequential_tracks_same_pos' end
-        if items:AllSamePosition(true) then return 'sequential_tracks_snap_offset' end
+        if items:AllSamePosition() then
+            return 'sequential_tracks_same_pos'
+        end
+        if items:AllSamePosition(true) then
+            return 'sequential_tracks_snap_offset'
+        end
         return 'sequential_tracks'
     end
-    if items:AllSamePosition() then return 'different_tracks_same_pos' end
-    if items:AllSamePosition(true) then return 'different_tracks_snap_offset' end
+    if items:AllSamePosition() then
+        return 'different_tracks_same_pos'
+    end
+    if items:AllSamePosition(true) then
+        return 'different_tracks_snap_offset'
+    end
     return 'different_tracks'
 end
 
@@ -130,10 +165,14 @@ local function guid_string(items)
 end
 
 run(function()
-    local items = Items():Filter(function(item) return not item.folder end)
-    if #items == 0 then return end
+    local items = Items():Filter(function(item)
+        return not item.folder
+    end)
+    if #items == 0 then
+        return
+    end
     local mode = current_mode(items)
-    pcall(dofile, scr.paths.config)
+    config = File.New(scr.paths.config):Load('config')
     if not config or config.guid ~= guid_string(items) then
         config = {
             guid = guid_string(items),
@@ -151,5 +190,5 @@ run(function()
     while align[targetmode](items) do
         targetmode = targetmodes[targetmode]
     end
-    writeFile(scr.paths.config, Tbl.ConfigTableToString('config', config))
+    File.Config:WriteTable(config)
 end)

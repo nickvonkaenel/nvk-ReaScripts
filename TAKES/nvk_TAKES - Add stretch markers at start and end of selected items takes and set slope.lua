@@ -3,10 +3,11 @@
 -- SCRIPT --
 local r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 
 function SaveSelectedItems()
     local items = {}
@@ -24,9 +25,13 @@ end
 
 run(function()
     local retval, retvals_csv = r.GetUserInputs('Set Take Slope', 1, 'Slope (+-4) or 5+ for random', '0')
-    if not retval then return end
+    if not retval then
+        return
+    end
     local slopeIn = 0
-    if tonumber(retvals_csv) then slopeIn = tonumber(retvals_csv) end
+    if tonumber(retvals_csv) then
+        slopeIn = tonumber(retvals_csv)
+    end
     local items = SaveSelectedItems()
     r.Main_OnCommand(40796, 0) -- Clear take preserve pitch
     for i, item in ipairs(items) do
@@ -39,7 +44,9 @@ run(function()
         local slope = slopeIn
         if slope > 4 then
             slope = math.random() * math.min(4, (slope - 4)) / 4
-            if math.random() > 0.5 then slope = slope * -1 end
+            if math.random() > 0.5 then
+                slope = slope * -1
+            end
         else
             slope = slope * 0.2499
         end

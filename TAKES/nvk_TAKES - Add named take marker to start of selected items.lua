@@ -3,14 +3,17 @@
 -- SETUP --
 local r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 run(function()
     local retval, retvals_csv = r.GetUserInputs(scr.name, 1, 'Take Marker Name,extrawidth=220', '')
-    if retval == false then return end
+    if retval == false then
+        return
+    end
     local first_item = r.GetSelectedMediaItem(0, 0)
     local first_track = r.GetMediaItemTrack(first_item)
 

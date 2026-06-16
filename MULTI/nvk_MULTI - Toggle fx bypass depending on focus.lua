@@ -17,7 +17,9 @@ local function main()
                 end
             end
         end
-        if not fx_found then reaper.Main_OnCommand(8, 0) end --fx bypass toggle track
+        if not fx_found then
+            reaper.Main_OnCommand(8, 0)
+        end --fx bypass toggle track
     end
 end
 

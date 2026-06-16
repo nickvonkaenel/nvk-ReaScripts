@@ -3,10 +3,11 @@
 -- SETUP --
 local r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- USER CONFIG --
 SHOW_SUCCESS_MESSAGE = true -- change to false if you don't want feedback after
 -- SCRIPT --
@@ -21,7 +22,9 @@ run(function()
         for idx = 0, num_total - 1 do
             local rv, isrgn, pos, rgnend, name, markrgnindexnumber = r.EnumProjectMarkers(idx)
             if not isrgn then
-                if pos > itemEnd then break end
+                if pos > itemEnd then
+                    break
+                end
                 if FloatEqual(pos, itemPos) then
                     cnt = cnt + 1
                     r.GetSetMediaItemInfo_String(item, 'P_NOTES', name, true)
@@ -29,5 +32,7 @@ run(function()
             end
         end
     end
-    if SHOW_SUCCESS_MESSAGE then r.MB(cnt .. ' notes changed to match marker names.', scr.name, 0) end
+    if SHOW_SUCCESS_MESSAGE then
+        r.MB(cnt .. ' notes changed to match marker names.', scr.name, 0)
+    end
 end)

@@ -2,10 +2,11 @@
 -- Opens the project render directory in explorer/finder
 r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 
 run(function()
     local rv, proj_fn = r.EnumProjects(-1)
@@ -22,7 +23,9 @@ run(function()
     local retval, render_path = r.GetSetProjectInfo_String(0, 'RENDER_FILE', '', false)
 
     -- If render path is empty, use project directory
-    if render_path == '' then render_path = proj_dir end
+    if render_path == '' then
+        render_path = proj_dir
+    end
 
     -- If render path is relative, resolve it against project directory
     if not render_path:match('^%a:[/\\]') and not render_path:match('^/') then

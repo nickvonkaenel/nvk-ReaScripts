@@ -1,6 +1,6 @@
 --[[
 Description: nvk_CREATE
-Version: 1.9.9
+Version: 1.9.10
 About:
   # nvk_CREATE
 
@@ -18,6 +18,8 @@ Links:
   Neutronic's REAPER forum profile https://forum.cockos.com/member.php?u=66313
   Neutronic's GitHub ReaScripts repository https://github.com/Neutronic/ReaScripts
 Changelog:
+  1.9.10
+    Fix error when attempting to search missing databases
   1.9.9
     Filter out .rpp files from search results
   1.9.8
@@ -41,6 +43,5 @@ Provides:
 SCRIPT_FOLDER = 'create'
 r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')

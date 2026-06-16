@@ -6,30 +6,37 @@ FX_PARAM = 'Width'
 -- SETUP --
 local r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 run(function()
     local setting_str = 'nvk_TAKES - WidthFX'
     local paramNum
     if r.HasExtState(setting_str, 'fxName') and r.HasExtState(setting_str, 'param') then
         paramNum = tonumber(r.GetExtState(setting_str, 'param'))
-        if paramNum then FX_NAME = r.GetExtState(setting_str, 'fxName') end
+        if paramNum then
+            FX_NAME = r.GetExtState(setting_str, 'fxName')
+        end
     end
     local itemCount = r.CountSelectedMediaItems(0)
     local tracks = SaveSelectedTracks()
     if itemCount > 0 then
         if itemCount > 6 then
-            if r.MB('Add FX to ' .. itemCount .. ' takes?', scr.name, 1) ~= 1 then return end
+            if r.MB('Add FX to ' .. itemCount .. ' takes?', scr.name, 1) ~= 1 then
+                return
+            end
         end
         for i = 0, itemCount - 1 do
             local item = r.GetSelectedMediaItem(0, i)
             local take = r.GetActiveTake(item)
             if take then
                 local fxadded, fx = AddTakeFxByName(take, FX_NAME)
-                if not fx then return end
+                if not fx then
+                    return
+                end
                 if fxadded then
                     if paramNum then
                         r.TakeFX_GetEnvelope(take, fx, paramNum, true)

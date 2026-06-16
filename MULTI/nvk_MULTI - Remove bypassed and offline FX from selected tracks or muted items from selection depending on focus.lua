@@ -18,7 +18,9 @@ function Main()
         local t = {}
         for i = 0, reaper.CountSelectedMediaItems() - 1 do
             local item = reaper.GetSelectedMediaItem(0, i)
-            if reaper.GetMediaItemInfo_Value(item, 'B_MUTE') == 1 then t[#t + 1] = item end
+            if reaper.GetMediaItemInfo_Value(item, 'B_MUTE') == 1 then
+                t[#t + 1] = item
+            end
         end
         for i = 1, #t do
             local item = t[i]

@@ -3,10 +3,11 @@
 -- SETUP --
 r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 
 run(function()
@@ -14,21 +15,29 @@ run(function()
     local init_items = Items.Selected()
     if #init_items == 0 then
         local tracks = Tracks.Selected()
-        if #tracks == 0 then tracks = Tracks.All() end
-        if #tracks == 1 and not tracks[1].folder then tracks = Tracks.All() end
+        if #tracks == 0 then
+            tracks = Tracks.All()
+        end
+        if #tracks == 1 and not tracks[1].folder then
+            tracks = Tracks.All()
+        end
         local parent_tracks = tracks:Parents()
         if #parent_tracks > 0 then
             for i, track in ipairs(parent_tracks) do
                 local child_tracks = track:Children().basic
                 local child_items = child_tracks:Items(Column.TimeSelection())
-                if #child_items > 0 then table.insert(track_groups, { tracks = child_tracks, items = child_items }) end
+                if #child_items > 0 then
+                    table.insert(track_groups, { tracks = child_tracks, items = child_items })
+                end
             end
         else
             table.insert(track_groups, { tracks = tracks, items = tracks.items })
         end
     else
         local first_track_num = init_items:First().track.num
-        local tracks = Tracks.All():Filter(function(track) return track.num >= first_track_num end)
+        local tracks = Tracks.All():Filter(function(track)
+            return track.num >= first_track_num
+        end)
         table.insert(track_groups, { tracks = tracks, items = init_items })
     end
     for _, track_group in ipairs(track_groups) do
@@ -50,7 +59,9 @@ run(function()
                 table.insert(item_columns, column)
             end
         end
-        table.sort(item_columns, function(a, b) return a.s < b.s end)
+        table.sort(item_columns, function(a, b)
+            return a.s < b.s
+        end)
         local tracks_idx = 1
         while #item_columns > 0 do
             local track = tracks[tracks_idx]

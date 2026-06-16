@@ -2,10 +2,11 @@
 -- SETUP --
 r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT ---
 local r = reaper
 ---@param item Item
@@ -18,7 +19,9 @@ local function fadeout(item, cursorPos)
     else
         item.fadeoutpos = cursorPos
     end
-    if not item.folder and FADE_OVERSHOOT then item:FadeOvershoot() end
+    if not item.folder and FADE_OVERSHOOT then
+        item:FadeOvershoot()
+    end
 end
 ---@param track MediaTrack
 ---@return TrackEnvelope
@@ -41,8 +44,12 @@ local function fadeout_auto(item)
     local itemFadeOut = item.fadeoutlen >= item.len and item.len - 0.00001 or item.fadeoutlen
     local itemFadeInDir = item.fadeindir * 0.5
     local itemFadeOutDir = item.fadeoutdir * 0.5
-    if itemFadeOut == FADE_LENGTH_MIN then itemFadeOut = 0 end
-    if itemFadeIn == FADE_LENGTH_MIN then itemFadeIn = 0 end
+    if itemFadeOut == FADE_LENGTH_MIN then
+        itemFadeOut = 0
+    end
+    if itemFadeIn == FADE_LENGTH_MIN then
+        itemFadeIn = 0
+    end
     local fadeInEnd = item.pos + itemFadeIn
     local fadeOutStart = item.pos + item.len - itemFadeOut
     local track = item.track.track
@@ -54,7 +61,9 @@ local function fadeout_auto(item)
         local retval, time, _, _, tension = r.GetEnvelopePointEx(env, autoitemIdx, 2)
         if retval then
             retval, time, _, _, tension = r.GetEnvelopePointEx(env, autoitemIdx, 0)
-            if retval then itemFadeInDir = tension end
+            if retval then
+                itemFadeInDir = tension
+            end
             retval, time, _, _, tension = r.GetEnvelopePointEx(env, autoitemIdx, 1)
             if retval then
                 itemFadeIn = time - item.pos
@@ -101,7 +110,9 @@ end
 
 run(function()
     local mouseItem, cursorPos = Item.NearestToMouse()
-    if not mouseItem or not cursorPos then return end
+    if not mouseItem or not cursorPos then
+        return
+    end
     if mouseItem.folder then
         if FADE_FOLDER_ENVELOPE then
             mouseItem.fadeoutpos = cursorPos
@@ -128,8 +139,12 @@ run(function()
                 doFade = true
             end
         else -- default behavior, check if overlapping or shared edge
-            if item.e >= cursorPos or item.e == items[1].e then doFade = true end
+            if item.e >= cursorPos or item.e == items[1].e then
+                doFade = true
+            end
         end
-        if doFade then fadeout(item, cursorPos) end
+        if doFade then
+            fadeout(item, cursorPos)
+        end
     end
 end)

@@ -3,10 +3,11 @@
 -- SETUP --
 local r = reaper
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 -- SCRIPT --
 local function tablesize(t)
     local i = 0
@@ -16,14 +17,20 @@ local function tablesize(t)
     return i
 end
 
-local function GetActiveTakeName(item) return r.GetTakeName(r.GetActiveTake(item)) end
+local function GetActiveTakeName(item)
+    return r.GetTakeName(r.GetActiveTake(item))
+end
 
-local function sortItems(item1, item2) return GetActiveTakeName(item1) < GetActiveTakeName(item2) end
+local function sortItems(item1, item2)
+    return GetActiveTakeName(item1) < GetActiveTakeName(item2)
+end
 
 run(function()
     local itemNames = {}
     local itemCount = r.CountSelectedMediaItems(0)
-    if itemCount == 0 then return end
+    if itemCount == 0 then
+        return
+    end
     local initItem = r.GetSelectedMediaItem(0, 0)
     local initPos = r.GetMediaItemInfo_Value(initItem, 'D_POSITION')
     local initTrack = r.GetMediaItem_Track(initItem)
@@ -47,7 +54,9 @@ run(function()
     local function NameTable(name, itemTable)
         local t = itemFolders
         for match in string.gmatch(name, '(.-)[_ -]') do
-            if not t[match] then t[match] = {} end
+            if not t[match] then
+                t[match] = {}
+            end
             t = t[match]
             -- if string.match(name, ".-[_ -].-[_ -]") then
             --     name = string.gsub(name, "(.-)[_ -]", "", 1)
@@ -78,7 +87,9 @@ run(function()
                 if parentTrack then
                     local rv, parentTrackName = r.GetTrackName(parentTrack)
                     newName = string.match(newName, parentTrackName .. '[_ -](.+)')
-                    if not newName then newName = k end
+                    if not newName then
+                        newName = k
+                    end
                 elseif lastKey then
                     newName = lastKey .. '_' .. newName
                 end
@@ -95,7 +106,9 @@ run(function()
                     pos = pos + r.GetMediaItemInfo_Value(item, 'D_LENGTH')
                 end
             elseif type(v) == 'table' then
-                if tablesize(v) > 1 then CreateTrack() end
+                if tablesize(v) > 1 then
+                    CreateTrack()
+                end
                 CreateItemFolders(v, depth + (tablesize(v) > 1 and 1 or 0), k)
             end
         end
@@ -103,5 +116,7 @@ run(function()
 
     CreateItemFolders(itemFolders, 0)
     local prevTrack = r.GetTrack(0, initTrackNum)
-    if curDepth ~= 0 then r.SetMediaTrackInfo_Value(prevTrack, 'I_FOLDERDEPTH', -curDepth) end
+    if curDepth ~= 0 then
+        r.SetMediaTrackInfo_Value(prevTrack, 'I_FOLDERDEPTH', -curDepth)
+    end
 end)

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SUBPROJECT
-Version: 2.11.0
+Version: 2.12.2
 About:
     # nvk_SUBPROJECT
 
@@ -10,6 +10,12 @@ Links:
     Store Page https://gum.co/nvk_WORKFLOW
     User Guide https://nvk.tools/docs/workflow/subproject
 Changelog:
+    2.12.2
+        Selected folder items settings tab will now propagate to the subproject on creation
+    2.12.1
+        Match main project positions now renders properly again
+    2.12.0
+        Change subproject fix behavior to no longer require subproject items to be in folders. Using folders/folder items is still recommended if you want names from the subproject to be used in the main project.
     2.11.0
         Compatibility with nvk_SHARED 4.0.0. Make sure to update all your scripts to the latest version.
         Fixing regression where folder tracks were being created in the main project instead of the subproject
@@ -22,7 +28,9 @@ Provides:
 r = reaper
 
 local function remove_extensions(name)
-    if not name then return '' end
+    if not name then
+        return ''
+    end
     name = name:match('(.+)%.[^%.]+$') or name
     name = name:match('(.-)[- ]*glued') or name
     name = name:match('(.+)[_ -]+%d+$') or name
@@ -47,19 +55,21 @@ if FOCUS == 0 then
         SUBPROJECT_NAME = remove_extensions(SUBPROJECT_NAME)
     end
 else
-    local itemCount = r.CountSelectedMediaItems(0)
-    if itemCount > 0 then
-        local onlySubprojects = true
-        for i = 0, itemCount - 1 do
+    local item_count = r.CountSelectedMediaItems(0)
+    if item_count > 0 then
+        local only_subprojects = true
+        for i = 0, item_count - 1 do
             local item = r.GetSelectedMediaItem(0, i)
             if not is_subproject(item) then
-                onlySubprojects = false
+                only_subprojects = false
                 local take = r.GetActiveTake(item)
-                if take then SUBPROJECT_NAME = remove_extensions(r.GetTakeName(take)) end
+                if take then
+                    SUBPROJECT_NAME = remove_extensions(r.GetTakeName(take))
+                end
                 break
             end
         end
-        if onlySubprojects then
+        if only_subprojects then
             DO_SUBPROJECT_FIX = true
             SCRIPT_FOLDER = nil
         end
@@ -67,15 +77,12 @@ else
 end
 
 SEP = package.config:sub(1, 1)
-DATA = _VERSION == 'Lua 5.3' and 'Data53' or 'Data'
-DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. DATA .. SEP
+DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
-if not functionsLoaded then return end
+if not functionsLoaded then
+    return
+end
 
 if DO_SUBPROJECT_FIX then
-    r.PreventUIRefresh(1)
-    r.Undo_BeginBlock()
-    SubProjectFix()
-    r.Undo_EndBlock('nvk_SUBPROJECT - Update', -1)
-    r.PreventUIRefresh(-1)
+    run(SubProjectFix)
 end
