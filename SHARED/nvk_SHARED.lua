@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 4.4.0
+Version: 4.4.1
 About:
     # nvk_SHARED
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    4.4.1
+        Error when trying to activate a license in the upgrade popup
     4.4.0
         Allow for disabling close if unfocused in command pallette mode
         Fix for duplicated markers when undoing folder item duplication
