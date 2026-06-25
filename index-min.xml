@@ -895,8 +895,10 @@ For full changelog, visit https://nvk.tools/docs/search#changelog]]></changelog>
 ]]></description>
         <link rel="website" href="https://nvk.tools">Website</link>
       </metadata>
-      <version name="4.4.0" author="nvk" time="2026-06-16T04:51:05Z">
-        <changelog><![CDATA[4.4.0
+      <version name="4.4.1" author="nvk" time="2026-06-25T04:48:51Z">
+        <changelog><![CDATA[4.4.1
+    Error when trying to activate a license in the upgrade popup
+4.4.0
     Allow for disabling close if unfocused in command pallette mode
     Fix for duplicated markers when undoing folder item duplication
     Move region ends when moving markers with ripple in nvk_VARIATIONS
@@ -912,96 +914,96 @@ For full changelog, visit https://nvk.tools/docs/search#changelog]]></changelog>
     Support for latest version of ReaImGui, font improvements
     Script unfocused color improvements, a little bit more clear when script does not have focus
 For full changelog, visit https://nvk.tools/docs/shared#changelog]]></changelog>
-        <source file="Data/basics.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/basics.lua</source>
-        <source file="Data/class.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/class.lua</source>
-        <source file="Data/data/actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/actions.lua</source>
-        <source file="Data/data/bar.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/bar.lua</source>
-        <source file="Data/data/cb.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/cb.lua</source>
-        <source file="Data/data/colors.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/colors.lua</source>
-        <source file="Data/data/demo.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/demo.lua</source>
-        <source file="Data/data/exit.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/exit.lua</source>
-        <source file="Data/data/font.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/font.lua</source>
-        <source file="Data/data/fx.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/fx.lua</source>
-        <source file="Data/data/gui.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/gui.lua</source>
-        <source file="Data/data/key.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/key.lua</source>
-        <source file="Data/data/keyboard.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/keyboard.lua</source>
-        <source file="Data/data/loop.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/loop.lua</source>
-        <source file="Data/data/mouse.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/mouse.lua</source>
-        <source file="Data/data/prefs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/prefs.lua</source>
-        <source file="Data/data/prof.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/prof.lua</source>
-        <source file="Data/data/result.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/result.lua</source>
-        <source file="Data/data/stats.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/stats.lua</source>
-        <source file="Data/data/style.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/style.lua</source>
-        <source file="Data/data/tabs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/tabs.lua</source>
-        <source file="Data/data/terminal.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/terminal.lua</source>
-        <source file="Data/data/text.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/text.lua</source>
-        <source file="Data/data/theme.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/theme.lua</source>
-        <source file="Data/data/tt.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/tt.lua</source>
-        <source file="Data/data/upgrade.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/data/upgrade.lua</source>
-        <source file="Data/functions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/functions.lua</source>
-        <source file="Data/license.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/license.lua</source>
-        <source file="Data/load.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/load.lua</source>
-        <source file="Data/main.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/main.lua</source>
-        <source file="Data/meta.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta.lua</source>
-        <source file="Data/meta/autoitem.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/autoitem.lua</source>
-        <source file="Data/meta/autoitems.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/autoitems.lua</source>
-        <source file="Data/meta/clip.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/clip.lua</source>
-        <source file="Data/meta/clips.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/clips.lua</source>
-        <source file="Data/meta/col.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/col.lua</source>
-        <source file="Data/meta/column.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/column.lua</source>
-        <source file="Data/meta/columns.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/columns.lua</source>
-        <source file="Data/meta/envelope.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/envelope.lua</source>
-        <source file="Data/meta/envelopes.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/envelopes.lua</source>
-        <source file="Data/meta/folderitem.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/folderitem.lua</source>
-        <source file="Data/meta/folderitems.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/folderitems.lua</source>
-        <source file="Data/meta/item.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/item.lua</source>
-        <source file="Data/meta/items.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/items.lua</source>
-        <source file="Data/meta/marker.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/marker.lua</source>
-        <source file="Data/meta/markers.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/markers.lua</source>
-        <source file="Data/meta/take.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/take.lua</source>
-        <source file="Data/meta/takemarker.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/takemarker.lua</source>
-        <source file="Data/meta/takemarkers.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/takemarkers.lua</source>
-        <source file="Data/meta/takes.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/takes.lua</source>
-        <source file="Data/meta/track.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/track.lua</source>
-        <source file="Data/meta/tracks.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/meta/tracks.lua</source>
-        <source file="Data/scr.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scr.lua</source>
-        <source file="Data/scripts/manager/data/actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/manager/data/actions.lua</source>
-        <source file="Data/scripts/manager/data/config.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/manager/data/config.lua</source>
-        <source file="Data/scripts/manager/data/frame.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/manager/data/frame.lua</source>
-        <source file="Data/scripts/manager/data/loop.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/manager/data/loop.lua</source>
-        <source file="Data/scripts/manager/data/prefs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/manager/data/prefs.lua</source>
-        <source file="Data/scripts/manager/data/tabs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/manager/data/tabs.lua</source>
-        <source file="Data/scripts/manager/main.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/manager/main.lua</source>
-        <source file="Data/scripts/startup/data/actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/startup/data/actions.lua</source>
-        <source file="Data/scripts/startup/data/config.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/startup/data/config.lua</source>
-        <source file="Data/scripts/startup/data/frame.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/startup/data/frame.lua</source>
-        <source file="Data/scripts/startup/data/loop.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/startup/data/loop.lua</source>
-        <source file="Data/scripts/startup/data/prefs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/startup/data/prefs.lua</source>
-        <source file="Data/scripts/startup/data/tabs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/startup/data/tabs.lua</source>
-        <source file="Data/scripts/startup/main.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/scripts/startup/main.lua</source>
-        <source file="Data/simple/data/actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/simple/data/actions.lua</source>
-        <source file="Data/simple/data/bar.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/simple/data/bar.lua</source>
-        <source file="Data/simple/data/config.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/simple/data/config.lua</source>
-        <source file="Data/simple/data/frame.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/simple/data/frame.lua</source>
-        <source file="Data/simple/data/loop.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/simple/data/loop.lua</source>
-        <source file="Data/simple/data/prefs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/simple/data/prefs.lua</source>
-        <source file="Data/simple/data/tabs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/simple/data/tabs.lua</source>
-        <source file="Data/simple/main.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/simple/main.lua</source>
-        <source file="Data/template/data/actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/template/data/actions.lua</source>
-        <source file="Data/template/data/config.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/template/data/config.lua</source>
-        <source file="Data/template/data/frame.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/template/data/frame.lua</source>
-        <source file="Data/template/data/loop.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/template/data/loop.lua</source>
-        <source file="Data/template/data/prefs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/template/data/prefs.lua</source>
-        <source file="Data/template/data/tabs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/template/data/tabs.lua</source>
-        <source file="Data/template/functions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/template/functions.lua</source>
-        <source file="Data/template/main.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/template/main.lua</source>
-        <source file="Data/util/file.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/util/file.lua</source>
-        <source file="Data/util/pp.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/util/pp.lua</source>
-        <source file="Data/fonts/icons.otf">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/Data/fonts/icons.otf</source>
-        <source main="main" file="nvk_SHARED - License Manager.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/nvk_SHARED%20-%20License%20Manager.lua</source>
-        <source main="main" file="nvk_SHARED - Startup Actions - Run.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/nvk_SHARED%20-%20Startup%20Actions%20-%20Run.lua</source>
-        <source main="main" file="nvk_SHARED - Startup Actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/nvk_SHARED%20-%20Startup%20Actions.lua</source>
-        <source main="main">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/cab017208f154fd9e621640e880ea504e475cdf3/SHARED/nvk_SHARED.lua</source>
+        <source file="Data/basics.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/basics.lua</source>
+        <source file="Data/class.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/class.lua</source>
+        <source file="Data/data/actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/actions.lua</source>
+        <source file="Data/data/bar.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/bar.lua</source>
+        <source file="Data/data/cb.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/cb.lua</source>
+        <source file="Data/data/colors.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/colors.lua</source>
+        <source file="Data/data/demo.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/demo.lua</source>
+        <source file="Data/data/exit.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/exit.lua</source>
+        <source file="Data/data/font.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/font.lua</source>
+        <source file="Data/data/fx.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/fx.lua</source>
+        <source file="Data/data/gui.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/gui.lua</source>
+        <source file="Data/data/key.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/key.lua</source>
+        <source file="Data/data/keyboard.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/keyboard.lua</source>
+        <source file="Data/data/loop.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/loop.lua</source>
+        <source file="Data/data/mouse.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/mouse.lua</source>
+        <source file="Data/data/prefs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/prefs.lua</source>
+        <source file="Data/data/prof.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/prof.lua</source>
+        <source file="Data/data/result.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/result.lua</source>
+        <source file="Data/data/stats.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/stats.lua</source>
+        <source file="Data/data/style.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/style.lua</source>
+        <source file="Data/data/tabs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/tabs.lua</source>
+        <source file="Data/data/terminal.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/terminal.lua</source>
+        <source file="Data/data/text.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/text.lua</source>
+        <source file="Data/data/theme.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/theme.lua</source>
+        <source file="Data/data/tt.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/tt.lua</source>
+        <source file="Data/data/upgrade.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/data/upgrade.lua</source>
+        <source file="Data/functions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/functions.lua</source>
+        <source file="Data/license.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/license.lua</source>
+        <source file="Data/load.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/load.lua</source>
+        <source file="Data/main.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/main.lua</source>
+        <source file="Data/meta.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta.lua</source>
+        <source file="Data/meta/autoitem.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/autoitem.lua</source>
+        <source file="Data/meta/autoitems.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/autoitems.lua</source>
+        <source file="Data/meta/clip.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/clip.lua</source>
+        <source file="Data/meta/clips.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/clips.lua</source>
+        <source file="Data/meta/col.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/col.lua</source>
+        <source file="Data/meta/column.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/column.lua</source>
+        <source file="Data/meta/columns.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/columns.lua</source>
+        <source file="Data/meta/envelope.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/envelope.lua</source>
+        <source file="Data/meta/envelopes.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/envelopes.lua</source>
+        <source file="Data/meta/folderitem.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/folderitem.lua</source>
+        <source file="Data/meta/folderitems.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/folderitems.lua</source>
+        <source file="Data/meta/item.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/item.lua</source>
+        <source file="Data/meta/items.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/items.lua</source>
+        <source file="Data/meta/marker.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/marker.lua</source>
+        <source file="Data/meta/markers.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/markers.lua</source>
+        <source file="Data/meta/take.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/take.lua</source>
+        <source file="Data/meta/takemarker.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/takemarker.lua</source>
+        <source file="Data/meta/takemarkers.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/takemarkers.lua</source>
+        <source file="Data/meta/takes.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/takes.lua</source>
+        <source file="Data/meta/track.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/track.lua</source>
+        <source file="Data/meta/tracks.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/meta/tracks.lua</source>
+        <source file="Data/scr.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scr.lua</source>
+        <source file="Data/scripts/manager/data/actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/manager/data/actions.lua</source>
+        <source file="Data/scripts/manager/data/config.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/manager/data/config.lua</source>
+        <source file="Data/scripts/manager/data/frame.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/manager/data/frame.lua</source>
+        <source file="Data/scripts/manager/data/loop.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/manager/data/loop.lua</source>
+        <source file="Data/scripts/manager/data/prefs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/manager/data/prefs.lua</source>
+        <source file="Data/scripts/manager/data/tabs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/manager/data/tabs.lua</source>
+        <source file="Data/scripts/manager/main.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/manager/main.lua</source>
+        <source file="Data/scripts/startup/data/actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/startup/data/actions.lua</source>
+        <source file="Data/scripts/startup/data/config.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/startup/data/config.lua</source>
+        <source file="Data/scripts/startup/data/frame.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/startup/data/frame.lua</source>
+        <source file="Data/scripts/startup/data/loop.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/startup/data/loop.lua</source>
+        <source file="Data/scripts/startup/data/prefs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/startup/data/prefs.lua</source>
+        <source file="Data/scripts/startup/data/tabs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/startup/data/tabs.lua</source>
+        <source file="Data/scripts/startup/main.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/scripts/startup/main.lua</source>
+        <source file="Data/simple/data/actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/simple/data/actions.lua</source>
+        <source file="Data/simple/data/bar.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/simple/data/bar.lua</source>
+        <source file="Data/simple/data/config.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/simple/data/config.lua</source>
+        <source file="Data/simple/data/frame.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/simple/data/frame.lua</source>
+        <source file="Data/simple/data/loop.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/simple/data/loop.lua</source>
+        <source file="Data/simple/data/prefs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/simple/data/prefs.lua</source>
+        <source file="Data/simple/data/tabs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/simple/data/tabs.lua</source>
+        <source file="Data/simple/main.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/simple/main.lua</source>
+        <source file="Data/template/data/actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/template/data/actions.lua</source>
+        <source file="Data/template/data/config.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/template/data/config.lua</source>
+        <source file="Data/template/data/frame.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/template/data/frame.lua</source>
+        <source file="Data/template/data/loop.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/template/data/loop.lua</source>
+        <source file="Data/template/data/prefs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/template/data/prefs.lua</source>
+        <source file="Data/template/data/tabs.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/template/data/tabs.lua</source>
+        <source file="Data/template/functions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/template/functions.lua</source>
+        <source file="Data/template/main.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/template/main.lua</source>
+        <source file="Data/util/file.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/util/file.lua</source>
+        <source file="Data/util/pp.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/util/pp.lua</source>
+        <source file="Data/fonts/icons.otf">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/Data/fonts/icons.otf</source>
+        <source main="main" file="nvk_SHARED - License Manager.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/nvk_SHARED%20-%20License%20Manager.lua</source>
+        <source main="main" file="nvk_SHARED - Startup Actions - Run.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/nvk_SHARED%20-%20Startup%20Actions%20-%20Run.lua</source>
+        <source main="main" file="nvk_SHARED - Startup Actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/nvk_SHARED%20-%20Startup%20Actions.lua</source>
+        <source main="main">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/3e75c3dc2f4b1d42c5934405ee1d7cf3d285e80d/SHARED/nvk_SHARED.lua</source>
       </version>
     </reapack>
   </category>
