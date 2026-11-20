@@ -14,13 +14,15 @@ run(function()
         return
     end
     local cursorPos = r.GetCursorPosition()
-    local items = track.items
-    for i = #items, 1, -1 do
-        local item = items[i]
-        if item.s < cursorPos or item.e < cursorPos then
-            item:Select(true)
-            local pos = item.e < cursorPos and item.e or item.s
-            r.SetEditCurPos(pos, false, false)
+    -- Bound to a key: only the item it stops on becomes an Item, however many the track holds.
+    local mediatrack = track.track
+    for i = r.CountTrackMediaItems(mediatrack) - 1, 0, -1 do
+        local mediaitem = r.GetTrackMediaItem(mediatrack, i)
+        local itemStart = r.GetMediaItemInfo_Value(mediaitem, 'D_POSITION')
+        local itemEnd = itemStart + r.GetMediaItemInfo_Value(mediaitem, 'D_LENGTH')
+        if itemStart < cursorPos or itemEnd < cursorPos then
+            Item(mediaitem):Select(true)
+            r.SetEditCurPos(itemEnd < cursorPos and itemEnd or itemStart, false, false)
             return
         end
     end

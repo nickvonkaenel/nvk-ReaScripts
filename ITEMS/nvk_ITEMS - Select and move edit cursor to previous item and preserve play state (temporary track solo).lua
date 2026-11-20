@@ -10,22 +10,19 @@ end
 -- SCRIPT --
 r.set_action_options(3)
 
-local function unsolo_after_playback_stop()
-    if r.GetPlayState() & 1 == 1 then
-        r.defer(unsolo_after_playback_stop)
-    else
-        Tracks.UnsoloAll()
-    end
-end
-
 run(function()
     local playstate = r.GetPlayState()
     if playstate == 5 then
+        local items = Items.Selected()
         r.SelectAllMediaItems(0, false)
         r.UpdateArrange()
         r.Main_OnCommand(40434, 0) --  edit cursor to play cursor
         r.OnStopButton()
         r.Main_OnCommand(40416, 0) -- Item navigation: Select and move to previous item
+        if r.CountSelectedMediaItems(0) == 0 and #items > 0 then -- nothing before the play cursor: back where it was
+            items:Select()
+            r.SetEditCurPos(items.minpos, true, false)
+        end
         r.CSurf_OnRecord()
     else
         if playstate & 1 == 1 then
@@ -34,8 +31,9 @@ run(function()
         r.Main_OnCommand(40416, 0) -- Item navigation: Select and move to previous item
         if playstate & 1 == 1 then
             r.OnPlayButton() -- press play to move the play cursor to the edit cursor
-            Items.Selected():GroupSelect(true).tracks:Solo(true, true)
-            r.defer(unsolo_after_playback_stop)
+            TemporarySolo(Items.Selected():GroupSelect(true).tracks)
         end
     end
 end)
+
+UnsoloAfterPlaybackStops()

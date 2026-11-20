@@ -12,6 +12,8 @@ local r = reaper
 ---@param item Item
 ---@param cursorPos number
 local function fadein(item, cursorPos)
+    -- a leftover automatic crossfade length (kept by copied items) overrides the manual length
+    item.fadeinlen_auto = 0
     if cursorPos > item.e then
         item.fadeinpos = item.e - FADE_LENGTH_MIN
     elseif cursorPos < item.pos then
@@ -24,17 +26,26 @@ local function fadein(item, cursorPos)
     end
 end
 
+---Shows the track's volume envelope through the toggle action, which only acts on the selected tracks,
+---then restores the previous track selection.
 ---@param track MediaTrack
----@return TrackEnvelope
+local function show_vol_env(track)
+    local selected = Tracks.Selected()
+    r.SetOnlyTrackSelected(track)
+    r.Main_OnCommand(40406, 0) -- Track: Toggle track volume envelope visible
+    selected:Select(true)
+end
+
+---Returns the track's volume envelope, creating or showing it when needed
+---@param track MediaTrack
+---@return TrackEnvelope?
 local function get_vol_env(track)
     local env = r.GetTrackEnvelopeByName(track, 'Volume')
     if not env then
-        r.Main_OnCommand(40406, 0) -- show volume env
+        show_vol_env(track)
         env = r.GetTrackEnvelopeByName(track, 'Volume')
-    end
-    if r.GetEnvelopeInfo_Value(env, 'I_TCPH_USED') == 0 then
-        r.SetOnlyTrackSelected(track)
-        r.Main_OnCommand(40406, 0) -- toggle track volume envelope visible
+    elseif r.GetEnvelopeInfo_Value(env, 'I_TCPH_USED') == 0 then
+        show_vol_env(track)
     end
     return env
 end
@@ -43,8 +54,9 @@ end
 local function fadein_auto(item)
     local itemFadeIn = item.fadeinlen >= item.len and item.len - 0.00001 or item.fadeinlen
     local itemFadeOut = item.fadeoutlen >= item.len and item.len - 0.00001 or item.fadeoutlen
-    local itemFadeInDir = item.fadeindir * 0.75
-    local itemFadeOutDir = item.fadeoutdir * 0.75
+    -- an envelope's rising fade-in bends the opposite way to its fade-out for the same tension
+    local itemFadeInDir = -item.fadeincurve * 0.75
+    local itemFadeOutDir = item.fadeoutcurve * 0.75
     if itemFadeOut == FADE_LENGTH_MIN then
         itemFadeOut = 0
     end
@@ -55,6 +67,9 @@ local function fadein_auto(item)
     local fadeOutStart = item.pos + item.len - itemFadeOut
     local track = item.track.track
     local env = get_vol_env(track)
+    if not env then
+        return
+    end
     local autoitemIdx = GetAutoitem(env, item.pos)
     if autoitemIdx then
         r.Main_OnCommand(40769, 0) -- unselect all tracks/items/env

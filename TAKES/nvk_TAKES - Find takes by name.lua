@@ -1,7 +1,7 @@
 -- @noindex
 -- SETUP --
 SCRIPT_FOLDER = 'simple'
-local r = reaper
+r = reaper
 SEP = package.config:sub(1, 1)
 DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
@@ -28,7 +28,9 @@ function SimpleRun()
     local searchString = s.str:lower()
     Items.All()
         :Filter(function(item)
-            return not not item.name:lower():find(searchString)
+            -- An item without a take (an empty item) has no name to match.
+            local name = item.name
+            return name ~= nil and name:lower():find(searchString, 1, true) ~= nil
         end)
         :Select(true)
     r.Main_OnCommand(41622, 0) -- View: Toggle zoom to selected items

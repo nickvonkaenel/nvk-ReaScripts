@@ -6,7 +6,9 @@ DATA_PATH = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. 'Data' .. SEP
 dofile(DATA_PATH .. 'functions.lua')
 
 local cfg = scr.path:match('(.+) %- Run%.lua$') .. '_cfg'
-if not pcall(dofile, cfg) or not config then
+-- No settings file means no startup actions were set up. A damaged one is kept aside and reported, rather than
+-- silently skipping every startup action at each launch.
+if not LoadConfigFile(cfg) or not config then
     return
 end
 

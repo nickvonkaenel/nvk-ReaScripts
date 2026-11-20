@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TRACK
-Version: 1.8.1
+Version: 1.9.3
 About:
     # nvk_TRACK
 
@@ -8,6 +8,15 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.9.3
+        - Add context-sensitive solo and playback actions, including temporary solo
+        - Add an action to toggle all FX windows for the focused track or item
+        - Fix folder muting in Toggle solo tracks of selected items - mute other tracks
+        - Fix Move folder and named tracks to top/bottom of project not placing video tracks at the top
+        - Reject invalid master-track and selected-track channel counts without changing tracks
+        - Remove bypassed and offline FX now also removes them from inside FX containers
+        - Support custom installation paths, including Windows paths with non-English characters
+        - Faster startup, especially on Windows
     1.8.1
         Insert track would sometimes cause folder heirarchy to get modified unintentionally
     1.8.0
@@ -36,6 +45,7 @@ Changelog:
         Initial release
 Provides:
     Data/**/*.lua
+    Data/modules.pack
     [main] *.lua
 --]]
 reaper.ShowMessageBox(

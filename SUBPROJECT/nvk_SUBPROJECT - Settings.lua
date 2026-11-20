@@ -55,12 +55,12 @@ function SimpleDraw()
         ImGui.PushFont(ctx, FONT.default, FONT_SIZE.heading2)
         ImGui.PushStyleVar(ctx, ImGui.StyleVar_FrameRounding, 24)
         ImGui.TableNextColumn(ctx)
-        if ImGui.Button(ctx, 'Cancel', -FLT_MIN, h * 1.1) then
+        if gui.Clickable(ImGui.Button(ctx, 'Cancel', -FLT_MIN, h * 1.1)) then
             scr.exit = true
         end
         ImGui.TableNextColumn(ctx)
         Colors.ColoredButtonPush()
-        if ImGui.Button(ctx, 'Ok', -FLT_MIN, h * 1.1) then
+        if gui.Clickable(ImGui.Button(ctx, 'Ok', -FLT_MIN, h * 1.1)) then
             Actions.Run()
         end
         Colors.ColoredButtonPop()

@@ -1,5 +1,5 @@
 -- @noindex
--- Applies that last used settings for nvk_PROPAGATE to selected items. If no items are selected, the script will open the UI instead.
+-- Runs nvk_PROPAGATE's track mode with the last used settings. If no items are selected, the UI opens instead.
 local r = reaper
 if r.CountSelectedMediaItems(0) > 0 then
     r.SetExtState('nvk_PROPAGATE', 'auto', 'true', false)

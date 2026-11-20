@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.13.3
+Version: 1.14.3
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,23 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.14.3
+        - Fix Remove selected items greater or less than length failing to open
+        - Fix SMART mute behavior for muted video items and improve SMART fade targeting in REAPER 7.81 and later
+        - Fix copying and pasting volume, preserving take polarity and handling empty items
+        - Validate pasted positions and split lengths and counts, and preserve snap offsets after invalid time input
+        - Fix Apply FX to items and move to directory: process all items, keep them selected, respect cancellation and report copy failures
+        - Fix Stretch selected items to markers with missing markers, region boundaries, zero-length items and snap offsets
+        - Restore temporary track solos after playback and preserve the selection when previous-item navigation has nowhere to go
+        - Select folder item children when moving to a previous item
+        - Fix Fades to volume automation on fader-scaled volume envelopes
+        - Fix Reset item length and Shift take offset on items without source length, and correct MIDI reset lengths
+        - Preserve reversed items, in-project MIDI, folder items, missing media and track selection in Reset item to original state
+        - Fix Sort groups with folder structure for overlapping group names and names with special characters
+        - Keep Trim overlapping items from growing separate items or leaving snap offsets outside their items
+        - Fix Remove uncolored items and Halve item volume on takes with inverted polarity
+        - Improve performance with thousands of selected items, especially moving them between tracks
+        - Support custom installation paths, including Windows paths with non-English characters
     1.13.3
         Improved behavior of select and move to next item and preserve playback state script
     1.13.2
@@ -68,6 +85,7 @@ Changelog:
     1.0.0 Initial release
 Provides:
     Data/**/*.lua
+    Data/modules.pack
     [main] *.lua
 --]]
 reaper.ShowMessageBox(

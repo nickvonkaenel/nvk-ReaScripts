@@ -10,14 +10,6 @@ end
 -- SCRIPT --
 r.set_action_options(3)
 
-local function unsolo_after_playback_stop()
-    if r.GetPlayState() & 1 == 1 then
-        r.defer(unsolo_after_playback_stop)
-    else
-        Tracks.UnsoloAll()
-    end
-end
-
 run(function()
     local playstate = r.GetPlayState()
     if playstate & 1 == 1 then -- if playback is on
@@ -31,8 +23,7 @@ run(function()
             items:Select()
             r.SetEditCurPos(items.minpos, true, false)
         else
-            Items.Selected():GroupSelect(true).tracks:Solo(true, true)
-            r.defer(unsolo_after_playback_stop)
+            TemporarySolo(Items.Selected():GroupSelect(true).tracks)
         end
         if playstate & 4 == 4 then
             r.CSurf_OnRecord()
@@ -43,3 +34,5 @@ run(function()
         r.Main_OnCommand(40417, 0) -- Item navigation: Select and move to next item
     end
 end)
+
+UnsoloAfterPlaybackStops()

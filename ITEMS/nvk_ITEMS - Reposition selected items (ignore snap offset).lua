@@ -15,6 +15,11 @@ run(function()
         if retval == false then
             return
         end
+        -- Checked before the snap offsets are cleared: they are restored only after a reposition.
+        local repositionTime = tonumber(retvals_csv)
+        if not repositionTime then
+            return
+        end
         local items = {}
         for i = 1, r.CountSelectedMediaItems() do
             local item = r.GetSelectedMediaItem(0, i - 1)
@@ -22,10 +27,6 @@ run(function()
             r.SetMediaItemInfo_Value(item, 'D_SNAPOFFSET', 0)
         end
         r.UpdateArrange()
-        local repositionTime = tonumber(retvals_csv)
-        if not repositionTime then
-            return
-        end
         local startTime, endTime = r.BR_GetArrangeView(0)
         local cursorPos = r.GetCursorPosition()
         local groupingToggle = r.GetToggleCommandState(1156) == 1

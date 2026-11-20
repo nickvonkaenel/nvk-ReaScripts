@@ -9,12 +9,12 @@ if not functionsLoaded then
 end
 
 run(function()
-    local items = Items.Selected()
-    if #items == 0 then
-        items = Items.All()
+    local items = FolderItems.Selected()
+    if r.CountSelectedMediaItems(0) == 0 then
+        items = FolderItems.All()
     end
-    items:Filter(function(item)
-        return item.unnamed and item.folder
+    items = items:Filter(function(item)
+        return item.unnamed
     end)
     items:Select(true)
 end)

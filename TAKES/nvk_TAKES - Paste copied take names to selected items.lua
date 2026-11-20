@@ -17,13 +17,18 @@ run(function()
         return
     end
     local items = Items.Selected()
+    -- Copy take name(s) writes one line per item it copied, so every line, a blank one included, belongs to the item
+    -- in the same place. A blank line (a take without a name, or an item without a take) leaves its item's name as
+    -- it is; skipping it would move every later name onto the item before its own.
     local i = 0
-    for name in str:gmatch('[^\n]+') do
+    for name in (str .. '\n'):gmatch('(.-)\n') do
         i = i + 1
         local item = items[i]
         if not item then
             break
         end
-        item.name = name
+        if name ~= '' then
+            item.name = name
+        end
     end
 end)

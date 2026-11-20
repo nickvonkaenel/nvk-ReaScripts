@@ -1,0 +1,83 @@
+Description: nvk_API
+Version: 0.9.12
+Author: nvk
+About:
+    # nvk_API
+
+    The native extension behind nvk.tools scripts. nvk_SIGNAL requires it. nvk_SEARCH, nvk_NAVIGATE
+    and other scripts use it when it is installed, for faster searching, Visual FX previews, accurate
+    track zoom and more, and keep working without it.
+
+    This package also installs nvk_GUI, nvk.tools' build of ReaImGui, which the scripts draw their
+    windows with when it is present, and its Lua wrapper. nvk_GUI is licensed under the GNU LGPL
+    version 3 or later. Matching source, dependency inputs and build instructions are included in
+    nvk_GUI-source.tar.xz beside the installed extensions.
+
+    Requires REAPER 7.55 or later, on macOS 14 or later, 64-bit Windows, or x86-64 Linux with glibc 2.35 or later
+    and X11/XWayland. Restart REAPER after installing or updating so the new version loads.
+Links:
+    Website https://nvk.tools
+Changelog:
+    0.9.12
+        Install staged updates when REAPER quits so the next session loads the updated extension
+        Preserve existing output files when copying or delivering renders on Windows
+        Keep previously tagged Vordio clips and captions out of folder item selections
+    0.9.10
+        Preserve floating window sizes on Windows displays using fractional scaling
+        Open recently used plug-in editors faster
+    0.9.9
+        Reopen script windows without REAPER's running-script prompt
+        Preview media items without requiring SWS
+    0.9.8
+        Keep SIGNAL responsive while analyzing long recordings and importing audio
+        Improve SIGNAL waveform drawing, selected-item previews and recording drag previews
+        Reduce idle processing in SIGNAL analysis displays
+        Keep NAVIGATE responsive in large projects and improve SEARCH startup and large-library searches
+        Preserve named folder items when merging and respect Rename settings saved with each project
+        Improve script-window responsiveness and recovery from drawing errors
+    0.9.7
+        Add SIGNAL's waveform draw styles and sample-level zoom, and let it drop silent channels and detect mono when inserting a recording
+        Let NAVIGATE list a project's subprojects
+        Let SEARCH capture a script's window for its Visual FX screenshot
+        Never count Vordio's empty video items as folder items
+        Keep the visible video while other tracks are soloed
+        Keep modifier keys working with the mouse wheel over unfocused script windows
+        Start background commands without a process window on Windows
+        Fix crashes when script windows close
+    0.9.6
+        Upgrade Dear ImGui and draw script windows faster
+        Animate CREATE2's effect displays at the screen's refresh rate
+        Add the engines behind CREATE2's WIDTH Repair, Focus, Gravity and Reverb
+        Re-render CREATE2 designs only from the first effect that changed
+        Render queued Morph jobs in parallel and speed up many effects
+        Let SIGNAL capture a track's output, capture the master before Monitoring FX, and add Stereo Bands
+        Respect REAPER's Hidden FX folder in SEARCH
+        Keep Folder Items from marking the projects it opens as changed, and keep Region Render Matrix routing when folder items are resized
+        Scroll focused tracks into view below pinned tracks
+        Download updates and the CLAP analysis pack through the system's network and proxy settings
+        Keep always-on-top script windows below REAPER's dialogs
+        Fix mixed text sizes in script windows, library search, and loading modules from network paths on Windows
+    0.9.5
+        Build SEARCH's index in the background so REAPER stays responsive at startup
+        Add loudness history for SIGNAL, including drawing loudness along the project timeline
+        Fix non-English characters in settings files on Windows
+    0.9.4
+        First release through ReaPack
+Provides:
+    [darwin-arm64] darwin-arm64/reaper_nvk_api.dylib > reaper_nvk_api.dylib
+    [darwin-arm64] darwin-arm64/nvk_plugin_scan > nvk_plugin_scan
+    [darwin-arm64] darwin-arm64/reaper_nvkgui-aarch64.dylib > reaper_nvkgui-aarch64.dylib
+    [darwin64] darwin64/reaper_nvk_api.dylib > reaper_nvk_api.dylib
+    [darwin64] darwin64/nvk_plugin_scan > nvk_plugin_scan
+    [darwin64] darwin64/reaper_nvkgui-x86_64.dylib > reaper_nvkgui-x86_64.dylib
+    [win64] win64/reaper_nvk_api.dll > reaper_nvk_api.dll
+    [win64] win64/nvk_plugin_scan.exe > nvk_plugin_scan.exe
+    [win64] win64/reaper_nvkgui-x64.dll > reaper_nvkgui-x64.dll
+    [linux64] linux64/reaper_nvk_api.so > reaper_nvk_api.so
+    [linux64] linux64/nvk_plugin_scan > nvk_plugin_scan
+    [linux64] linux64/reaper_nvkgui-x86_64.so > reaper_nvkgui-x86_64.so
+    reaper_nvk_api_THIRD_PARTY_NOTICES.txt
+    reaper_nvkgui_COPYING.txt
+    reaper_nvkgui_COPYING.LESSER.txt
+    nvk_GUI-source.tar.xz
+    [script] nvkgui.lua

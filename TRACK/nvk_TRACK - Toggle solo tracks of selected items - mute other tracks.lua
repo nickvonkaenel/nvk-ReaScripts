@@ -34,20 +34,20 @@ local function SoloRcv(track)
     local parentTrackDepth = r.GetTrackDepth(track)
     local trackidx = r.GetMediaTrackInfo_Value(track, 'IP_TRACKNUMBER')
     local tr = r.GetTrack(0, trackidx)
-    if not tr then
-        return
-    end
-    local depth = r.GetTrackDepth(tr)
-    while depth > parentTrackDepth do
-        if not tracks[tr] then
-            SoloRcv(tr)
+    -- The project's last track has no track after it, and so no children, but its folder parents still stay unmuted.
+    if tr then
+        local depth = r.GetTrackDepth(tr)
+        while depth > parentTrackDepth do
+            if not tracks[tr] then
+                SoloRcv(tr)
+            end
+            trackidx = trackidx + 1
+            if trackidx == trackCount then
+                break
+            end
+            tr = r.GetTrack(0, trackidx)
+            depth = r.GetTrackDepth(tr)
         end
-        trackidx = trackidx + 1
-        if trackidx == trackCount then
-            break
-        end
-        tr = r.GetTrack(0, trackidx)
-        depth = r.GetTrackDepth(tr)
     end
     tr = r.GetParentTrack(track)
     if tr and not tracks[tr] then

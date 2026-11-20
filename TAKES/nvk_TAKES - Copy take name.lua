@@ -13,6 +13,9 @@ run(function()
         return
     end
     local name = Item.Selected().name
+    if not name then
+        return -- the first selected item has no take (an empty item), so it has no name to copy
+    end
     r.SetExtState('nvk_TAKES', 'take_name', name, false)
     r.CF_SetClipboard(RemoveExtensions(name))
 end)

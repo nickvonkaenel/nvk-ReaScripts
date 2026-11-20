@@ -1,4 +1,13 @@
 --@noindex
+do
+    local path = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. '../SHARED/Data/extension_api.lua'
+    local file = io.open(path, 'rb')
+    if file then
+        file:close()
+        dofile(path).Install(reaper)
+    end
+end
+
 local function main()
     if reaper.GetCursorContext() == 0 then
         reaper.Main_OnCommand(8, 0)

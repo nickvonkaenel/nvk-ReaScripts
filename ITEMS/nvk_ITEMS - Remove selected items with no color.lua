@@ -11,6 +11,6 @@ end
 -- SCRIPT --
 run(function()
     Items():Filter(function(item)
-        return item.displayedcolor == 0
+        return not item.displayedcolor -- nil when the item shows no take, item or track color
     end):Delete()
 end)

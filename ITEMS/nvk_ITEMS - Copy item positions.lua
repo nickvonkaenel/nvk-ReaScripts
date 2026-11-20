@@ -14,5 +14,5 @@ run(function()
     if #items == 0 then
         return
     end
-    r.SetExtState('nvk_copyPaste', 'itemPositions', table.concat(items.positions, ','), false)
+    r.SetExtState('nvk_ITEMS', 'item_positions', table.concat(items.positions, ','), false)
 end)

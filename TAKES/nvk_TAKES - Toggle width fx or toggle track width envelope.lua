@@ -53,8 +53,8 @@ run(function()
             r.SetOnlyTrackSelected(track)
             local br_env = r.GetTrackEnvelopeByName(track, 'Width')
             if br_env ~= nil then
-                local width_env = r.BR_EnvAlloc(br_env, false)
-                if select(2, r.BR_EnvGetProperties(width_env)) then -- if visible
+                local _, visible = r.GetSetEnvelopeInfo_String(br_env, 'VISIBLE', '', false)
+                if visible == '1' then
                     r.Main_OnCommand(41870, 0) -- select width envelope
                     r.UpdateArrange()
                     r.PreventUIRefresh(-1)

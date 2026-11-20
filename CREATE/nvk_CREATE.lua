@@ -1,6 +1,6 @@
 --[[
 Description: nvk_CREATE
-Version: 1.9.10
+Version: 1.9.13
 About:
   # nvk_CREATE
 
@@ -12,12 +12,19 @@ About:
   -And more!
 Author: nvk, Neutronic
 Links:
-  Store Page https://gum.co/nvk_CREATE
+  Store Page https://nvk.tools/create
   User Guide https://nvk.tools/docs/create
   REAPER forum thread https://forum.cockos.com/showthread.php?t=259057
   Neutronic's REAPER forum profile https://forum.cockos.com/member.php?u=66313
   Neutronic's GitHub ReaScripts repository https://github.com/Neutronic/ReaScripts
 Changelog:
+  1.9.13
+    Fix Replace skipping Soundminer file path resolution with the current database selection
+    Fix cursor loading on case-sensitive filesystems
+    Resolve Soundminer volume paths to their mounted Windows drives when the Soundminer extension cannot
+    Fix scripts failing to start on Windows when the installation path contains non-English characters
+    Fix search, multi-layer variations and Replace skipping the first file of a database and some files in large databases
+    Faster startup, especially on Windows
   1.9.10
     Fix error when attempting to search missing databases
   1.9.9
@@ -36,6 +43,7 @@ Changelog:
     Removing support for Reaper 6. To use this script, you must upgrade to REAPER 7 or higher. Older versions can be downloaded from the full repository: https://raw.githubusercontent.com/nickvonkaenel/nvk-ReaScripts/main/index.xml
 Provides:
   Data/**/*.lua
+  Data/modules.pack
   Data/inv.cur
   [jsfx] *.jsfx
   [main] *.lua

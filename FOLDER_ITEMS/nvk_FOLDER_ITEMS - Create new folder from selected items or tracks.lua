@@ -9,9 +9,41 @@ if not functionsLoaded then
     return
 end
 -- SCRIPT --
+---The name setting for the new folder track, with Rename's wildcards read from the earliest item on the tracks,
+---or from the first track when they hold no items. Read before the folder exists, so <parent> names the track
+---the new folder goes into.
+---@param tracks Tracks
+---@return string? name nil when the setting is empty
+local function new_folder_name(tracks)
+    if NEW_FOLDER_TRACK_NAME == '' then
+        return nil
+    end
+    if not NEW_FOLDER_TRACK_NAME:find('<', 1, true) then
+        return NEW_FOLDER_TRACK_NAME
+    end
+    LuaFile.DoFile(DATA_PATH .. 'scripts' .. SEP .. 'rename' .. SEP .. 'data' .. SEP .. 'wildcards.lua')
+    local target
+    for _, item in ipairs(tracks.items) do
+        if not target or item.s < target.s then
+            target = item
+        end
+    end
+    target = target or tracks[1]
+    target.data.rename_type = target == tracks[1] and 'track' or 'item'
+    return Wildcards.Process(target, NEW_FOLDER_TRACK_NAME)
+end
+
 ---@param tracks Tracks
 local function create_folder(tracks)
+    local name = new_folder_name(tracks)
     local parent = tracks:AddToFolder()
+    if name and name ~= '' then
+        parent.name = name
+    end
+    if NEW_FOLDER_TRACK_OVERRIDE then
+        -- Track Override - Enable: folder items whatever the name or folder depth (read by both engines)
+        r.GetSetMediaTrackInfo_String(parent.track, 'P_EXT:nvk_folder_items_override', '1', true)
+    end
     local items = tracks.items
     local columns = Columns(items.unmuted)
     Items.UnselectAll()

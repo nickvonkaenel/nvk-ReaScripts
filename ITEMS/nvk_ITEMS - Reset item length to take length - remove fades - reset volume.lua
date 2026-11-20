@@ -15,9 +15,10 @@ run(function()
         item.fadeoutlen = 0
         item.vol = 1
         local take = item.take
-        if take then
+        local srclen = take and take.srclen or 0
+        if srclen > 0 then -- a folder item's or an unreadable source has no length to go back to
             take.offset = 0
-            take.length = take.srclen
+            take.length = srclen
         end
     end
 end)

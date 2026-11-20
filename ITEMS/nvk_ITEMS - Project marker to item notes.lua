@@ -13,22 +13,25 @@ SHOW_SUCCESS_MESSAGE = true -- change to false if you don't want feedback after
 -- SCRIPT --
 run(function()
     local cnt = 0
+    local markers = {}
+    for idx = 0, r.CountProjectMarkers(0) - 1 do
+        local _, isrgn, pos, _, name = r.EnumProjectMarkers(idx)
+        if not isrgn then
+            markers[#markers + 1] = { pos = pos, name = name }
+        end
+    end
     for i = 1, r.CountSelectedMediaItems(0) do
         local item = r.GetSelectedMediaItem(0, i - 1)
         local itemPos = r.GetMediaItemInfo_Value(item, 'D_POSITION')
         local itemLen = r.GetMediaItemInfo_Value(item, 'D_LENGTH')
         local itemEnd = itemPos + itemLen
-        local num_total, num_markers, num_regions = r.CountProjectMarkers(0)
-        for idx = 0, num_total - 1 do
-            local rv, isrgn, pos, rgnend, name, markrgnindexnumber = r.EnumProjectMarkers(idx)
-            if not isrgn then
-                if pos > itemEnd then
-                    break
-                end
-                if FloatEqual(pos, itemPos) then
-                    cnt = cnt + 1
-                    r.GetSetMediaItemInfo_String(item, 'P_NOTES', name, true)
-                end
+        for _, marker in ipairs(markers) do
+            if marker.pos > itemEnd then
+                break
+            end
+            if FloatEqual(marker.pos, itemPos) then
+                cnt = cnt + 1
+                r.GetSetMediaItemInfo_String(item, 'P_NOTES', marker.name, true)
             end
         end
     end

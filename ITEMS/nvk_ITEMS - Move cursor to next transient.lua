@@ -22,7 +22,7 @@ run(function()
             tracks = Tracks(items.tracks)
         end
     end
-    local columns = tracks:Columns()
+    local columns = Item.Unvalidated(tracks.Columns, tracks) -- bound to a key; every item here was just read from REAPER
     if #columns == 0 then
         return
     end

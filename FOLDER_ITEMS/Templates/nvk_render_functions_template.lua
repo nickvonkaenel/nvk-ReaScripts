@@ -15,6 +15,7 @@ local r = reaper
 ---@field add_to_project_location number
 ---@field bitdepth integer
 ---@field channels integer
+---@field channel_detection_probe boolean True only during a short throwaway render used to measure channel counts
 ---@field default boolean
 ---@field directory string
 ---@field embed_media_cues boolean
@@ -116,9 +117,20 @@ ADDITIONAL_RENDER_SETTINGS = {
 ---@field copy_to_source_directory boolean
 
 ---Function called before files are rendered by "nvk_FOLDER_ITEMS - Render SMART". I have not tested this code it's just provided as an example as something you might do.
+---
+---When "Channels" is set to Auto, Render SMART may first run a short throwaway render to measure how
+---many channels a file actually needs. PRE_RENDER runs for that measuring render too, so that what
+---gets measured is the same signal path the real render produces. Those renders are flagged with
+---render_settings.channel_detection_probe, and the paths in `files` point at temporary files that are
+---deleted immediately afterwards. Keep signal-path work (FX, routing, track state) unconditional so
+---the measurement stays accurate, and return early from anything that touches the real output files
+---or the outside world, as the example below does. POST_RENDER is never called for these renders.
 ---@param files string[] array-like table of paths for the files being rendered
 ---@param render_settings RenderSettings settings used for the rendered files
 function PRE_RENDER(files, render_settings)
+    if render_settings.channel_detection_probe then
+        return -- these files are temporary, there is nothing to check out
+    end
     if not render_settings.check_out_files then
         return
     end

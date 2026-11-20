@@ -9,7 +9,7 @@ if not functionsLoaded then
 end
 -- SCRIPT --
 run(function()
-    local itemPositionsString = r.GetExtState('nvk_copyPaste', 'itemPositions')
+    local itemPositionsString = r.GetExtState('nvk_ITEMS', 'item_positions')
     if not itemPositionsString then
         return
     end

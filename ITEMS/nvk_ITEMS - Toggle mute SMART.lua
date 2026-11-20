@@ -8,18 +8,24 @@ if not functionsLoaded then
     return
 end
 -- SCRIPT --
+local ext_str = 'nvk_TOGGLEVOL'
 run(function()
-    for i, item in ipairs(Items()) do
-        if item.video then
-            local vol = item.vol
-            if vol > 0 then
-                item.vol = 0
-                item:SetExtState('nvk_TOGGLEVOL', vol)
-            else
-                item.vol = tonumber(item:GetExtState('nvk_TOGGLEVOL')) or 1
-            end
-        else
+    ---@param item Item
+    local function mute(item)
+        if not item.video or item.mute then
             item.mute = not item.mute
+            return
         end
+        local vol = item.vol
+        if vol > 0 then
+            item.vol = 0
+            item:SetExtState(ext_str, vol)
+        else
+            item.vol = tonumber(item:GetExtState(ext_str)) or 1
+        end
+    end
+
+    for _, item in ipairs(Items.Selected()) do
+        mute(item)
     end
 end)

@@ -39,7 +39,7 @@ run(function()
         local track = r.GetTrack(0, initTrackNum)
         for i, item in ipairs(itemTable) do
             r.MoveMediaItemToTrack(item, track)
-            r.SetMediaItemPosition(item, pos, true)
+            r.SetMediaItemPosition(item, pos, false)
             pos = pos + r.GetMediaItemInfo_Value(item, 'D_LENGTH')
         end
     end

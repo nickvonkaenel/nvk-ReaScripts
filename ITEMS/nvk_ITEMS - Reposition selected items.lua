@@ -10,6 +10,9 @@ if not functionsLoaded then
 end
 -- SCRIPT --
 run(function()
+    if r.CountSelectedMediaItems(0) == 0 then
+        return
+    end
     local retval, retvals_csv = r.GetUserInputs('Reposition Items', 1, 'Time (negative to use item end)', '0')
     if retval == false then
         return

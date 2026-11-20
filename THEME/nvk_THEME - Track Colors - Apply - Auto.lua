@@ -27,6 +27,8 @@ end
 
 local color_state = get_color_state()
 
+local track_signature
+
 local function refresh_colors()
     colors = GetTrackColors()
     if not colors then
@@ -60,12 +62,17 @@ local function main()
     local new_proj_state = r.GetProjectStateChangeCount(0)
     if new_proj_state ~= proj_state or update then
         proj_state = new_proj_state
-        local trackcolor_params = ColorTracks(colors)
-        if trackcolor_params.state then
-            if trackcolor_params.state.val ~= 1 then
-                r.ThemeLayout_SetParameter(trackcolor_params.state.idx, 1, false)
-                r.ThemeLayout_RefreshAll()
+        if update or TrackColorSignature() ~= track_signature then
+            local trackcolor_params = ColorTracks(colors)
+            if trackcolor_params.state then
+                if trackcolor_params.state.val ~= 1 then
+                    r.ThemeLayout_SetParameter(trackcolor_params.state.idx, 1, false)
+                    r.ThemeLayout_RefreshAll()
+                end
             end
+            -- Taken after coloring, so the colors just applied do not trigger another pass.
+            track_signature = TrackColorSignature()
+            proj_state = r.GetProjectStateChangeCount(0)
         end
     end
     r.defer(main)

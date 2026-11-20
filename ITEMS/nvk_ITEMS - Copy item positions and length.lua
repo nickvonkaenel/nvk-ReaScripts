@@ -9,20 +9,19 @@ if not functionsLoaded then
 end
 
 run(function()
-    local str = 'return {'
-    for _, item in ipairs(Items.Selected()) do
-        str = str
-            .. string.format(
-                [[
+    local entries = {}
+    for i, item in ipairs(Items.Selected()) do
+        entries[i] = string.format(
+            [[
 
     {
         pos = %f,
         len = %f,
     },]],
-                item.pos,
-                item.len
-            )
+            item.pos,
+            item.len
+        )
     end
-    str = str .. '\n}'
+    local str = 'return {' .. table.concat(entries) .. '\n}'
     r.CF_SetClipboard(str)
 end)

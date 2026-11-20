@@ -14,7 +14,12 @@ run(function()
     if not retval or not tonumber(retvals_csv) then
         return
     end
-    local splits = tonumber(retvals_csv)
+    -- Only a whole number of splits gives equal parts.
+    local splits = math.tointeger(tonumber(retvals_csv))
+    if not splits or splits < 1 then
+        r.MB('The number of splits must be a whole number of 1 or more.', 'Error', 0)
+        return
+    end
     for _, item in ipairs(Items()) do
         local itemPos = item.pos
         local itemLen = item.len

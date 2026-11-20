@@ -16,7 +16,9 @@ run(function()
     local vols = {}
     for i, item in ipairs(items) do
         local take = item.take
-        vols[i] = db2spl(item.vol + (take and take.vol or 0))
+        -- Both volumes are linear gains, so the item's gain is their product. A take with inverted polarity has a
+        -- negative volume: the gain is its size, and the polarity is not copied.
+        vols[i] = math.abs(item.vol * (take and take.vol or 1))
     end
-    r.SetExtState('nvk_copyPaste', 'itemVolumes', table.concat(vols, ','), false)
+    r.SetExtState('nvk_ITEMS', 'item_volumes', table.concat(vols, ','), false)
 end)

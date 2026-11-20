@@ -9,7 +9,7 @@ if not functionsLoaded then
 end
 -- SCRIPT --
 run(function()
-    local itemVolumesString = r.GetExtState('nvk_copyPaste', 'itemVolumes')
+    local itemVolumesString = r.GetExtState('nvk_ITEMS', 'item_volumes')
     if not itemVolumesString then
         return
     end
@@ -22,6 +22,9 @@ run(function()
         end
         local item = items[i]
         item.vol = tonumber(volume) or 1
-        item.take.vol = 1
+        local take = item.take
+        if take then -- an empty item has none
+            take.vol = take.vol < 0 and -1 or 1 -- unity gain; an inverted polarity stays inverted
+        end
     end
 end)

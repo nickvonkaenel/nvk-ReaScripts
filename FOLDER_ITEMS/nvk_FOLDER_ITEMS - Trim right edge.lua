@@ -83,7 +83,7 @@ run(function()
                 elseif item.s < cursor_pos then
                     item.len = item_len - diff
                 end
-                TrimVolumeAutomationItem(item.item)
+                TrimVolumeAutomationItem(item.item, item.s + item_len)
                 if FADE_PRESERVE_LENGTH_EXTENDING and diff < 0 or FADE_PRESERVE_LENGTH_ALWAYS then
                     if FADE_RELATIVE then
                         if item.fadeinlen > FADE_LENGTH_MIN then

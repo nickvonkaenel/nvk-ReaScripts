@@ -12,7 +12,18 @@ run(function()
     if r.CountSelectedMediaItems(0) == 0 then
         return
     end
-    local names = table.concat(Items.Selected().name, '\n')
+    -- One line per selected item, so Paste puts each name back in its item's place. An item without a take (an
+    -- empty item) has no name and copies as an empty line; with no take at all there is nothing to copy.
+    local lines, found = {}, false
+    for i, item in ipairs(Items.Selected()) do
+        local name = item.name
+        lines[i] = name or ''
+        found = found or name ~= nil
+    end
+    if not found then
+        return
+    end
+    local names = table.concat(lines, '\n')
     r.SetExtState('nvk_TAKES', 'take_name', names, false)
     r.CF_SetClipboard(names)
 end)

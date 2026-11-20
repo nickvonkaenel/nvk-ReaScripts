@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.5.2
+Version: 1.6.5
 Author: nvk
 About:
     # nvk_THEME
@@ -8,9 +8,23 @@ About:
     nvk_THEME is a premium Reaper theme in the style of the nvk.tools suite of scripts. It was designed by the talented Gwen Terrien (@terromino). It is not only an improvement on the look and feel of Reaper, but it also adds additional functionality with custom transport, track FX, and channel output buttons as well as an automatic track coloring script for the ultimate Reaper aesthetic.
 Author: nvk
 Links:
-    Store Page https://gum.co/nvk_THEME
+    Store Page https://nvk.tools/theme
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.6.5
+        - Search for REAPER actions when assigning a custom button
+        - Update Dark and Light themes to 1.8.1 and add Quiet Dark and Quiet Light variants with bundled fonts
+        - Add controls for fixed lanes, pinned tracks, meter visibility, track-name labels and button rows
+        - Drag track-panel FX inserts into empty slots with a new FX-list option
+        - Add automatic track coloring, improved randomized palettes and per-preset Track Colors settings
+        - Discover custom theme variants and refresh Settings and Track Colors with layout previews and responsive sections
+        - Improve track-color modes, control rows, Transport layouts and palette color editing
+        - Remove the custom splash screen
+        - Use the first matching wildcard track-color rule and preserve manual colors without requiring Confirm on new project
+        - Fix saving, importing, switching and discarding track-color settings, including clipboard import and use with other REAPER themes
+        - Keep three-digit track numbers readable at large label sizes and fix panel alignment, fader sizing, mixer saturation and Transport visibility
+        - Prevent automatic coloring from stalling plug-in windows in large projects on every parameter change
+        - Improve settings recovery, prevent freezes in small or scrolled windows and support custom installation paths
     1.5.2
         Error when selecting transport settings section
     1.5.1
@@ -35,8 +49,16 @@ Changelog:
 Provides:
     [main] *.lua
     Data/**/*.lua
+    Data/modules.pack
+    Data/img/*.png
     [theme] nvk_THEME_Dark.ReaperThemeZip
     [theme] nvk_THEME_Light.ReaperThemeZip
+    [theme] nvk_THEME_Quiet_Dark.ReaperThemeZip
+    [theme] nvk_THEME_Quiet_Light.ReaperThemeZip
+    Data/fonts/nvk_SANS-RegularTabular.ttf
+    Data/fonts/nvk_SANS-RegularUI.ttf
+    Data/fonts/OFL-RedditSans.txt
+    Data/fonts/README.txt
 --]]
 r = reaper
 SEP = package.config:sub(1, 1)

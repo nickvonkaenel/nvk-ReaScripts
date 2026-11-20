@@ -17,6 +17,10 @@ run(function()
         r.Main_OnCommand(40434, 0) --  edit cursor to play cursor
         r.OnStopButton()
         r.Main_OnCommand(40416, 0) -- Item navigation: Select and move to previous item
+        if r.CountSelectedMediaItems(0) == 0 and #items > 0 then -- nothing before the play cursor: back where it was
+            items:Select()
+            r.SetEditCurPos(items.minpos, true, false)
+        end
         r.CSurf_OnRecord()
     else
         if playstate & 1 == 1 then

@@ -11,6 +11,18 @@ end
 -- SCRIPT --
 local config
 
+-- Finding a track by GUID walks every track, so a run finds all of them once: an item is reset per selected item.
+local tracks_by_guid
+local function track_by_guid(guid)
+    if not tracks_by_guid then
+        tracks_by_guid = {}
+        for _, track in ipairs(Tracks.All()) do
+            tracks_by_guid[track.guid] = track
+        end
+    end
+    return tracks_by_guid[guid]
+end
+
 local function reset_pos(items)
     for i, item in ipairs(items) do
         item.pos = config.items[item.guid].pos
@@ -19,7 +31,7 @@ end
 
 local function reset_tracks(items)
     for i, item in ipairs(items) do
-        local track = Track(config.items[item.guid].track)
+        local track = track_by_guid(config.items[item.guid].track)
         if track then
             item.track = track
         end
@@ -100,7 +112,7 @@ local align = {
             return true
         end
         for i, item in ipairs(items) do
-            local track = Track(config.items[item.guid].track)
+            local track = track_by_guid(config.items[item.guid].track)
             if track then
                 item.track = track
             end

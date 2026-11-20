@@ -12,13 +12,11 @@ end
 run(function()
     local items = Items().nonfolder
     local tracks = items.tracks
+    local next_track = {}
+    for i, track in ipairs(tracks) do
+        next_track[track.track] = tracks[(i % #tracks) + 1]
+    end
     for _, item in ipairs(items) do
-        local itemtrack = item.track
-        for i, track in ipairs(tracks) do
-            if track == itemtrack then
-                item.track = tracks[(i % #tracks) + 1]
-                break
-            end
-        end
+        item.track = next_track[item.track.track]
     end
 end)

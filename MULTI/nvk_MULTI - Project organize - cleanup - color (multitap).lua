@@ -1,4 +1,13 @@
 -- @noindex
+do
+    local path = debug.getinfo(1, 'S').source:match('@(.+[/\\])') .. '../SHARED/Data/extension_api.lua'
+    local file = io.open(path, 'rb')
+    if file then
+        file:close()
+        dofile(path).Install(reaper)
+    end
+end
+
 local r = reaper
 -- SCRIPT --
 function SaveSelectedItems(selectedItemsTable)
@@ -26,19 +35,20 @@ function Main()
             r.Main_OnCommand(r.NamedCommandLookup('_RSe896f82bdd3cd3d72527c29a63409d623fb37e79'), 0) -- Script: nvk_THEME - Track Colors - Set selected items to random track color.lua
             RestoreSelectedItems(items)
         else
+            local time = r.time_precise()
             reaper.Main_OnCommand(reaper.NamedCommandLookup('_RSe357cdb22b7617e5366c779ae624212071459ac1'), 0) --Script: nvk_TRACK - Move folder and named tracks to top of project and video track to top.lua
             r.Main_OnCommand(r.NamedCommandLookup('_RS0a4fcdc750b810a7eabed6d24d882a6b4a7a5af3'), 0) -- Script: nvk_THEME - Track Colors - Apply - Manual.lua
             local section, key = 'nvk_projectOrganize', 'time'
-            local time = os.time()
 
             if reaper.HasExtState(section, key) then
-                local oldTime = reaper.GetExtState(section, key)
-                if time - oldTime < 1 then
+                local previous_time = tonumber(reaper.GetExtState(section, key))
+                local elapsed = previous_time and time - previous_time
+                if elapsed and elapsed >= 0 and elapsed < 1 then
                     reaper.Main_OnCommand(reaper.NamedCommandLookup('_RSe5d6c1d1ae4478f4e98b19af2855be9c8d2e96d3'), 0) --Script: nvk_TRACK - Remove unused tracks.lua
                 end
                 reaper.DeleteExtState(section, key, false)
             end
-            reaper.SetExtState(section, key, tostring(time), false)
+            reaper.SetExtState(section, key, string.format('%.17g', time), false)
         end
     end
 end

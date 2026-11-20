@@ -22,10 +22,7 @@ run(function()
             item:Select(true)
             local fadeinlen = item.fadeinlen
             local fadeoutlen = item.fadeoutlen
-            local fadeinshape = item.fadeinshape
-            local fadeoutshape = item.fadeoutshape
-            local fadeindir = item.fadeindir
-            local fadeoutdir = item.fadeoutdir
+            local fade_shapes = FadeShape.Capture(r, item.item)
             local name = take.name
             local offset = take.offset
             local pos = item.pos
@@ -42,10 +39,7 @@ run(function()
             take:SetAllFXOffline(true)
             item.fadeinlen = fadeinlen
             item.fadeoutlen = fadeoutlen
-            item.fadeinshape = fadeinshape
-            item.fadeoutshape = fadeoutshape
-            item.fadeindir = fadeindir
-            item.fadeoutdir = fadeoutdir
+            FadeShape.Apply(r, item.item, fade_shapes)
             newtake.name = name
             newtake.offset = newOffset
             item.pos = pos

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_MULTI
-Version: 1.4.2
+Version: 1.4.4
 About:
     # nvk_MULTI
 
@@ -8,6 +8,9 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.4.4
+        Make project-organize double taps use a consistent one-second window
+        Work without SWS for take FX bypass and custom track colors when nvk_API is installed
     1.4.2
         New script: nvk_MULTI - Remove time selection and loop points and deselect all items and stop playback and unsolo all tracks.lua
     1.4.1

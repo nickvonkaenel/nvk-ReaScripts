@@ -13,7 +13,10 @@ run(function()
         local minlenitem = column.items:MinLenItem()
         assert(minlenitem, 'No items in column')
         for i, item in ipairs(column.items) do
-            item:Trim(minlenitem.s, minlenitem.e)
+            -- A column can chain items that never touch its smallest one: those have nothing to trim to.
+            if item:Overlap(minlenitem) then
+                item:Trim(minlenitem.s, minlenitem.e)
+            end
         end
     end
 end)

@@ -9,6 +9,11 @@ if not channel_count then
     return
 end
 
+if channel_count < 2 or channel_count > 128 or channel_count % 2 ~= 0 then
+    reaper.MB('The channel count must be an even number from 2 to 128.', 'Error', 0)
+    return
+end
+
 -- Loop through all selected tracks and set their channel count
 for i = 0, reaper.CountSelectedTracks(0) - 1 do
     local track = reaper.GetSelectedTrack(0, i)

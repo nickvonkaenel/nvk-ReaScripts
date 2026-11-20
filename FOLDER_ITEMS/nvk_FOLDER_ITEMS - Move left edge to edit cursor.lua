@@ -10,7 +10,7 @@ if not functionsLoaded then
 end
 -- SCRIPT --
 run(function()
-    r.SetExtState('nvk_FOLDER_ITEMS', 'projUpdateFreeze', 'true', false) -- move operations can trigger unnecessary update
+    r.SetExtState('nvk_FOLDER_ITEMS', 'proj_update_freeze', 'true', false) -- move operations can trigger unnecessary update
     local cursor_pos = r.GetCursorPosition()
     local items = Items.Selected()
     if #items == 0 then

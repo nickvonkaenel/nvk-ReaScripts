@@ -11,5 +11,5 @@ end
 -- SCRIPT --
 run(function()
     Items.Selected().folder:Unselect()
-    r.SetExtState('nvk_FOLDER_ITEMS', 'projUpdateFreeze', 'true', false)
+    r.SetExtState('nvk_FOLDER_ITEMS', 'proj_update_freeze', 'true', false)
 end)

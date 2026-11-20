@@ -86,7 +86,7 @@ run(function()
                 local parentTrack = r.GetParentTrack(track)
                 if parentTrack then
                     local rv, parentTrackName = r.GetTrackName(parentTrack)
-                    newName = string.match(newName, parentTrackName .. '[_ -](.+)')
+                    newName = string.match(newName, parentTrackName:gsub('%W', '%%%0') .. '[_ -](.+)')
                     if not newName then
                         newName = k
                     end
@@ -102,8 +102,18 @@ run(function()
                 table.sort(v, sortItems)
                 for i, item in ipairs(v) do
                     r.MoveMediaItemToTrack(item, track)
-                    r.SetMediaItemPosition(item, pos, true)
+                    r.SetMediaItemPosition(item, pos, false)
                     pos = pos + r.GetMediaItemInfo_Value(item, 'D_LENGTH')
+                end
+                -- Names that extend this one (Step and Step_Dirt) sit beside its items: they go in tracks below it.
+                local children = {}
+                for key, child in pairs(v) do
+                    if type(key) == 'string' then
+                        children[key] = child
+                    end
+                end
+                if next(children) then
+                    CreateItemFolders(children, depth + 1, k)
                 end
             elseif type(v) == 'table' then
                 if tablesize(v) > 1 then

@@ -11,8 +11,9 @@ end
 run(function()
     for _, item in ipairs(Items()) do
         local take = item.take
-        if take then
-            take.offset = (take.offset + take.length) % take.srclen
+        local srclen = take and take.srclen or 0
+        if srclen > 0 then -- a folder item's or an unreadable source has no length to wrap around
+            take.offset = (take.offset + take.length) % srclen
         end
     end
 end)

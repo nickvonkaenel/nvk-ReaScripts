@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.8.1
+Version: 2.9.3
 About:
     # nvk_AUTODOPPLER
 
@@ -11,9 +11,22 @@ About:
     Click the "Website" button for more info
 Author: nvk
 Links:
-    Store Page https://gum.co/nvk_AUTODOPPLER
+    Store Page https://nvk.tools/autodoppler
     User Guide https://nvk.tools/docs/autodoppler
 Changelog:
+    2.9.3
+        Features
+            - Move Preferences into a sidebar window with General, Keyboard shortcuts, and License sections
+            - Add Segments to repeat a Doppler pass within each item
+            - Add Update Automation (U) to rebuild automation after editing items or the time selection
+            - Faster startup, especially on Windows
+        Fixes
+            - Correct peak timing for media with non-default playback rates
+            - Fix unlinked Playrate Offset automation
+            - Improve automation timing, ordering, and parameter ranges across supported Doppler plug-ins
+            - Fix automation updates failing with incomplete saved settings
+            - Show every plug-in in the plug-in dropdown
+            - Support custom installation paths, including Windows paths with non-English characters
     2.8.0
         Compatibility with nvk_SHARED 4.0.0. Make sure to update all your scripts to the latest version.
     For full changelog, visit https://nvk.tools/docs/autodoppler#changelog
@@ -22,6 +35,7 @@ Provides:
     [jsfx] *.jsfx
     [main] *.eel
     Data/**/*.lua
+    Data/modules.pack
     Presets/*.*
 --]]
 --SCRIPT--

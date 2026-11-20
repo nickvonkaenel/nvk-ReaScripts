@@ -26,7 +26,7 @@ if mousepos >= 0 then
         end
     else
         local track = Track.UnderMouse()
-        local items = track and track:Items():Selected()
+        local items = track and track:Items().selected -- the selected items on the track under the mouse
         if items and #items > 0 then
             local nearestEdge, isEnd = items:NearestEdge(mousepos, true)
             if nearestEdge then

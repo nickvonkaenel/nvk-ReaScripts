@@ -13,13 +13,31 @@ end
 table.insert(bar.buttons, 1, 'pin')
 local r = reaper
 
-item_s = {}
+local item_s = {}
 local item = r.GetSelectedMediaItem(0, 0)
 if item then
-    pcall(Load, select(2, reaper.GetSetMediaItemInfo_String(item, 'P_EXT:nvk_item_s', '', false)))
+    local read_error
+    item_s, read_error = ParseStoredTable(
+        select(2, r.GetSetMediaItemInfo_String(item, 'P_EXT:nvk_item_s', '', false)),
+        'item_s',
+        'item render channels'
+    )
+    if read_error then
+        ReportCaught('channels.read_item_settings', false, read_error)
+    end
+    item_s = item_s or {}
 end
 
-local channels = math.floor(item_s.channels or 2)
+local channels = tonumber(item_s.channels)
+channels = channels and math.floor(channels)
+-- InputInt accepts a signed 32-bit integer. Leave channel policy to the existing controls, but never feed a corrupt
+-- stored value, NaN or overflow into the UI binding.
+if not channels or channels ~= channels or channels < -2147483648 or channels > 2147483647 then
+    if item_s.channels ~= nil then
+        ReportCaught('channels.invalid_stored_value', false, 'Stored render channels are not a finite UI integer')
+    end
+    channels = 2
+end
 
 function SimpleDraw()
     local rv
