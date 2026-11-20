@@ -1,6 +1,6 @@
 --[[
 Description: nvk_THEME
-Version: 1.6.5
+Version: 1.6.6
 Author: nvk
 About:
     # nvk_THEME
@@ -11,6 +11,8 @@ Links:
     Store Page https://nvk.tools/theme
     User Guide https://nvk.tools/docs/theme
 Changelog:
+    1.6.6
+        - Clarify installer instructions when nvk_SHARED is missing or needs an update
     1.6.5
         - Search for REAPER actions when assigning a custom button
         - Update Dark and Light themes to 1.8.1 and add Quiet Dark and Quiet Light variants with bundled fonts

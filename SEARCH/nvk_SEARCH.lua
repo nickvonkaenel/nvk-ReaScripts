@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SEARCH
-Version: 2.2.1
+Version: 2.2.2
 About:
     # nvk_SEARCH
 
@@ -10,6 +10,8 @@ Links:
     REAPER forum thread https://forum.cockos.com/showthread.php?t=286729
     User Guide: https://nvk.tools/docs/search
 Changelog:
+    2.2.2
+        - Clarify installer instructions when nvk_SHARED is missing or needs an update
     2.2.1
         Search and browse
             - Redesign results with compact and detailed views, clearer metadata and a resizable Browse and Tags sidebar

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_LOOPMAKER
-Version: 2.7.0
+Version: 2.7.1
 About:
     # nvk_LOOPMAKER
     nvk_LOOPMAKER Creates perfect zero-crossing loops out of selected items. If Loop Count is set to a number higher than 1, it will create multiple loops out of a single item that can be played back to back with sample accurate transitions.
@@ -9,6 +9,8 @@ Links:
     Store Page https://nvk.tools/loopmaker
     User Guide https://nvk.tools/docs/loopmaker
 Changelog:
+    2.7.1
+        - Clarify installer instructions when nvk_SHARED is missing or needs an update
     2.7.0
         - Redesign the window around Loop and Shepard Tone modes, with collapsible Position and Name settings and persistent Cancel and Apply controls
         - Add a waveform loop view: drag the splice marker to choose the zero-crossing search and edit the crossfade in a magnified seam view

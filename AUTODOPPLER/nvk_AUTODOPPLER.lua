@@ -1,6 +1,6 @@
 --[[
 Description: nvk_AUTODOPPLER
-Version: 2.9.3
+Version: 2.9.4
 About:
     # nvk_AUTODOPPLER
 
@@ -14,6 +14,8 @@ Links:
     Store Page https://nvk.tools/autodoppler
     User Guide https://nvk.tools/docs/autodoppler
 Changelog:
+    2.9.4
+        - Clarify installer instructions when nvk_SHARED is missing or needs an update
     2.9.3
         Features
             - Move Preferences into a sidebar window with General, Keyboard shortcuts, and License sections

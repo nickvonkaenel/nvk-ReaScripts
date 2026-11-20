@@ -1,5 +1,5 @@
 -- @noindex
--- Checks for nvk tools updates. With automatic updates on, it installs them: at once when no nvk window is open,
+-- Checks for nvk.tools updates. With automatic updates on, it installs them: at once when no nvk window is open,
 -- otherwise at the next REAPER start. nvk_API runs it quietly after REAPER starts and every 12 hours, and nvk
 -- windows run it when nvk_API cannot; run from the Action List, it says what it found.
 --
@@ -14,7 +14,7 @@ if type(LuaFile) ~= 'table' or not LuaFile.DoFile then
     local loader_path = SHARED_DATA_PATH .. 'lua_file.lua'
     local file = io.open(loader_path, 'rb')
     if not file then
-        r.MB('nvk_SHARED is incomplete. Please reinstall the nvk tools.', 'nvk tools updates', 0)
+        r.MB('nvk_SHARED is incomplete. Please reinstall nvk_SHARED.', 'nvk.tools updates', 0)
         return
     end
     local bytes = file:read('a')
@@ -33,7 +33,7 @@ if not os_is then
 end
 
 local Updates = LuaFile.DoFile(SHARED_DATA_PATH .. 'update' .. SEP .. 'service.lua')
-local TITLE = 'nvk tools updates'
+local TITLE = 'nvk.tools updates'
 local background = Updates.StartedInBackground()
 
 if Updates.Busy() then
@@ -95,7 +95,7 @@ local function report(result)
     elseif result.restart then
         r.MB('Restart REAPER to load the installed update.', TITLE, 0)
     elseif result.mode == 'automatic' then
-        r.MB('The nvk tools are up to date.', TITLE, 0)
+        r.MB('Your nvk.tools installation is up to date.', TITLE, 0)
     else
         r.MB('Checked for updates. ReaPack installs them here.', TITLE, 0)
     end

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 5.2.2
+Version: 5.2.3
 About:
     # nvk_SHARED
 
@@ -9,6 +9,10 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    5.2.3
+        - Fix an update notice appearing after switching an up-to-date install to automatic updates
+        - Open ReaPack directly to nvk_API after the startup dependency prompt and clarify installation and update instructions
+        - Show the required nvk_API version and remind users to restart REAPER after updating it
     5.2.2
         Appearance and controls
             - Search installed REAPER actions by name or command ID directly in Startup Actions and other action pickers

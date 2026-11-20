@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.18.7
+Version: 2.18.8
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://nvk.tools/workflow
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.18.8
+        - Clarify installer instructions when nvk_SHARED is missing or needs an update
     2.18.7
         Features
             - Choose pre-render, post-render and post-add actions directly in Render SMART settings

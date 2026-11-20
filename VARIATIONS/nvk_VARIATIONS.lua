@@ -1,6 +1,6 @@
 --[[
 Description: nvk_VARIATIONS
-Version: 1.8.0
+Version: 1.8.1
 About:
     # nvk_VARIATIONS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://nvk.tools/variations
     User Guide https://nvk.tools/docs/variations
 Changelog:
+    1.8.1
+        - Clarify installer instructions when nvk_SHARED is missing or needs an update
     1.8.0
         - Refresh the window with readable slider values and a re-roll control for each section
         - Add Selected only, Full length and Auto controls for Amount, Difference and Space

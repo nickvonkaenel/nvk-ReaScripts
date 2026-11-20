@@ -1,6 +1,6 @@
 --[[
 Description: nvk_TRACK
-Version: 1.9.3
+Version: 1.9.4
 About:
     # nvk_TRACK
 
@@ -8,6 +8,8 @@ About:
 Author: nvk
 Website: https://nvk.tools
 Changelog:
+    1.9.4
+        - Clarify installer instructions when nvk_SHARED is missing or needs an update
     1.9.3
         - Add context-sensitive solo and playback actions, including temporary solo
         - Add an action to toggle all FX windows for the focused track or item

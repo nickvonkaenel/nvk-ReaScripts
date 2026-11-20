@@ -25,7 +25,7 @@ if not r.file_exists(SHARED_DATA_PATH .. 'basics.lua') then
         r.MB('nvk_SHARED is required to run this script. Please install it from ReaPack', 'Error', 0)
         r.ReaPack_BrowsePackages('nvk_SHARED')
     else
-        r.MB('nvk_SHARED is required to run this script. Please run the nvk tools installer from nvk.tools', 'Error', 0)
+        r.MB('nvk_SHARED is required to run this script. Download and run the installer from nvk.tools.', 'Error', 0)
     end
     return
 end
@@ -65,7 +65,7 @@ local loader, loader_error = seed_lua_file(SHARED_DATA_PATH)
 if not loader or (loader.API or 0) < REQUIRED_LUA_FILE_API then
     r.MB(
         'nvk_SHARED is outdated or incomplete. Please update it'
-            .. (r.ReaPack_BrowsePackages and ' from ReaPack.' or ' by running the nvk tools installer from nvk.tools.')
+            .. (r.ReaPack_BrowsePackages and ' from ReaPack.' or ' with the nvk.tools Installer.')
             .. (loader_error and ('\n\n' .. loader_error) or ''),
         'Error',
         0

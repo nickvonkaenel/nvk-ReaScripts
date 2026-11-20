@@ -1,6 +1,6 @@
 --[[
 Description: nvk_ITEMS
-Version: 1.14.3
+Version: 1.14.4
 About:
     # nvk_ITEMS
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    1.14.4
+        - Clarify installer instructions when nvk_SHARED is missing or needs an update
     1.14.3
         - Fix Remove selected items greater or less than length failing to open
         - Fix SMART mute behavior for muted video items and improve SMART fade targeting in REAPER 7.81 and later

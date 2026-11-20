@@ -1,6 +1,6 @@
 --[[
 Description: nvk_PROPAGATE
-Version: 2.3.4
+Version: 2.3.5
 About:
     # nvk_PROPAGATE
 
@@ -9,6 +9,8 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    2.3.5
+        - Clarify installer instructions when nvk_SHARED is missing or needs an update
     2.3.4
         - Redesign the window: a source line names the source and its targets, each parameter group shows what the targets hold now and what they will get, the Apply button says how many items it will change, and the window is resizable
         - Add separate Track Propagate and Copy / Paste modes, with parameter-group selection
