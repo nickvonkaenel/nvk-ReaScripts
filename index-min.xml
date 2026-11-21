@@ -257,81 +257,81 @@ For full changelog, visit https://nvk.tools/docs/autodoppler#changelog]]></chang
     Extra keyboard shortcut for deleting a word from the input text treating underscores and hyphens (ctrl-delete still functions as normal)
     Rename: shortcut for toggling capitalization
 For full changelog, visit https://nvk.tools/docs/workflow/folder_items#changelog]]></changelog>
-        <source file="Templates/nvk_render_functions_template.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/Templates/nvk_render_functions_template.lua</source>
-        <source file="Templates/nvk_user_categories_template.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/Templates/nvk_user_categories_template.lua</source>
-        <source file="Data/functions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/Data/functions.lua</source>
-        <source file="Data/set_settings_preset.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/Data/set_settings_preset.lua</source>
-        <source file="Data/set_track_override.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/Data/set_track_override.lua</source>
-        <source file="Data/modules.pack">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/Data/modules.pack</source>
-        <source file="Data/scripts/rename/data/input_func.eel">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/Data/scripts/rename/data/input_func.eel</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Add new items to existing folder - Rename.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Add%20new%20items%20to%20existing%20folder%20-%20Rename.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Add new items to existing folder.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Add%20new%20items%20to%20existing%20folder.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Copy under mouse cursor.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Copy%20under%20mouse%20cursor.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Copy.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Copy.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Create new folder from selected items or tracks.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Create%20new%20folder%20from%20selected%20items%20or%20tracks.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Cut under mouse cursor.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Cut%20under%20mouse%20cursor.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Cut.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Cut.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Fade SMART.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Fade%20SMART.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Fade in.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Fade%20in.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Fade out.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Fade%20out.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Item Render Settings - Channels - Custom.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Item%20Render%20Settings%20-%20Channels%20-%20Custom.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Item Render Settings - Channels - Mono.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Item%20Render%20Settings%20-%20Channels%20-%20Mono.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Item Render Settings - Channels - Stereo.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Item%20Render%20Settings%20-%20Channels%20-%20Stereo.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Join.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Join.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - MM - Media Item - Double Click.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20MM%20-%20Media%20Item%20-%20Double%20Click.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - MM - Reposition - Groups.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20MM%20-%20Reposition%20-%20Groups.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - MM - Reposition - Items.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20MM%20-%20Reposition%20-%20Items.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - MM - Reposition - Propagate.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20MM%20-%20Reposition%20-%20Propagate.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - MM - TCP - Double Click.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20MM%20-%20TCP%20-%20Double%20Click.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - MM - Track - Double Click.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20MM%20-%20Track%20-%20Double%20Click.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Octave (Reversed).lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Octave%20(Reversed).lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Octave.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Octave.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Semitone (Reversed).lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Semitone%20(Reversed).lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Semitone.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Pitch%20Shift%20-%20Semitone.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Volume.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Mousewheel%20Volume.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Move left edge to edit cursor.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Move%20left%20edge%20to%20edit%20cursor.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Move right edge to edit cursor.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Move%20right%20edge%20to%20edit%20cursor.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Move snap offset to edit cursor.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Move%20snap%20offset%20to%20edit%20cursor.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Name selected folder items from child items.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Name%20selected%20folder%20items%20from%20child%20items.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Open project render directory.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Open%20project%20render%20directory.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Organize - Cleanup RENDERS folder.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Organize%20-%20Cleanup%20RENDERS%20folder.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Organize - Items to as few tracks as possible (preserve column order).lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Organize%20-%20Items%20to%20as%20few%20tracks%20as%20possible%20(preserve%20column%20order).lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Organize - Items to as few tracks as possible.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Organize%20-%20Items%20to%20as%20few%20tracks%20as%20possible.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Organize - Keep tracks with items in order by time.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Organize%20-%20Keep%20tracks%20with%20items%20in%20order%20by%20time.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Paste under mouse cursor.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Paste%20under%20mouse%20cursor.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Paste.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Paste.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Remove.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Remove.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Rename.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Rename.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Render SMART.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render%20SMART.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Render.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Render.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Reposition - Preset 1.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20-%20Preset%201.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Reposition - Preset 2.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20-%20Preset%202.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Reposition - Preset 3.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20-%20Preset%203.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Reposition - Preset 4.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition%20-%20Preset%204.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Reposition.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Reposition.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Select render items.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Select%20render%20items.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Select unnamed folder items.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Select%20unnamed%20folder%20items.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Preset 0 (default).lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Settings%20-%20Preset%200%20(default).lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Preset 1.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Settings%20-%20Preset%201.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Preset 2.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Settings%20-%20Preset%202.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Preset 3.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Settings%20-%20Preset%203.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Preset 4.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Settings%20-%20Preset%204.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Settings.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Settings.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Shuffle.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Shuffle.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Split.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Split.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Toggle auto select.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Toggle%20auto%20select.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Toggle mute under mouse cursor (video item volume).lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Toggle%20mute%20under%20mouse%20cursor%20(video%20item%20volume).lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Toggle mute under mouse cursor.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Toggle%20mute%20under%20mouse%20cursor.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Toggle solo under mouse cursor.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Toggle%20solo%20under%20mouse%20cursor.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Track Override - Auto.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Track%20Override%20-%20Auto.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Track Override - Disable.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Track%20Override%20-%20Disable.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Track Override - Enable.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Track%20Override%20-%20Enable.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Trim left edge.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Trim%20left%20edge.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Trim right edge.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Trim%20right%20edge.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Unselect folder items.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Unselect%20folder%20items.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Unselect non-folder items.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Unselect%20non-folder%20items.lua</source>
-        <source main="main" file="nvk_FOLDER_ITEMS - Update (manual).lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS%20-%20Update%20(manual).lua</source>
-        <source main="main">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/FOLDER_ITEMS/nvk_FOLDER_ITEMS.lua</source>
+        <source file="Templates/nvk_render_functions_template.lua">https://dl.nvk.tools/sha256/996bc3fdcfbe939417ce13a95ba74d6d81cb590e2901d4f676208de99f0f378a</source>
+        <source file="Templates/nvk_user_categories_template.lua">https://dl.nvk.tools/sha256/61779dc63612c65993b7ca91ab429e586a9f14d0e5c96525b9e0370699915377</source>
+        <source file="Data/functions.lua">https://dl.nvk.tools/sha256/68c9f9d6184dfc704ce2fbe61311f4487f120aaecfbceac0a4810e4ec67eaa89</source>
+        <source file="Data/set_settings_preset.lua">https://dl.nvk.tools/sha256/264700ab9bea15d8e491fd4d3a33924a1cf931d2f25d013d10753def4e6dbe5a</source>
+        <source file="Data/set_track_override.lua">https://dl.nvk.tools/sha256/7e0f647e3503174590c1ebf4c018d3f189aca7a1e19c1213ef14252cb42d1d60</source>
+        <source file="Data/modules.pack">https://dl.nvk.tools/sha256/e474843883528e944f5bdd3be3c1a259dcb4817768a101e6dee52b290783c1dc</source>
+        <source file="Data/scripts/rename/data/input_func.eel">https://dl.nvk.tools/sha256/339d28b68416a851d89558f2fa6aee8490af6d42115447e7eb7b5e3e2b442704</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Add new items to existing folder - Rename.lua">https://dl.nvk.tools/sha256/758bce43c13c14b9160923a85a296a915a56c343b1020e4c8e84537701cfc0eb</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Add new items to existing folder.lua">https://dl.nvk.tools/sha256/c838cae3ef53ec0ccaca9b87ac4e218667dcee20851dbba6f3025db4b9921ee6</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Copy under mouse cursor.lua">https://dl.nvk.tools/sha256/28b264553e4526498042020cda693da54539a41ecbb6d7b6a0365b82ea477f2d</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Copy.lua">https://dl.nvk.tools/sha256/2c5df96c1bd9d01c0ceb354a1e785a869318fc798e047185aad295ac952c5068</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Create new folder from selected items or tracks.lua">https://dl.nvk.tools/sha256/89a7cbccfe32806e6bfc4646fc59cfa1a5f9d592fc839e33ba38dc56b2463317</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Cut under mouse cursor.lua">https://dl.nvk.tools/sha256/d9523222e9f49bf449e101b841af21085fb4505a7aef1af1b98468c01a533feb</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Cut.lua">https://dl.nvk.tools/sha256/4b8ad0140adab11642a334bf4174489ca1c70d6f5bd7006749ed3b445685888a</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Fade SMART.lua">https://dl.nvk.tools/sha256/3e610bbd47f6663794f40ce955278d2ae37ab16977064449028969c02e368aac</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Fade in.lua">https://dl.nvk.tools/sha256/bce61bbc2b8a93ababb8e4f11c6a6e10d8b39926eeeb14bae2e162afe51aa1f5</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Fade out.lua">https://dl.nvk.tools/sha256/75d29962bbb01257f580d77643747fad0ae2b211d0fb318398dd45dfd3bc26ae</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Item Render Settings - Channels - Custom.lua">https://dl.nvk.tools/sha256/17bcbed5aaab2e8625c0f2b9510a7e9d1c4309fbec8c0fc127e693c82d517005</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Item Render Settings - Channels - Mono.lua">https://dl.nvk.tools/sha256/debc96203957aa46764647f1f9e6a1ab75fecf05014ae67d6a3fe98fa9e9b904</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Item Render Settings - Channels - Stereo.lua">https://dl.nvk.tools/sha256/09078e7293f85a8e26f8190051f2f6ada8a3cf30d10d10bcb0caff61da2bcf0d</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Join.lua">https://dl.nvk.tools/sha256/a1b34bd9c133a1bb44ae06c491f2b538fb636319ba9d2e36daa673001fa8497e</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - MM - Media Item - Double Click.lua">https://dl.nvk.tools/sha256/34f9f1df167cbd3aafd79a881d27df01191f0cf497f71ab507205bcfcaaddfef</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - MM - Reposition - Groups.lua">https://dl.nvk.tools/sha256/c056952096e5fabb880008b806ddeb86eee19c0e9085550ca087b7fd6fb0d26a</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - MM - Reposition - Items.lua">https://dl.nvk.tools/sha256/f3ab2d40775e924f5d60fd2e532c2c9417c8c1121f1cf1f4891d707fb031f56d</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - MM - Reposition - Propagate.lua">https://dl.nvk.tools/sha256/2553b1deb9d6e22769b3b99818330c26f5468e6aa5ac8b31a38f9321ffdc599e</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - MM - TCP - Double Click.lua">https://dl.nvk.tools/sha256/ef4b48d9d460178e32d11f7bf0409993768d3c257af80374e99cb668affb743c</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - MM - Track - Double Click.lua">https://dl.nvk.tools/sha256/5e32b318bd1b116063101ec699bdf9451d872b101a31c245cf2ea62c862e651b</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Octave (Reversed).lua">https://dl.nvk.tools/sha256/438605ddb4aec990b05c70b7e860bf1cfc2ad7bf05739e8448e3f1a39484d568</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Octave.lua">https://dl.nvk.tools/sha256/f47b988b2e3a010b38c26bce48ec69594f0712e12b4378102cefc8a10b120278</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Semitone (Reversed).lua">https://dl.nvk.tools/sha256/b766c7e66ac7ecc345bb257c9e39393be211fcea17c07cc5adeb77d38142959f</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Pitch Shift - Semitone.lua">https://dl.nvk.tools/sha256/f9df526382cd691a3d2a76c538eb8f3b4a399f475f48d9191565dad951233861</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Mousewheel Volume.lua">https://dl.nvk.tools/sha256/a82492503ed0f000472f9007721ad639f4474805b724f48686c196a4c004529d</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Move left edge to edit cursor.lua">https://dl.nvk.tools/sha256/74d8697952813a8b7bb9160c9b94d9cdac36704396834ab1c09bd550d3810e18</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Move right edge to edit cursor.lua">https://dl.nvk.tools/sha256/1e387af1140eaa1564ae0dec58996d58e93b17b094390a4aeaa9d921a97eb456</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Move snap offset to edit cursor.lua">https://dl.nvk.tools/sha256/7e3057653a30a8aca028a5838ab5c1c73f779157f1ed4805a80b98b565ab79f8</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Name selected folder items from child items.lua">https://dl.nvk.tools/sha256/5f70a5b65d77b3a0745d1f6ff26eae4c8f8a440d45bbb4e6e3fda5467ba1a0d7</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Open project render directory.lua">https://dl.nvk.tools/sha256/a771b0d2d72fb1ff54e520f902d2dd6992e5da28a3d6eca613217bf9d860716d</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Organize - Cleanup RENDERS folder.lua">https://dl.nvk.tools/sha256/bb705a67e984881a7eba57d51537b0d99ff1cc879ba55ae5ff8521731acd02b9</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Organize - Items to as few tracks as possible (preserve column order).lua">https://dl.nvk.tools/sha256/d44c2e16a471cb5f4af755e4b404e7d79b52b7757fe2cd3829747632ab8118df</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Organize - Items to as few tracks as possible.lua">https://dl.nvk.tools/sha256/b4e5a7e1e6b6e6156abfcc67364cd3b70f88b70b72a69374d5b9c0f2ebd75fe2</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Organize - Keep tracks with items in order by time.lua">https://dl.nvk.tools/sha256/7b420c54cc5d66b4e5b78388585fc96b355d3b85c3e59d9393aa204101c0dde0</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Paste under mouse cursor.lua">https://dl.nvk.tools/sha256/6ef646e02c0ffd3f11b1c3ce3bac825bb8e202bf3b7862eaa0b1a30ab0936f49</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Paste.lua">https://dl.nvk.tools/sha256/a39565a0a12280f6f42e29a9e4ff9a4ec2aceacf5d2d705de3bce3a6c5739e09</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Remove.lua">https://dl.nvk.tools/sha256/17ca390d70f30739ae635f536f60681a2e664a0f3db2d9f187f518f48deda158</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Rename.lua">https://dl.nvk.tools/sha256/3baa6b479e56d6209ace2d1a5530d6ffceb9b94cd1d563837e6bd99a32d47271</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Render SMART.lua">https://dl.nvk.tools/sha256/de2a7f172027ff5dfa212dc8ad26b96b7a760567c2921bb3a152101173f9e956</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Render.lua">https://dl.nvk.tools/sha256/50ab5e7c129798f065f3e1614e7563375f2c60e17a128fa0ca04f86baf55d1ac</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition - Preset 1.lua">https://dl.nvk.tools/sha256/4bde473bdf3e69b8f6fcfe1257009ce7d9644d9b5dfe68896b90122b11defc0a</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition - Preset 2.lua">https://dl.nvk.tools/sha256/3762b7747f4d011aa4fe88be632704f5ff1a67f5834677899e27774b470e5dea</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition - Preset 3.lua">https://dl.nvk.tools/sha256/2fa6220358c2d9961900cda9f5d4fdcb857a557b45b1ee9661d1c0b022bed3c5</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition - Preset 4.lua">https://dl.nvk.tools/sha256/2bcffd01fdc1bc8b5675b772216cf6d0243634cc5fd5fb75db4b57ddfacc6bb9</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Reposition.lua">https://dl.nvk.tools/sha256/c3f8761acbf6139ce6647450fa56baf17871cf791ad08e0fbe96ecb416b51366</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Select render items.lua">https://dl.nvk.tools/sha256/98f454d96b007e495d1c787192e1801d353abc323e3cd4ace160ed114f9a4fb4</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Select unnamed folder items.lua">https://dl.nvk.tools/sha256/a505d0e694f0fe3e4c0bfc3276d612557db3b474301c1a2e3c9e34e59ffe5932</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Preset 0 (default).lua">https://dl.nvk.tools/sha256/87f5f8a2ca1aed4f760680b434e883f91b244fe31c2b30e259b736236139897f</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Preset 1.lua">https://dl.nvk.tools/sha256/224d90e0e2e4554ef2673911b2f7f5b33c97e2eeb61fb81aa0587b69067b0340</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Preset 2.lua">https://dl.nvk.tools/sha256/f536a588ac0464086fdba60c632fa6b263ed7abfac014e169268ab8d7fc74188</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Preset 3.lua">https://dl.nvk.tools/sha256/9c925b07bbe5dd187fbe3ef1397376aa6eb66ef49bda53a1bd96f6149fc630a3</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Settings - Preset 4.lua">https://dl.nvk.tools/sha256/14e1bff6af7337cb70b2346240a77ee00a2d15abb3cbc565c1102ddaa10910af</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Settings.lua">https://dl.nvk.tools/sha256/f8e8f6c936a7cce7c8c6ea08e74d2241a0196e328727134b8eb916e2bf2e46bd</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Shuffle.lua">https://dl.nvk.tools/sha256/bea7f2e3bff331734f90a145906e1d3b3a8089176a175a04e25684c58a5c5a5d</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Split.lua">https://dl.nvk.tools/sha256/b77583765f694d95fa3bd0dcc0eada84082c67d57c955df555d2ea50828c7777</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Toggle auto select.lua">https://dl.nvk.tools/sha256/37cbb631d3e95455c9b2fbdc5245e9afe58a1002e083533230337fe684c159b6</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Toggle mute under mouse cursor (video item volume).lua">https://dl.nvk.tools/sha256/66207f8416e1589c605b0065c330ec9688f89dae618c03aff7fbf41e2cecc568</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Toggle mute under mouse cursor.lua">https://dl.nvk.tools/sha256/cf03e8f137337f464b35ce1628d861aae7811e44672e1d18e6c4cc5f263d4cee</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Toggle solo under mouse cursor.lua">https://dl.nvk.tools/sha256/e58da26354167b4c52b71893c3cdce0563d35ed4530e9830507602624d171cba</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Track Override - Auto.lua">https://dl.nvk.tools/sha256/5a939f2f4fc8cc725cab922c5af41f08fd8c7b3244e09bf7ec9be061db71ec87</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Track Override - Disable.lua">https://dl.nvk.tools/sha256/d56ae592ebb46b4df627e01c728fc1da2db977aeae435e47dccc2ce40aee5d50</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Track Override - Enable.lua">https://dl.nvk.tools/sha256/cf5250f6313cac85b490b15a2103af951636c6b593f4fbfd203f4e23d4940bab</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Trim left edge.lua">https://dl.nvk.tools/sha256/6622d8f88a036270d8aebabda9cbecced1db32d189cff2c5d81e9cfea6134c22</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Trim right edge.lua">https://dl.nvk.tools/sha256/6859ac3240a97c7235431adab4138de719451774acd996be24a37be08ad0fd78</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Unselect folder items.lua">https://dl.nvk.tools/sha256/59d55812f4999ad282fb9dcc0798b67b97df4f60f03f0aa6dbbd34c625720114</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Unselect non-folder items.lua">https://dl.nvk.tools/sha256/ff154cf653295a26669eec0f750c805eab940844065316efa4c1530543f4bb40</source>
+        <source main="main" file="nvk_FOLDER_ITEMS - Update (manual).lua">https://dl.nvk.tools/sha256/dbb3aae818ddd481f174104eadffe7350a319c246387605bfdbf9fc9c4e8aa16</source>
+        <source main="main">https://dl.nvk.tools/sha256/5fdcd6aa483eda82bc29d869038952a589986e43ce3c7a91068ebf8c5929264d</source>
       </version>
     </reapack>
   </category>
@@ -1081,26 +1081,26 @@ For full changelog, visit https://nvk.tools/docs/search#changelog]]></changelog>
     Support for latest version of ReaImGui, font improvements
     Script unfocused color improvements, a little bit more clear when script does not have focus
 For full changelog, visit https://nvk.tools/docs/shared#changelog]]></changelog>
-        <source file="Data/basics.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/basics.lua</source>
-        <source file="Data/extension_api.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/extension_api.lua</source>
-        <source file="Data/functions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/functions.lua</source>
-        <source file="Data/lua_file.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/lua_file.lua</source>
-        <source file="Data/template/functions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/template/functions.lua</source>
-        <source file="Data/modules.pack">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/modules.pack</source>
-        <source file="Data/fonts/THIRD_PARTY_NOTICES.txt">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/fonts/THIRD_PARTY_NOTICES.txt</source>
-        <source file="Data/fonts/OFL-RedditSans.txt">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/fonts/OFL-RedditSans.txt</source>
-        <source file="Data/fonts/nvk_SANS-Regular.ttf">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/fonts/nvk_SANS-Regular.ttf</source>
-        <source file="Data/fonts/nvk_SANS-Bold.ttf">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/fonts/nvk_SANS-Bold.ttf</source>
-        <source file="Data/fonts/nvk_SANS-RegularTabular.ttf">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/fonts/nvk_SANS-RegularTabular.ttf</source>
-        <source file="Data/fonts/nvk_MONO-Regular.ttf">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/fonts/nvk_MONO-Regular.ttf</source>
-        <source file="Data/fonts/icons.otf">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/Data/fonts/icons.otf</source>
-        <source main="main" file="nvk_SHARED - Check for updates.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/nvk_SHARED%20-%20Check%20for%20updates.lua</source>
-        <source main="main" file="nvk_SHARED - Diagnostics.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/nvk_SHARED%20-%20Diagnostics.lua</source>
-        <source main="main" file="nvk_SHARED - License Manager.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/nvk_SHARED%20-%20License%20Manager.lua</source>
-        <source main="main" file="nvk_SHARED - License upkeep.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/nvk_SHARED%20-%20License%20upkeep.lua</source>
-        <source main="main" file="nvk_SHARED - Startup Actions - Run.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/nvk_SHARED%20-%20Startup%20Actions%20-%20Run.lua</source>
-        <source main="main" file="nvk_SHARED - Startup Actions.lua">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/nvk_SHARED%20-%20Startup%20Actions.lua</source>
-        <source main="main">https://github.com/nickvonkaenel/nvk-ReaScripts/raw/e312ba9c5cfbb0522a65e2bc073ad3f12624a6e3/SHARED/nvk_SHARED.lua</source>
+        <source file="Data/basics.lua">https://dl.nvk.tools/sha256/1899ffb03222d11281cf8699b9eca2bf3cb203a33e1ac52ff83937b2be5af6c9</source>
+        <source file="Data/extension_api.lua">https://dl.nvk.tools/sha256/c401589c432f03cdc4cd61ccba62a0fe72907a84b4b3b77c8420e7eddf8226b1</source>
+        <source file="Data/functions.lua">https://dl.nvk.tools/sha256/68c9f9d6184dfc704ce2fbe61311f4487f120aaecfbceac0a4810e4ec67eaa89</source>
+        <source file="Data/lua_file.lua">https://dl.nvk.tools/sha256/c9312354a200442ed519ee457ceab6db845829fecebbebd0580ffd7acde26cd3</source>
+        <source file="Data/template/functions.lua">https://dl.nvk.tools/sha256/68c9f9d6184dfc704ce2fbe61311f4487f120aaecfbceac0a4810e4ec67eaa89</source>
+        <source file="Data/modules.pack">https://dl.nvk.tools/sha256/1937fc364c1de2ca1fb62b0a0659824e0e583f333a06157e664dcf9d677cc17c</source>
+        <source file="Data/fonts/THIRD_PARTY_NOTICES.txt">https://dl.nvk.tools/sha256/9027b9d1dc54559bebb38cefa48d9be6d351ce385314b83bdccae0cfa7189f0e</source>
+        <source file="Data/fonts/OFL-RedditSans.txt">https://dl.nvk.tools/sha256/5dd36fff5443e0c6d93eca262fdc7fccfba30cfcdbda5d235c8265ae24a98924</source>
+        <source file="Data/fonts/nvk_SANS-Regular.ttf">https://dl.nvk.tools/sha256/7ce41f7d531d104844e28ea6e5cf5771cb82f3031b3367cde15894adb4f2bf86</source>
+        <source file="Data/fonts/nvk_SANS-Bold.ttf">https://dl.nvk.tools/sha256/a0c0e8374e6ca4b90acf0561c079a39bb15dabf5515875026d16f5e9c3193c39</source>
+        <source file="Data/fonts/nvk_SANS-RegularTabular.ttf">https://dl.nvk.tools/sha256/26ddfac8f23f41ddc021936fed407b0ec3dd82e5da20639c5d82be047411ca2d</source>
+        <source file="Data/fonts/nvk_MONO-Regular.ttf">https://dl.nvk.tools/sha256/ff6ef6032cd6fd7ba2959d44379280e5670914530dd782c5231aba9520b90499</source>
+        <source file="Data/fonts/icons.otf">https://dl.nvk.tools/sha256/29578dd8ffd7064c0b6a9764e7c6b7b39086862771af720d0cb5b578610c0067</source>
+        <source main="main" file="nvk_SHARED - Check for updates.lua">https://dl.nvk.tools/sha256/7a176f3020755639ce3511f724661847921147c278ac2c63b45e4164538df20e</source>
+        <source main="main" file="nvk_SHARED - Diagnostics.lua">https://dl.nvk.tools/sha256/024b1fce12a512a7b1e9a25b5b21359fe76240ba4fd34535fc503e61c7e5094a</source>
+        <source main="main" file="nvk_SHARED - License Manager.lua">https://dl.nvk.tools/sha256/334747213c4f2e7c4aaca62b68b415f19052c10ec07405f107ffddef1dd53bd9</source>
+        <source main="main" file="nvk_SHARED - License upkeep.lua">https://dl.nvk.tools/sha256/e659be32571366638e8051f365fa674a1ee9388a6c96b0bf7c47d02923a274bf</source>
+        <source main="main" file="nvk_SHARED - Startup Actions - Run.lua">https://dl.nvk.tools/sha256/eaa50fbc370166c4a2a06579dc38080b3f99af41f287ca88f47db6d253a034bd</source>
+        <source main="main" file="nvk_SHARED - Startup Actions.lua">https://dl.nvk.tools/sha256/27ddccfec794bdb66e9e214f52681198f5a8637c04a567450cf019a811c722b9</source>
+        <source main="main">https://dl.nvk.tools/sha256/21a29b6578058713ce4081147209757203681b954f250d76042ed72831765fc9</source>
       </version>
     </reapack>
   </category>
