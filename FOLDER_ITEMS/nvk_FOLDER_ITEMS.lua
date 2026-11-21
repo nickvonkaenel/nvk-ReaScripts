@@ -1,6 +1,6 @@
 --[[
 Description: nvk_FOLDER_ITEMS
-Version: 2.18.8
+Version: 2.18.9
 About:
     # nvk_FOLDER_ITEMS
 
@@ -10,6 +10,8 @@ Links:
     Store Page https://nvk.tools/workflow
     User Guide https://nvk.tools/docs/workflow/folder_items
 Changelog:
+    2.18.9
+        - Fix a crash in Add new items to existing folder when only folder items are selected or the folder has no child items
     2.18.8
         - Clarify installer instructions when nvk_SHARED is missing or needs an update
     2.18.7

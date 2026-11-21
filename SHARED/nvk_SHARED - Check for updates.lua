@@ -1,6 +1,6 @@
 -- @noindex
--- Checks for nvk.tools updates. With automatic updates on, it installs them: at once when no nvk window is open,
--- otherwise at the next REAPER start. nvk_API runs it quietly after REAPER starts and every 12 hours, and nvk
+-- Checks for nvk.tools updates. With automatic updates on, it installs them: scripts install immediately and native changes need a restart.
+-- nvk_API runs it quietly after REAPER starts and every 12 hours, and nvk
 -- windows run it when nvk_API cannot; run from the Action List, it says what it found.
 --
 -- It loads only the update modules, not the SHARED bootstrap: no window, no ImGui, nothing a background check does
@@ -92,6 +92,8 @@ local function report(result)
                 0
             )
         end
+    elseif result.applied_pending and not result.restart then
+        r.MB('Update installed. Reopen any updated tools you already have open to use their new version.', TITLE, 0)
     elseif result.restart then
         r.MB('Restart REAPER to load the installed update.', TITLE, 0)
     elseif result.mode == 'automatic' then

@@ -1,6 +1,6 @@
 --[[
 Description: nvk_SHARED
-Version: 5.2.3
+Version: 5.2.4
 About:
     # nvk_SHARED
 
@@ -9,6 +9,11 @@ Author: nvk
 Links:
     Website https://nvk.tools
 Changelog:
+    5.2.4
+        - Fix SMART take stepping across the ends of reversed sources
+        - Stop LOOPMAKER from briefly changing item length and playrate while searching for zero crossings
+        - Fix a crash in LOOPMAKER when an item's media is offline
+        - Install script updates without restarting REAPER and show confirmation when an update finishes
     5.2.3
         - Fix an update notice appearing after switching an up-to-date install to automatic updates
         - Open ReaPack directly to nvk_API after the startup dependency prompt and clarify installation and update instructions
